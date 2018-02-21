@@ -3,4 +3,4 @@ check:
     statements: 80
     lines: 80
     branches: 37
-    functions: 77
+    functions: 80

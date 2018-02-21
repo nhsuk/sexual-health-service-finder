@@ -1,1 +1,1 @@
-module.exports = require('nhsuk-bunyan-logger')('connecting-to-services');
+module.exports = require('nhsuk-bunyan-logger')('sexual-health-service-finder');

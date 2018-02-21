@@ -14,8 +14,8 @@ services:
     ports:
       - 3000:3000
     volumes:
-      - shsf-node_modules:/code/node_modules
+      - node_modules:/code/node_modules
       - .:/code
 
 volumes:
-  shsf-node_modules:
+  node_modules:

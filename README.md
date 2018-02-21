@@ -1,5 +1,5 @@
 # Sexual Health Service Finder
-Helping to connect people to sexual health services.
+> Helping to connect people to sexual health services.
 
 [![GitHub Release](https://img.shields.io/github/release/nhsuk/sexual-health-service-finder.svg)](https://github.com/nhsuk/sexual-health-service-finder/releases/latest/)
 [![Greenkeeper badge](https://badges.greenkeeper.io/nhsuk/sexual-health-service-finder.svg)](https://greenkeeper.io/)

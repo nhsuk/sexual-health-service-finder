@@ -1,6 +1,6 @@
 # Contribution Guidelines
 
-We welcome patches to the NHS.UK Beta products, as long as you follow these guidelines:
+We welcome patches to NHS.UK products, as long as you follow these guidelines:
 
 ## Git workflow
 
@@ -18,7 +18,7 @@ We welcome patches to the NHS.UK Beta products, as long as you follow these guid
 
 ## Code
 
-- Must be readable with meaningful naming, eg no short hand single character variable names
+- Must be readable with meaningful naming, e.g. no shorthand single character variable names
 - Follow our [styleguides](https://github.com/nhsuk/styleguides)
 - Must pass linting with the ruleset from `.eslint.json` (`yarn run lint`). Lint will run on all commits, rebases and as part of CI
 

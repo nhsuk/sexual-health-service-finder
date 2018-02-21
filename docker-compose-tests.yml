@@ -8,7 +8,7 @@ services:
       service: base-app
     command: yarn test-watch
     volumes:
-      - c2s-test-node_modules:/code/node_modules
+      - node_modules:/code/node_modules
       - .:/code
 
   test-ci:
@@ -18,7 +18,7 @@ services:
     command: yarn run test-ci
     user: root
     volumes:
-      - c2s-test-ci-node_modules:/code/node_modules
+      - node_modules:/code/node_modules
     environment:
       COVERALLS_REPO_TOKEN: ${COVERALLS_REPO_TOKEN}
       TRAVIS: ${TRAVIS}
@@ -27,5 +27,4 @@ services:
       TRAVIS_JOB_ID: ${TRAVIS_JOB_ID}
 
 volumes:
-  c2s-test-node_modules:
-  c2s-test-ci-node_modules:
+  node_modules:
