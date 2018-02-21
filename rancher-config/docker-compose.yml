@@ -1,0 +1,28 @@
+version: '2'
+
+services:
+
+  shsf-frontend:
+    image: "nhsuk/sexual-health-service-finder:${DOCKER_IMAGE_TAG}"
+    environment:
+      NODE_ENV: production
+    labels:
+      io.rancher.container.pull_image: always
+      prometheus.monitoring: true
+      prometheus.port: 3000
+      traefik.backend: ${RANCHER_STACK_NAME}-sexual-health-service-finder
+      traefik.enable: true
+      traefik.frontend.auth.basic: ${BASIC_AUTH}
+      traefik.frontend.rule: $TRAEFIK_RULE
+      traefik.port: 3000
+    logging:
+      driver: splunk
+      options:
+        splunk-format: json
+        splunk-insecureskipverify: "true"
+        splunk-source: sexual-health-service-finder
+        splunk-sourcetype: docker
+        splunk-token: ${SPLUNK_HEC_TOKEN}
+        splunk-url: ${SPLUNK_HEC_URL}
+        splunk-verify-connection: "false"
+        tag: "{{`{{.ImageName}} {{.Name}} {{.FullID}}`}}"

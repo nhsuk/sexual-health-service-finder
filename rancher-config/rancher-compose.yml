@@ -1,0 +1,17 @@
+version: '2'
+
+services:
+
+  shsf-frontend:
+    scale: $INITIAL_CONTAINER_SCALE
+    start_on_create: true
+    health_check:
+      response_timeout: 5000
+      healthy_threshold: 2
+      port: 3000
+      unhealthy_threshold: 3
+      initializing_timeout: 60000
+      interval: 5000
+      strategy: recreate
+      request_line: GET "/find-a-chlamydia-test/?check" "HTTP/1.0"
+      reinitializing_timeout: 60000
