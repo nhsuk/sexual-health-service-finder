@@ -117,6 +117,39 @@ ignore:
     - node-sass > request > tunnel-agent:
         reason: no fix available
         expires: '2018-03-24T16:52:29.385Z'
+  'npm:debug:20170905':
+    - brunch > chokidar > fsevents > node-pre-gyp > tar-pack > debug:
+        reason: no fix available
+        expires: '2018-03-24T16:54:35.090Z'
+    - nunjucks > chokidar > fsevents > node-pre-gyp > tar-pack > debug:
+        reason: no fix available
+        expires: '2018-03-24T16:54:35.090Z'
+    - brunch > debug:
+        reason: no fix available
+        expires: '2018-03-24T16:54:35.090Z'
+    - brunch > since-app-start > debug:
+        reason: no fix available
+        expires: '2018-03-24T16:54:35.090Z'
+    - node-pre-gyp > tar-pack > debug:
+        reason: no fix available
+        expires: '2018-03-24T16:54:35.090Z'
+  'npm:tough-cookie:20170905':
+    - brunch > chokidar > fsevents > node-pre-gyp > request > tough-cookie:
+        reason: no fix available
+        expires: '2018-03-24T16:54:35.090Z'
+    - nunjucks > chokidar > fsevents > node-pre-gyp > request > tough-cookie:
+        reason: no fix available
+        expires: '2018-03-24T16:54:35.090Z'
+    - node-pre-gyp > request > tough-cookie:
+        reason: no fix available
+        expires: '2018-03-24T16:54:35.090Z'
+  'npm:ms:20170412':
+    - brunch > debug > ms:
+        reason: no fix available
+        expires: '2018-03-24T16:54:35.090Z'
+    - brunch > since-app-start > debug > ms:
+        reason: no fix available
+        expires: '2018-03-24T16:54:35.090Z'
 # patches apply the minimum changes required to fix a vulnerability
 patch:
   'npm:debug:20170905':
