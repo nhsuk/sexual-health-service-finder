@@ -61,4 +61,5 @@ typings/
 *.css
 *.css.map
 
+.DS_Store
 app/views/includes/header-items.nunjucks

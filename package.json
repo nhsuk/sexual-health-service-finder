@@ -21,7 +21,7 @@
     "postrewrite": "yarn git-hook",
     "precommit": "yarn git-hook",
     "prepush": "yarn git-hook && yarn snyk test",
-    "start-watch": "yarn header-build && yarn brunch watch & nodemon app.js",
+    "start-watch": "yarn header-build && yarn brunch watch & nodemon app.js | ./node_modules/bunyan/bin/bunyan",
     "test": "yarn header-build && NODE_ENV=test mocha --exit --recursive test",
     "test-ci": "yarn ci-hook && yarn coverage-upload-coveralls",
     "test-watch": "yarn test -- --watch --reporter min"
