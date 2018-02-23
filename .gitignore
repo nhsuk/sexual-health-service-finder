@@ -60,3 +60,5 @@ typings/
 # css files
 *.css
 *.css.map
+
+app/views/includes/header-items.nunjucks
