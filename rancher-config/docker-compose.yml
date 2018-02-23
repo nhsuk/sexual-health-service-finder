@@ -5,7 +5,10 @@ services:
   shsf-frontend:
     image: "nhsuk/sexual-health-service-finder:${DOCKER_IMAGE_TAG}"
     environment:
+      GOOGLE_ANALYTICS_TRACKING_ID: ${GOOGLE_ANALYTICS_TRACKING_ID}
+      HOTJAR_ANALYTICS_TRACKING_ID: ${HOTJAR_ANALYTICS_TRACKING_ID}
       NODE_ENV: production
+      WEBTRENDS_ANALYTICS_TRACKING_ID: ${WEBTRENDS_ANALYTICS_TRACKING_ID}
     labels:
       io.rancher.container.pull_image: always
       prometheus.monitoring: true
