@@ -14,7 +14,7 @@ describe('redirection', () => {
     expect(res).to.have.status(200);
     expect(res).to.be.html;
     expect(res).to.redirect;
-    expect(res.req.path).to.equal(`${constants.SITE_ROOT}`);
+    expect(res.req.path).to.equal(`${constants.SITE_ROOT}/`);
   });
 });
 
