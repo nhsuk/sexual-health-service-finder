@@ -1,5 +1,9 @@
 const router = require('express').Router();
+const renderer = require('../app/middleware/renderer');
 
-router.get('/', (req, res) => res.send('Hello World!'));
+router.get(
+  '/',
+  renderer.findHelp
+);
 
 module.exports = router;
