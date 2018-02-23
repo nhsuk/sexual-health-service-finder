@@ -9,4 +9,5 @@ module.exports = {
   env: process.env.NODE_ENV || 'development',
   root: rootPath,
   port: process.env.PORT || 3000,
+  headerApiUrl: 'https://refdata-api.azurewebsites.net/api/fullheadermenu',
 };
