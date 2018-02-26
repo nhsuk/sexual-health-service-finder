@@ -57,3 +57,9 @@ typings/
 # dotenv environment variables file
 .env
 
+# css files
+*.css
+*.css.map
+
+.DS_Store
+app/views/includes/header-items.nunjucks

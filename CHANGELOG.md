@@ -1,3 +1,11 @@
-0.1.0 / / TBA
+0.2.0 / 2018-03-01
+=======
+- Upgrade python in Alpine to 2.7.14-r0
+- Build header items nunjucks
+- Use NHS.UK front-end library 
+- Add site layout files and a start page
+- Update npm dependencies
+
+0.1.0 / 2018-02-21
 =======
 - Initial application architecture
