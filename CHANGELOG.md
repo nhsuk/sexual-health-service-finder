@@ -1,4 +1,4 @@
-0.2.0 / TBA
+0.2.0 / 2018-03-01
 =======
 - Upgrade python in Alpine to 2.7.14-r0
 - Build header items nunjucks
