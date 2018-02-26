@@ -29,5 +29,14 @@ describe('Search page', () => {
       expect($($('div.breadcrumb a')[1]).attr('href'))
         .to.equal('https://www.nhs.uk/service-search');
     });
+
+    it('should have a link back to the Choices service search', async () => {
+      const res = await chai.request(server).get(`${constants.SITE_ROOT}`);
+
+      const $ = cheerio.load(res.text);
+
+      expect($('.back-to-choices').attr('href'))
+        .to.equal('https://www.nhs.uk/Service-Search');
+    });
   });
 });
