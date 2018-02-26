@@ -57,6 +57,8 @@ typings/
 # dotenv environment variables file
 .env
 
+# code compiled by brunch
+public/js
 # css files
 *.css
 *.css.map

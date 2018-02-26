@@ -5,7 +5,7 @@ module.exports = {
     }
   },
   paths: {
-    watched: ['scss-c2s']
+    watched: ['scss-c2s', 'app/public/js']
   },
   conventions: {
     ignored: 'scss-c2s/c2s-ie.scss'
@@ -26,6 +26,11 @@ module.exports = {
     }
   },
   files: {
+    javascripts: {
+      joinTo: {
+        'js/app.js': /^app\/public\/js/,
+      }
+    },
     stylesheets: {
       joinTo: {
         'nhsuk.css': /c2s.scss/,
