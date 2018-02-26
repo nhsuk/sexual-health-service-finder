@@ -4,6 +4,7 @@
 - Build header items nunjucks
 - Use NHS.UK front-end library 
 - Add site layout files and a start page
+- Update npm dependencies
 
 0.1.0 / 2018-02-21
 =======
