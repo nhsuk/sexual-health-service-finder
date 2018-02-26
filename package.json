@@ -58,7 +58,8 @@
     "node-sass": "^4.7.2",
     "nunjucks": "3.0.1",
     "request": "^2.83.0",
-    "sass-brunch": "^2.10.4"
+    "sass-brunch": "^2.10.4",
+    "uglify-es": "^3.1.8"
   },
   "devDependencies": {
     "chai": "^4.1.2",
