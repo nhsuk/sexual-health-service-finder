@@ -1,9 +1,10 @@
 {
   "name": "sexual-health-service-finder",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Helping to connect people to sexual health services.",
   "main": "app.js",
   "scripts": {
+    "brunch-build": "yarn brunch build",
     "ci-hook": "yarn lint && yarn coverage-generate && yarn coverage-check",
     "coverage-check": "istanbul check-coverage --config .istanbul.yml",
     "coverage-generate": "yarn istanbul -- cover _mocha -- --exit --recursive",
@@ -11,6 +12,7 @@
     "coverage-generate-no-metrics": "yarn istanbul -- cover _mocha -- --exit \"./test/**/!(metrics).js\"",
     "coverage-upload-coveralls": "cat ./coverage/lcov.info | coveralls",
     "git-hook": "yarn lint && yarn coverage-generate-no-metrics && yarn coverage-check",
+    "header-build": "node headerItems.js",
     "istanbul": "NODE_ENV=test istanbul",
     "lint": "yarn lint-backend && yarn lint-frontend",
     "lint-backend": "eslint --ext .js,.json .",
@@ -19,8 +21,8 @@
     "postrewrite": "yarn git-hook",
     "precommit": "yarn git-hook",
     "prepush": "yarn git-hook && yarn snyk test",
-    "start-watch": "nodemon app.js",
-    "test": "NODE_ENV=test mocha --exit --recursive test",
+    "start-watch": "yarn header-build && yarn brunch watch & nodemon app.js | ./node_modules/bunyan/bin/bunyan",
+    "test": "yarn header-build && NODE_ENV=test mocha --exit --recursive test",
     "test-ci": "yarn ci-hook && yarn coverage-upload-coveralls",
     "test-watch": "yarn test -- --watch --reporter min"
   },
@@ -44,14 +46,20 @@
   },
   "homepage": "https://github.com/nhsuk/sexual-health-service-finder#readme",
   "dependencies": {
+    "after-brunch": "^0.0.5",
     "body-parser": "^1.18.2",
+    "brunch": "2.10.12",
     "compression": "^1.7.1",
     "cookie-parser": "^1.4.3",
     "express": "^4.16.2",
     "express-prom-bundle": "^3.3.0",
     "helmet": "^3.11.0",
     "nhsuk-bunyan-logger": "^1.7.0",
-    "nunjucks": "^3.0.1"
+    "node-sass": "^4.7.2",
+    "nunjucks": "3.0.1",
+    "request": "^2.83.0",
+    "sass-brunch": "^2.10.4",
+    "uglify-es": "^3.1.8"
   },
   "devDependencies": {
     "chai": "^4.1.2",

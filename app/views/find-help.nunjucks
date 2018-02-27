@@ -1,0 +1,35 @@
+{% extends 'layout.nunjucks' %}
+
+{% block header %}
+<h1 class="local-header--title--question">Find a chlamydia test</h1>
+{% endblock %}
+
+{% block content %}
+<div class="reading-width">
+  <p>The best ways to get a <a href="">chlamydia</a> test are to:</p>
+
+  <ul>
+    <li>see a sexual health professional</li>
+    <li>use a chlamydia test kit</li>
+    <li>order a test kit online</li>
+  </ul>
+
+  <p>We can help you find a chlamydia test that's right for you. We'll ask you a few questions. It will take about 5 minutes. We won't store your data.</p>
+
+  <button class="button" value="">Start</button>
+
+  <h2>What happens during the test</h2>
+
+  <p>You or a sexual health professional will take samples from the areas that might be infected. This can be done by:</p>
+
+  <ul>
+    <li>wiping a cotton bud inside the vagina, bottom or mouth</li>
+    <li>peeing into a container</li>
+  </ul>
+  
+  <p>Your samples will be sent to a lab and tested for chlamydia. You'll usually get your results by phone or text message within 2 weeks.</p>
+
+  <p>If you see a health professional they'll also ask questions about your sexual activity and symptoms. This will help them decide what samples to take.</p>
+</div>
+
+{% endblock %}

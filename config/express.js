@@ -42,6 +42,8 @@ module.exports = (app, config) => {
         ],
         scriptSrc: [
           '\'self\'',
+          '\'unsafe-eval\'',
+          '\'unsafe-inline\'',
           'data:',
           '*.google-analytics.com',
           '*.hotjar.com',
@@ -59,6 +61,7 @@ module.exports = (app, config) => {
         ],
         styleSrc: [
           '\'self\'',
+          '\'unsafe-inline\'',
           '*.nhs.uk',
         ],
         fontSrc: [

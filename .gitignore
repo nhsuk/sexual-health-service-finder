@@ -57,3 +57,12 @@ typings/
 # dotenv environment variables file
 .env
 
+# code compiled by brunch
+public/js
+# css files
+*.css
+*.css.map
+
+.DS_Store
+# the header-items file is generated from an online resource when building the container 
+app/views/includes/header-items.nunjucks
