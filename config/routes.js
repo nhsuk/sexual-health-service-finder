@@ -3,7 +3,12 @@ const renderer = require('../app/middleware/renderer');
 
 router.get(
   '/',
-  renderer.findHelp
+  renderer.startPage
+);
+
+router.get(
+  '/symptoms',
+  renderer.symptoms
 );
 
 module.exports = router;

@@ -6,17 +6,19 @@
 
 {% block content %}
 <div class="reading-width">
-  <p>The best ways to get a <a href="">chlamydia</a> test are to:</p>
+  <p>The best ways to get a chlamydia test are to:</p>
 
   <ul>
     <li>see a sexual health professional</li>
-    <li>use a chlamydia test kit</li>
-    <li>order a test kit online</li>
+    <li>pick up a postal test kit - you can get them from some pharmacies and health clinics</li>
+    <li>order a postal test kit online</li>
   </ul>
 
-  <p>We can help you find a chlamydia test that's right for you. We'll ask you a few questions. It will take about 5 minutes. We won't store your data.</p>
+  <p>We can help you find a chlamydia test near you. We'll ask you a few questions. It will take about 5 minutes. We won't store your data.</p>
 
-  <button class="button" value="">Start</button>
+  <form method="get" class="form" action="{{ SITE_ROOT }}/symptoms">
+      <input type="submit" class="button" value="Start">
+  </form>
 
   <h2>What happens during the test</h2>
 

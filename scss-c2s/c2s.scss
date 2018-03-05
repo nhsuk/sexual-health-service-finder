@@ -145,6 +145,12 @@ form {
     box-sizing: border-box;
     width: 100%;
   }
+  label {
+    span {
+      display: block;
+      margin-top: 25px;
+    }
+  }
 }
 /*
   Results page
