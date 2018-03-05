@@ -1,0 +1,19 @@
+{% extends 'layout.nunjucks' %}
+
+{% block header %}
+<h1 class="local-header--title--question">{{ locationHeading }}</h1>
+{% endblock %}
+
+{% block content %}
+<form class="form" id="pageform" method="get">
+
+    <div class="section">
+        <div class="form-line">
+            <label for="location" class="form-label"><h2>Enter a postcode in England.</h2></label>
+            <input type="text" placeholder="" name="location" id="location" class="form-textbox" aria-describedby="hintId">
+        </div>
+    </div>
+
+    <input type="submit" class="button" value="Continue">
+</form>
+{% endblock %}

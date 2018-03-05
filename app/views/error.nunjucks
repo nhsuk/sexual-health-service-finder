@@ -1,6 +1,6 @@
 {% extends 'layout.nunjucks' %}
 
-{% set message = 'Sorry, we are experiencing technical problems' %}
+{% set message = 'Sorry, we are experiencing technical problems.' %}
 
 {% block pageTitle %}{{ message }}{% endblock %}
 
