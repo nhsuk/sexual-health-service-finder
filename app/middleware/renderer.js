@@ -1,7 +1,17 @@
-function findHelp(req, res) {
-  res.render('find-help');
+function startPage(req, res) {
+  res.render('start-page');
+}
+
+function symptoms(req, res) {
+  res.render('symptoms');
+}
+
+function recommend(req, res) {
+  res.render('recommend');
 }
 
 module.exports = {
-  findHelp,
+  startPage,
+  symptoms,
+  recommend,
 };

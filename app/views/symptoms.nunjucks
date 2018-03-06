@@ -1,0 +1,54 @@
+{% extends 'layout.nunjucks' %}
+
+{% block breadcrumbItems %}
+  {% include 'includes/breadcrumbs.nunjucks' %}
+{% endblock %}
+
+{% block header %}
+<h1 class="local-header--title--question">Do you have any of the following symptoms?</h1>
+{% endblock %}
+
+{% block content %}
+    <ul>
+        <li>discomfort or pain when urinating (peeing)</li>
+        <li>discharge from your anus</li>
+        <li>vaginal discharge that's not usual for you</li>
+        <li>vaginal bleeding between periods</li>
+        <li>vaginal bleeding during or after sex</li>
+        <li>vaginal pain during sex</li>
+        <li>pelvic pain (pain in your lower stomach)</li>
+        <li>discharge from your penis</li>
+        <li>pain in your testicles</li>
+    </ul>
+
+    {% if errorMessage %}
+    <div class="error-summary">
+        <h2 class="local-header--error error-summary-heading">
+            {{ errorMessage }}
+        </h2>
+    </div>
+    {% endif %}
+
+    <form method="get" class="form" action="{{ SITE_ROOT }}/recommend">
+        <div class="reading-width">
+            {% if errorMessage %}
+            <div class="form-group error">
+            {% else %}
+            <div class="form-group">
+            {% endif %}
+                <fieldset id="symptoms">
+                    <div class="multiple-choice">
+                        <input id="yes" name="symptoms" type="radio" value="yes" {% if errorMessage %} aria-describedby="error-message" aria-invalid="true"{% endif %}>
+                        <label class="multiple-choice--radio" for="yes">Yes - I have one or more of these symptoms</label>
+                    </div>
+                    <div class="multiple-choice">
+                        <input id="no" name="symptoms" type="radio" value="no" {% if errorMessage %} aria-describedby="error-message" aria-invalid="true"{% endif %}>
+                        <label class="multiple-choice--radio" for="no">No - I don't have any of these symptoms</label>
+                    </div>
+                </fieldset>
+            </div>
+
+            <input type="submit" class="button" value="Continue">
+        </div>
+    </form>
+{% endblock %}
