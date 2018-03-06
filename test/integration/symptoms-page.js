@@ -9,8 +9,8 @@ const expect = chai.expect;
 chai.use(chaiHttp);
 
 describe('Symptoms page', () => {
-  describe('page title', () => {
-    it('should be \'Find a chlamydia test - NHS.UK\'', async () => {
+  describe('page header', () => {
+    it('should be \'Do you have any of the following symptoms?\'', async () => {
       const res = await chai.request(server).get(`${constants.SITE_ROOT}/symptoms`);
 
       const $ = cheerio.load(res.text);
