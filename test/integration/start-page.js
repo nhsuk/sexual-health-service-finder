@@ -16,7 +16,7 @@ describe('Start page', () => {
       const $ = cheerio.load(res.text);
 
       expect($('title').text()).to.equal('Find a chlamydia test - NHS.UK');
-      expect($('.local-header--title--question').text()).to.equal('Find a Chlamydia test');
+      expect($('.local-header--title--question').text()).to.equal('Find a chlamydia test');
     });
   });
 

@@ -1,82 +1,37 @@
 {% extends 'layout.nunjucks' %}
 
 {% block header %}
-<h1 class="local-header--title--question">Find a Chlamydia test</h1>
+<h1 class="local-header--title--question">Find a chlamydia test</h1>
 {% endblock %}
 
 {% block content %}
 <div class="reading-width">
-  <p>The only way to know if you have <a href="https://www.nhs.uk/conditions/chlamydia/">chlamydia</a> is to get tested.</p>
-
-  <p>Use this service to find a chlamydia test near you.</p>
-
-  <h2>In England</h2>
-
-  <p>In England you can speak to your GP about getting tested for chlamydia, but it might be faster or easier for you to:</p>
+  <p>The best ways to get a chlamydia test are to:</p>
 
   <ul>
     <li>see a sexual health professional</li>
-    <li>pick up a postal test kit - you can get a kit from some pharmacies and health clinics</li>
+    <li>pick up a postal test kit - you can get them from some pharmacies and health clinics</li>
     <li>order a postal test kit online</li>
   </ul>
 
-  <h2>Get help to find a test in England</h2>
-
-  <p>We can help you find a chlamydia test. We'll ask you a few questions. It will take about 5 minutes. We won't store your data.</p>
+  <p>We can help you find a chlamydia test near you. We'll ask you a few questions. It will take about 5 minutes. We won't store your data.</p>
 
   <a href="{{ SITE_ROOT }}/symptoms" class="button start-button" role="button">
       Start
   </a>
 
-  <p>If you would prefer to speak to someone, you can call the national sexual health helpline.</p>
+  <h2>What happens during the test</h2>
 
-  <p>Telephone: 0300 123 7123<br>
-  Monday to Friday - 9am to 8pm<br>
-  <a href="https://www.gov.uk/call-charges">Find out about call charges</a></p>
-
-  <h2>In Scotland</h2>
-
-  <p>To get tested for chlamydia in Scotland you can:</p>
+  <p>You or a sexual health professional will take samples from the areas that might be infected. This can be done by:</p>
 
   <ul>
-    <li>speak to your GP</li>
-    <li>find a sexual health service near you on the <a href="http://www.sexualhealthscotland.co.uk/get-help/sexual-health-service-finder">Sexual Health Scotland website</a></li>
-    <li>call Sexual Health Scotland to find a sexual health service near you</li>
+    <li>wiping a cotton bud inside the vagina, bottom or mouth</li>
+    <li>peeing into a container</li>
   </ul>
+  
+  <p>Your samples will be sent to a lab and tested for chlamydia. You'll usually get your results by phone or text message within 2 weeks.</p>
 
-  <p>Telephone: 0800 22 44 88<br>
-  Monday to Friday - 8am to 10pm<br>
-  Saturday and Sunday - 9am to 5pm<br>
-  <a href="https://www.gov.uk/call-charges">Find out about call charges</a></p>
-
-  <h2>In Wales</h2>
-
-  <p>To get tested for chlamydia in Wales you can:</p>
-
-  <ul>
-    <li>speak to your GP</li>
-    <li>find a sexual health service near you on the <a href="https://www.nhsdirect.wales.nhs.uk/LocalServices/?s=SexualHealth">NHS Direct Wales website</a></li>
-    <li>call NHS Direct Wales on 0845 46 47 to find a sexual health service near you</li>
-  </ul>
-
-  <p>Telephone: 0845 46 47<br>
-  24 hours a day, every day<br>
-  <a href="https://www.gov.uk/call-charges">Find out about call charges</a></p>
-
-  <h2>In Northern Ireland</h2>
-
-  <p>To get tested for chlamydia in Northern Ireland you can:</p>
-
-  <ul>
-    <li>speak to your GP</li>
-    <li>find a sexual health service near you on the <a href="https://sexualhealthni.info/chlamydia">Sexual Health NI website</a></li>
-    <li>call the Family Planning Association sexual health helpline to find a sexual health service near you</li>
-  </ul> 
-
-  <p>Telephone: 0345 122 8687<br>
-  Monday to Friday, 9am to 5pm (closed on bank holidays)<br>
-  <a href="https://www.gov.uk/call-charges">Find out about call charges</a></p>
-
+  <p>If you see a health professional they'll also ask questions about your sexual activity and symptoms. This will help them decide what samples to take.</p>
 </div>
 
 {% endblock %}
