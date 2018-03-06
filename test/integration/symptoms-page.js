@@ -10,11 +10,6 @@ chai.use(chaiHttp);
 
 const symptomsRoute = `${constants.SITE_ROOT}/symptoms`;
 
-function expectSearchAgainPage($) {
-  expect($('.error-summary-heading').text())
-    .to.contain('You must choose one of the options');
-}
-
 describe('Symptoms page', () => {
   describe('page header', () => {
     it('should be \'Do you have any of the following symptoms?\'', async () => {
