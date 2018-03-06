@@ -1,5 +1,5 @@
 function mandatorySelectionMessage() {
-  return 'You must choose one of the options';
+  return 'You must choose one of the options.';
 }
 
 module.exports = {
