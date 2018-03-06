@@ -8,10 +8,17 @@ const expect = chai.expect;
 
 chai.use(chaiHttp);
 
+const symptomsRoute = `${constants.SITE_ROOT}/symptoms`;
+
+function expectSearchAgainPage($) {
+  expect($('.error-summary-heading').text())
+    .to.contain('You must choose one of the options');
+}
+
 describe('Symptoms page', () => {
   describe('page header', () => {
     it('should be \'Do you have any of the following symptoms?\'', async () => {
-      const res = await chai.request(server).get(`${constants.SITE_ROOT}/symptoms`);
+      const res = await chai.request(server).get(symptomsRoute);
 
       const $ = cheerio.load(res.text);
 
@@ -20,9 +27,22 @@ describe('Symptoms page', () => {
     });
   });
 
+  describe('form validation', () => {
+    it('should return symptoms page when no answer is selected', async () => {
+      const res = await chai.request(server)
+        .get(symptomsRoute)
+        .query({ symptoms: '' });
+
+      const $ = cheerio.load(res.text);
+
+      expectSearchAgainPage($);
+      expect($('.local-header--title--question').text()).to.equal('Do you have any of the following symptoms?');
+    });
+  });
+
   describe('return to Choices services', () => {
     it('should have a link back to the Choices \'Services near you\'', async () => {
-      const res = await chai.request(server).get(`${constants.SITE_ROOT}`);
+      const res = await chai.request(server).get(symptomsRoute);
 
       const $ = cheerio.load(res.text);
 
@@ -31,7 +51,7 @@ describe('Symptoms page', () => {
     });
 
     it('should have a link back to the Choices service search', async () => {
-      const res = await chai.request(server).get(`${constants.SITE_ROOT}`);
+      const res = await chai.request(server).get(symptomsRoute);
 
       const $ = cheerio.load(res.text);
 
