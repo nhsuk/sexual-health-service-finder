@@ -16,9 +16,9 @@
 
   <p>We can help you find a chlamydia test near you. We'll ask you a few questions. It will take about 5 minutes. We won't store your data.</p>
 
-  <form method="get" class="form" action="{{ SITE_ROOT }}/symptoms">
-      <input type="submit" class="button" value="Start">
-  </form>
+  <a href="{{ SITE_ROOT }}/symptoms" class="button start-button" role="button">
+      Start
+  </a>
 
   <h2>What happens during the test</h2>
 

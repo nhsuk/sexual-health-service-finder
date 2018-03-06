@@ -8,7 +8,7 @@ const expect = chai.expect;
 
 chai.use(chaiHttp);
 
-describe('Search page', () => {
+describe('Start page', () => {
   describe('page title', () => {
     it('should be \'Find a chlamydia test - NHS.UK\'', async () => {
       const res = await chai.request(server).get(`${constants.SITE_ROOT}`);
@@ -17,6 +17,17 @@ describe('Search page', () => {
 
       expect($('title').text()).to.equal('Find a chlamydia test - NHS.UK');
       expect($('.local-header--title--question').text()).to.equal('Find a chlamydia test');
+    });
+  });
+
+  describe('goes to the Symptoms page', () => {
+    it('should link to the \'Symptoms\' page', async () => {
+      const res = await chai.request(server).get(`${constants.SITE_ROOT}`);
+      const $ = cheerio.load(res.text);
+      const symptomsPage = `${constants.SITE_ROOT}/symptoms`;
+
+      expect($('.start-button').attr('href'))
+        .to.equal(symptomsPage);
     });
   });
 
