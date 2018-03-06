@@ -9,7 +9,6 @@
 {% endblock %}
 
 {% block content %}
-<div class="reading-width">
     <ul>
         <li>discomfort or pain when urinating (peeing)</li>
         <li>discharge from your anus</li>
@@ -31,24 +30,25 @@
     {% endif %}
 
     <form method="get" class="form" action="{{ SITE_ROOT }}/recommend">
-        {% if errorMessage %}
-        <div class="form-group error">
-        {% else %}
-        <div class="form-group">
-        {% endif %}
-            <fieldset id="symptoms">
-                <div class="multiple-choice">
-                    <input id="yes" name="symptoms" type="radio" value="yes">
-                    <label class="multiple-choice--radio" for="yes">Yes - I have one or more of these symptoms</label>
-                </div>
-                <div class="multiple-choice">
-                    <input id="no" name="symptoms" type="radio" value="no">
-                    <label class="multiple-choice--radio" for="no">No - I don't have any of these symptoms</label>
-                </div>
-            </fieldset>
-        </div>
+        <div class="reading-width">
+            {% if errorMessage %}
+            <div class="form-group error">
+            {% else %}
+            <div class="form-group">
+            {% endif %}
+                <fieldset id="symptoms">
+                    <div class="multiple-choice">
+                        <input id="yes" name="symptoms" type="radio" value="yes" {% if errorMessage %} aria-describedby="error-message" aria-invalid="true"{% endif %}>
+                        <label class="multiple-choice--radio" for="yes">Yes - I have one or more of these symptoms</label>
+                    </div>
+                    <div class="multiple-choice">
+                        <input id="no" name="symptoms" type="radio" value="no" {% if errorMessage %} aria-describedby="error-message" aria-invalid="true"{% endif %}>
+                        <label class="multiple-choice--radio" for="no">No - I don't have any of these symptoms</label>
+                    </div>
+                </fieldset>
+            </div>
 
-        <input type="submit" class="button" value="Continue">
+            <input type="submit" class="button" value="Continue">
+        </div>
     </form>
-</div>
 {% endblock %}

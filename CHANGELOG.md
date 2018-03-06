@@ -1,7 +1,7 @@
 0.3.0 / TBA
 =======
 - Error pages
-- Symptoms page
+- Symptoms page and form validation
 
 0.2.0 / 2018-03-01
 =======
