@@ -19,6 +19,12 @@ body {
     summary {
       padding-top: 0;
     }
+    .button {
+      width: 80%;
+      @include media(tablet) {
+        width: auto;
+      }
+    }
   }
 }
 
