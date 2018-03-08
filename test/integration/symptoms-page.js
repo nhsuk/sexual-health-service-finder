@@ -3,12 +3,20 @@ const chaiHttp = require('chai-http');
 const cheerio = require('cheerio');
 const constants = require('../../app/lib/constants');
 const server = require('../../server');
+const iExpect = require('../lib/expectations');
 
 const expect = chai.expect;
 
 chai.use(chaiHttp);
 
 const symptomsRoute = `${constants.SITE_ROOT}/symptoms`;
+const recommendRoute = `${constants.SITE_ROOT}/recommend`;
+
+function expectSymptomsPageAgain($) {
+  expect($('.error-summary-heading').text())
+    .to.contain('You must choose one of the options.');
+  expect($('.local-header--title--question').text()).to.equal('Do you have any of the following symptoms?');
+}
 
 describe('Symptoms page', () => {
   describe('page header', () => {
@@ -20,6 +28,36 @@ describe('Symptoms page', () => {
       expect($('title').text()).to.equal('Find a chlamydia test - NHS.UK');
       expect($('.local-header--title--question').text()).to.equal('Do you have any of the following symptoms?');
     });
+  });
+
+  it('should return symptoms page for empty selection', async () => {
+    const res = await chai.request(server)
+      .get(recommendRoute)
+      .query({ symptoms: '' });
+
+    iExpect.htmlWith200Status(res);
+    const $ = cheerio.load(res.text);
+    expectSymptomsPageAgain($);
+  });
+
+  it('should return recommend page for yes selection', async () => {
+    const res = await chai.request(server)
+      .get(recommendRoute)
+      .query({ symptoms: 'yes' });
+
+    iExpect.htmlWith200Status(res);
+    const $ = cheerio.load(res.text);
+    expect($('.local-header--title--question').text()).to.equal('Recommend');
+  });
+
+  it('should return recommend page for no selection', async () => {
+    const res = await chai.request(server)
+      .get(recommendRoute)
+      .query({ symptoms: 'no' });
+
+    iExpect.htmlWith200Status(res);
+    const $ = cheerio.load(res.text);
+    expect($('.local-header--title--question').text()).to.equal('Recommend');
   });
 
   describe('return to Choices services', () => {
