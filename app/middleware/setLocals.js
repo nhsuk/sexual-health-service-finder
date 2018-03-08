@@ -2,6 +2,10 @@ const constants = require('../lib/constants');
 
 function fromRequest(req, res, next) {
   res.locals.locationHeading = null;
+  res.locals.locationLabel = 'Enter a postcode in England.';
+  res.locals.type = req.query.type;
+  res.locals.origin = req.query.origin;
+  res.locals.location = req.query.location;
   if ((req.query.type === constants.SERVICE_TYPES.professional)
       && ((req.query.origin === constants.SERVICE_CHOICES.symptoms)
         || (req.query.origin === constants.SERVICE_CHOICES.under16)

@@ -5,15 +5,37 @@
 {% endblock %}
 
 {% block content %}
-<form class="form" id="pageform" method="get">
+{% if errorMessage %}
+<div class="error-summary">
+  <h2 class="local-header--error error-summary-heading">
+    {{ errorMessage }}
+  </h2>
+</div>
+{% endif %}
 
-    <div class="section">
-        <div class="form-line">
-            <label for="location" class="form-label"><h2>Enter a postcode in England.</h2></label>
-            <input type="text" placeholder="" name="location" id="location" class="form-textbox" aria-describedby="hintId">
+<form method="get" class="form" action="{{ SITE_ROOT }}/results">
+  <div class="reading-width">
+    <div class="form-item-wrapper">
+
+      {% if errorMessage %}
+        <div class="form-group error">
+      {% else %}
+        <div class="form-group">
+      {% endif %}
+        <label class="form-label-bold" for="location">{{ locationLabel }}</label>
+          <div class="form-group">
+            <input autocomplete="off" type="text" class="form-control" name="location" id="location" value=""{% if errorMessage %} aria-describedby="error-message" aria-invalid="true"{% endif %}>
+          </div>
         </div>
+      </div>
+      <input type="hidden" name="type" value={{type}} />
+      <input type="hidden" name="origin" value={{origin}} />
     </div>
-
-    <input type="submit" class="button" value="Continue">
+    <div class="form-item-wrapper">
+      <div class="form-group">
+        <input type="submit" class="button" value="Continue">
+      </div>
+    </div>
+  </div>
 </form>
 {% endblock %}

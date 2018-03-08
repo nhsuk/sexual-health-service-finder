@@ -1,0 +1,61 @@
+const cheerio = require('cheerio');
+const log = require('../../app/lib/logger');
+const chai = require('chai');
+const app = require('../../server');
+const constants = require('../../app/lib/constants');
+const messages = require('../../app/lib/messages');
+
+const expect = chai.expect;
+
+const results = `${constants.SITE_ROOT}/results`;
+
+function expectErrorMessage(res, message) {
+  const $ = cheerio.load(res.text);
+  log.debug(cheerio.load(res.text));
+  const error = $('.error-summary-heading').text();
+
+  expect(error).to.contain(message);
+}
+
+function makeSearchRequestAndCheckExpectations(postcode, assertions) {
+  chai.request(app)
+    .get(results)
+    .query({
+      location: postcode,
+      type: constants.SERVICE_TYPES.professional,
+      origin: constants.SERVICE_CHOICES.symptoms
+    })
+    .end(assertions);
+}
+
+describe('Results page', () => {
+  it('should return a descriptive message when postcode is blank', (done) => {
+    const postcode = '';
+    const message = messages.emptyPostcodeMessage();
+
+    makeSearchRequestAndCheckExpectations(postcode, (err, res) => {
+      expectErrorMessage(res, message);
+      done();
+    });
+  });
+
+  it('should return a descriptive message when postcode is invalid', (done) => {
+    const postcode = 'LS1 234';
+    const message = messages.invalidPostcodeMessage(postcode);
+
+    makeSearchRequestAndCheckExpectations(postcode, (err, res) => {
+      expectErrorMessage(res, message);
+      done();
+    });
+  });
+
+  it('should return a descriptive message for out of England postcodes', (done) => {
+    const postcode = 'EH1';
+    const message = messages.outsideOfEnglandPostcodeMessage();
+
+    makeSearchRequestAndCheckExpectations(postcode, (err, res) => {
+      expectErrorMessage(res, message);
+      done();
+    });
+  });
+});
