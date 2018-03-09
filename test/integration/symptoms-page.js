@@ -47,17 +47,17 @@ describe('Symptoms page', () => {
 
     iExpect.htmlWith200Status(res);
     const $ = cheerio.load(res.text);
-    expect($('.local-header--title--question').text()).to.equal('Recommend');
+    expect($('.local-header--title--question').text()).to.equal('We recommend that you');
   });
 
-  it('should return recommend page for no selection', async () => {
+  it('should return age page for no selection', async () => {
     const res = await chai.request(server)
       .get(recommendRoute)
       .query({ symptoms: 'no' });
 
     iExpect.htmlWith200Status(res);
     const $ = cheerio.load(res.text);
-    expect($('.local-header--title--question').text()).to.equal('Recommend');
+    expect($('.local-header--title--question').text()).to.equal('How old are you?');
   });
 
   describe('return to Choices services', () => {

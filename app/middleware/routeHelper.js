@@ -5,6 +5,11 @@ function renderSymptomsPage(req, res, errorMessage) {
   renderer.symptoms(req, res);
 }
 
+function renderAgePage(req, res) {
+  renderer.age(req, res);
+}
+
 module.exports = {
   renderSymptomsPage,
+  renderAgePage,
 };

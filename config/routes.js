@@ -18,4 +18,9 @@ router.get(
   renderer.recommend
 );
 
+router.get(
+  '/age',
+  renderer.age
+);
+
 module.exports = router;
