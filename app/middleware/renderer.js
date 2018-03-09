@@ -1,5 +1,5 @@
 function startPage(req, res) {
-  res.render('start-page');
+  res.render('start');
 }
 
 function symptoms(req, res) {

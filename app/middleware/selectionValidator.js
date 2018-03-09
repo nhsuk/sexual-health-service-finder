@@ -1,7 +1,7 @@
 const messages = require('../lib/messages');
 const routeHelper = require('./routeHelper');
 
-function sympmtomsSelection(req, res, next) {
+function symptomsSelection(req, res, next) {
   if (!res.locals.symptoms) {
     routeHelper.renderSymptomsPage(req, res, messages.mandatorySelectionMessage());
   } else {
@@ -9,4 +9,4 @@ function sympmtomsSelection(req, res, next) {
   }
 }
 
-module.exports = sympmtomsSelection;
+module.exports = symptomsSelection;
