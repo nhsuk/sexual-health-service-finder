@@ -30,7 +30,7 @@ describe('Symptoms page', () => {
     });
   });
 
-  it('should return symptoms page for empty selection', async () => {
+  it('should return symptoms page with an error message if there are no symptoms parameters', async () => {
     const res = await chai.request(server)
       .get(recommendRoute)
       .query({ symptoms: '' });
@@ -40,28 +40,8 @@ describe('Symptoms page', () => {
     expectSymptomsPageAgain($);
   });
 
-  it('should return recommend page for yes selection', async () => {
-    const res = await chai.request(server)
-      .get(recommendRoute)
-      .query({ symptoms: 'yes' });
-
-    iExpect.htmlWith200Status(res);
-    const $ = cheerio.load(res.text);
-    expect($('.local-header--title--question').text()).to.equal('We recommend that you');
-  });
-
-  it('should return age page for no selection', async () => {
-    const res = await chai.request(server)
-      .get(recommendRoute)
-      .query({ symptoms: 'no' });
-
-    iExpect.htmlWith200Status(res);
-    const $ = cheerio.load(res.text);
-    expect($('.local-header--title--question').text()).to.equal('How old are you?');
-  });
-
   describe('return to Choices services', () => {
-    it('should have a link back to the Choices \'Services near you\'', async () => {
+    it('the breadcrumb should have a link back to the Choices \'Services near you\'', async () => {
       const res = await chai.request(server).get(symptomsRoute);
 
       const $ = cheerio.load(res.text);
@@ -70,7 +50,7 @@ describe('Symptoms page', () => {
         .to.equal('https://www.nhs.uk/service-search');
     });
 
-    it('should have a link back to the Choices service search', async () => {
+    it('the page should have a link back to the Choices service search', async () => {
       const res = await chai.request(server).get(symptomsRoute);
 
       const $ = cheerio.load(res.text);

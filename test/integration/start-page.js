@@ -9,30 +9,26 @@ const expect = chai.expect;
 chai.use(chaiHttp);
 
 describe('Start page', () => {
-  describe('page title', () => {
-    it('should be \'Find a chlamydia test - NHS.UK\'', async () => {
-      const res = await chai.request(server).get(`${constants.SITE_ROOT}`);
+  it('page title should be \'Find a chlamydia test - NHS.UK\'', async () => {
+    const res = await chai.request(server).get(`${constants.SITE_ROOT}`);
 
-      const $ = cheerio.load(res.text);
+    const $ = cheerio.load(res.text);
 
-      expect($('title').text()).to.equal('Find a chlamydia test - NHS.UK');
-      expect($('.local-header--title--question').text()).to.equal('Find a chlamydia test');
-    });
+    expect($('title').text()).to.equal('Find a chlamydia test - NHS.UK');
+    expect($('.local-header--title--question').text()).to.equal('Find a chlamydia test');
   });
 
-  describe('goes to the Symptoms page', () => {
-    it('should link to the \'Symptoms\' page', async () => {
-      const res = await chai.request(server).get(`${constants.SITE_ROOT}`);
-      const $ = cheerio.load(res.text);
-      const symptomsPage = `${constants.SITE_ROOT}/symptoms`;
+  it('should link to the \'Symptoms\' page', async () => {
+    const res = await chai.request(server).get(`${constants.SITE_ROOT}`);
+    const $ = cheerio.load(res.text);
+    const symptomsPage = `${constants.SITE_ROOT}/symptoms`;
 
-      expect($('.start-button').attr('href'))
-        .to.equal(symptomsPage);
-    });
+    expect($('.start-button').attr('href'))
+      .to.equal(symptomsPage);
   });
 
   describe('return to Choices services', () => {
-    it('should have a link back to the Choices \'Services near you\'', async () => {
+    it('the breadcrumb should have a link back to the Choices \'Services near you\'', async () => {
       const res = await chai.request(server).get(`${constants.SITE_ROOT}`);
 
       const $ = cheerio.load(res.text);
@@ -41,7 +37,7 @@ describe('Start page', () => {
         .to.equal('https://www.nhs.uk/service-search');
     });
 
-    it('should have a link back to the Choices service search', async () => {
+    it('the page should have a link back to the Choices service search', async () => {
       const res = await chai.request(server).get(`${constants.SITE_ROOT}`);
 
       const $ = cheerio.load(res.text);
