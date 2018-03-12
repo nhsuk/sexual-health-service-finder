@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const renderer = require('../app/middleware/renderer');
-const selectionValidator = require('../app/middleware/selectionValidator');
+const selectionValidatorSymptoms = require('../app/middleware/selectionValidatorSymptoms');
 
 router.get(
   '/',
@@ -14,7 +14,7 @@ router.get(
 
 router.get(
   '/recommend',
-  selectionValidator,
+  selectionValidatorSymptoms,
   renderer.recommend
 );
 
