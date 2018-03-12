@@ -11,6 +11,7 @@ chai.use(chaiHttp);
 
 const symptomsRoute = `${constants.SITE_ROOT}/symptoms`;
 const recommendRoute = `${constants.SITE_ROOT}/recommend`;
+const startRoute = `${constants.SITE_ROOT}/`;
 
 function expectSymptomsPageAgain($) {
   expect($('.error-summary-heading').text())
@@ -46,6 +47,15 @@ describe('Symptoms page', () => {
 
       expect($($('div.breadcrumb a')[1]).attr('href'))
         .to.equal('https://www.nhs.uk/service-search');
+    });
+
+    it('the breadcrumb should have a link back to the Start page', async () => {
+      const res = await chai.request(server).get(symptomsRoute);
+
+      const $ = cheerio.load(res.text);
+
+      expect($($('div.breadcrumb a')[2]).attr('href'))
+        .to.equal(startRoute);
     });
 
     it('the page should have a link back to the Choices service search', async () => {
