@@ -8,6 +8,7 @@ module.exports = config =>
     res.locals.ASSETS_URL = req.app.locals.ASSETS_URL;
 
     res.locals.symptoms = req.query.symptoms;
+    res.locals.age = req.query.age;
 
     next();
   };

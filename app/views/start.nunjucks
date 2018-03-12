@@ -92,8 +92,8 @@
         <ul>
           <li>use the <a href="https://sexualhealthni.info/chlamydia" target="_blank">Sexual Health NI website</a></li>
           <li>call the Family Planning Association sexual health helpline on <a href="tel:03451228687">0345 122 8687</a>
-              Monday to Friday, 9am to 5pm (closed on bank holidays)
-              <a href="https://www.gov.uk/call-charges" class="details__call-charges" target="_blank">Find out about call charges on GOV.UK</a>
+          <span class="details__opening-times">Monday to Friday, 9am to 5pm (closed on bank holidays)</span>
+          <a href="https://www.gov.uk/call-charges" class="details__call-charges" target="_blank">Find out about call charges on GOV.UK</a>
           </li>
         </ul>
       </div>

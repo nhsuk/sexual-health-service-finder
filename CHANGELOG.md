@@ -1,7 +1,9 @@
 0.3.0 / TBA
 =======
 - Error pages
-- Symptoms page and form validation
+- Symptoms page
+- Age page
+- Form error handling
 
 0.2.0 / 2018-03-01
 =======

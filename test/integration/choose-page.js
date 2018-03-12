@@ -9,33 +9,32 @@ const expect = chai.expect;
 
 chai.use(chaiHttp);
 
-const recommendRoute = `${constants.SITE_ROOT}/recommend`;
 const chooseRoute = `${constants.SITE_ROOT}/choose`;
 
-describe('Recommend page', () => {
-  it('page title should be \'We recommend that you\' if symptoms question is answered yes', async () => {
-    const res = await chai.request(server)
-      .get(recommendRoute)
-      .query({ symptoms: 'yes' });
-
-    iExpect.htmlWith200Status(res);
-    const $ = cheerio.load(res.text);
-    expect($('.local-header--title--question').text()).to.equal('We recommend that you');
-  });
-
-  it('page title should be \'We recommend that you\' if age question is answered 15 or younger', async () => {
+describe('Choose page', () => {
+  it('page title should be \'How do you want to get a test?\' if age question is answered 16-24', async () => {
     const res = await chai.request(server)
       .get(chooseRoute)
-      .query({ age: '1' });
+      .query({ age: '2' });
 
     iExpect.htmlWith200Status(res);
     const $ = cheerio.load(res.text);
-    expect($('.local-header--title--question').text()).to.equal('We recommend that you');
+    expect($('.local-header--title--question').text()).to.equal('How do you want to get a test?');
+  });
+
+  it('page title should be \'How do you want to get a test?\' if age question is answered 25 or older', async () => {
+    const res = await chai.request(server)
+      .get(chooseRoute)
+      .query({ age: '3' });
+
+    iExpect.htmlWith200Status(res);
+    const $ = cheerio.load(res.text);
+    expect($('.local-header--title--question').text()).to.equal('How do you want to get a test?');
   });
 
   describe('return to Choices services', () => {
     it('the breadcrumb should have a link back to the Choices \'Services near you\'', async () => {
-      const res = await chai.request(server).get(recommendRoute);
+      const res = await chai.request(server).get(chooseRoute);
 
       const $ = cheerio.load(res.text);
 
@@ -44,7 +43,7 @@ describe('Recommend page', () => {
     });
 
     it('the page should have a link back to the Choices service search', async () => {
-      const res = await chai.request(server).get(recommendRoute);
+      const res = await chai.request(server).get(chooseRoute);
 
       const $ = cheerio.load(res.text);
 

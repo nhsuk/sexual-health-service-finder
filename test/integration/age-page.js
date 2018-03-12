@@ -11,18 +11,33 @@ chai.use(chaiHttp);
 
 const recommendRoute = `${constants.SITE_ROOT}/recommend`;
 const ageRoute = `${constants.SITE_ROOT}/age`;
+const chooseRoute = `${constants.SITE_ROOT}/choose`;
+
+function expectAgePageAgain($) {
+  expect($('.error-summary-heading').text())
+    .to.contain('You must choose one of the options.');
+  expect($('.local-header--title--question').text()).to.equal('How old are you?');
+}
 
 describe('Age page', () => {
-  describe('page header', () => {
-    it('should be \'How old are you?\' for symptoms no parameters', async () => {
-      const res = await chai.request(server)
-        .get(recommendRoute)
-        .query({ symptoms: 'no' });
+  it('page title should be \'How old are you?\' if symptoms question is answered no', async () => {
+    const res = await chai.request(server)
+      .get(recommendRoute)
+      .query({ symptoms: 'no' });
 
-      iExpect.htmlWith200Status(res);
-      const $ = cheerio.load(res.text);
-      expect($('.local-header--title--question').text()).to.equal('How old are you?');
-    });
+    iExpect.htmlWith200Status(res);
+    const $ = cheerio.load(res.text);
+    expect($('.local-header--title--question').text()).to.equal('How old are you?');
+  });
+
+  it('should return age page with an error message if age question is not answered', async () => {
+    const res = await chai.request(server)
+      .get(chooseRoute)
+      .query({ age: '' });
+
+    iExpect.htmlWith200Status(res);
+    const $ = cheerio.load(res.text);
+    expectAgePageAgain($);
   });
 
   describe('return to Choices services', () => {

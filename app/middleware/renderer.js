@@ -14,9 +14,14 @@ function age(req, res) {
   res.render('age');
 }
 
+function choose(req, res) {
+  res.render('choose');
+}
+
 module.exports = {
   startPage,
   symptoms,
   recommend,
   age,
+  choose,
 };

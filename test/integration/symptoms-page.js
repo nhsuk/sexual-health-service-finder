@@ -19,18 +19,16 @@ function expectSymptomsPageAgain($) {
 }
 
 describe('Symptoms page', () => {
-  describe('page header', () => {
-    it('should be \'Do you have any of the following symptoms?\'', async () => {
-      const res = await chai.request(server).get(symptomsRoute);
+  it('page title should be \'Do you have any of the following symptoms?\'', async () => {
+    const res = await chai.request(server).get(symptomsRoute);
 
-      const $ = cheerio.load(res.text);
+    const $ = cheerio.load(res.text);
 
-      expect($('title').text()).to.equal('Find a chlamydia test - NHS.UK');
-      expect($('.local-header--title--question').text()).to.equal('Do you have any of the following symptoms?');
-    });
+    expect($('title').text()).to.equal('Find a chlamydia test - NHS.UK');
+    expect($('.local-header--title--question').text()).to.equal('Do you have any of the following symptoms?');
   });
 
-  it('should return symptoms page with an error message if there are no symptoms parameters', async () => {
+  it('should return symptoms page with an error message if symptoms question is not answered', async () => {
     const res = await chai.request(server)
       .get(recommendRoute)
       .query({ symptoms: '' });

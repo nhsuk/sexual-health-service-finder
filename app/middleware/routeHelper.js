@@ -15,8 +15,13 @@ function renderAgePageWithError(req, res) {
   renderer.age(req, res);
 }
 
+function renderSeeExpertPage(req, res) {
+  renderer.recommend(req, res);
+}
+
 module.exports = {
   renderSymptomsWithError,
   renderAgePage,
   renderAgePageWithError,
+  renderSeeExpertPage,
 };

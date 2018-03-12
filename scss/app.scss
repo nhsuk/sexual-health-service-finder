@@ -373,7 +373,7 @@ form {
   * + * {
     margin-top: 0;
   }
-  .multiple-choice:last-of-type {
+  .multiple-choice:not(:first-child) {
     margin-top: 32px;
   }
 }
