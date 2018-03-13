@@ -18,11 +18,11 @@ function age(req, res) {
 }
 
 function choose(req, res) {
-  res.render('choose');
+  return res.render('choose');
 }
 
 function location(req, res) {
-  if (!res.locals.correctParams) {
+  if (!res.locals.correctLocationParams) {
     return res.render('error');
   }
   return res.render('location');

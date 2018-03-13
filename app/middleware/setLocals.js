@@ -15,21 +15,50 @@ function getLocationHeading(query) {
       return 'Where would you like to collect your test kit?';
     }
   }
-  return null;
+  return undefined;
+}
+
+function mapServiceType(query) {
+  if (query.type) {
+    return query.type;
+  }
+  if (((query.age) && (query.age === constants.AGE.under16))
+      || ((query.symptoms) && (query.symptoms === constants.SYMPTOMS.yes))) {
+    return constants.SERVICE_TYPES.professional;
+  }
+  return undefined;
+}
+
+function mapServiceChoice(query) {
+  if (query.origin) {
+    return query.origin;
+  }
+  if ((query.age) && (query.age === constants.AGE.under16)) {
+    return constants.SERVICE_CHOICES.under16;
+  }
+  if ((query.symptoms) && (query.symptoms === constants.SYMPTOMS.yes)) {
+    return constants.SERVICE_CHOICES.symptoms;
+  }
+  return undefined;
 }
 
 function fromRequest(req, res, next) {
   res.locals.locationHeading = null;
   res.locals.locationLabel = 'Enter a postcode in England.';
-  res.locals.type = req.query.type;
-  res.locals.origin = req.query.origin;
+  res.locals.symptoms = req.query.symptoms;
+  res.locals.age = req.query.age;
+  res.locals.type = mapServiceType(req.query);
+  res.locals.origin = mapServiceChoice(req.query);
   res.locals.location = req.query.location;
   res.locals.locationHeading = getLocationHeading(req.query);
-  res.locals.correctParams = res.locals.locationHeading;
+  res.locals.correctLocationParams = res.locals.locationHeading;
+
   next();
 }
 
 module.exports = {
   fromRequest,
   getLocationHeading,
+  mapServiceType,
+  mapServiceChoice,
 };

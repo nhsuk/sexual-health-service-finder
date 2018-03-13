@@ -15,7 +15,7 @@
         {% include "partials/recommend-symptoms.nunjucks" %}
       {% endif %}
 
-      <a href="{{ SITE_ROOT }}/location" class="button" role="button">
+      <a href="{{ SITE_ROOT }}/location?type={{ type }}&origin={{ origin }}" class="button" role="button">
         Continue
       </a>
     </div>

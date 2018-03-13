@@ -14,22 +14,26 @@ router.get(
 
 router.get(
   '/symptoms',
+  setLocals.fromRequest,
   renderer.symptoms
 );
 
 router.get(
   '/recommend',
+  setLocals.fromRequest,
   selectionValidatorSymptoms,
   renderer.recommend
 );
 
 router.get(
   '/age',
+  setLocals.fromRequest,
   renderer.age
 );
 
 router.get(
   '/choose',
+  setLocals.fromRequest,
   selectionValidatorAge,
   renderer.choose
 );

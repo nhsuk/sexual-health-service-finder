@@ -23,7 +23,7 @@ describe('Postcode validation', () => {
       const res = {
         locals: {
           loc,
-          correctParams: true,
+          correctLocationParams: true,
           type: constants.SERVICE_TYPES.professional,
           origin: constants.SERVICE_CHOICES.symptoms,
           postcodeLocationDetails: {
@@ -61,7 +61,7 @@ describe('Postcode validation', () => {
 
       const res = {
         locals: {
-          correctParams: true
+          correctLocationParams: true,
         }
       };
 
