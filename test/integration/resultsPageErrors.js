@@ -1,6 +1,5 @@
-const cheerio = require('cheerio');
-const log = require('../../app/lib/logger');
 const chai = require('chai');
+const cheerio = require('cheerio');
 const app = require('../../server');
 const constants = require('../../app/lib/constants');
 const messages = require('../../app/lib/messages');
@@ -11,7 +10,6 @@ const results = `${constants.SITE_ROOT}/results`;
 
 function expectErrorMessage(res, message) {
   const $ = cheerio.load(res.text);
-  log.debug(cheerio.load(res.text));
   const error = $('.error-summary-heading').text();
 
   expect(error).to.contain(message);

@@ -46,7 +46,6 @@ router.get(
   locationValidator,
   postcodeLookup,
   notInEnglandHandler,
-  // getServices,
   renderer.results
 );
 

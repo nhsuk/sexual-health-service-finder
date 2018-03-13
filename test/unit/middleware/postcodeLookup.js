@@ -1,5 +1,4 @@
 const chai = require('chai');
-const chaiArrays = require('chai-arrays');
 const sinon = require('sinon');
 const rewire = require('rewire');
 const spyUtils = require('../../lib/spy-utils');
@@ -13,8 +12,6 @@ const outcodeSampleResponseCrossBorder_TD9 = require('./samples/outcodeResponseC
 const expect = chai.expect;
 const getNextSpy = spyUtils.getNextSpy;
 const expectCalledOnce = spyUtils.expectCalledOnce;
-
-chai.use(chaiArrays);
 
 function getRejectingPostcodeIOClientFake(error) {
   return {
@@ -48,28 +45,29 @@ function getRewiredPostcodeLookup(postcodesIOClientFake, rendererFake) {
 
 describe('Postcode lookup', () => {
   describe('PostcodeIO error handling', () => {
-    it('should call postcodeError when postcode.io is not available', async () => {
+    it('should call next with error when postcode.io is not available', async () => {
       const error = Error('Error!');
 
       const postcodesIOClientFake = getRejectingPostcodeIOClientFake(error);
-      const rendererFake = getRendererFake('postcodeError');
+      const next = getNextSpy();
 
-      const postcodeLookup = getRewiredPostcodeLookup(postcodesIOClientFake, rendererFake);
+      const postcodeLookup = getRewiredPostcodeLookup(postcodesIOClientFake);
 
-      await postcodeLookup({}, { locals: { location: 'HG5 0JL' } });
+      await postcodeLookup({}, { locals: { location: 'HG5 0JL' } }, next);
 
-      expect(rendererFake.postcodeError.calledWith(error)).to.equal(true, 'postcodeError not called');
+      expect(next.calledWith(error)).to.equal(true, 'next error called');
     });
 
-    it('should call invalidPostcodePage when the postcode cannot be found', async () => {
+    it('should call invalidPostcode when the postcode cannot be found', async () => {
+      const res = { locals: { location: 'HG5 123' } };
       const postcodesIOClientFake = getResolvingPostcodeIOClientFake();
-      const rendererFake = getRendererFake('invalidPostcodePage');
+      const rendererFake = getRendererFake('invalidPostcode');
 
       const postcodeLookup = getRewiredPostcodeLookup(postcodesIOClientFake, rendererFake);
 
-      await postcodeLookup({}, { locals: { location: 'HG5 0JL' } });
+      await postcodeLookup({}, res);
 
-      expect(rendererFake.invalidPostcodePage.calledWith('HG5 0JL')).to.equal(true, 'invalidPostcodePage not called');
+      expect(rendererFake.invalidPostcode.calledWith({}, res, 'HG5 123')).to.equal(true, 'invalidPostcode called');
     });
   });
 
@@ -88,9 +86,9 @@ describe('Postcode lookup', () => {
 
         expectCalledOnce(next);
         const countries = res.locals.postcodeLocationDetails.countries;
-        expect(countries).to.be.array()
-          .and.to.be.ofSize(1)
-          .and.to.be.equalTo(['England']);
+        expect(countries).to.be.an.instanceOf(Array)
+          .and.to.have.lengthOf(1)
+          .and.to.include.members(['England']);
       });
 
       it('outcode string array of countries should be preserved as array', async () => {
@@ -106,9 +104,9 @@ describe('Postcode lookup', () => {
 
         expectCalledOnce(next);
         const countries = res.locals.postcodeLocationDetails.countries;
-        expect(countries).to.be.array()
-          .and.to.be.ofSize(2)
-          .and.to.be.equalTo(['England', 'Scotland']);
+        expect(countries).to.be.an.instanceOf(Array)
+          .and.to.have.lengthOf(2)
+          .and.to.include.members(['England', 'Scotland']);
       });
     });
 

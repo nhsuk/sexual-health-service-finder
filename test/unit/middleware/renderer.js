@@ -9,42 +9,21 @@ const getSpy = spyUtils.getSpy;
 const expectCalledOnce = spyUtils.expectCalledOnce;
 
 describe('Postcode validation', () => {
-  describe('error handling for handlePostcodeError', () => {
-    it('should set error message to technical error when an error is passed', () => {
-      const location = 'S3';
-      const res = {
-        locals: {}
-      };
-
-      const localsExpectations = (error) => {
-        expect(error).to.equal('Some error');
-        // eslint-disable-next-line no-unused-expressions
-        expect(res.locals.errorMessage).to.not.be.empty;
-        expect(res.locals.errorMessage).to.equal(messages.technicalProblems());
-      };
-
-      const nextSpy = getSpy('next', localsExpectations);
-
-      renderer.postcodeError('Some error', location, res, nextSpy);
-
-      expectCalledOnce(nextSpy);
-    });
-  });
-
-  describe('error handling for postcodeError', () => {
+  describe('error handling for outsideOfEngland', () => {
     it('should set a not England flag in the results', () => {
       const countries = ['Scotland'];
-      const location = 'EH1';
+      const loc = 'EH1';
       const req = {
         query: {
-          location,
+          loc,
           type: constants.SERVICE_TYPES.professional,
           origin: constants.SERVICE_CHOICES.symptoms
         }
       };
       const res = {
         locals: {
-          location,
+          loc,
+          correctParams: true,
           type: constants.SERVICE_TYPES.professional,
           origin: constants.SERVICE_CHOICES.symptoms,
           postcodeLocationDetails: {
@@ -56,45 +35,46 @@ describe('Postcode validation', () => {
 
       const localsExpectations = (viewName) => {
         expect(viewName).to.equal('location');
+        expect(res.locals.errorMessage).to.not.be.empty;
         expect(res.locals.errorMessage)
           .to.equal(messages.outsideOfEnglandPostcodeMessage());
       };
 
       res.render = getSpy('res.render', localsExpectations);
 
-      renderer.outsideOfEnglandPage(location, req, res);
+      renderer.outsideOfEngland(req, res, loc);
 
       expectCalledOnce(res.render);
     });
   });
 
-  describe('results', () => {
-    xit('should render results page when there are services', () => {
-    });
-
-    xit('should render no results page when there are no services', () => {
-    });
-  });
-
-  describe('error handling for renderInvalidPostcodePage', () => {
+  describe('error handling for render InvalidPostcode', () => {
     it('should return an error message when the postcode is invalid', () => {
-      const location = 'S50 3EW';
-      const req = {};
+      const loc = 'S50 3EW';
+      const req = {
+        query: {
+          loc,
+          type: constants.SERVICE_TYPES.professional,
+          origin: constants.SERVICE_CHOICES.symptoms
+        }
+      };
 
       const res = {
-        locals: {}
+        locals: {
+          correctParams: true
+        }
       };
 
       const localsExpectations = (viewName) => {
         expect(viewName).to.equal('location');
         // eslint-disable-next-line no-unused-expressions
         expect(res.locals.errorMessage).to.not.be.empty;
-        expect(res.locals.errorMessage).to.equal(messages.invalidPostcodeMessage(location));
+        expect(res.locals.errorMessage).to.equal(messages.invalidPostcodeMessage(loc));
       };
 
       res.render = getSpy('res.render', localsExpectations);
 
-      renderer.invalidPostcodePage(location, req, res);
+      renderer.invalidPostcode(req, res, loc);
 
       expectCalledOnce(res.render);
     });

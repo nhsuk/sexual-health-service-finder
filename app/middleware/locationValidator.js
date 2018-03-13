@@ -1,10 +1,8 @@
 const renderer = require('../middleware/renderer');
 
 function validateLocation(req, res, next) {
-  const postcodeSearch = res.locals.location;
-
-  if (!(postcodeSearch)) {
-    renderer.emptyPostcodePage(req, res);
+  if (!(res.locals.location)) {
+    renderer.emptyPostcode(req, res);
   } else {
     next();
   }

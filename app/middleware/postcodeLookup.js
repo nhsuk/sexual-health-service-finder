@@ -1,4 +1,6 @@
 const log = require('../lib/logger');
+const errorCounter = require('../lib/promCounters').errorPageViews;
+const validationCounter = require('../lib/promCounters').validationLocationPageViews;
 const PostcodesIOClient = require('postcodesio-client');
 
 // rewire (a framework for mocking) doesn't support const
@@ -27,21 +29,24 @@ function postcodeDetailsMapper(postcodeDetails) {
 }
 
 async function lookupPostcode(req, res, next) {
-  const postcodeSearch = res.locals.location;
+  const location = res.locals.location;
 
-  log.debug({ postcodeSearch }, 'postcode search text');
-  if (postcodeSearch) {
+  log.debug({ location }, 'postcode search text');
+  if (location) {
     try {
-      const postcodeDetails = await PostcodesIO.lookup(postcodeSearch);
+      const postcodeDetails = await PostcodesIO.lookup(location);
       log.debug({ postcodeIOResponse: { postcodeDetails } }, 'PostcodeIO postcode response');
       if (postcodeDetails) {
         res.locals.postcodeLocationDetails = postcodeDetailsMapper(postcodeDetails);
         next();
       } else {
-        renderer.invalidPostcodePage(postcodeSearch, req, res);
+        renderer.invalidPostcode(req, res, location);
+        validationCounter.inc(1);
       }
     } catch (error) {
-      renderer.postcodeError(error, postcodeSearch, res, next);
+      log.debug({ location }, 'Error in location');
+      errorCounter.inc(1);
+      next(error);
     }
   } else {
     log.debug('no postcode');

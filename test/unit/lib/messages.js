@@ -31,4 +31,11 @@ describe('messages', () => {
       expect(message).to.contain('This is an England only service. Please enter an English postcode.');
     });
   });
+
+  describe('technical error message', () => {
+    it('should have an error message for technical errors', () => {
+      const message = messages.technicalProblems();
+      expect(message).to.contain('Sorry, we are experiencing technical problems.');
+    });
+  });
 });

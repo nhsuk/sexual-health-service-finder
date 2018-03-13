@@ -22,7 +22,7 @@ function choose(req, res) {
 }
 
 function location(req, res) {
-  if (res.locals.locationHeading === null) {
+  if (!res.locals.correctParams) {
     return res.render('error');
   }
   return res.render('location');
@@ -32,25 +32,19 @@ function results(req, res) {
   res.render('results');
 }
 
-function emptyPostcodePage(req, res) {
-  log.debug('Empty Search');
+function emptyPostcode(req, res) {
+  log.debug('Empty search');
   res.locals.errorMessage = messages.emptyPostcodeMessage();
   location(req, res);
 }
 
-function postcodeError(error, postcode, res, next) {
-  log.debug({ postcode }, 'Error in postcode');
-  res.locals.errorMessage = messages.technicalProblems();
-  next(error);
-}
-
-function invalidPostcodePage(postcode, req, res) {
-  log.debug({ postcode }, 'Location failed validation');
-  res.locals.errorMessage = messages.invalidPostcodeMessage(postcode);
+function invalidPostcode(req, res, loc) {
+  log.debug({ loc }, 'Location failed validation');
+  res.locals.errorMessage = messages.invalidPostcodeMessage(loc);
   location(req, res);
 }
 
-function outsideOfEnglandPage(loc, req, res) {
+function outsideOfEngland(req, res, loc) {
   log.debug({ loc }, 'Outside of England');
   res.locals.errorMessage = messages.outsideOfEnglandPostcodeMessage();
   location(req, res);
@@ -63,9 +57,8 @@ module.exports = {
   age,
   choose,
   location,
-  emptyPostcodePage,
-  postcodeError,
-  invalidPostcodePage,
-  outsideOfEnglandPage,
+  emptyPostcode,
+  invalidPostcode,
+  outsideOfEngland,
   results,
 };

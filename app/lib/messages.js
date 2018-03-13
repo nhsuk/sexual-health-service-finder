@@ -15,7 +15,7 @@ function outsideOfEnglandPostcodeMessage() {
 }
 
 function technicalProblems() {
-  return 'Sorry, we are experiencing technical problems';
+  return 'Sorry, we are experiencing technical problems.';
 }
 
 module.exports = {

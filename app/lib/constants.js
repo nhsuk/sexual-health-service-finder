@@ -7,6 +7,8 @@ module.exports = {
     '16to25': '2',
     over25: '3'
   },
-  SERVICE_TYPES:
-    { professional: 'professional', kit: 'kit' }
+  SERVICE_TYPES: {
+    professional: 'professional',
+    kit: 'kit'
+  }
 };
