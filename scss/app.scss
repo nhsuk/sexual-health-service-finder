@@ -7,6 +7,11 @@ body {
   header {
     background-color: $white;
   }
+  .page-section {
+    p, ul{
+      margin-top: 16px;
+    }
+  }
   .breadcrumb {
     background-color: $white;
   }
@@ -34,6 +39,41 @@ body {
         width: auto;
       }
     }
+  }
+  .recommend__tick {
+    display: inline-block;
+    margin-left: 15px;
+      &:before {
+        content: '';
+        display: inline-block;
+        height: 32px;
+        width: 17px;
+        border: solid $green;
+        border-width: 0 8px 8px 0;
+        transform: rotate(45deg);
+        margin-right: 20px;
+      }
+  }
+  .recommend__cross {
+    display: inline-block;
+    margin: 0 5px 0 15px;
+    width: 32px;
+    height: 32px;
+    &:before, &:after {
+      content: '';
+      position: absolute;
+      height: 33px;
+      width: 8px;
+      background-color: $red;
+      margin-top: 8px;
+    }
+    &:before {
+      transform: rotate(45deg);
+    }
+    &:after {
+      transform: rotate(-45deg);
+    }
+    
   }
 }
 

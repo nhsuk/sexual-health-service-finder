@@ -3,6 +3,7 @@
 - Error pages
 - Symptoms page
 - Age page
+- Recommend page
 - Form error handling
 
 0.2.0 / 2018-03-01
