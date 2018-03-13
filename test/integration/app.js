@@ -19,16 +19,12 @@ describe('redirection', () => {
 });
 
 describe('An unknown page', () => {
-  xit('should return a 404', async () => {
-    const res = await chai.request(server).get(`${constants.SITE_ROOT}/not-known`);
-    expect(res).to.have.status(404);
-    expect(res.response).to.be.html;
-
-    // try {
-    //   await chai.request(server).get(`${constants.SITE_ROOT}/not-known`);
-    // } catch (err) {
-    //   expect(err).to.have.status(404);
-    //   expect(err.response).to.be.html;
-    // }
+  it('should return a 404', async () => {
+    try {
+      await chai.request(server).get(`${constants.SITE_ROOT}/not-known`);
+    } catch (err) {
+      expect(err).to.have.status(404);
+      expect(err.response).to.be.html;
+    }
   });
 });
