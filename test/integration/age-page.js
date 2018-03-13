@@ -56,7 +56,7 @@ describe('Age page', () => {
       const $ = cheerio.load(res.text);
 
       expect($('.back-to-choices').attr('href'))
-        .to.equal('https://www.nhs.uk/Service-Search');
+        .to.equal('https://www.nhs.uk/service-search');
     });
   });
 });
