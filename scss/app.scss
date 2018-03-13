@@ -1,5 +1,42 @@
 @import "nhsuk";
 
+$grey: #E8EDEE;
+
+body {
+  background-color:$grey;
+  header {
+    background-color: $white;
+  }
+  .breadcrumb {
+    background-color: $white;
+  }
+  details {
+    background-color: $white;
+    padding: 32px;
+    summary {
+      padding-top: 0;
+      .details__summary--country {
+        font-size: 28px;
+      }
+    }
+    .details__opening-times,
+    .details__call-charges {
+      display: block;
+      margin-top: 0;
+      padding-top: 0;
+    }
+    .details__call-charges {
+      font-size: 16px;
+    }
+    .button {
+      width: 80%;
+      @include media(tablet) {
+        width: auto;
+      }
+    }
+  }
+}
+
 .sr-only,
 .hidden {
   position: absolute;
@@ -144,6 +181,12 @@ form {
     -moz-box-sizing: border-box;
     box-sizing: border-box;
     width: 100%;
+  }
+  label {
+    span {
+      display: block;
+      margin-top: 25px;
+    }
   }
 }
 /*
@@ -318,14 +361,20 @@ form {
 
 .error {
   margin-right: 15px;
-  border-left: 4px solid #b10e1e;
+  border-left: 4px solid $red;
   padding-left: 10px;
   > .form-control {
-    border: 4px solid #b10e1e;
+    border: 4px solid $red;
   }
   @include media(tablet) {
-    border-left: 5px solid #b10e1e;
+    border-left: 5px solid $red;
     padding-left: 15px;
+  }
+  * + * {
+    margin-top: 0;
+  }
+  .multiple-choice:not(:first-child) {
+    margin-top: 32px;
   }
 }
 
@@ -356,7 +405,7 @@ form {
       }
     }
     a {
-      color: #b10e1e;
+      color: $red;
       font-weight: bold;
       text-decoration: underline;
     }
@@ -407,4 +456,3 @@ form {
     display: none;
   }
 }
-@import "c2s-results";

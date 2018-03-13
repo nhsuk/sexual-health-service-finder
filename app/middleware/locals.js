@@ -6,5 +6,9 @@ module.exports = config =>
     res.locals.HOTJAR_ANALYTICS_TRACKING_ID = config.hotjarId;
     res.locals.SITE_ROOT = req.app.locals.SITE_ROOT;
     res.locals.ASSETS_URL = req.app.locals.ASSETS_URL;
+
+    res.locals.symptoms = req.query.symptoms;
+    res.locals.age = req.query.age;
+
     next();
   };
