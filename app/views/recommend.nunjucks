@@ -1,0 +1,10 @@
+{% extends 'layout.nunjucks' %}
+
+{% block header %}
+    <h1 class="local-header--title--question">We recommend that you</h1>
+{% endblock %}
+
+{% block content %}
+    <div class="reading-width">
+    </div>
+{% endblock %}

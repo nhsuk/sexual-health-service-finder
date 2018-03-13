@@ -5,10 +5,10 @@ module.exports = {
     }
   },
   paths: {
-    watched: ['scss-c2s', 'app/public/js']
+    watched: ['scss', 'app/public/js']
   },
   conventions: {
-    ignored: 'scss-c2s/c2s-ie.scss'
+    ignored: 'scss/app-ie.scss'
   },
   overrides: {
     development: {
@@ -33,11 +33,11 @@ module.exports = {
     },
     stylesheets: {
       joinTo: {
-        'nhsuk.css': /c2s.scss/,
-        'nhsukie6.css': /c2s-ie6.scss/,
-        'nhsukie7.css': /c2s-ie7.scss/,
-        'nhsukie8.css': /c2s-ie8.scss/,
-        'print.css': /c2s-print.scss/
+        'nhsuk.css': /app.scss/,
+        'nhsukie6.css': /app-ie6.scss/,
+        'nhsukie7.css': /app-ie7.scss/,
+        'nhsukie8.css': /app-ie8.scss/,
+        'print.css': /app-print.scss/
       },
     }
   },
