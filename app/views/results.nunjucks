@@ -5,5 +5,5 @@
 {% endblock %}
 
 {% block content %}
-{{postcodeLocationDetails | dump | safe}}
+{{services | dump | safe}}
 {% endblock %}

@@ -7,6 +7,10 @@ module.exports = {
     name: 'sexual-health-service-finder',
   },
   env: process.env.NODE_ENV || 'development',
+  es: {
+    host: process.env.ES_HOST || 'es',
+    port: process.env.ES_PORT || '9200',
+  },
   googleAnalyticsId: process.env.GOOGLE_ANALYTICS_TRACKING_ID,
   headerApiUrl: 'https://refdata-api.azurewebsites.net/api/fullheadermenu',
   hotjarId: process.env.HOTJAR_ANALYTICS_TRACKING_ID,

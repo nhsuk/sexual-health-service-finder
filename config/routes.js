@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const getServices = require('../app/middleware/getServices');
 const locationValidator = require('../app/middleware/locationValidator');
 const notInEnglandHandler = require('../app/middleware/notInEnglandHandler');
 const postcodeLookup = require('../app/middleware/postcodeLookup');
@@ -14,26 +15,22 @@ router.get(
 
 router.get(
   '/symptoms',
-  setLocals.fromRequest,
   renderer.symptoms
 );
 
 router.get(
   '/recommend',
-  setLocals.fromRequest,
   selectionValidatorSymptoms,
   renderer.recommend
 );
 
 router.get(
   '/age',
-  setLocals.fromRequest,
   renderer.age
 );
 
 router.get(
   '/choose',
-  setLocals.fromRequest,
   selectionValidatorAge,
   renderer.choose
 );
@@ -54,6 +51,7 @@ router.get(
   locationValidator,
   postcodeLookup,
   notInEnglandHandler,
+  getServices,
   renderer.results
 );
 
