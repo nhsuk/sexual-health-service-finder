@@ -154,6 +154,9 @@ ignore:
     - eslint-config-nhsuk > eslint-plugin-json > jshint > lodash:
         reason: None given
         expires: '2018-04-12T13:58:42.839Z'
+      elasticsearch > lodash:
+        reason: None given
+        expires: '2018-04-13T09:57:41.009Z'
   'npm:shelljs:20140723':
     - eslint-config-nhsuk > eslint-plugin-json > jshint > shelljs:
         reason: None given
