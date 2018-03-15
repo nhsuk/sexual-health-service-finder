@@ -23,42 +23,42 @@ describe('Location page', () => {
   describe('accessed via journey', () => {
     it('should ask for location of sexual health professionals for under 16 year olds', async () => {
       assertMapping(
-        { type: constants.SERVICE_TYPES.professional, origin: constants.SERVICE_CHOICES.under16 },
+        { origin: constants.SERVICE_CHOICES.under16, type: constants.SERVICE_TYPES.professional },
         'Where would you like to see a sexual health professional?'
       );
     });
 
     it('should ask for location of sexual health professionals for people with symptoms', async () => {
       assertMapping(
-        { type: constants.SERVICE_TYPES.professional, origin: constants.SERVICE_CHOICES.symptoms },
+        { origin: constants.SERVICE_CHOICES.symptoms, type: constants.SERVICE_TYPES.professional },
         'Where would you like to see a sexual health professional?'
       );
     });
 
     it('should ask for location of sexual health professionals for people between 16 and 25', async () => {
       assertMapping(
-        { type: constants.SERVICE_TYPES.professional, origin: constants.SERVICE_CHOICES['16to25'] },
+        { origin: constants.SERVICE_CHOICES['16to25'], type: constants.SERVICE_TYPES.professional },
         'Where would you like to see a sexual health professional?'
       );
     });
 
     it('should ask for location of sexual health professionals for people over 25', async () => {
       assertMapping(
-        { type: constants.SERVICE_TYPES.professional, origin: constants.SERVICE_CHOICES.over25 },
+        { origin: constants.SERVICE_CHOICES.over25, type: constants.SERVICE_TYPES.professional },
         'Where would you like to see a sexual health professional?'
       );
     });
 
     it('should ask for location of free kits for people between 16 and 25', async () => {
       assertMapping(
-        { type: constants.SERVICE_TYPES.kit, origin: constants.SERVICE_CHOICES['16to25'] },
+        { origin: constants.SERVICE_CHOICES['16to25'], type: constants.SERVICE_TYPES.kit },
         'Where would you like to collect your free test kit?'
       );
     });
 
     it('should ask for location of paid kits for people over 25', async () => {
       assertMapping(
-        { type: constants.SERVICE_TYPES.kit, origin: constants.SERVICE_CHOICES.over25 },
+        { origin: constants.SERVICE_CHOICES.over25, type: constants.SERVICE_TYPES.kit },
         'Where would you like to collect your test kit?'
       );
     });
@@ -81,14 +81,14 @@ describe('Location page', () => {
 
     it('should return an error page for a combination of kits and under 16 parameters', async () => {
       assertMapping(
-        { type: constants.SERVICE_TYPES.kit, origin: constants.SERVICE_CHOICES.under16 },
+        { origin: constants.SERVICE_CHOICES.under16, type: constants.SERVICE_TYPES.kit },
         'Sorry, we are experiencing technical problems.'
       );
     });
 
     it('should return an error page for a combination of kits and symptoms parameters', async () => {
       assertMapping(
-        { type: constants.SERVICE_TYPES.kit, origin: constants.SERVICE_CHOICES.symptoms },
+        { origin: constants.SERVICE_CHOICES.symptoms, type: constants.SERVICE_TYPES.kit },
         'Sorry, we are experiencing technical problems.'
       );
     });

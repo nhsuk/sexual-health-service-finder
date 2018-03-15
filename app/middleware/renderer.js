@@ -45,20 +45,20 @@ function invalidPostcode(req, res, loc) {
 }
 
 function outsideOfEngland(req, res) {
-  log.debug({ location: res.locals.req_location }, 'Outside of England');
+  log.debug({ location: res.locals.location }, 'Outside of England');
   res.locals.errorMessage = messages.outsideOfEnglandPostcodeMessage();
   location(req, res);
 }
 
 module.exports = {
-  startPage,
-  symptoms,
-  recommend,
   age,
   choose,
-  location,
   emptyPostcode,
   invalidPostcode,
+  location,
   outsideOfEngland,
+  recommend,
   results,
+  startPage,
+  symptoms,
 };

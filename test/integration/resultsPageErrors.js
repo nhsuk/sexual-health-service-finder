@@ -20,8 +20,8 @@ function makeSearchRequestAndCheckExpectations(postcode, assertions) {
     .get(results)
     .query({
       location: postcode,
+      origin: constants.SERVICE_CHOICES.symptoms,
       type: constants.SERVICE_TYPES.professional,
-      origin: constants.SERVICE_CHOICES.symptoms
     })
     .end(assertions);
 }

@@ -1,3 +1,4 @@
+/* eslint-disable sort-keys */
 module.exports = {
   ASSETS_URL: 'https://assets.nhs.uk',
   SITE_ROOT: '/find-a-chlamydia-test',
@@ -19,5 +20,6 @@ module.exports = {
   SERVICE_TYPES: {
     professional: 'professional',
     kit: 'kit',
-  }
+  },
 };
+/* eslint-enable sort-keys */

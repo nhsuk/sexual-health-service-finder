@@ -16,21 +16,21 @@ describe('Postcode validation', () => {
       const req = {
         query: {
           loc,
+          origin: constants.SERVICE_CHOICES.symptoms,
           type: constants.SERVICE_TYPES.professional,
-          origin: constants.SERVICE_CHOICES.symptoms
-        }
+        },
       };
       const res = {
         locals: {
-          loc,
           correctLocationParams: true,
-          type: constants.SERVICE_TYPES.professional,
+          loc,
           origin: constants.SERVICE_CHOICES.symptoms,
           postcodeLocationDetails: {
+            countries,
             isOutcode: true,
-            countries
-          }
-        }
+          },
+          type: constants.SERVICE_TYPES.professional,
+        },
       };
 
       const localsExpectations = (viewName) => {
@@ -54,15 +54,15 @@ describe('Postcode validation', () => {
       const req = {
         query: {
           loc,
+          origin: constants.SERVICE_CHOICES.symptoms,
           type: constants.SERVICE_TYPES.professional,
-          origin: constants.SERVICE_CHOICES.symptoms
-        }
+        },
       };
 
       const res = {
         locals: {
           correctLocationParams: true,
-        }
+        },
       };
 
       const localsExpectations = (viewName) => {
