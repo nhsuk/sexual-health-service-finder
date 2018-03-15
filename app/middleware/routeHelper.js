@@ -21,8 +21,8 @@ function renderSeeExpertUnder16Page(req, res) {
 }
 
 module.exports = {
-  renderSymptomsWithError,
   renderAgePage,
   renderAgePageWithError,
   renderSeeExpertUnder16Page,
+  renderSymptomsWithError,
 };

@@ -17,7 +17,7 @@ describe('Recommend page', () => {
   it('page title should be \'We recommend that you\' if symptoms question is answered yes', async () => {
     const res = await chai.request(server)
       .get(recommendRoute)
-      .query({ symptoms: 'yes' });
+      .query({ symptoms: constants.SYMPTOMS.yes });
 
     iExpect.htmlWith200Status(res);
     const $ = cheerio.load(res.text);
@@ -39,7 +39,7 @@ describe('Recommend page', () => {
   it('page title should be \'We recommend that you\' if age question is answered 15 or younger', async () => {
     const res = await chai.request(server)
       .get(chooseRoute)
-      .query({ age: '1' });
+      .query({ age: constants.AGE.under16 });
 
     iExpect.htmlWith200Status(res);
     const $ = cheerio.load(res.text);
@@ -58,23 +58,35 @@ describe('Recommend page', () => {
     expect($($('.page-section p')[2]).text()).to.equal('This is because you’re under the legal age of consent for sex.');
   });
 
-  it('the page should have a link to the Location search page', async () => {
+  it('the page should have a link to the Location search page with the right params for symptoms', async () => {
     const res = await chai.request(server)
       .get(recommendRoute)
-      .query({ symptoms: 'yes' });
+      .query({ symptoms: constants.SYMPTOMS.yes });
 
     iExpect.htmlWith200Status(res);
     const $ = cheerio.load(res.text);
 
     expect($('.button').attr('href'))
-      .to.equal(locationSearchRoute);
+      .to.equal(`${locationSearchRoute}?type=${constants.SERVICE_TYPES.professional}&origin=${constants.SERVICE_CHOICES.symptoms}`);
+  });
+
+  it('the page should have a link to the Location search page with the right params for age 15 or younger', async () => {
+    const res = await chai.request(server)
+      .get(chooseRoute)
+      .query({ age: constants.AGE.under16 });
+
+    iExpect.htmlWith200Status(res);
+    const $ = cheerio.load(res.text);
+
+    expect($('.button').attr('href'))
+      .to.equal(`${locationSearchRoute}?type=${constants.SERVICE_TYPES.professional}&origin=${constants.SERVICE_CHOICES.under16}`);
   });
 
   describe('return to Choices services', () => {
     it('the breadcrumb should have a link back to the Choices \'Services near you\'', async () => {
       const res = await chai.request(server)
         .get(recommendRoute)
-        .query({ symptoms: 'yes' });
+        .query({ symptoms: constants.SYMPTOMS.yes });
 
       iExpect.htmlWith200Status(res);
       const $ = cheerio.load(res.text);
@@ -86,7 +98,7 @@ describe('Recommend page', () => {
     it('the page should have a link back to the Choices service search', async () => {
       const res = await chai.request(server)
         .get(recommendRoute)
-        .query({ symptoms: 'yes' });
+        .query({ symptoms: constants.SYMPTOMS.yes });
 
       iExpect.htmlWith200Status(res);
       const $ = cheerio.load(res.text);

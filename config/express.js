@@ -1,3 +1,4 @@
+/* eslint-disable sort-keys */
 const bodyParser = require('body-parser');
 const compression = require('compression');
 const cookieParser = require('cookie-parser');
@@ -72,7 +73,7 @@ module.exports = (app, config) => {
           '*.hotjar.com:*',
         ],
       },
-    }
+    },
   }));
 
   app.use(locals(config));
@@ -120,3 +121,4 @@ module.exports = (app, config) => {
     res.redirect(constants.SITE_ROOT);
   });
 };
+/* eslint-enable sort-keys */

@@ -1,3 +1,6 @@
+const log = require('../lib/logger');
+const messages = require('../lib/messages');
+
 function startPage(req, res) {
   res.render('start');
 }
@@ -15,13 +18,47 @@ function age(req, res) {
 }
 
 function choose(req, res) {
-  res.render('choose');
+  return res.render('choose');
+}
+
+function location(req, res) {
+  if (!res.locals.correctLocationParams) {
+    res.locals.errorMessage = messages.invalidUrlMessage();
+    return res.render('start');
+  }
+  return res.render('location');
+}
+
+function results(req, res) {
+  res.render('results');
+}
+
+function emptyPostcode(req, res) {
+  res.locals.errorMessage = messages.emptyPostcodeMessage();
+  location(req, res);
+}
+
+function invalidPostcode(req, res, loc) {
+  log.debug({ location: loc }, 'Location failed validation');
+  res.locals.errorMessage = messages.invalidPostcodeMessage(loc);
+  location(req, res);
+}
+
+function outsideOfEngland(req, res) {
+  log.debug({ location: res.locals.location }, 'Outside of England');
+  res.locals.errorMessage = messages.outsideOfEnglandPostcodeMessage();
+  location(req, res);
 }
 
 module.exports = {
-  startPage,
-  symptoms,
-  recommend,
   age,
   choose,
+  emptyPostcode,
+  invalidPostcode,
+  location,
+  outsideOfEngland,
+  recommend,
+  results,
+  startPage,
+  symptoms,
 };

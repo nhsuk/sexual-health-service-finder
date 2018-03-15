@@ -4,7 +4,10 @@
 - Symptoms page
 - Age page
 - Recommend page
+- Location page
+- PostcodeIO integration
 - Form error handling
+- Form query validation
 
 0.2.0 / 2018-03-01
 =======

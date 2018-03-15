@@ -5,6 +5,14 @@
 {% endblock %}
 
 {% block content %}
+{% if errorMessage %}
+<div class="error-summary">
+  <h2 class="local-header--error error-summary-heading">
+    {{ errorMessage }}
+  </h2>
+</div>
+{% endif %}
+
 <div class="reading-width">
   <p>The only way to know if you have <a href="https://www.nhs.uk/conditions/chlamydia/">chlamydia</a> is to get tested.</p>
 

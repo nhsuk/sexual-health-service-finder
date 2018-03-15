@@ -1,0 +1,41 @@
+{% extends 'layout.nunjucks' %}
+
+{% block header %}
+<h1 class="local-header--title--question">{{ locationHeading }}</h1>
+{% endblock %}
+
+{% block content %}
+{% if errorMessage %}
+<div class="error-summary">
+  <h2 class="local-header--error error-summary-heading">
+    {{ errorMessage }}
+  </h2>
+</div>
+{% endif %}
+
+<form method="get" class="form" action="{{ SITE_ROOT }}/results">
+  <div class="reading-width">
+    <div class="form-item-wrapper">
+
+      {% if errorMessage %}
+        <div class="form-group error">
+      {% else %}
+        <div class="form-group">
+      {% endif %}
+        <label class="form-label-bold" for="location">Enter a postcode.</label>
+          <div class="form-group">
+            <input autocomplete="off" type="text" class="form-control" name="location" id="location" value=""{% if errorMessage %} aria-describedby="error-message" aria-invalid="true"{% endif %}>
+          </div>
+        </div>
+      </div>
+      <input type="hidden" name="type" value={{type}} />
+      <input type="hidden" name="origin" value={{origin}} />
+    </div>
+    <div class="form-item-wrapper">
+      <div class="form-group">
+        <input type="submit" class="button" value="Continue">
+      </div>
+    </div>
+  </div>
+</form>
+{% endblock %}

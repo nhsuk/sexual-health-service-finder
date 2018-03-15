@@ -1,0 +1,9 @@
+{% extends 'layout.nunjucks' %}
+
+{% block header %}
+<h1 class="local-header--title--question">Results</h1>
+{% endblock %}
+
+{% block content %}
+{{postcodeLocationDetails | dump | safe}}
+{% endblock %}
