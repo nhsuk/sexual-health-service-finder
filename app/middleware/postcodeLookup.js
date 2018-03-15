@@ -1,7 +1,7 @@
-const log = require('../lib/logger');
-const errorCounter = require('../lib/promCounters').errorPageViews;
-const validationCounter = require('../lib/promCounters').validationLocationPageViews;
 const PostcodesIOClient = require('postcodesio-client');
+const errorCounter = require('../lib/promCounters').errorPageViews;
+const log = require('../lib/logger');
+const validationCounter = require('../lib/promCounters').validationLocationErrors;
 
 // rewire (a framework for mocking) doesn't support const
 // eslint-disable-next-line no-var
@@ -22,16 +22,16 @@ function postcodeDetailsMapper(postcodeDetails) {
     isOutcode: isOutcode(postcodeDetails),
     location: {
       lat: postcodeDetails.latitude,
-      lon: postcodeDetails.longitude
+      lon: postcodeDetails.longitude,
     },
-    countries: toArray(postcodeDetails.country)
+    countries: toArray(postcodeDetails.country),
   };
 }
 
 async function lookupPostcode(req, res, next) {
   const location = res.locals.location;
 
-  log.debug({ location }, 'postcode search text');
+  log.debug({ location }, 'Postcode search text');
   if (location) {
     try {
       const postcodeDetails = await PostcodesIO.lookup(location);
@@ -40,16 +40,16 @@ async function lookupPostcode(req, res, next) {
         res.locals.postcodeLocationDetails = postcodeDetailsMapper(postcodeDetails);
         next();
       } else {
-        renderer.invalidPostcode(req, res, location);
         validationCounter.inc(1);
+        renderer.invalidPostcode(req, res, location);
       }
     } catch (error) {
-      log.debug({ location }, 'Error in location');
+      log.debug({ location }, 'Error in postcode lookup');
       errorCounter.inc(1);
       next(error);
     }
   } else {
-    log.debug('no postcode');
+    log.debug('No postcode');
     next();
   }
 }

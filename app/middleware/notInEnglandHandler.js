@@ -1,5 +1,5 @@
 const renderer = require('../middleware/renderer');
-const validationCounter = require('../lib/promCounters').validationLocationPageViews;
+const warningCounter = require('../lib/promCounters').outOfEnglandLocationWarnings;
 
 function outsideEngland(countries) {
   return !countries.includes('England');
@@ -9,8 +9,8 @@ function notInEnglandHandler(req, res, next) {
   const location = res.locals.postcodeLocationDetails;
 
   if (location && outsideEngland(location.countries)) {
-    renderer.outsideOfEngland(req, res, location);
-    validationCounter.inc(1);
+    warningCounter.inc(1);
+    renderer.outsideOfEngland(req, res);
   } else {
     next();
   }

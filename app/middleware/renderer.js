@@ -23,7 +23,8 @@ function choose(req, res) {
 
 function location(req, res) {
   if (!res.locals.correctLocationParams) {
-    return res.render('error');
+    res.locals.errorMessage = messages.invalidUrlMessage();
+    return res.render('start');
   }
   return res.render('location');
 }
@@ -33,19 +34,18 @@ function results(req, res) {
 }
 
 function emptyPostcode(req, res) {
-  log.debug('Empty search');
   res.locals.errorMessage = messages.emptyPostcodeMessage();
   location(req, res);
 }
 
 function invalidPostcode(req, res, loc) {
-  log.debug({ loc }, 'Location failed validation');
+  log.debug({ location: loc }, 'Location failed validation');
   res.locals.errorMessage = messages.invalidPostcodeMessage(loc);
   location(req, res);
 }
 
-function outsideOfEngland(req, res, loc) {
-  log.debug({ loc }, 'Outside of England');
+function outsideOfEngland(req, res) {
+  log.debug({ location: res.locals.req_location }, 'Outside of England');
   res.locals.errorMessage = messages.outsideOfEnglandPostcodeMessage();
   location(req, res);
 }

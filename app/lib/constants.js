@@ -8,16 +8,16 @@ module.exports = {
   AGE: {
     under16: '1',
     '16to25': '2',
-    over25: '3'
+    over25: '3',
   },
   SERVICE_CHOICES: {
     symptoms: '0',
     under16: '1',
     '16to25': '2',
-    over25: '3'
+    over25: '3',
   },
   SERVICE_TYPES: {
     professional: 'professional',
-    kit: 'kit'
+    kit: 'kit',
   }
 };

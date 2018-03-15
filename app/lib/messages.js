@@ -1,3 +1,7 @@
+function invalidUrlMessage() {
+  return 'This is not a valid url, please start again.';
+}
+
 function mandatorySelectionMessage() {
   return 'You must choose one of the options.';
 }
@@ -19,9 +23,10 @@ function technicalProblems() {
 }
 
 module.exports = {
-  mandatorySelectionMessage,
   emptyPostcodeMessage,
   invalidPostcodeMessage,
+  invalidUrlMessage,
+  mandatorySelectionMessage,
   outsideOfEnglandPostcodeMessage,
   technicalProblems,
 };
