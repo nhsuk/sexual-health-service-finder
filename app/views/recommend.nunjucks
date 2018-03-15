@@ -9,8 +9,11 @@
       <p><span class="recommend__tick"></span>should see a sexual heath professional</p>
       <p><span class="recommend__cross"></span>should not get a chlamydia postal test kit</p>
 
-      <p>This is because you have symptoms.</p>
-      <p>A sexual health professional can check if you should be tested for other sexual health problems.</p>
+      {% if under16 %}
+        {% include "partials/recommend-under16.nunjucks" %}
+      {% else %}
+        {% include "partials/recommend-symptoms.nunjucks" %}
+      {% endif %}
 
       <a href="{{ SITE_ROOT }}/location" class="button" role="button">
         Continue

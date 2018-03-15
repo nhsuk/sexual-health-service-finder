@@ -21,7 +21,19 @@ describe('Recommend page', () => {
 
     iExpect.htmlWith200Status(res);
     const $ = cheerio.load(res.text);
+
     expect($('.local-header--title--question').text()).to.equal('We recommend that you');
+  });
+
+  it('page content should be related to having symptoms, if symptoms question is answered yes', async () => {
+    const res = await chai.request(server)
+      .get(recommendRoute)
+      .query({ symptoms: 'yes' });
+
+    iExpect.htmlWith200Status(res);
+    const $ = cheerio.load(res.text);
+
+    expect($($('.page-section p')[2]).text()).to.equal('This is because you have symptoms.');
   });
 
   it('page title should be \'We recommend that you\' if age question is answered 15 or younger', async () => {
@@ -31,7 +43,19 @@ describe('Recommend page', () => {
 
     iExpect.htmlWith200Status(res);
     const $ = cheerio.load(res.text);
+
     expect($('.local-header--title--question').text()).to.equal('We recommend that you');
+  });
+
+  it('page content should be related to being under 16, if age question is answered 15 or younger', async () => {
+    const res = await chai.request(server)
+      .get(chooseRoute)
+      .query({ age: '1' });
+
+    iExpect.htmlWith200Status(res);
+    const $ = cheerio.load(res.text);
+
+    expect($($('.page-section p')[2]).text()).to.equal('This is because you’re under the legal age of consent for sex.');
   });
 
   it('the page should have a link to the Location search page', async () => {
