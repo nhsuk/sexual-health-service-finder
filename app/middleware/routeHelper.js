@@ -15,7 +15,8 @@ function renderAgePageWithError(req, res) {
   renderer.age(req, res);
 }
 
-function renderSeeExpertPage(req, res) {
+function renderSeeExpertUnder16Page(req, res) {
+  res.locals.under16 = true;
   renderer.recommend(req, res);
 }
 
@@ -23,5 +24,5 @@ module.exports = {
   renderSymptomsWithError,
   renderAgePage,
   renderAgePageWithError,
-  renderSeeExpertPage,
+  renderSeeExpertUnder16Page,
 };
