@@ -49,4 +49,3 @@ module.exports = {
   mapServiceChoice,
   mapServiceType,
 };
-
