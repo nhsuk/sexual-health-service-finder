@@ -1,9 +1,23 @@
 {% extends 'layout.nunjucks' %}
 
 {% block header %}
+<h1 class="sr-only" data-results="{{services.length}}" data-term="{{location}} class="local-header--title--question">Results</h1>
 <h1 class="local-header--title--question">Results</h1>
 {% endblock %}
 
 {% block content %}
-{{services | dump | safe}}
+<div class="reading-width results">
+  <div class="grid-row">
+    <ol class="results">
+      {% for service in services %}
+        <li class="results__item results__item--nearby" data-index="{{loop.index}}">
+          <div class="results__details results__details--nearby">
+            {% include "includes/result-item.nunjucks" %}
+          </div>
+          <!--[if IE]><div style="clear: both;" class="clear-both"></div><![endif]-->
+        </li>
+      {% endfor %}
+    </ol>
+  </div>
+</div>
 {% endblock %}

@@ -32,7 +32,7 @@ function mapResults(results, res) {
 
 function getServices(req, res, next) {
   const location = res.locals.location;
-  const resultsLimit = res.locals.RESULTS_LIMIT;
+  const resultsLimit = res.locals.resultsLimit;
   const postcodeLocationDetails = res.locals.postcodeLocationDetails;
   const esQuery = esGeoQueryBuilder.build(postcodeLocationDetails.location, resultsLimit);
   log.info('query ', esQuery);

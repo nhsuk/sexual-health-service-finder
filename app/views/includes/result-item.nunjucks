@@ -1,0 +1,25 @@
+{% if service.distance %}
+  <p class="results__address">
+  Distance: {{ service.distance | float | round(2) }} miles
+  </p>
+{% endif %}
+<h3 class="results__name">
+  {{ service.name }}
+</h3>
+{% if service.address %}
+  <p class="results__address">
+    {% if service.address.addressLines %} {{ service.address.addressLines | safe | replace(",", ", ") }}, {% endif %}
+    {% if service.address.postcode %} {{ service.address.postcode }} {% endif %}
+  </p>
+{% endif %}
+{% if service.contacts %}
+  <p class="results__telephone">
+    {% if service.contacts.telephone %} {{ service.contacts.telephone }} {% endif %}
+  </p>
+{% endif %}
+
+{% if service.serviceDetails %}
+  <p class="results__serviceDetails">
+    {{ service.serviceDetails }}
+  </p>
+{% endif %}
