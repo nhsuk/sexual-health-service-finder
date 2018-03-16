@@ -18,6 +18,12 @@
   </p>
 {% endif %}
 
+{% if service.openingTimes %}
+  <p class="results__openingTimes">
+    {{ service.openingTimes }}
+  </p>
+{% endif %}
+
 {% if service.serviceDetails %}
   <p class="results__serviceDetails">
     {{ service.serviceDetails }}
