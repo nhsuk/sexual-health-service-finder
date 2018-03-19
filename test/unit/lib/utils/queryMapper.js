@@ -38,6 +38,15 @@ describe('queryMapper', () => {
       const output = queryMapper.getLocationHeading(query);
       expect(output).to.equal('Where would you like to collect your test kit?');
     });
+
+    it('should return a redirect message when the query is related to online', () => {
+      const query = {
+        origin: constants.SERVICE_CHOICES.over25,
+        type: constants.SERVICE_TYPES.online,
+      };
+      const output = queryMapper.getLocationHeading(query);
+      expect(output).to.equal('redirect');
+    });
   });
 
   describe('mapServiceType', () => {
@@ -115,9 +124,24 @@ describe('queryMapper', () => {
       expect(output).to.equal(undefined);
     });
 
-    it('should map to undefined if query contains age is over 16', () => {
+    it('should map to 16 to 25 if query contains age is between 16 and 25', () => {
+      const query = {
+        age: constants.AGE['16to25'],
+      };
+      const output = queryMapper.mapServiceChoice(query);
+      expect(output).to.equal(constants.SERVICE_CHOICES['16to25']);
+    });
+
+    it('should map to over 25 if query contains age is over 25', () => {
       const query = {
         age: constants.AGE.over25,
+      };
+      const output = queryMapper.mapServiceChoice(query);
+      expect(output).to.equal(constants.SERVICE_CHOICES.over25);
+    });
+
+    it('should map to undefined if no age or symptoms', () => {
+      const query = {
       };
       const output = queryMapper.mapServiceChoice(query);
       expect(output).to.equal(undefined);

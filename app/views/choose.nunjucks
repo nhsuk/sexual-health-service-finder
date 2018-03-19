@@ -12,13 +12,15 @@
     </div>
     {% endif %}
 
-    <form method="get" class="form" action="{{ SITE_ROOT }}/location?type={{ type }}&origin={{ origin }}">
+    <form method="get" class="form" action="{{ SITE_ROOT }}/location">
         <div class="reading-width">
             {% if errorMessage %}
             <div class="form-group error">
             {% else %}
             <div class="form-group">
             {% endif %}
+
+            <input type="hidden" name="origin" value="{{ origin }}" />
 
             {% if under25 %}
               {% include "partials/choose-free.nunjucks" %}

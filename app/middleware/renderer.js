@@ -22,11 +22,19 @@ function choose(req, res) {
 }
 
 function location(req, res) {
-  if (!res.locals.correctLocationParams) {
+  if (res.locals.correctLocationParams) {
+    if (res.locals.correctLocationParams === 'redirect') {
+      return res.render('chlamydiaOnlineRedirect');
+    }
+  } else {
     res.locals.errorMessage = messages.invalidUrlMessage();
     return res.render('start');
   }
   return res.render('location');
+}
+
+function chlamydiaOnlineRedirect(req, res) {
+  return res.redirect('https://www.nhs.uk/Service-Search/Chlamydia-free-online-tests-for-u-25s/LocationSearch/344');
 }
 
 function results(req, res) {
@@ -52,6 +60,7 @@ function outsideOfEngland(req, res) {
 
 module.exports = {
   age,
+  chlamydiaOnlineRedirect,
   choose,
   emptyPostcode,
   invalidPostcode,

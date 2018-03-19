@@ -16,6 +16,9 @@ function getLocationHeading(query) {
         return 'Where would you like to collect your test kit?';
       }
     }
+    if (query.type.localeCompare(constants.SERVICE_TYPES.online, 'en', { sensitivity: 'base' }) === 0) {
+      return 'redirect';
+    }
   }
   return undefined;
 }
@@ -28,16 +31,10 @@ function mapServiceType(query) {
     || ((query.symptoms) && (query.symptoms === constants.SYMPTOMS.yes))) {
     return constants.SERVICE_TYPES.professional;
   }
-  if ((query.choices) && (query.choices === constants.CHOICES.location)) {
-    return constants.SERVICE_TYPES.professional;
-  }
-  if ((query.choices) && (query.choices === constants.CHOICES.pickup)) {
-    return constants.SERVICE_TYPES.kit;
-  }
   return undefined;
 }
 
-function mapServiceChoice(query, age) {
+function mapServiceChoice(query) {
   if (query.origin) {
     return query.origin;
   }
@@ -47,10 +44,10 @@ function mapServiceChoice(query, age) {
   if ((query.symptoms) && (query.symptoms === constants.SYMPTOMS.yes)) {
     return constants.SERVICE_CHOICES.symptoms;
   }
-  if ((age === constants.AGE['16to25'])) {
+  if ((query.age) && (query.age === constants.AGE['16to25'])) {
     return constants.SERVICE_CHOICES['16to25'];
   }
-  if ((age === constants.AGE.over25)) {
+  if ((query.age) && (query.age === constants.AGE.over25)) {
     return constants.SERVICE_CHOICES.over25;
   }
   return undefined;

@@ -39,6 +39,11 @@ router.get(
 );
 
 router.get(
+  '/chlamydia-online-redirect',
+  renderer.chlamydiaOnlineRedirect
+);
+
+router.get(
   '/results',
   locationValidator,
   postcodeLookup,

@@ -11,11 +11,6 @@ module.exports = {
     '16to25': '2',
     over25: '3',
   },
-  CHOICES: {
-    location: '1',
-    pickup: '2',
-    online: '3',
-  },
   SERVICE_CHOICES: {
     symptoms: '0',
     under16: '1',
@@ -25,6 +20,7 @@ module.exports = {
   SERVICE_TYPES: {
     professional: 'professional',
     kit: 'kit',
+    online: 'online',
   },
 };
 /* eslint-enable sort-keys */
