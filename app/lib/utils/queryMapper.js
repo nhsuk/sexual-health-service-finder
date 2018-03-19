@@ -28,10 +28,16 @@ function mapServiceType(query) {
     || ((query.symptoms) && (query.symptoms === constants.SYMPTOMS.yes))) {
     return constants.SERVICE_TYPES.professional;
   }
+  if ((query.choices) && (query.choices === constants.CHOICES.location)) {
+    return constants.SERVICE_TYPES.professional;
+  }
+  if ((query.choices) && (query.choices === constants.CHOICES.pickup)) {
+    return constants.SERVICE_TYPES.kit;
+  }
   return undefined;
 }
 
-function mapServiceChoice(query) {
+function mapServiceChoice(query, age) {
   if (query.origin) {
     return query.origin;
   }
@@ -40,6 +46,12 @@ function mapServiceChoice(query) {
   }
   if ((query.symptoms) && (query.symptoms === constants.SYMPTOMS.yes)) {
     return constants.SERVICE_CHOICES.symptoms;
+  }
+  if ((age === constants.AGE['16to25'])) {
+    return constants.SERVICE_CHOICES['16to25'];
+  }
+  if ((age === constants.AGE.over25)) {
+    return constants.SERVICE_CHOICES.over25;
   }
   return undefined;
 }

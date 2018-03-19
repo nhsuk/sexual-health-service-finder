@@ -12,7 +12,7 @@
     </div>
     {% endif %}
 
-    <form method="get" class="form" action="{{ SITE_ROOT }}/location">
+    <form method="get" class="form" action="{{ SITE_ROOT }}/location?type={{ type }}&origin={{ origin }}">
         <div class="reading-width">
             {% if errorMessage %}
             <div class="form-group error">

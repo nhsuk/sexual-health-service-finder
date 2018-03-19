@@ -11,6 +11,11 @@ module.exports = {
     '16to25': '2',
     over25: '3',
   },
+  CHOICES: {
+    location: '1',
+    pickup: '2',
+    online: '3',
+  },
   SERVICE_CHOICES: {
     symptoms: '0',
     under16: '1',

@@ -88,9 +88,10 @@ body {
       span {
         &.multiple--choice-option {
           margin-top: 0;
+          font-weight: 600;
         }
         &.multiple--choice-option-description {
-          font-weight: 200;
+          font-weight: 400;
         }
       }
     }

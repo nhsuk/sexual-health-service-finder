@@ -10,7 +10,7 @@ module.exports = config =>
     res.locals.symptoms = req.query.symptoms;
     res.locals.age = req.query.age;
     res.locals.type = queryMapper.mapServiceType(req.query);
-    res.locals.origin = queryMapper.mapServiceChoice(req.query);
+    res.locals.origin = queryMapper.mapServiceChoice(req.query, res.locals.age);
     res.locals.location = req.query.location;
     res.locals.locationHeading = queryMapper.getLocationHeading(req.query);
     res.locals.correctLocationParams = res.locals.locationHeading;
