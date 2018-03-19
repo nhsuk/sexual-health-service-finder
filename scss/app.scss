@@ -74,6 +74,30 @@ body {
       transform: rotate(-45deg);
     }
   }
+  .multiple-choice--description {
+    padding: 0 32px 32px 32px;
+    border: 3px solid $grey-3;
+    margin: 0 0 20px 0;
+    &:first-of-type {
+      margin: 32px 0 20px 0;
+    }
+    &:last-of-type {
+      margin: 0;
+    }
+    label {
+      span {
+        &.multiple--choice-option {
+          margin-top: 0;
+        }
+        &.multiple--choice-option-description {
+          font-weight: 200;
+        }
+      }
+    }
+    &.multiple-choice--selected {
+      background-color: $white;
+    }
+  }
 }
 
 .sr-only,

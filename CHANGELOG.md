@@ -1,4 +1,9 @@
-0.3.0 / TBA
+0.4.0 / TBA
+=======
+- Choose pages
+- Search result pages
+
+0.3.0 / 2018-03-19
 =======
 - Error pages
 - Symptoms page

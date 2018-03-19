@@ -20,9 +20,15 @@ function renderSeeExpertUnder16Page(req, res) {
   renderer.recommend(req, res);
 }
 
+function renderChooseTestUnder25Page(req, res) {
+  res.locals.under25 = true;
+  renderer.choose(req, res);
+}
+
 module.exports = {
   renderAgePage,
   renderAgePageWithError,
+  renderChooseTestUnder25Page,
   renderSeeExpertUnder16Page,
   renderSymptomsWithError,
 };
