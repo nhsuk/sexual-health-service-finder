@@ -31,8 +31,6 @@ services:
 
   sexual-health-service-finder-db:
     image: "nhsuk/elasticsearch-updater-snapshot:${elasticsearch_updater_snapshot_docker_image_tag-20180308}"
-    ports:
-      - 9200:9200
 
 volumes:
   node_modules:

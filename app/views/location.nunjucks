@@ -17,7 +17,7 @@
   <div class="reading-width">
     <div class="form-item-wrapper">
       <div class="form-group {% if errorMessage %} error {% endif %}">
-        <label class="form-label-bold" for="location">Enter a postcode.</label>
+        <label class="form-label-bold" for="location">Enter a in England</label>
           <div class="form-group">
             <input autocomplete="off" type="text" class="form-control" name="location" id="location" value=""{% if errorMessage %} aria-describedby="error-message" aria-invalid="true"{% endif %}>
           </div>

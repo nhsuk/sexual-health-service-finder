@@ -1,0 +1,41 @@
+version: '2.1'
+
+services:
+
+  tests:
+    extends:
+      file: docker-compose.yml
+      service: base-app
+    command: scripts/container/tests
+    volumes:
+      - sexual-health-service-finder-tests-node_modules:/code/node_modules
+    environment:
+      NODE_ENV: test
+    user: root
+    links:
+      - sexual-health-service-finder-db:es
+
+  tests-integration:
+    extends:
+      file: docker-compose.yml
+      service: base-app
+    command: scripts/container/integration-tests
+    volumes:
+      - sexual-health-service-finder-test-ci-node_modules:/code/node_modules
+    environment:
+      COVERALLS_REPO_TOKEN: ${COVERALLS_REPO_TOKEN}
+      NODE_ENV: development
+      TRAVIS: ${TRAVIS}
+      TRAVIS_BRANCH: ${TRAVIS_BRANCH}
+      TRAVIS_COMMIT: ${TRAVIS_COMMIT}
+      TRAVIS_JOB_ID: ${TRAVIS_JOB_ID}
+    user: root
+    links:
+      - sexual-health-service-finder-db:es
+
+  sexual-health-service-finder-db:
+    image: "nhsuk/elasticsearch-updater-snapshot:${elasticsearch_updater_snapshot_docker_image_tag-20180308}"
+
+volumes:
+  sexual-health-service-finder-tests-node_modules:
+  sexual-health-service-finder-test-ci-node_modules:

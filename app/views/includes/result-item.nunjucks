@@ -23,7 +23,7 @@
 
 {% if service.address %}
   <p class="results__item__link">
-    <a class="maplink" href="{{service.mapUrl}}">See map and directions</a>
+    <a class="maplink" href="{{service.mapUrl}}" target="_blank">See map and directions<span class="sr-only"> for {{ service.name }} at {{ service.address.line1 }}</span></a>
   </p>
 {% endif %}
 

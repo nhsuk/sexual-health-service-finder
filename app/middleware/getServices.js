@@ -6,7 +6,8 @@ const elasticsearchClient = require('../lib/elasticsearchClient');
 // const esQueryBuilder = require('../lib/esQueryBuilder');
 const esGeoQueryBuilder = require('../lib/esGeoQueryBuilder');
 const esGetServiceHistogram = require('../lib/promHistograms').esGetServices;
-// const esQueryLabelName = require('../lib/constants').promESQueryLabelName;
+const esQueryLabelName = require('../lib/constants').promESQueryLabelName;
+const constants = require('../lib/constants');
 
 function handleError(error, next) {
   const errMsg = 'Error with ES';
@@ -30,18 +31,30 @@ function mapResults(results, res) {
   });
 }
 
+function getEsQuery(postcodeLocationDetails, searchType, size) {
+  const esQuery = {
+    label: searchType,
+    query: esGeoQueryBuilder.build(postcodeLocationDetails.location, searchType, size),
+  };
+  return esQuery;
+}
+
 function getServices(req, res, next) {
   const location = res.locals.location;
   const resultsLimit = res.locals.resultsLimit;
   const postcodeLocationDetails = res.locals.postcodeLocationDetails;
-  const esQuery = esGeoQueryBuilder.build(postcodeLocationDetails.location, resultsLimit);
-  log.info('query ', esQuery);
+  const esQuery = getEsQuery(
+    postcodeLocationDetails,
+    constants.searchTypes.sexperts,
+    resultsLimit
+  );
+  log.info('query ', esQuery.query);
 
   const endTimer = esGetServiceHistogram.startTimer();
   const timerLabel = {};
-  // timerLabel[esQueryLabelName] = esQuery.label;
+  timerLabel[esQueryLabelName] = esQuery.label;
   elasticsearchClient
-    .search(esQuery)
+    .search(esQuery.query)
     .then((results) => {
       endTimer(timerLabel);
       log.info({

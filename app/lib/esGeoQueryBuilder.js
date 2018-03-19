@@ -1,6 +1,7 @@
 const getBaseQuery = require('./utils/getBaseQuery');
+const getFilter = require('./utils/getFilteredOutTermsQuery');
 
-function build(location, size) {
+function build(location, searchType, size) {
   const query = getBaseQuery(size);
 
   query.body.query.bool.filter = {
@@ -27,7 +28,10 @@ function build(location, size) {
     },
   ];
 
-  query.body.query.bool.must = { match_all: {} };
+  if (getFilter(searchType)) {
+    query.body.query.bool.must_not = getFilter(searchType).mustNotClause;
+    query.body.query.bool.must = getFilter(searchType).mustClause;
+  }
 
   return query;
 }

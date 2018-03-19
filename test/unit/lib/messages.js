@@ -1,5 +1,5 @@
-const messages = require('../../../app/lib/messages');
 const chai = require('chai');
+const messages = require('../../../app/lib/messages');
 
 const expect = chai.expect;
 
@@ -21,7 +21,7 @@ describe('messages', () => {
   describe('empty postcode message', () => {
     it('should have an error message for an empty postcode', () => {
       const message = messages.emptyPostcodeMessage();
-      expect(message).to.contain('You must enter a postcode to find the service you are looking for.');
+      expect(message).to.contain('You must enter a postcode.');
     });
   });
 
