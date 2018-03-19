@@ -1,31 +1,60 @@
 {% if service.distance %}
-  <p class="results__address">
+  <p class="results__address results__address-distance">
   Distance: {{ service.distance | float | round(2) }} miles
   </p>
 {% endif %}
+
 <h3 class="results__name">
   {{ service.name }}
 </h3>
+
 {% if service.address %}
   <p class="results__address">
     {% if service.address.addressLines %} {{ service.address.addressLines | safe | replace(",", ", ") }}, {% endif %}
     {% if service.address.postcode %} {{ service.address.postcode }} {% endif %}
   </p>
 {% endif %}
+
 {% if service.contacts %}
   <p class="results__telephone">
     {% if service.contacts.telephone %} {{ service.contacts.telephone }} {% endif %}
   </p>
 {% endif %}
 
-{% if service.openingTimes %}
-  <p class="results__openingTimes">
-    {{ service.openingTimes }}
+{% if service.address %}
+  <p class="results__item__link">
+    <a class="maplink" href="{{service.mapUrl}}">See map and directions</a>
   </p>
 {% endif %}
 
+{% if service.openingTimes %}
+  <details class="" role="group">
+    <summary data-analytics="summary" role="button" aria-controls="details-content-0" aria-expanded="true">
+      <span class="details__summary">See opening times</span>
+    </summary>
+
+    <div class="details__content" id="details-content-0" aria-hidden="false">
+      <div class="reading-width">
+        <p class="results__openingTimes">
+          {{ service.openingTimes }}
+        </p>
+      </div>
+    </div>
+  </details>
+{% endif %}
+
 {% if service.serviceDetails %}
-  <p class="results__serviceDetails">
-    {{ service.serviceDetails }}
-  </p>
+  <details class="" role="group">
+    <summary data-analytics="summary" role="button" aria-controls="details-content-0" aria-expanded="true">
+      <span class="details__summary">See service information</span>
+    </summary>
+
+    <div class="details__content" id="details-content-0" aria-hidden="false">
+      <div class="reading-width">
+        <p class="results__serviceDetails">
+          {{ service.serviceDetails }}
+        </p>
+      </div>
+    </div>
+  </details>
 {% endif %}

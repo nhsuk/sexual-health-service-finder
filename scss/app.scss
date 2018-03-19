@@ -16,8 +16,10 @@ body {
     background-color: $white;
   }
   details {
-    background-color: $white;
-    padding: 32px;
+    &.details--country {
+      background-color: $white;
+      padding: 32px;
+    }
     summary {
       padding-top: 0;
       .details__summary--country {
@@ -282,6 +284,26 @@ form {
       list-style: none;
       margin:0;
       padding:0 16px;
+      li {
+        padding: 0;
+        border: none;
+        border-top: 2px solid #bac4c8;
+        &:first-of-type {
+          margin-top: 15px;
+        }
+      }
+      details {
+        margin-top: 16px;
+      }
+      .results__details {
+        padding: 20px 0;
+        p {
+          &.results__address-distance {
+            font-size: 16px;
+            margin-top: 0;
+          }
+        }
+      }
       &__item {
         margin-top:8px;
         p {
@@ -313,7 +335,6 @@ form {
         }
       }
       &__details {
-        padding: 0 32px 32px 32px;
         position: relative;
         .callout {
           display:block;
@@ -493,36 +514,4 @@ form {
     color: $white;
     margin-bottom: 32px;
     padding: 16px;
-}
-/*
-  Utilities
-*/
-.u-nomargin {
-  margin:0;
-}
-
-.u-margintop5 {
-  margin-top:5px;
-}
-
-/*
-  Other
-*/
-.local-header--question {
-    padding: 0;
-}
-
-
-.geo-locate {
-  display:none;
-  > div {
-    display: none;
-    img {
-      height:40px;
-      width:40px;
-    }
-  }
-  &--denied {
-    display: none;
-  }
 }

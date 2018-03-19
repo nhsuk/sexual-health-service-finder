@@ -1,12 +1,17 @@
 {% extends 'layout.nunjucks' %}
 
 {% block header %}
-<h1 class="sr-only" data-results="{{services.length}}" data-term="{{location}} class="local-header--title--question">Results</h1>
-<h1 class="local-header--title--question">Results</h1>
+<h1 class="local-header--title--question">Sexual health professionals near '{{location}}'</h1>
 {% endblock %}
 
 {% block content %}
-<div class="reading-width results">
+<div class="results">
+
+  <p>Here is a list of places where you can get tested by a sexual health professional.</p>
+
+  <h2 class="sr-only" data-results="{{services.length}}" data-term="{{location}} class="local-header--title--question">Results</h1>
+  <h2 class="local-header--title--question">Results</h1>
+
   <div class="grid-row">
     <ol class="results">
       {% for service in services %}
