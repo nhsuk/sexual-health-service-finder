@@ -29,9 +29,9 @@ function mapResults(results, res) {
         service.distance = result.sort[0];
       }
 
-      if ((result.address) && (result.address.addressLines) && (result.address.postcode)) {
+      if ((service.address) && (service.address.addressLines) && (service.address.postcode)) {
         service.address.fullAddress = serviceDataMapper
-          .addressFormatter(result.address.addressLines, result.address.postcode);
+          .addressFormatter(service.address.addressLines, service.address.postcode);
       }
     }
 

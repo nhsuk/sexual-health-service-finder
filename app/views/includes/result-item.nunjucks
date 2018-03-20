@@ -2,7 +2,7 @@
 
 {% if service.distance %}
   <p class="results__address results__address-distance">
-  Distance: {{ distance }} miles
+    Distance: {{ distance }} miles
   </p>
 {% endif %}
 
