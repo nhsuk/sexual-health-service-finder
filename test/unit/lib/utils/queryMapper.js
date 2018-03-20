@@ -1,6 +1,6 @@
-const queryMapper = require('../../../../app/lib/utils/queryMapper');
-const constants = require('../../../../app/lib/constants');
 const chai = require('chai');
+const constants = require('../../../../app/lib/constants');
+const queryMapper = require('../../../../app/lib/utils/queryMapper');
 
 const expect = chai.expect;
 

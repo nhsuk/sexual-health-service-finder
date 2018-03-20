@@ -15,7 +15,7 @@ function invalidPostcodeMessage(location) {
 }
 
 function outsideOfEnglandPostcodeMessage() {
-  return 'This is an England only service. Please enter an English postcode.';
+  return 'This is an England only service. Please scroll down for information for non-England services.';
 }
 
 function technicalProblems() {

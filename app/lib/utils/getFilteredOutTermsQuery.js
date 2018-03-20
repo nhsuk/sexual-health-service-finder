@@ -5,9 +5,7 @@ function getFilter(searchType) {
     const mustNotClause = [
       { match: { name: 'Marie Stopes' } },
       { match: { name: 'Young People Friendly Practice' } },
-      { match: { name: 'MESMAC' } },
       { match: { name: 'BPAS' } },
-      { match: { name: 'HIV' } },
     ];
     const mustClause = {
       match: {

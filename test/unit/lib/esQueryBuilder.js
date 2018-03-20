@@ -5,24 +5,6 @@ const esGeoQueryBuilder = require('../../../app/lib/esGeoQueryBuilder');
 
 const expect = chai.expect;
 
-function findKeyValuePair(obj, searchKey, searchValue) {
-  return Object.keys(obj).some((key) => {
-    const value = obj[key];
-
-    if (typeof value === 'object') {
-      if (findKeyValuePair(value, searchKey, searchValue)) {
-        return true;
-      }
-    }
-
-    if (key === searchKey && value === searchValue) {
-      return true;
-    }
-
-    return false;
-  });
-}
-
 describe('esGeoQueryBuilder', () => {
   const location = {
     lat: 52.71283117402151,
@@ -35,12 +17,39 @@ describe('esGeoQueryBuilder', () => {
     expect(query).to.be.an('object');
   });
 
-  xit('should populate the query with the location', () => {
-    const query = esGeoQueryBuilder.build(location, searchType, size);
-    expect(findKeyValuePair(query, 'location.coordinates', location))
+  it('should populate the query with the must clause for non empty searchType', () => {
+    const query = esGeoQueryBuilder.build(location, searchType);
+    expect(query.body.query.bool.must)
+      .to.not.equal(
+        undefined,
+        `"must clause found in\n${util.inspect(query, { depth: null })}`
+      );
+  });
+
+  it('should not populate the query with the must clause for empty searchType', () => {
+    const query = esGeoQueryBuilder.build(location, undefined, size);
+    expect(query.body.query.bool.must)
       .to.be.equal(
-        true,
-        `"query: ${location}" not found in\n${util.inspect(query, { depth: null })}`
+        undefined,
+        `"must clause not found in\n${util.inspect(query, { depth: null })}`
+      );
+  });
+
+  it('should populate the query with the must_not clause for non empty searchType', () => {
+    const query = esGeoQueryBuilder.build(location, searchType, size);
+    expect(query.body.query.bool.must_not)
+      .to.not.equal(
+        undefined,
+        `"must_not clause found in\n${util.inspect(query, { depth: null })}`
+      );
+  });
+
+  it('should not populate the query with the must_not clause for empty searchType', () => {
+    const query = esGeoQueryBuilder.build(location, undefined, size);
+    expect(query.body.query.bool.must_not)
+      .to.be.equal(
+        undefined,
+        `"must_not clause not found in\n${util.inspect(query, { depth: null })}`
       );
   });
 

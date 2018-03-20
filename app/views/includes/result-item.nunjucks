@@ -9,15 +9,15 @@
 </h3>
 
 {% if service.address %}
-  <p class="results__address">
+  <p class="results__address results__address-lines">
     {% if service.address.addressLines %} {{ service.address.addressLines | safe | replace(",", ", ") }}, {% endif %}
     {% if service.address.postcode %} {{ service.address.postcode }} {% endif %}
   </p>
 {% endif %}
 
 {% if service.contacts %}
-  <p class="results__telephone">
-    {% if service.contacts.telephone %} {{ service.contacts.telephone }} {% endif %}
+  <p class="results__address results__telephone">
+    {% if service.contacts.telephone %} <a href="tel:{{ service.contacts.telephone }}"> {{ service.contacts.telephone }} </a>{% endif %}
   </p>
 {% endif %}
 
@@ -28,7 +28,7 @@
 {% endif %}
 
 {% if service.openingTimes %}
-  <details class="" role="group">
+  <details class="results__item__opening-times" role="group">
     <summary data-analytics="summary" role="button" aria-controls="details-content-0" aria-expanded="true">
       <span class="details__summary">See opening times</span>
     </summary>
@@ -44,7 +44,7 @@
 {% endif %}
 
 {% if service.serviceDetails %}
-  <details class="" role="group">
+  <details class="results__item__service-details" role="group">
     <summary data-analytics="summary" role="button" aria-controls="details-content-0" aria-expanded="true">
       <span class="details__summary">See service information</span>
     </summary>

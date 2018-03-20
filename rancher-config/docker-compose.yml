@@ -5,7 +5,6 @@ services:
   shsf-frontend:
     image: "nhsuk/sexual-health-service-finder:${DOCKER_IMAGE_TAG}"
     environment:
-      CACHE_TIMEOUT_SECONDS: 1800
       ES_HOST: ${ES_HOST}
       GOOGLE_ANALYTICS_TRACKING_ID: ${GOOGLE_ANALYTICS_TRACKING_ID}
       HOTJAR_ANALYTICS_TRACKING_ID: ${HOTJAR_ANALYTICS_TRACKING_ID}

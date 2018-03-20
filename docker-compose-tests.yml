@@ -6,7 +6,7 @@ services:
     extends:
       file: docker-compose.yml
       service: base-app
-    command: yarn test-watch
+    command: scripts/container/test-watch
     volumes:
       - node_modules:/code/node_modules
       - .:/code
@@ -15,7 +15,7 @@ services:
     extends:
       file: docker-compose.yml
       service: base-app
-    command: yarn run test-ci
+    command: scripts/container/ci-test-watch
     user: root
     links:
       - sexual-health-service-finder-db:es

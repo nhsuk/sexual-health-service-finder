@@ -82,6 +82,31 @@ describe('mapLink', () => {
       expect(results[0].mapUrl).to.be.equal(expectedMapLink);
     });
 
+    it('should not add name as a property if it contains a special symbol', () => {
+      const inputList = [{
+        address: {
+          city: '',
+          county: undefined,
+          line1: 'line1',
+          line2: '',
+          line3: null,
+          postcode: 'AB12 3CD',
+        },
+        name: 'name @ subname',
+      }];
+
+      const destination = 'line1,AB12 3CD';
+      const encodedQuery = `daddr=${qs.escape(destination)}&near=${qs.escape(destination)}&saddr=${postcodeLocationDetails.location.lat}%2C${postcodeLocationDetails.location.lon}`;
+      const expectedMapLink = `https://maps.google.com/maps?${encodedQuery}`;
+
+      const results = mapLink.addUrl(postcodeLocationDetails, inputList);
+
+      expect(results).to.not.equal(undefined);
+      expect(results).to.be.an('array');
+      expect(results.length).to.be.equal(1);
+      expect(results[0].mapUrl).to.be.equal(expectedMapLink);
+    });
+
     it('should use coordinates as start address for location searches', () => {
       const inputList = [{
         address: {

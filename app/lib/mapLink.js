@@ -10,8 +10,14 @@ function joinAllTruthyValues(obj) {
 function addUrl(postcodeLocationDetails, inputList) {
   return inputList.map((item) => {
     const address = joinAllTruthyValues(item.address);
-    const fullNameAndAddress = `${item.name},${address}`;
     const saddr = `${postcodeLocationDetails.location.lat},${postcodeLocationDetails.location.lon}`;
+    let fullNameAndAddress;
+
+    if (item.name.includes('@')) {
+      fullNameAndAddress = address;
+    } else {
+      fullNameAndAddress = `${item.name},${address}`;
+    }
 
     const params = {
       daddr: fullNameAndAddress,

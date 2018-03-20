@@ -35,7 +35,7 @@ describe('messages', () => {
   describe('out of England postcode message', () => {
     it('should have an error message for out of England postcode', () => {
       const message = messages.outsideOfEnglandPostcodeMessage();
-      expect(message).to.contain('This is an England only service. Please enter an English postcode.');
+      expect(message).to.contain('This is an England only service. Please scroll down for information for non-England services.');
     });
   });
 

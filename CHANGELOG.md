@@ -1,7 +1,9 @@
-0.4.0 / TBA
+0.4.0 / TBC
 =======
 - Choose pages
-- Search result pages
+- ES integration
+- Error messages tweaking
+- Search result pages design
 
 0.3.0 / 2018-03-19
 =======

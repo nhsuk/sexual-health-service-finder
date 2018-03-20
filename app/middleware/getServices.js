@@ -1,9 +1,6 @@
 const VError = require('verror').VError;
 const log = require('../lib/logger');
-// const gpDataMapper = require('../lib/utils/gpDataMapper');
-// const resultsFormat = require('../lib/utils/resultsHeaderFormater');
 const elasticsearchClient = require('../lib/elasticsearchClient');
-// const esQueryBuilder = require('../lib/esQueryBuilder');
 const esGeoQueryBuilder = require('../lib/esGeoQueryBuilder');
 const esGetServiceHistogram = require('../lib/promHistograms').esGetServices;
 const esQueryLabelName = require('../lib/constants').promESQueryLabelName;

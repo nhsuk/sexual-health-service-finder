@@ -15,11 +15,11 @@ function expectErrorMessage(res, message) {
   expect(error).to.contain(message);
 }
 
-function makeSearchRequestAndCheckExpectations(postcode, assertions) {
+function makeSearchRequestAndCheckExpectations(location, assertions) {
   chai.request(app)
     .get(results)
     .query({
-      location: postcode,
+      location,
       origin: constants.serviceChoices.symptoms,
       type: constants.serviceTypes.professional,
     })
@@ -27,31 +27,31 @@ function makeSearchRequestAndCheckExpectations(postcode, assertions) {
 }
 
 describe('Results page', () => {
-  it('should return a descriptive message when postcode is blank', (done) => {
-    const postcode = '';
+  it('should return a descriptive message when location is blank', (done) => {
+    const location = '';
     const message = messages.emptyPostcodeMessage();
 
-    makeSearchRequestAndCheckExpectations(postcode, (err, res) => {
+    makeSearchRequestAndCheckExpectations(location, (err, res) => {
       expectErrorMessage(res, message);
       done();
     });
   });
 
-  it('should return a descriptive message when postcode is invalid', (done) => {
-    const postcode = 'LS1 234';
-    const message = messages.invalidPostcodeMessage(postcode);
+  it('should return a descriptive message when location is invalid', (done) => {
+    const location = 'LS1 234';
+    const message = messages.invalidPostcodeMessage(location);
 
-    makeSearchRequestAndCheckExpectations(postcode, (err, res) => {
+    makeSearchRequestAndCheckExpectations(location, (err, res) => {
       expectErrorMessage(res, message);
       done();
     });
   });
 
-  it('should return a descriptive message for out of England postcodes', (done) => {
-    const postcode = 'EH1';
+  it('should return a descriptive message for out of England locations', (done) => {
+    const location = 'EH1';
     const message = messages.outsideOfEnglandPostcodeMessage();
 
-    makeSearchRequestAndCheckExpectations(postcode, (err, res) => {
+    makeSearchRequestAndCheckExpectations(location, (err, res) => {
       expectErrorMessage(res, message);
       done();
     });
