@@ -18,4 +18,3 @@ function getFilter(searchType) {
 }
 
 module.exports = getFilter;
-

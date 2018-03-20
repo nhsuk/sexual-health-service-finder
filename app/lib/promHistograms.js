@@ -1,6 +1,10 @@
 const promClient = require('./promBundle').promClient;
 const buckets = require('./constants').promHistogramBuckets;
+<<<<<<< HEAD
 const esQueryLabelName = require('./constants').promESQueryLabelName;
+=======
+const esQueryLabelName = require('./constants').promEsQueryLabelName;
+>>>>>>> 42efddf... :scissors: refactor, tidy views
 
 module.exports = {
   esGetServices: new promClient.Histogram({

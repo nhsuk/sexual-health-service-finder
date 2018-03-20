@@ -1,10 +1,16 @@
 const VError = require('verror').VError;
-const log = require('../lib/logger');
+const constants = require('../lib/constants');
 const elasticsearchClient = require('../lib/elasticsearchClient');
 const esGeoQueryBuilder = require('../lib/esGeoQueryBuilder');
 const esGetServiceHistogram = require('../lib/promHistograms').esGetServices;
+<<<<<<< HEAD
 const esQueryLabelName = require('../lib/constants').promESQueryLabelName;
 const constants = require('../lib/constants');
+=======
+const esQueryLabelName = require('../lib/constants').promEsQueryLabelName;
+const serviceDataMapper = require('../lib/utils/serviceDataMapper');
+const log = require('../lib/logger');
+>>>>>>> 42efddf... :scissors: refactor, tidy views
 
 function handleError(error, next) {
   const errMsg = 'Error with ES';
@@ -22,6 +28,11 @@ function mapResults(results, res) {
       if (result.sort) {
         service.distance = result.sort[0];
       }
+
+      if ((result.address) && (result.address.addressLines) && (result.address.postcode)) {
+        service.address.fullAddress = serviceDataMapper
+          .addressFormatter(result.address.addressLines, result.address.postcode);
+      }
     }
 
     return service;
@@ -29,11 +40,10 @@ function mapResults(results, res) {
 }
 
 function getEsQuery(postcodeLocationDetails, searchType, size) {
-  const esQuery = {
+  return {
     label: searchType,
     query: esGeoQueryBuilder.build(postcodeLocationDetails.location, searchType, size),
   };
-  return esQuery;
 }
 
 function getServices(req, res, next) {
@@ -45,7 +55,6 @@ function getServices(req, res, next) {
     constants.searchTypes.sexperts,
     resultsLimit
   );
-  log.info('query ', esQuery.query);
 
   const endTimer = esGetServiceHistogram.startTimer();
   const timerLabel = {};
@@ -59,7 +68,7 @@ function getServices(req, res, next) {
         location,
         postcodeLocationDetails,
         resultCount: results.hits.total,
-      }, 'getServices');
+      }, 'getServices ES query and params');
       res.locals.resultsCount = results.hits.total;
       mapResults(results, res);
     })

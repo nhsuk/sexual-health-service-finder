@@ -13,6 +13,26 @@ services:
       - node_modules:/code/node_modules
       - .:/code
 
+  tests-unit:
+    extends:
+      file: docker-compose.yml
+      service: base-app
+    command: yarn run test-unit-watch
+    volumes:
+      - node_modules:/code/node_modules
+      - .:/code
+
+  tests-integration:
+    extends:
+      file: docker-compose.yml
+      service: base-app
+    command: scripts/container/integration-tests
+    links:
+      - sexual-health-service-finder-db:es
+    volumes:
+      - node_modules:/code/node_modules
+      - .:/code
+
   test-ci:
     extends:
       file: docker-compose.yml

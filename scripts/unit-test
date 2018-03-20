@@ -2,4 +2,4 @@
 # -p flag stands for --project-name and will create a different network for the test container
 # so it won't interfere with the app container
 docker-compose -p tests-integration -f docker-compose-tests.yml down -v
-docker-compose -p tests-integration -f docker-compose-tests.yml up --build --force-recreate tests-integration
+docker-compose -p tests-integration -f docker-compose-tests.yml up --build --force-recreate tests-unit
