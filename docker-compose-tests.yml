@@ -7,6 +7,8 @@ services:
       file: docker-compose.yml
       service: base-app
     command: scripts/container/test-watch
+    links:
+      - sexual-health-service-finder-db:es
     volumes:
       - node_modules:/code/node_modules
       - .:/code
@@ -15,7 +17,7 @@ services:
     extends:
       file: docker-compose.yml
       service: base-app
-    command: scripts/container/ci-test-watch
+    command: scripts/container/ci-tests
     user: root
     links:
       - sexual-health-service-finder-db:es
