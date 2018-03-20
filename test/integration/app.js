@@ -14,14 +14,14 @@ describe('redirection', () => {
     expect(res).to.have.status(200);
     expect(res).to.be.html;
     expect(res).to.redirect;
-    expect(res.req.path).to.equal(`${constants.SITE_ROOT}/`);
+    expect(res.req.path).to.equal(`${constants.siteRoot}/`);
   });
 });
 
 describe('An unknown page', () => {
   it('should return a 404', async () => {
     try {
-      await chai.request(server).get(`${constants.SITE_ROOT}/not-known`);
+      await chai.request(server).get(`${constants.siteRoot}/not-known`);
     } catch (err) {
       expect(err).to.have.status(404);
       expect(err.response).to.be.html;

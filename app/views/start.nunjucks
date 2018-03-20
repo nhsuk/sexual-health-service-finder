@@ -37,7 +37,7 @@
       
         <p>We may also use your answers to improve the NHS website. <a href="https://www.nhs.uk/aboutNHSChoices/aboutnhschoices/termsandconditions/Pages/Privacypolicy.aspx">Read the full NHS.UK privacy policy</a>.</p>
 
-        <a href="{{ SITE_ROOT }}/symptoms" class="button start-button" role="button">
+        <a href="{{ siteRoot }}/symptoms" class="button start-button" role="button">
         Start now
         </a>
 

@@ -9,7 +9,7 @@ const expect = chai.expect;
 
 chai.use(chaiHttp);
 
-const chooseRoute = `${constants.SITE_ROOT}/choose`;
+const chooseRoute = `${constants.siteRoot}/choose`;
 
 describe('Choose page', () => {
   it('page title should be \'How do you want to get a test?\' if age question is answered 16-24', async () => {

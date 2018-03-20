@@ -14,8 +14,8 @@ describe('queryMapper', () => {
 
     it('should return a sexual professionals message when the query is related to professionals and origin is any', () => {
       const query = {
-        origin: constants.SERVICE_CHOICES.symptoms,
-        type: constants.SERVICE_TYPES.professional,
+        origin: constants.serviceChoices.symptoms,
+        type: constants.serviceTypes.professional,
       };
       const output = queryMapper.getLocationHeading(query);
       expect(output).to.equal('Where would you like to see a sexual health professional?');
@@ -23,8 +23,8 @@ describe('queryMapper', () => {
 
     it('should return a free kit message when the query is related to kit and age between 16 and 25', () => {
       const query = {
-        origin: constants.SERVICE_CHOICES['16to25'],
-        type: constants.SERVICE_TYPES.kit,
+        origin: constants.serviceChoices['16to25'],
+        type: constants.serviceTypes.kit,
       };
       const output = queryMapper.getLocationHeading(query);
       expect(output).to.equal('Where would you like to collect your free test kit?');
@@ -32,8 +32,8 @@ describe('queryMapper', () => {
 
     it('should return a paid for kit message when the query is related to kit and age is over 25', () => {
       const query = {
-        origin: constants.SERVICE_CHOICES.over25,
-        type: constants.SERVICE_TYPES.kit,
+        origin: constants.serviceChoices.over25,
+        type: constants.serviceTypes.kit,
       };
       const output = queryMapper.getLocationHeading(query);
       expect(output).to.equal('Where would you like to collect your test kit?');
@@ -41,8 +41,8 @@ describe('queryMapper', () => {
 
     it('should return a redirect message when the query is related to online', () => {
       const query = {
-        origin: constants.SERVICE_CHOICES.over25,
-        type: constants.SERVICE_TYPES.online,
+        origin: constants.serviceChoices.over25,
+        type: constants.serviceTypes.online,
       };
       const output = queryMapper.getLocationHeading(query);
       expect(output).to.equal('redirect');
@@ -52,31 +52,31 @@ describe('queryMapper', () => {
   describe('mapServiceType', () => {
     it('should return the query type if type is set', () => {
       const query = {
-        type: constants.SERVICE_TYPES.professional,
+        type: constants.serviceTypes.professional,
       };
       const output = queryMapper.mapServiceType(query);
-      expect(output).to.equal(constants.SERVICE_TYPES.professional);
+      expect(output).to.equal(constants.serviceTypes.professional);
     });
 
     it('should map to professional service type if query contains age is under 16', () => {
       const query = {
-        age: constants.AGE.under16,
+        age: constants.age.under16,
       };
       const output = queryMapper.mapServiceType(query);
-      expect(output).to.equal(constants.SERVICE_TYPES.professional);
+      expect(output).to.equal(constants.serviceTypes.professional);
     });
 
     it('should map to professional service type if query contains symptoms', () => {
       const query = {
-        symptoms: constants.SYMPTOMS.yes,
+        symptoms: constants.symptoms.yes,
       };
       const output = queryMapper.mapServiceType(query);
-      expect(output).to.equal(constants.SERVICE_TYPES.professional);
+      expect(output).to.equal(constants.serviceTypes.professional);
     });
 
     it('should map to undefined if query contains no symptoms', () => {
       const query = {
-        symptoms: constants.SYMPTOMS.false,
+        symptoms: constants.symptoms.false,
       };
       const output = queryMapper.mapServiceType(query);
       expect(output).to.equal(undefined);
@@ -84,7 +84,7 @@ describe('queryMapper', () => {
 
     it('should map to undefined if query contains age is over 16', () => {
       const query = {
-        age: constants.AGE.over25,
+        age: constants.age.over25,
       };
       const output = queryMapper.mapServiceType(query);
       expect(output).to.equal(undefined);
@@ -94,31 +94,31 @@ describe('queryMapper', () => {
   describe('mapServiceChoice', () => {
     it('should return the query origin if origin is set', () => {
       const query = {
-        origin: constants.SERVICE_CHOICES.symptoms,
+        origin: constants.serviceChoices.symptoms,
       };
       const output = queryMapper.mapServiceChoice(query);
-      expect(output).to.equal(constants.SERVICE_CHOICES.symptoms);
+      expect(output).to.equal(constants.serviceChoices.symptoms);
     });
 
     it('should map to under 16 service choice if query contains age is under 16', () => {
       const query = {
-        age: constants.AGE.under16,
+        age: constants.age.under16,
       };
       const output = queryMapper.mapServiceChoice(query);
-      expect(output).to.equal(constants.SERVICE_CHOICES.under16);
+      expect(output).to.equal(constants.serviceChoices.under16);
     });
 
     it('should map to symptoms service choice if query contains symptoms', () => {
       const query = {
-        symptoms: constants.SYMPTOMS.yes,
+        symptoms: constants.symptoms.yes,
       };
       const output = queryMapper.mapServiceChoice(query);
-      expect(output).to.equal(constants.SERVICE_CHOICES.symptoms);
+      expect(output).to.equal(constants.serviceChoices.symptoms);
     });
 
     it('should map to undefined if query contains no symptoms', () => {
       const query = {
-        symptoms: constants.SYMPTOMS.false,
+        symptoms: constants.symptoms.false,
       };
       const output = queryMapper.mapServiceChoice(query);
       expect(output).to.equal(undefined);
@@ -126,18 +126,18 @@ describe('queryMapper', () => {
 
     it('should map to 16 to 25 if query contains age is between 16 and 25', () => {
       const query = {
-        age: constants.AGE['16to25'],
+        age: constants.age['16to25'],
       };
       const output = queryMapper.mapServiceChoice(query);
-      expect(output).to.equal(constants.SERVICE_CHOICES['16to25']);
+      expect(output).to.equal(constants.serviceChoices['16to25']);
     });
 
     it('should map to over 25 if query contains age is over 25', () => {
       const query = {
-        age: constants.AGE.over25,
+        age: constants.age.over25,
       };
       const output = queryMapper.mapServiceChoice(query);
-      expect(output).to.equal(constants.SERVICE_CHOICES.over25);
+      expect(output).to.equal(constants.serviceChoices.over25);
     });
 
     it('should map to undefined if no age or symptoms', () => {

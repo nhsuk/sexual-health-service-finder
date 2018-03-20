@@ -1,22 +1,20 @@
 const constants = require('../constants');
+const comparisons = require('./comparisons');
 
 function getLocationHeading(query) {
   if (query.type) {
-    if ((query.type.localeCompare(constants.SERVICE_TYPES.professional, 'en', { sensitivity: 'base' }) === 0)
-      && ((query.origin === constants.SERVICE_CHOICES.symptoms)
-        || (query.origin === constants.SERVICE_CHOICES.under16)
-        || (query.origin === constants.SERVICE_CHOICES['16to25'])
-        || (query.origin === constants.SERVICE_CHOICES.over25))) {
+    if ((comparisons.areEqual(query.type, constants.serviceTypes.professional))
+      && (comparisons.getValues(constants.serviceChoices).includes(query.origin))) {
       return 'Where would you like to see a sexual health professional?';
     }
-    if (query.type.localeCompare(constants.SERVICE_TYPES.kit, 'en', { sensitivity: 'base' }) === 0) {
-      if (query.origin === constants.SERVICE_CHOICES['16to25']) {
+    if (comparisons.areEqual(query.type, constants.serviceTypes.kit)) {
+      if (query.origin === constants.serviceChoices['16to25']) {
         return 'Where would you like to collect your free test kit?';
-      } else if (query.origin === constants.SERVICE_CHOICES.over25) {
+      } else if (query.origin === constants.serviceChoices.over25) {
         return 'Where would you like to collect your test kit?';
       }
     }
-    if (query.type.localeCompare(constants.SERVICE_TYPES.online, 'en', { sensitivity: 'base' }) === 0) {
+    if (comparisons.areEqual(query.type, constants.serviceTypes.online)) {
       return 'redirect';
     }
   }
@@ -27,9 +25,9 @@ function mapServiceType(query) {
   if (query.type) {
     return query.type;
   }
-  if (((query.age) && (query.age === constants.AGE.under16))
-    || ((query.symptoms) && (query.symptoms === constants.SYMPTOMS.yes))) {
-    return constants.SERVICE_TYPES.professional;
+  if (((query.age) && (query.age === constants.age.under16))
+    || ((query.symptoms) && (query.symptoms === constants.symptoms.yes))) {
+    return constants.serviceTypes.professional;
   }
   return undefined;
 }
@@ -38,17 +36,21 @@ function mapServiceChoice(query) {
   if (query.origin) {
     return query.origin;
   }
-  if ((query.age) && (query.age === constants.AGE.under16)) {
-    return constants.SERVICE_CHOICES.under16;
+
+  if ((query.symptoms) && (query.symptoms === constants.symptoms.yes)) {
+    return constants.serviceChoices.symptoms;
   }
-  if ((query.symptoms) && (query.symptoms === constants.SYMPTOMS.yes)) {
-    return constants.SERVICE_CHOICES.symptoms;
-  }
-  if ((query.age) && (query.age === constants.AGE['16to25'])) {
-    return constants.SERVICE_CHOICES['16to25'];
-  }
-  if ((query.age) && (query.age === constants.AGE.over25)) {
-    return constants.SERVICE_CHOICES.over25;
+
+  if (query.age) {
+    if (query.age === constants.age.under16) {
+      return constants.serviceChoices.under16;
+    }
+    if (query.age === constants.age['16to25']) {
+      return constants.serviceChoices['16to25'];
+    }
+    if (query.age === constants.age.over25) {
+      return constants.serviceChoices.over25;
+    }
   }
   return undefined;
 }

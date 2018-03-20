@@ -5,6 +5,7 @@ const postcodeLookup = require('../app/middleware/postcodeLookup');
 const renderer = require('../app/middleware/renderer');
 const selectionValidatorSymptoms = require('../app/middleware/selectionValidatorSymptoms');
 const selectionValidatorAge = require('../app/middleware/selectionValidatorAge');
+const selectionValidatorChoose = require('../app/middleware/selectionValidatorChoose');
 
 router.get(
   '/',
@@ -35,6 +36,7 @@ router.get(
 
 router.get(
   '/location',
+  selectionValidatorChoose,
   renderer.location
 );
 

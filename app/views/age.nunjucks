@@ -1,42 +1,38 @@
 {% extends 'layout.nunjucks' %}
 
 {% block header %}
-<h1 class="local-header--title--question">How old are you?</h1>
+  <h1 class="local-header--title--question">How old are you?</h1>
 {% endblock %}
 
 {% block content %}
-    {% if errorMessage %}
-    <div class="error-summary">
-        <h2 class="local-header--error error-summary-heading">
-            {{ errorMessage }}
-        </h2>
+  {% if errorMessage %}
+  <div class="error-summary">
+    <h2 class="local-header--error error-summary-heading">
+      {{ errorMessage }}
+    </h2>
+  </div>
+  {% endif %}
+
+  <form method="get" class="form" action="{{ siteRoot }}/choose">
+    <div class="reading-width">
+      <div class="form-group {% if errorMessage %} error {% endif %}">
+        <fieldset id="age">
+          <div class="multiple-choice">
+            <input id="1" name="age" type="radio" value="1" {% if errorMessage %} aria-describedby="error-message" aria-invalid="true"{% endif %}>
+            <label class="multiple-choice--radio" for="1">15 or younger</label>
+          </div>
+          <div class="multiple-choice">
+            <input id="2" name="age" type="radio" value="2" {% if errorMessage %} aria-describedby="error-message" aria-invalid="true"{% endif %}>
+            <label class="multiple-choice--radio" for="2">16 to 24</label>
+          </div>
+          <div class="multiple-choice">
+            <input id="3" name="age" type="radio" value="3" {% if errorMessage %} aria-describedby="error-message" aria-invalid="true"{% endif %}>
+            <label class="multiple-choice--radio" for="3">25 or older</label>
+          </div>
+        </fieldset>
+      </div>
+
+      <input type="submit" class="button" value="Continue">
     </div>
-    {% endif %}
-
-    <form method="get" class="form" action="{{ SITE_ROOT }}/choose">
-        <div class="reading-width">
-            {% if errorMessage %}
-            <div class="form-group error">
-            {% else %}
-            <div class="form-group">
-            {% endif %}
-                <fieldset id="age">
-                    <div class="multiple-choice">
-                        <input id="1" name="age" type="radio" value="1" {% if errorMessage %} aria-describedby="error-message" aria-invalid="true"{% endif %}>
-                        <label class="multiple-choice--radio" for="1">15 or younger</label>
-                    </div>
-                    <div class="multiple-choice">
-                        <input id="2" name="age" type="radio" value="2" {% if errorMessage %} aria-describedby="error-message" aria-invalid="true"{% endif %}>
-                        <label class="multiple-choice--radio" for="2">16 to 24</label>
-                    </div>
-                    <div class="multiple-choice">
-                        <input id="3" name="age" type="radio" value="3" {% if errorMessage %} aria-describedby="error-message" aria-invalid="true"{% endif %}>
-                        <label class="multiple-choice--radio" for="3">25 or older</label>
-                    </div>
-                </fieldset>
-            </div>
-
-            <input type="submit" class="button" value="Continue">
-        </div>
-    </form>
+  </form>
 {% endblock %}

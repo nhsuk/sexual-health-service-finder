@@ -5,8 +5,8 @@ module.exports = config =>
     res.locals.GOOGLE_ANALYTICS_TRACKING_ID = config.googleAnalyticsId;
     res.locals.WEBTRENDS_ANALYTICS_TRACKING_ID = config.webtrendsId;
     res.locals.HOTJAR_ANALYTICS_TRACKING_ID = config.hotjarId;
-    res.locals.SITE_ROOT = req.app.locals.SITE_ROOT;
-    res.locals.ASSETS_URL = req.app.locals.ASSETS_URL;
+    res.locals.siteRoot = req.app.locals.siteRoot;
+    res.locals.assetsUrl = req.app.locals.assetsUrl;
     res.locals.symptoms = req.query.symptoms;
     res.locals.age = req.query.age;
     res.locals.choices = req.query.choices;

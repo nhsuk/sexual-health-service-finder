@@ -1,36 +1,28 @@
 {% extends 'layout.nunjucks' %}
 
 {% block header %}
-    <h1 class="local-header--title--question">How do you want to get a test?</h1>
+  <h1 class="local-header--title--question">How do you want to get a test?</h1>
 {% endblock %}
 {% block content %}
-    {% if errorMessage %}
-    <div class="error-summary">
-        <h2 class="local-header--error error-summary-heading">
-            {{ errorMessage }}
-        </h2>
+  {% if errorMessage %}
+  <div class="error-summary">
+    <h2 class="local-header--error error-summary-heading">
+      {{ errorMessage }}
+    </h2>
+  </div>
+  {% endif %}
+
+  <form method="get" class="form" action="{{ siteRoot }}/location">
+    <div class="reading-width">
+      <div class="form-group {% if errorMessage %} error {% endif %}">
+        <input type="hidden" name="origin" value="{{ origin }}" />
+        {% if under25 %}
+          {% include "partials/choose-free.nunjucks" %}
+        {% else %}
+          {% include "partials/choose-paid.nunjucks" %}
+        {% endif %}
+      </div>
+      <input type="submit" class="button" value="Continue">
     </div>
-    {% endif %}
-
-    <form method="get" class="form" action="{{ SITE_ROOT }}/location">
-        <div class="reading-width">
-            {% if errorMessage %}
-            <div class="form-group error">
-            {% else %}
-            <div class="form-group">
-            {% endif %}
-
-            <input type="hidden" name="origin" value="{{ origin }}" />
-
-            {% if under25 %}
-              {% include "partials/choose-free.nunjucks" %}
-            {% else %}
-              {% include "partials/choose-paid.nunjucks" %}
-            {% endif %}
-
-            </div>
-
-            <input type="submit" class="button" value="Continue">
-        </div>
-    </form>
+  </form>
 {% endblock %}

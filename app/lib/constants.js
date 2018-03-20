@@ -1,23 +1,23 @@
 /* eslint-disable sort-keys */
 module.exports = {
-  ASSETS_URL: 'https://assets.nhs.uk',
-  SITE_ROOT: '/find-a-chlamydia-test',
-  SYMPTOMS: {
+  assetsUrl: 'https://assets.nhs.uk',
+  siteRoot: '/find-a-chlamydia-test',
+  symptoms: {
     yes: 'yes',
     no: 'no',
   },
-  AGE: {
+  age: {
     under16: '1',
     '16to25': '2',
     over25: '3',
   },
-  SERVICE_CHOICES: {
+  serviceChoices: {
     symptoms: '0',
     under16: '1',
     '16to25': '2',
     over25: '3',
   },
-  SERVICE_TYPES: {
+  serviceTypes: {
     professional: 'professional',
     kit: 'kit',
     online: 'online',

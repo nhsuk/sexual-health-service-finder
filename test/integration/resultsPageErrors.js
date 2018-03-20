@@ -6,7 +6,7 @@ const messages = require('../../app/lib/messages');
 
 const expect = chai.expect;
 
-const results = `${constants.SITE_ROOT}/results`;
+const results = `${constants.siteRoot}/results`;
 
 function expectErrorMessage(res, message) {
   const $ = cheerio.load(res.text);
@@ -20,8 +20,8 @@ function makeSearchRequestAndCheckExpectations(postcode, assertions) {
     .get(results)
     .query({
       location: postcode,
-      origin: constants.SERVICE_CHOICES.symptoms,
-      type: constants.SERVICE_TYPES.professional,
+      origin: constants.serviceChoices.symptoms,
+      type: constants.serviceTypes.professional,
     })
     .end(assertions);
 }
