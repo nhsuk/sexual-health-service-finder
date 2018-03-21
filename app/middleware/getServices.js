@@ -3,14 +3,9 @@ const constants = require('../lib/constants');
 const elasticsearchClient = require('../lib/elasticsearchClient');
 const esGeoQueryBuilder = require('../lib/esGeoQueryBuilder');
 const esGetServiceHistogram = require('../lib/promHistograms').esGetServices;
-<<<<<<< HEAD
-const esQueryLabelName = require('../lib/constants').promESQueryLabelName;
-const constants = require('../lib/constants');
-=======
 const esQueryLabelName = require('../lib/constants').promEsQueryLabelName;
 const serviceDataMapper = require('../lib/utils/serviceDataMapper');
 const log = require('../lib/logger');
->>>>>>> 42efddf... :scissors: refactor, tidy views
 
 function handleError(error, next) {
   const errMsg = 'Error with ES';
@@ -48,7 +43,7 @@ function getEsQuery(postcodeLocationDetails, searchType, size) {
 
 function getServices(req, res, next) {
   const location = res.locals.location;
-  const resultsLimit = res.locals.resultsLimit;
+  const resultsLimit = res.locals.RESULTS_LIMIT;
   const postcodeLocationDetails = res.locals.postcodeLocationDetails;
   const esQuery = getEsQuery(
     postcodeLocationDetails,
@@ -59,7 +54,8 @@ function getServices(req, res, next) {
   const endTimer = esGetServiceHistogram.startTimer();
   const timerLabel = {};
   timerLabel[esQueryLabelName] = esQuery.label;
-  elasticsearchClient.client
+  elasticsearchClient
+    .client
     .search(esQuery.query)
     .then((results) => {
       endTimer(timerLabel);

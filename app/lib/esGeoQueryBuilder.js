@@ -4,16 +4,6 @@ const getFilter = require('./utils/getFilteredOutTermsQuery');
 function build(location, searchType, size) {
   const query = getBaseQuery(size);
 
-  query.body.query.bool.filter = {
-    geo_distance: {
-      distance: '50mi',
-      'location.coordinates': {
-        lat: location.lat,
-        lon: location.lon,
-      },
-    },
-  };
-
   query.body.sort = [
     {
       _geo_distance: {
