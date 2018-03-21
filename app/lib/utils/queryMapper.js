@@ -11,11 +11,48 @@ function getLocationHeading(query) {
       if (query.origin === constants.serviceChoices['16to25']) {
         return 'Where would you like to collect your free test kit?';
       } else if (query.origin === constants.serviceChoices.over25) {
-        return 'Where would you like to collect your test kit?';
+        return 'Where would you like to buy your test kit?';
       }
     }
     if (comparisons.areEqual(query.type, constants.serviceTypes.online)) {
       return 'redirect';
+    }
+  }
+  return undefined;
+}
+
+function getResultsHeading(query, loc) {
+  const location = loc.toUpperCase();
+  if (query.type) {
+    if (comparisons.areEqual(query.type, constants.serviceTypes.professional)
+      && (comparisons.getValues(constants.serviceChoices).includes(query.origin))) {
+      return `Sexual health professionals near '${location}'`;
+    }
+    if (comparisons.areEqual(query.type, constants.serviceTypes.kit)) {
+      if (query.origin === constants.serviceChoices['16to25']) {
+        return `Where you can pick up a free test kit near '${location}'`;
+      } else if (query.origin === constants.serviceChoices.over25) {
+        return `Where you can buy a test near '${location}'`;
+      }
+    }
+  }
+  return undefined;
+}
+
+function getResultsPara(query) {
+  if (query.type) {
+    if (comparisons.areEqual(query.type, constants.serviceTypes.professional)
+      && (comparisons.getValues(constants.serviceChoices).includes(query.origin))) {
+      return 'Here is a list of places where you can get tested by a sexual health professional.';
+    }
+    if (comparisons.areEqual(query.type, constants.serviceTypes.kit)) {
+      if (query.origin === constants.serviceChoices['16to25']) {
+        return 'You can pick up a chlamydia test kit from any of the places below. You\'ll take your own samples and ' +
+          'send them by Freepost to be tested. You\'ll usually get the results within 2 weeks.';
+      } else if (query.origin === constants.serviceChoices.over25) {
+        return 'You can buy a chlamydia test kit from any of the places below. You\'ll take your own samples and send ' +
+          'them by Freepost to be tested. You\'ll usually get the results within 2 weeks.';
+      }
     }
   }
   return undefined;
@@ -57,6 +94,8 @@ function mapServiceChoice(query) {
 
 module.exports = {
   getLocationHeading,
+  getResultsHeading,
+  getResultsPara,
   mapServiceChoice,
   mapServiceType,
 };

@@ -1,13 +1,13 @@
 {% extends 'layout.nunjucks' %}
 
 {% block header %}
-<h1 class="local-header--title--question">Sexual health professionals near '{{location}}'</h1>
+<h1 class="local-header--title--question">{{ resultsHeading }}</h1>
 {% endblock %}
 
 {% block content %}
 <div class="results">
 
-  <p>Here is a list of places where you can get tested by a sexual health professional.</p>
+  <p>{{ resultsPara }}</p>
 
   <h2 class="sr-only" data-results="{{services.length}}" data-term="{{location}} class="local-header--title--question">Results</h1>
   <h2 class="local-header--title--question">Results</h1>

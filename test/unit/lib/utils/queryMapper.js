@@ -36,7 +36,7 @@ describe('queryMapper', () => {
         type: constants.serviceTypes.kit,
       };
       const output = queryMapper.getLocationHeading(query);
-      expect(output).to.equal('Where would you like to collect your test kit?');
+      expect(output).to.equal('Where would you like to buy your test kit?');
     });
 
     it('should return a redirect message when the query is related to online', () => {
@@ -46,6 +46,79 @@ describe('queryMapper', () => {
       };
       const output = queryMapper.getLocationHeading(query);
       expect(output).to.equal('redirect');
+    });
+  });
+
+  describe('getResultsHeading', () => {
+    const location = 'ls1';
+    it('should return undefined when empty query', () => {
+      const query = {};
+      const output = queryMapper.getResultsHeading(query, location);
+      expect(output).to.equal(undefined);
+    });
+
+    it('should return a sexual professionals message when the query is related to professionals and origin is any', () => {
+      const query = {
+        origin: constants.serviceChoices.symptoms,
+        type: constants.serviceTypes.professional,
+      };
+      const output = queryMapper.getResultsHeading(query, location);
+      expect(output).to.equal('Sexual health professionals near \'LS1\'');
+    });
+
+    it('should return a free kit message when the query is related to kit and age between 16 and 25', () => {
+      const query = {
+        origin: constants.serviceChoices['16to25'],
+        type: constants.serviceTypes.kit,
+      };
+      const output = queryMapper.getResultsHeading(query, location);
+      expect(output).to.equal('Where you can pick up a free test kit near \'LS1\'');
+    });
+
+    it('should return a paid for kit message when the query is related to kit and age is over 25', () => {
+      const query = {
+        origin: constants.serviceChoices.over25,
+        type: constants.serviceTypes.kit,
+      };
+      const output = queryMapper.getResultsHeading(query, location);
+      expect(output).to.equal('Where you can buy a test near \'LS1\'');
+    });
+  });
+
+  describe('getResultsPara', () => {
+    it('should return undefined when empty query', () => {
+      const query = {};
+      const output = queryMapper.getResultsPara(query);
+      expect(output).to.equal(undefined);
+    });
+
+    it('should return a sexual professionals message when the query is related to professionals and origin is any', () => {
+      const query = {
+        origin: constants.serviceChoices.symptoms,
+        type: constants.serviceTypes.professional,
+      };
+      const output = queryMapper.getResultsPara(query);
+      expect(output).to.equal('Here is a list of places where you can get tested by a sexual health professional.');
+    });
+
+    it('should return a free kit message when the query is related to kit and age between 16 and 25', () => {
+      const query = {
+        origin: constants.serviceChoices['16to25'],
+        type: constants.serviceTypes.kit,
+      };
+      const output = queryMapper.getResultsPara(query);
+      expect(output).to.equal('You can pick up a chlamydia test kit from any of the places below. You\'ll take your own samples and ' +
+        'send them by Freepost to be tested. You\'ll usually get the results within 2 weeks.');
+    });
+
+    it('should return a paid for kit message when the query is related to kit and age is over 25', () => {
+      const query = {
+        origin: constants.serviceChoices.over25,
+        type: constants.serviceTypes.kit,
+      };
+      const output = queryMapper.getResultsPara(query);
+      expect(output).to.equal('You can buy a chlamydia test kit from any of the places below. You\'ll take your own samples and send ' +
+        'them by Freepost to be tested. You\'ll usually get the results within 2 weeks.');
     });
   });
 

@@ -15,6 +15,10 @@ module.exports = config =>
     res.locals.origin = queryMapper.mapServiceChoice(req.query);
     res.locals.location = req.query.location;
     res.locals.locationHeading = queryMapper.getLocationHeading(req.query);
+    if (res.locals.location) {
+      res.locals.resultsHeading = queryMapper.getResultsHeading(req.query, res.locals.location);
+    }
+    res.locals.resultsPara = queryMapper.getResultsPara(req.query);
     res.locals.correctLocationParams = res.locals.locationHeading;
     next();
   };
