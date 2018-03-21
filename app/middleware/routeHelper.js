@@ -20,9 +20,44 @@ function renderSeeExpertUnder16Page(req, res) {
   renderer.recommend(req, res);
 }
 
+function renderChooseTestUnder25Page(req, res) {
+  res.locals.under25 = true;
+  renderer.choose(req, res);
+}
+
+function renderChooseTestOver25Page(req, res) {
+  res.locals.under25 = false;
+  res.locals.under16 = false;
+  renderer.choose(req, res);
+}
+
+function renderChoosePageWithError(req, res) {
+  res.locals.errorMessage = messages.mandatorySelectionMessage();
+  renderer.choose(req, res);
+}
+
+function renderLocationPage(req, res) {
+  renderer.location(req, res);
+}
+
+function renderOnlinePage(req, res) {
+  renderer.chlamydiaOnlineRedirect(req, res);
+}
+
+function renderStartPageWithError(req, res) {
+  res.locals.errorMessage = messages.invalidUrlMessage();
+  renderer.startPage(req, res);
+}
+
 module.exports = {
   renderAgePage,
   renderAgePageWithError,
+  renderChoosePageWithError,
+  renderChooseTestOver25Page,
+  renderChooseTestUnder25Page,
+  renderLocationPage,
+  renderOnlinePage,
   renderSeeExpertUnder16Page,
+  renderStartPageWithError,
   renderSymptomsWithError,
 };

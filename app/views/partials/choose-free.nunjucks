@@ -1,0 +1,20 @@
+<fieldset id="choose">
+    <div class="multiple-choice multiple-choice--description">
+        <input id="1" name="type" type="radio" value="kit" {% if errorMessage %} aria-describedby="error-message" aria-invalid="true"{% endif %}>
+        <label class="multiple-choice--radio" for="1"><span class="multiple--choice-option">Pick up a free test kit</span>
+        <span class="multiple--choice-option-description">Get a kit to take your own samples and send them by post to be tested. Your results are private. You might have to pay a prescription charge if you need treatment.</span>
+        </label>
+    </div>
+    <div class="multiple-choice multiple-choice--description">
+        <input id="2" name="type" type="radio" value="online" {% if errorMessage %} aria-describedby="error-message" aria-invalid="true"{% endif %}>
+        <label class="multiple-choice--radio" for="2"><span class="multiple--choice-option">Order a free test kit online</span>
+        <span class="multiple--choice-option-description">A kit will be sent to your address by post. The packaging is plain and you'll take your own samples and send them back to be tested. Your results are private. You might have to pay a prescription charge if you need treatment.</span>
+        </label>
+    </div>
+    <div class="multiple-choice multiple-choice--description">
+        <input id="3" name="type" type="radio" value="professional" {% if errorMessage %} aria-describedby="error-message" aria-invalid="true"{% endif %}>
+        <label class="multiple-choice--radio" for="3"><span class="multiple--choice-option">See a sexual health professional
+          <span class="multiple--choice-option-description">Tests are free, and treatment is free if you need it. They won't share your results with your GP unless you ask them to.</span>
+        </label>
+    </div>
+</fieldset>

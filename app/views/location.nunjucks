@@ -13,15 +13,10 @@
 </div>
 {% endif %}
 
-<form method="get" class="form" action="{{ SITE_ROOT }}/results">
+<form method="get" class="form" action="{{ siteRoot }}/results">
   <div class="reading-width">
     <div class="form-item-wrapper">
-
-      {% if errorMessage %}
-        <div class="form-group error">
-      {% else %}
-        <div class="form-group">
-      {% endif %}
+      <div class="form-group {% if errorMessage %} error {% endif %}">
         <label class="form-label-bold" for="location">Enter a postcode.</label>
           <div class="form-group">
             <input autocomplete="off" type="text" class="form-control" name="location" id="location" value=""{% if errorMessage %} aria-describedby="error-message" aria-invalid="true"{% endif %}>

@@ -9,9 +9,9 @@ const expect = chai.expect;
 
 chai.use(chaiHttp);
 
-const symptomsRoute = `${constants.SITE_ROOT}/symptoms`;
-const recommendRoute = `${constants.SITE_ROOT}/recommend`;
-const startRoute = `${constants.SITE_ROOT}/`;
+const symptomsRoute = `${constants.siteRoot}/symptoms`;
+const recommendRoute = `${constants.siteRoot}/recommend`;
+const startRoute = `${constants.siteRoot}/`;
 
 function expectSymptomsPageAgain($) {
   expect($('.error-summary-heading').text())

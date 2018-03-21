@@ -1,2 +1,2 @@
-<li><a href="{{ SITE_ROOT }}/">Find a chlamydia test</a></li>
+<li><a href="{{ siteRoot }}/">Find a chlamydia test</a></li>
 <li class="breadcrumb__last">Symptoms</li>

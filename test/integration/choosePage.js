@@ -9,7 +9,7 @@ const expect = chai.expect;
 
 chai.use(chaiHttp);
 
-const chooseRoute = `${constants.SITE_ROOT}/choose`;
+const chooseRoute = `${constants.siteRoot}/choose`;
 
 describe('Choose page', () => {
   it('page title should be \'How do you want to get a test?\' if age question is answered 16-24', async () => {
@@ -22,6 +22,17 @@ describe('Choose page', () => {
     expect($('.local-header--title--question').text()).to.equal('How do you want to get a test?');
   });
 
+  it('page options should be related to being under 25 (free), if age question is answered 16-24', async () => {
+    const res = await chai.request(server)
+      .get(chooseRoute)
+      .query({ age: '2' });
+
+    iExpect.htmlWith200Status(res);
+    const $ = cheerio.load(res.text);
+
+    expect($($('.multiple-choice .multiple--choice-option')[0]).text()).to.equal('Pick up a free test kit');
+  });
+
   it('page title should be \'How do you want to get a test?\' if age question is answered 25 or older', async () => {
     const res = await chai.request(server)
       .get(chooseRoute)
@@ -30,6 +41,17 @@ describe('Choose page', () => {
     iExpect.htmlWith200Status(res);
     const $ = cheerio.load(res.text);
     expect($('.local-header--title--question').text()).to.equal('How do you want to get a test?');
+  });
+
+  it('page options should be related to being over 25 (paid), if age question is answered 16-24', async () => {
+    const res = await chai.request(server)
+      .get(chooseRoute)
+      .query({ age: '3' });
+
+    iExpect.htmlWith200Status(res);
+    const $ = cheerio.load(res.text);
+
+    expect($($('.multiple-choice .multiple--choice-option')[0]).text()).to.equal('See a sexual health professional');
   });
 
   describe('return to Choices services', () => {

@@ -9,9 +9,9 @@ const expect = chai.expect;
 
 chai.use(chaiHttp);
 
-const recommendRoute = `${constants.SITE_ROOT}/recommend`;
-const ageRoute = `${constants.SITE_ROOT}/age`;
-const chooseRoute = `${constants.SITE_ROOT}/choose`;
+const recommendRoute = `${constants.siteRoot}/recommend`;
+const ageRoute = `${constants.siteRoot}/age`;
+const chooseRoute = `${constants.siteRoot}/choose`;
 
 function expectAgePageAgain($) {
   expect($('.error-summary-heading').text())

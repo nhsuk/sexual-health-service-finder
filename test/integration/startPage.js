@@ -10,7 +10,7 @@ chai.use(chaiHttp);
 
 describe('Start page', () => {
   it('page title should be \'Find a chlamydia test - NHS.UK\'', async () => {
-    const res = await chai.request(server).get(`${constants.SITE_ROOT}`);
+    const res = await chai.request(server).get(`${constants.siteRoot}`);
 
     const $ = cheerio.load(res.text);
 
@@ -19,9 +19,9 @@ describe('Start page', () => {
   });
 
   it('should link to the \'Symptoms\' page', async () => {
-    const res = await chai.request(server).get(`${constants.SITE_ROOT}`);
+    const res = await chai.request(server).get(`${constants.siteRoot}`);
     const $ = cheerio.load(res.text);
-    const symptomsPage = `${constants.SITE_ROOT}/symptoms`;
+    const symptomsPage = `${constants.siteRoot}/symptoms`;
 
     expect($('.start-button').attr('href'))
       .to.equal(symptomsPage);
@@ -29,7 +29,7 @@ describe('Start page', () => {
 
   describe('return to Choices services', () => {
     it('the breadcrumb should have a link back to the Choices \'Services near you\'', async () => {
-      const res = await chai.request(server).get(`${constants.SITE_ROOT}`);
+      const res = await chai.request(server).get(`${constants.siteRoot}`);
 
       const $ = cheerio.load(res.text);
 
@@ -38,7 +38,7 @@ describe('Start page', () => {
     });
 
     it('the page should have a link back to the Choices service search', async () => {
-      const res = await chai.request(server).get(`${constants.SITE_ROOT}`);
+      const res = await chai.request(server).get(`${constants.siteRoot}`);
 
       const $ = cheerio.load(res.text);
 

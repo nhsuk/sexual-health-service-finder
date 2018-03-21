@@ -9,15 +9,15 @@ const expect = chai.expect;
 
 chai.use(chaiHttp);
 
-const recommendRoute = `${constants.SITE_ROOT}/recommend`;
-const chooseRoute = `${constants.SITE_ROOT}/choose`;
-const locationSearchRoute = `${constants.SITE_ROOT}/location`;
+const recommendRoute = `${constants.siteRoot}/recommend`;
+const chooseRoute = `${constants.siteRoot}/choose`;
+const locationSearchRoute = `${constants.siteRoot}/location`;
 
 describe('Recommend page', () => {
   it('page title should be \'We recommend that you\' if symptoms question is answered yes', async () => {
     const res = await chai.request(server)
       .get(recommendRoute)
-      .query({ symptoms: constants.SYMPTOMS.yes });
+      .query({ symptoms: constants.symptoms.yes });
 
     iExpect.htmlWith200Status(res);
     const $ = cheerio.load(res.text);
@@ -39,7 +39,7 @@ describe('Recommend page', () => {
   it('page title should be \'We recommend that you\' if age question is answered 15 or younger', async () => {
     const res = await chai.request(server)
       .get(chooseRoute)
-      .query({ age: constants.AGE.under16 });
+      .query({ age: constants.age.under16 });
 
     iExpect.htmlWith200Status(res);
     const $ = cheerio.load(res.text);
@@ -61,32 +61,32 @@ describe('Recommend page', () => {
   it('the page should have a link to the Location search page with the right params for symptoms', async () => {
     const res = await chai.request(server)
       .get(recommendRoute)
-      .query({ symptoms: constants.SYMPTOMS.yes });
+      .query({ symptoms: constants.symptoms.yes });
 
     iExpect.htmlWith200Status(res);
     const $ = cheerio.load(res.text);
 
     expect($('.button').attr('href'))
-      .to.equal(`${locationSearchRoute}?type=${constants.SERVICE_TYPES.professional}&origin=${constants.SERVICE_CHOICES.symptoms}`);
+      .to.equal(`${locationSearchRoute}?type=${constants.serviceTypes.professional}&origin=${constants.serviceChoices.symptoms}`);
   });
 
   it('the page should have a link to the Location search page with the right params for age 15 or younger', async () => {
     const res = await chai.request(server)
       .get(chooseRoute)
-      .query({ age: constants.AGE.under16 });
+      .query({ age: constants.age.under16 });
 
     iExpect.htmlWith200Status(res);
     const $ = cheerio.load(res.text);
 
     expect($('.button').attr('href'))
-      .to.equal(`${locationSearchRoute}?type=${constants.SERVICE_TYPES.professional}&origin=${constants.SERVICE_CHOICES.under16}`);
+      .to.equal(`${locationSearchRoute}?type=${constants.serviceTypes.professional}&origin=${constants.serviceChoices.under16}`);
   });
 
   describe('return to Choices services', () => {
     it('the breadcrumb should have a link back to the Choices \'Services near you\'', async () => {
       const res = await chai.request(server)
         .get(recommendRoute)
-        .query({ symptoms: constants.SYMPTOMS.yes });
+        .query({ symptoms: constants.symptoms.yes });
 
       iExpect.htmlWith200Status(res);
       const $ = cheerio.load(res.text);
@@ -98,7 +98,7 @@ describe('Recommend page', () => {
     it('the page should have a link back to the Choices service search', async () => {
       const res = await chai.request(server)
         .get(recommendRoute)
-        .query({ symptoms: constants.SYMPTOMS.yes });
+        .query({ symptoms: constants.symptoms.yes });
 
       iExpect.htmlWith200Status(res);
       const $ = cheerio.load(res.text);
