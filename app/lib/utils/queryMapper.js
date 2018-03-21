@@ -3,7 +3,7 @@ const comparisons = require('./comparisons');
 
 function getLocationHeading(query) {
   if (query.type) {
-    if ((comparisons.areEqual(query.type, constants.serviceTypes.professional))
+    if (comparisons.areEqual(query.type, constants.serviceTypes.professional)
       && (comparisons.getValues(constants.serviceChoices).includes(query.origin))) {
       return 'Where would you like to see a sexual health professional?';
     }
@@ -25,8 +25,8 @@ function mapServiceType(query) {
   if (query.type) {
     return query.type;
   }
-  if (((query.age) && (query.age === constants.age.under16))
-    || ((query.symptoms) && (query.symptoms === constants.symptoms.yes))) {
+  if ((query.age && (query.age === constants.age.under16))
+    || (query.symptoms && (query.symptoms === constants.symptoms.yes))) {
     return constants.serviceTypes.professional;
   }
   return undefined;
@@ -37,7 +37,7 @@ function mapServiceChoice(query) {
     return query.origin;
   }
 
-  if ((query.symptoms) && (query.symptoms === constants.symptoms.yes)) {
+  if (query.symptoms && (query.symptoms === constants.symptoms.yes)) {
     return constants.serviceChoices.symptoms;
   }
 
