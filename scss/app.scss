@@ -440,6 +440,12 @@ form {
   .multiple-choice:not(:first-child) {
     margin-top: 32px;
   }
+  .multiple-choice--description {
+    padding-top: 32px;
+    &:first-of-type {
+      margin-top: 0;
+    }
+  }
 }
 
 .error-summary {
