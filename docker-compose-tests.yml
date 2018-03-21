@@ -6,7 +6,7 @@ services:
     extends:
       file: docker-compose.yml
       service: base-app
-    command: scripts/container/test-watch
+    command: yarn run test-watch
     links:
       - sexual-health-service-finder-db:es
     volumes:
@@ -26,7 +26,7 @@ services:
     extends:
       file: docker-compose.yml
       service: base-app
-    command: scripts/container/integration-tests
+    command: yarn run test-integration-watch
     links:
       - sexual-health-service-finder-db:es
     volumes:
@@ -37,7 +37,7 @@ services:
     extends:
       file: docker-compose.yml
       service: base-app
-    command: scripts/container/ci-tests
+    command: yarn run test-ci
     user: root
     links:
       - sexual-health-service-finder-db:es

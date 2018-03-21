@@ -1,8 +1,13 @@
 const elasticsearch = require('elasticsearch');
 const esConfig = require('../../config/config').es;
 
-function client() {
-  return elasticsearch.Client({ host: `${esConfig.host}:${esConfig.port}` });
+const client = elasticsearch.Client({ host: `${esConfig.host}:${esConfig.port}` });
+
+function getHealth() {
+  return client.cat.health({ format: 'json' });
 }
 
-module.exports = client();
+module.exports = {
+  client,
+  getHealth,
+};

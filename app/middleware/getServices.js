@@ -59,7 +59,7 @@ function getServices(req, res, next) {
   const endTimer = esGetServiceHistogram.startTimer();
   const timerLabel = {};
   timerLabel[esQueryLabelName] = esQuery.label;
-  elasticsearchClient
+  elasticsearchClient.client
     .search(esQuery.query)
     .then((results) => {
       endTimer(timerLabel);

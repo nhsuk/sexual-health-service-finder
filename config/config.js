@@ -14,6 +14,8 @@ module.exports = {
   es: {
     host: process.env.ES_HOST || 'es',
     port: process.env.ES_PORT || '9200',
+    index: process.env.ES_INDEX || 'sexual-health-services',
+    type: 'sexual-health-service',
   },
   resultsLimit: process.env.RESULTS_LIMIT || 30,
   googleAnalyticsId: process.env.GOOGLE_ANALYTICS_TRACKING_ID,

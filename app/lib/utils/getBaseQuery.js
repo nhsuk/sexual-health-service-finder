@@ -1,3 +1,5 @@
+const esConfig = require('../../../config/config').es;
+
 function getBaseQuery(size) {
   return {
     body: {
@@ -6,8 +8,8 @@ function getBaseQuery(size) {
       },
       size,
     },
-    index: 'sexual-health-services',
-    type: 'sexual-health-service',
+    index: esConfig.index,
+    type: esConfig.type,
   };
 }
 
