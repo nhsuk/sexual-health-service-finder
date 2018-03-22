@@ -50,7 +50,7 @@ describe('Results page errors', () => {
   it('should return a descriptive message for out of England locations', (done) => {
     const location = 'EH1';
     const message = 'This postcode is not in England. Get help to find a chlamydia test in find a chlamydia test in ' +
-      'Scotland, find a chlamydia test in  Wales or find a chlamydia test in Northern Ireland.';
+      'Scotland, find a chlamydia test in Wales or find a chlamydia test in Northern Ireland.';
 
     makeSearchRequestAndCheckExpectations(location, (err, res) => {
       expectErrorMessage(res, message);

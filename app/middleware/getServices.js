@@ -9,9 +9,10 @@ const log = require('../lib/logger');
 
 function handleError(error, next) {
   const errMsg = 'Error with ES';
+  const newError = new VError(error.stack, errMsg);
 
-  log.error({ err: new VError(error.stack, errMsg) }, errMsg);
-  next(error);
+  log.error({ err: newError }, errMsg);
+  next(newError);
 }
 
 function mapResults(results, res) {
@@ -24,10 +25,7 @@ function mapResults(results, res) {
         service.distance = result.sort[0];
       }
 
-      if ((service.address) && (service.address.addressLines) && (service.address.postcode)) {
-        service.address.fullAddress = serviceDataMapper
-          .addressFormatter(service.address.addressLines, service.address.postcode);
-      }
+      service.address.fullAddress = serviceDataMapper.addressFormatter(service.address);
     }
 
     return service;

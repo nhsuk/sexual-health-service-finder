@@ -57,6 +57,17 @@ describe('queryMapper', () => {
       expect(output).to.equal(undefined);
     });
 
+    it('should return undefined when empty location', () => {
+      // eslint-disable-next-line no-shadow
+      const location = undefined;
+      const query = {
+        origin: constants.serviceChoices.symptoms,
+        type: constants.serviceTypes.professional,
+      };
+      const output = queryMapper.getResultsHeading(query, location);
+      expect(output).to.equal(undefined);
+    });
+
     it('should return a sexual professionals message when the query is related to professionals and origin is any', () => {
       const query = {
         origin: constants.serviceChoices.symptoms,
@@ -85,10 +96,10 @@ describe('queryMapper', () => {
     });
   });
 
-  describe('getResultsPara', () => {
+  describe('getResultsExplanation', () => {
     it('should return undefined when empty query', () => {
       const query = {};
-      const output = queryMapper.getResultsPara(query);
+      const output = queryMapper.getResultsExplanation(query);
       expect(output).to.equal(undefined);
     });
 
@@ -97,7 +108,7 @@ describe('queryMapper', () => {
         origin: constants.serviceChoices.symptoms,
         type: constants.serviceTypes.professional,
       };
-      const output = queryMapper.getResultsPara(query);
+      const output = queryMapper.getResultsExplanation(query);
       expect(output).to.equal('Here is a list of places where you can get tested by a sexual health professional.');
     });
 
@@ -106,7 +117,7 @@ describe('queryMapper', () => {
         origin: constants.serviceChoices['16to25'],
         type: constants.serviceTypes.kit,
       };
-      const output = queryMapper.getResultsPara(query);
+      const output = queryMapper.getResultsExplanation(query);
       expect(output).to.equal('You can pick up a chlamydia test kit from any of the places below. You\'ll take your own samples and ' +
         'send them by Freepost to be tested. You\'ll usually get the results within 2 weeks.');
     });
@@ -116,7 +127,7 @@ describe('queryMapper', () => {
         origin: constants.serviceChoices.over25,
         type: constants.serviceTypes.kit,
       };
-      const output = queryMapper.getResultsPara(query);
+      const output = queryMapper.getResultsExplanation(query);
       expect(output).to.equal('You can buy a chlamydia test kit from any of the places below. You\'ll take your own samples and send ' +
         'them by Freepost to be tested. You\'ll usually get the results within 2 weeks.');
     });

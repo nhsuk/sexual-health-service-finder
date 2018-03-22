@@ -1,6 +1,8 @@
 @import "nhsuk";
 
 $grey: #E8EDEE;
+$border-grey: #BAC4C8;
+
 
 body {
   background-color:$grey;
@@ -287,7 +289,7 @@ form {
       li {
         padding: 0;
         border: none;
-        border-top: 2px solid #bac4c8;
+        border-top: 2px solid $border-grey;
         &:first-of-type {
           margin-top: 15px;
         }

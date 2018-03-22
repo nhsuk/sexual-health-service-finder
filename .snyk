@@ -1,160 +1,178 @@
 # Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
-version: v1.7.1
+version: v1.10.2
 # ignores vulnerabilities until expiry date; change duration by modifying expiry date
 ignore:
   'npm:braces:20180219':
     - sass-brunch > anymatch > micromatch > braces:
         reason: no fix available
-        expires: '2018-03-24T16:52:29.384Z'
+        expires: '2018-04-26T10:39:48.818Z'
     - brunch > anymatch > micromatch > braces:
         reason: no fix available
-        expires: '2018-03-24T16:52:29.384Z'
+        expires: '2018-04-26T10:39:48.818Z'
     - brunch > anysort > anymatch > micromatch > braces:
         reason: no fix available
-        expires: '2018-03-24T16:52:29.384Z'
+        expires: '2018-04-26T10:39:48.818Z'
     - brunch > check-dependencies > findup-sync > micromatch > braces:
         reason: no fix available
-        expires: '2018-03-24T16:52:29.384Z'
+        expires: '2018-04-26T10:39:48.818Z'
     - brunch > chokidar > anymatch > micromatch > braces:
         reason: no fix available
-        expires: '2018-03-24T16:52:29.384Z'
+        expires: '2018-04-26T10:39:48.818Z'
     - brunch > deppack > anymatch > micromatch > braces:
         reason: no fix available
-        expires: '2018-03-24T16:52:29.384Z'
+        expires: '2018-04-26T10:39:48.818Z'
     - nunjucks > chokidar > anymatch > micromatch > braces:
         reason: no fix available
-        expires: '2018-03-24T16:52:29.384Z'
+        expires: '2018-04-26T10:39:48.818Z'
   'npm:growl:20160721':
     - brunch > deppack > loggy > growl:
         reason: no fix available
-        expires: '2018-03-24T16:52:29.384Z'
+        expires: '2018-04-26T10:39:48.818Z'
   'npm:hoek:20180212':
     - node-sass > request > hawk > hoek:
         reason: no fix available
-        expires: '2018-03-24T16:52:29.384Z'
+        expires: '2018-04-26T10:39:48.818Z'
     - node-sass > request > hawk > boom > hoek:
         reason: no fix available
-        expires: '2018-03-24T16:52:29.384Z'
+        expires: '2018-04-26T10:39:48.818Z'
     - node-sass > request > hawk > sntp > hoek:
         reason: no fix available
-        expires: '2018-03-24T16:52:29.384Z'
+        expires: '2018-04-26T10:39:48.818Z'
     - node-sass > request > hawk > cryptiles > boom > hoek:
         reason: no fix available
-        expires: '2018-03-24T16:52:29.384Z'
+        expires: '2018-04-26T10:39:48.818Z'
     - node-pre-gyp > hawk > hoek:
         reason: no fix available
-        expires: '2018-03-24T16:52:29.384Z'
+        expires: '2018-04-26T10:39:48.819Z'
     - node-pre-gyp > hawk > boom > hoek:
         reason: no fix available
-        expires: '2018-03-24T16:52:29.384Z'
+        expires: '2018-04-26T10:39:48.819Z'
     - node-pre-gyp > hawk > sntp > hoek:
         reason: no fix available
-        expires: '2018-03-24T16:52:29.384Z'
+        expires: '2018-04-26T10:39:48.819Z'
     - node-pre-gyp > hawk > cryptiles > boom > hoek:
         reason: no fix available
-        expires: '2018-03-24T16:52:29.384Z'
+        expires: '2018-04-26T10:39:48.819Z'
     - node-pre-gyp > request > hawk > hoek:
         reason: no fix available
-        expires: '2018-03-24T16:52:29.384Z'
+        expires: '2018-04-26T10:39:48.819Z'
     - node-pre-gyp > request > hawk > boom > hoek:
         reason: no fix available
-        expires: '2018-03-24T16:52:29.384Z'
+        expires: '2018-04-26T10:39:48.819Z'
     - node-pre-gyp > request > hawk > sntp > hoek:
         reason: no fix available
-        expires: '2018-03-24T16:52:29.384Z'
+        expires: '2018-04-26T10:39:48.819Z'
     - node-pre-gyp > request > hawk > cryptiles > boom > hoek:
         reason: no fix available
-        expires: '2018-03-24T16:52:29.384Z'
+        expires: '2018-04-26T10:39:48.819Z'
     - brunch > chokidar > fsevents > node-pre-gyp > hawk > hoek:
         reason: no fix available
-        expires: '2018-03-24T16:52:29.384Z'
+        expires: '2018-04-26T10:39:48.819Z'
     - brunch > chokidar > fsevents > node-pre-gyp > hawk > boom > hoek:
         reason: no fix available
-        expires: '2018-03-24T16:52:29.384Z'
+        expires: '2018-04-26T10:39:48.819Z'
     - brunch > chokidar > fsevents > node-pre-gyp > hawk > sntp > hoek:
         reason: no fix available
-        expires: '2018-03-24T16:52:29.384Z'
+        expires: '2018-04-26T10:39:48.819Z'
     - brunch > chokidar > fsevents > node-pre-gyp > hawk > cryptiles > boom > hoek:
         reason: no fix available
-        expires: '2018-03-24T16:52:29.384Z'
+        expires: '2018-04-26T10:39:48.819Z'
     - brunch > chokidar > fsevents > node-pre-gyp > request > hawk > hoek:
         reason: no fix available
-        expires: '2018-03-24T16:52:29.385Z'
+        expires: '2018-04-26T10:39:48.819Z'
     - brunch > chokidar > fsevents > node-pre-gyp > request > hawk > boom > hoek:
         reason: no fix available
-        expires: '2018-03-24T16:52:29.385Z'
+        expires: '2018-04-26T10:39:48.819Z'
     - brunch > chokidar > fsevents > node-pre-gyp > request > hawk > sntp > hoek:
         reason: no fix available
-        expires: '2018-03-24T16:52:29.385Z'
+        expires: '2018-04-26T10:39:48.819Z'
     - brunch > chokidar > fsevents > node-pre-gyp > request > hawk > cryptiles > boom > hoek:
         reason: no fix available
-        expires: '2018-03-24T16:52:29.385Z'
+        expires: '2018-04-26T10:39:48.819Z'
     - nunjucks > chokidar > fsevents > node-pre-gyp > hawk > hoek:
         reason: no fix available
-        expires: '2018-03-24T16:52:29.385Z'
+        expires: '2018-04-26T10:39:48.820Z'
     - nunjucks > chokidar > fsevents > node-pre-gyp > hawk > boom > hoek:
         reason: no fix available
-        expires: '2018-03-24T16:52:29.385Z'
+        expires: '2018-04-26T10:39:48.820Z'
     - nunjucks > chokidar > fsevents > node-pre-gyp > hawk > sntp > hoek:
         reason: no fix available
-        expires: '2018-03-24T16:52:29.385Z'
+        expires: '2018-04-26T10:39:48.820Z'
     - nunjucks > chokidar > fsevents > node-pre-gyp > hawk > cryptiles > boom > hoek:
         reason: no fix available
-        expires: '2018-03-24T16:52:29.385Z'
+        expires: '2018-04-26T10:39:48.820Z'
     - nunjucks > chokidar > fsevents > node-pre-gyp > request > hawk > hoek:
         reason: no fix available
-        expires: '2018-03-24T16:52:29.385Z'
+        expires: '2018-04-26T10:39:48.820Z'
     - nunjucks > chokidar > fsevents > node-pre-gyp > request > hawk > boom > hoek:
         reason: no fix available
-        expires: '2018-03-24T16:52:29.385Z'
+        expires: '2018-04-26T10:39:48.820Z'
     - nunjucks > chokidar > fsevents > node-pre-gyp > request > hawk > sntp > hoek:
         reason: no fix available
-        expires: '2018-03-24T16:52:29.385Z'
+        expires: '2018-04-26T10:39:48.820Z'
     - nunjucks > chokidar > fsevents > node-pre-gyp > request > hawk > cryptiles > boom > hoek:
         reason: no fix available
-        expires: '2018-03-24T16:52:29.385Z'
+        expires: '2018-04-26T10:39:48.820Z'
   'npm:tunnel-agent:20170305':
     - node-sass > request > tunnel-agent:
         reason: no fix available
-        expires: '2018-03-24T16:52:29.385Z'
+        expires: '2018-04-26T10:39:48.820Z'
   'npm:debug:20170905':
     - brunch > chokidar > fsevents > node-pre-gyp > tar-pack > debug:
         reason: no fix available
-        expires: '2018-03-24T16:54:35.090Z'
+        expires: '2018-04-26T13:46:05.479Z'
     - nunjucks > chokidar > fsevents > node-pre-gyp > tar-pack > debug:
         reason: no fix available
         expires: '2018-03-24T16:54:35.090Z'
+      brunch > debug:
+        reason: None given
+        expires: '2018-04-26T13:46:05.479Z'
     - brunch > debug:
         reason: no fix available
         expires: '2018-03-24T16:54:35.090Z'
+      brunch > since-app-start > debug:
+        reason: None given
+        expires: '2018-04-26T13:46:05.479Z'
     - brunch > since-app-start > debug:
         reason: no fix available
         expires: '2018-03-24T16:54:35.090Z'
     - node-pre-gyp > tar-pack > debug:
         reason: no fix available
         expires: '2018-03-24T16:54:35.090Z'
+    - nunjucks > chokidar > fsevents > node-pre-gyp > tar-pack > debug:
+        reason: no fix available
+        expires: '2018-04-26T11:04:31.180Z'
+    - node-pre-gyp > tar-pack > debug:
+        reason: no fix available
+        expires: '2018-04-26T11:04:31.180Z'
   'npm:tough-cookie:20170905':
     - brunch > chokidar > fsevents > node-pre-gyp > request > tough-cookie:
         reason: no fix available
-        expires: '2018-03-24T16:54:35.090Z'
+        expires: '2018-04-26T13:46:05.479Z'
     - nunjucks > chokidar > fsevents > node-pre-gyp > request > tough-cookie:
         reason: no fix available
         expires: '2018-03-24T16:54:35.090Z'
     - node-pre-gyp > request > tough-cookie:
         reason: no fix available
         expires: '2018-03-24T16:54:35.090Z'
+    - nunjucks > chokidar > fsevents > node-pre-gyp > request > tough-cookie:
+        reason: no fix available
+        expires: '2018-04-26T11:04:31.180Z'
+    - node-pre-gyp > request > tough-cookie:
+        reason: no fix available
+        expires: '2018-04-26T11:04:31.181Z'
   'npm:ms:20170412':
     - brunch > debug > ms:
-        reason: no fix available
-        expires: '2018-03-24T16:54:35.090Z'
+        reason: None given
+        expires: '2018-04-26T13:46:05.479Z'
     - brunch > since-app-start > debug > ms:
-        reason: no fix available
-        expires: '2018-03-24T16:54:35.090Z'
+        reason: None given
+        expires: '2018-04-26T13:46:05.479Z'
   'npm:lodash:20180130':
     - eslint-config-nhsuk > eslint-plugin-json > jshint > lodash:
         reason: None given
         expires: '2018-04-12T13:58:42.839Z'
-      elasticsearch > lodash:
+    - elasticsearch > lodash:
         reason: None given
         expires: '2018-04-13T09:57:41.009Z'
   'npm:shelljs:20140723':
@@ -165,11 +183,11 @@ ignore:
 patch:
   'npm:debug:20170905':
     - brunch > since-app-start > debug:
-        patched: '2018-02-22T16:49:29.815Z'
+        patched: '2018-03-27T10:38:10.805Z'
     - brunch > debug:
-        patched: '2018-02-22T16:49:29.815Z'
+        patched: '2018-03-27T10:38:10.805Z'
   'npm:ms:20170412':
     - brunch > since-app-start > debug > ms:
-        patched: '2018-02-22T16:49:29.815Z'
+        patched: '2018-03-27T10:38:10.805Z'
     - brunch > debug > ms:
-        patched: '2018-02-22T16:49:29.815Z'
+        patched: '2018-03-27T10:38:10.805Z'
