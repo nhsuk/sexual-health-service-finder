@@ -49,7 +49,7 @@ describe('Results page', function test() {
         const resultsHeader = $('.local-header--title--question').text();
         const resultsSubHeader = $('.results p').text();
 
-        expect(resultsHeader).to.contain(`Sexual health professionals near '${location}'`);
+        expect(resultsHeader).to.contain('Sexual health professionals near \'LS1\'');
         expect(resultsSubHeader).to.contain('Here is a list of places where you can get tested by a sexual health professional.');
       });
     });

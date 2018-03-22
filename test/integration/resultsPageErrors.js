@@ -26,7 +26,7 @@ function makeSearchRequestAndCheckExpectations(location, assertions) {
     .end(assertions);
 }
 
-describe('Results page', () => {
+describe('Results page errors', () => {
   it('should return a descriptive message when location is blank', (done) => {
     const location = '';
     const message = messages.emptyPostcodeMessage();
@@ -49,7 +49,8 @@ describe('Results page', () => {
 
   it('should return a descriptive message for out of England locations', (done) => {
     const location = 'EH1';
-    const message = messages.outsideOfEnglandPostcodeMessage();
+    const message = 'This postcode is not in England. Get help to find a chlamydia test in find a chlamydia test in ' +
+      'Scotland, find a chlamydia test in  Wales or find a chlamydia test in Northern Ireland.';
 
     makeSearchRequestAndCheckExpectations(location, (err, res) => {
       expectErrorMessage(res, message);

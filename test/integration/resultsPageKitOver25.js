@@ -49,7 +49,7 @@ describe('Results page', function test() {
         const resultsHeader = $('.local-header--title--question').text();
         const resultsSubHeader = $('.results p').text();
 
-        expect(resultsHeader).to.contain(`Where you can buy a test near '${location.toUpperCase()}'`);
+        expect(resultsHeader).to.contain('Where you can buy a test near \'LS1\'');
         expect(resultsSubHeader).to.contain('You can buy a chlamydia test kit from any of the places below. You\'ll take ' +
           'your own samples and send them by Freepost to be tested. You\'ll usually get the results within 2 weeks.');
       });

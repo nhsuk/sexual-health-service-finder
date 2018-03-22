@@ -35,8 +35,15 @@ describe('messages', () => {
   describe('out of England postcode message', () => {
     it('should have an error message for out of England postcode', () => {
       const message = messages.outsideOfEnglandPostcodeMessage();
-      expect(message).to.contain('This is an England only service. Please scroll down for information for non-England services.');
+      /* eslint-disable quotes */
+      /* eslint-disable indent */
+      expect(message).to.contain(`This postcode is not in England. Get help to find a chlamydia test in \
+<a href="/#scotland"><span class="sr-only">find a chlamydia test in </span>Scotland</a>, \
+<a href="/#wales"><span class="sr-only">find a chlamydia test in </span> Wales</a> or \
+<a href="/#northern"><span class="sr-only">find a chlamydia test in </span>Northern Ireland</a>.`);
     });
+      /* eslint-enable quotes */
+      /* eslint-disable indent */
   });
 
   describe('technical error message', () => {

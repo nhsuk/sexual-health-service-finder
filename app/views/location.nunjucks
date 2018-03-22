@@ -8,7 +8,7 @@
 {% if errorMessage %}
 <div class="error-summary">
   <h2 class="local-header--error error-summary-heading">
-    {{ errorMessage }}
+    {{ errorMessage | safe }}
   </h2>
 </div>
 {% endif %}

@@ -26,7 +26,7 @@
 
   <p><strong>Use this service to find a sexual health professional or a chlamydia test kit near you.</strong></p>
 
-  <details class="details--country--england" role="group" open>
+  <details class="details--country details--country--england" id="england" role="group" open>
     <summary data-analytics="summary" role="button" aria-controls="details-content-0" aria-expanded="true">
       <span class="details__summary details__summary--country">England</span>
     </summary>
@@ -48,7 +48,7 @@
     </div>
   </details>
 
-  <details class="details--country--scotland" role="group">
+  <details class="details--country details--country--scotland" id="scotland" role="group">
     <summary data-analytics="summary" role="button" aria-controls="details-content-1" aria-expanded="true">
       <span class="details__summary details__summary--country">Scotland</span>
     </summary>
@@ -69,7 +69,7 @@
     </div>
   </details>
 
-  <details class="details--country--wales" role="group">
+  <details class="details--country details--country--wales" id="wales" role="group">
     <summary data-analytics="summary" role="button" aria-controls="details-content-2" aria-expanded="true">
       <span class="details__summary details__summary--country">Wales</span>
     </summary>
@@ -88,7 +88,7 @@
     </div>
   </details>
 
-  <details class="details--country--northern" role="group">
+  <details class="details--country details--country--northern" id="northern" role="group">
     <summary data-analytics="summary" role="button" aria-controls="details-content-3" aria-expanded="true">
       <span class="details__summary details__summary--country">Northern Ireland</span>
     </summary>
