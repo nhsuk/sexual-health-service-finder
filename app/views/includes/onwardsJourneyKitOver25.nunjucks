@@ -1,0 +1,1 @@
+<p class='link2'>If you would prefer to be tested by a professional, you could <a href='{{ internalLink(siteRoot, location, 'professional', origin) }}'>see a sexual health professional</a> instead.</p>

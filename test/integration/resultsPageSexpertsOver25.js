@@ -24,7 +24,7 @@ function assertSearchResponse(location, type, origin, done, assertions) {
     });
 }
 
-describe('Results page', function test() {
+describe('Results page for sexual health professionals for over 25', function test() {
   // Setting this timeout as it is calling the real DB...
   this.timeout(utils.maxWaitTimeMs);
 
@@ -33,8 +33,8 @@ describe('Results page', function test() {
   });
 
   const location = 'ls1';
-  const type = constants.serviceTypes.kit;
-  const origin = constants.serviceChoices['16to24'];
+  const type = constants.serviceTypes.professional;
+  const origin = constants.serviceChoices.over25;
 
   describe('layout', () => {
     it('should contain HTML', (done) => {
@@ -48,14 +48,12 @@ describe('Results page', function test() {
         const $ = cheerio.load(res.text);
         const resultsHeader = $('.local-header--title--question').text();
         const resultsSubHeader = $('.results p.explanation').text();
-        const resultsOnwards1 = $('.results p.link1').text();
-        const resultsOnwards2 = $('.results p.link2').text();
+        const resultsOnwards = $('.results p.links').text();
 
-        expect(resultsHeader).to.contain('Where you can pick up a free test kit near \'LS1\'');
-        expect(resultsSubHeader).to.contain('You can pick up a chlamydia test kit from any of the places below. You\'ll ' +
-          'take your own samples and send them by Freepost to be tested. You\'ll usually get the results within 2 weeks.');
-        expect(resultsOnwards1).to.contain('If you would prefer to have a test kit delivered to you, you could order a free test kit online instead.');
-        expect(resultsOnwards2).to.contain('If you would prefer to be tested by a professional, you could see a sexual health professional instead.');
+        expect(resultsHeader).to.contain('Sexual health professionals near \'LS1\'');
+        expect(resultsSubHeader).to.contain('Here is a list of places where you can get tested by a sexual health professional.');
+        expect(resultsOnwards).to.contain('If you decide not to visit a sexual health professional, you can see places where you can ' +
+          'buy a test kit instead.');
       });
     });
   });

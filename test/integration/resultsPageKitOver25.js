@@ -24,7 +24,7 @@ function assertSearchResponse(location, type, origin, done, assertions) {
     });
 }
 
-describe('Results page', function test() {
+describe('Results page for kits in over 25 year olds', function test() {
   // Setting this timeout as it is calling the real DB...
   this.timeout(utils.maxWaitTimeMs);
 
@@ -47,11 +47,13 @@ describe('Results page', function test() {
       assertSearchResponse(location, type, origin, done, (err, res) => {
         const $ = cheerio.load(res.text);
         const resultsHeader = $('.local-header--title--question').text();
-        const resultsSubHeader = $('.results p').text();
+        const resultsSubHeader = $('.results p.explanation').text();
+        const resultsOnwards2 = $('.results p.link2').text();
 
         expect(resultsHeader).to.contain('Where you can buy a test near \'LS1\'');
         expect(resultsSubHeader).to.contain('You can buy a chlamydia test kit from any of the places below. You\'ll take ' +
           'your own samples and send them by Freepost to be tested. You\'ll usually get the results within 2 weeks.');
+        expect(resultsOnwards2).to.contain('If you would prefer to be tested by a professional, you could see a sexual health professional instead.');
       });
     });
   });

@@ -1,0 +1,2 @@
+<p class='link1'>If you would prefer to have a test kit delivered to you, you could <a href='{{ externalLink(location, postcodeLocationDetails.location.lat, postcodeLocationDetails.location.lon) }}'>order a free test kit online</a> instead. </p>
+<p class='link2'>If you would prefer to be tested by a professional, you could <a href='{{ internalLink(siteRoot, location, 'professional', origin) }}'>see a sexual health professional</a> instead. </p>
