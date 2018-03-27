@@ -7,7 +7,7 @@
 {% block content %}
 <div class="results">
 
-  <p>{{ resultsPara }}</p>
+  <p>{{ resultsExplanation }}</p>
 
   <h2 class="sr-only" data-results="{{services.length}}" data-term="{{location}} class="local-header--title--question">Results</h1>
   <h2 class="local-header--title--question">Results</h1>

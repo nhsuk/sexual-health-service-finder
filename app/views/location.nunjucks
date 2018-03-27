@@ -4,6 +4,12 @@
 <h1 class="local-header--title--question">{{ locationHeading }}</h1>
 {% endblock %}
 
+{% if (outsideOfEnglandPostcodeFlag) %}
+  {% set errorMessage %}
+      {% include 'includes/outOfEnglandMessage.nunjucks' %}
+  {% endset %}
+{% endif %}
+
 {% block content %}
 {% if errorMessage %}
 <div class="error-summary">

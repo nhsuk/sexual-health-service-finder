@@ -58,13 +58,12 @@ describe('queryMapper', () => {
     });
 
     it('should return undefined when empty location', () => {
-      // eslint-disable-next-line no-shadow
-      const location = undefined;
+      const emptyLocation = undefined;
       const query = {
         origin: constants.serviceChoices.symptoms,
         type: constants.serviceTypes.professional,
       };
-      const output = queryMapper.getResultsHeading(query, location);
+      const output = queryMapper.getResultsHeading(query, emptyLocation);
       expect(output).to.equal(undefined);
     });
 

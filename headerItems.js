@@ -18,7 +18,7 @@ function saveFile(output, filename) {
 async function saveHeaderItems() {
   try {
     log.info(`Building '${headerFileName}'`);
-    const response = await getHeader(config.headerApiUrl);
+    const response = await getHeader(config.app.headerApiUrl);
     const headerItems = buildHeaderItems(response);
     saveFile(headerItems, headerFileName);
     log.info('Build complete.');

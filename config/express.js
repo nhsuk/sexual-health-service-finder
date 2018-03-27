@@ -20,10 +20,10 @@ module.exports = (app, config) => {
   // start collecting default metrics
   promBundle.promClient.collectDefaultMetrics();
 
-  app.set('views', `${config.root}/app/views`);
+  app.set('views', `${config.app.root}/app/views`);
   app.set('view engine', 'nunjucks');
   const nunjucksEnvironment =
-    nunjucks.configure(`${config.root}/app/views`, {
+    nunjucks.configure(`${config.app.root}/app/views`, {
       autoescape: true,
       express: app,
       watch: true,
@@ -91,7 +91,7 @@ module.exports = (app, config) => {
   app.use(cookieParser());
   app.use(compression());
 
-  app.use(constants.siteRoot, express.static(`${config.root}/public`));
+  app.use(constants.siteRoot, express.static(`${config.app.root}/public`));
 
   // metrics needs to be registered before routes wishing to have metrics generated
   // see https://github.com/jochen-schweizer/express-prom-bundle#sample-uusage

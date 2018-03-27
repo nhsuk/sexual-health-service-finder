@@ -35,9 +35,7 @@ describe('Postcode validation', () => {
 
       const localsExpectations = (viewName) => {
         expect(viewName).to.equal('location');
-        expect(res.locals.errorMessage).to.not.be.empty;
-        expect(res.locals.errorMessage)
-          .to.equal(messages.outsideOfEnglandPostcodeMessage());
+        expect(res.locals.outsideOfEnglandPostcodeFlag).to.equal(true);
       };
 
       res.render = getSpy('res.render', localsExpectations);
