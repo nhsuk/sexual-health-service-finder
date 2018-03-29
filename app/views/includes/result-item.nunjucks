@@ -1,0 +1,61 @@
+{% set distance = service.distance | float | round(2) %}
+
+{% if service.distance %}
+  <p class="results__address results__address-distance">
+    Distance: {{ distance }} miles
+  </p>
+{% endif %}
+
+<h3 class="results__name">
+  {{ service.name }}
+</h3>
+
+{% if service.address %}
+  <p class="results__address results__address-lines">
+    {% if service.address.fullAddress %} {{ service.address.fullAddress }} {% endif %}
+  </p>
+{% endif %}
+
+{% if service.contacts %}
+  <p class="results__address results__telephone">
+    {% if service.contacts.telephone %} <a href="tel:{{ service.contacts.telephone }}"> {{ service.contacts.telephone }} </a>{% endif %}
+  </p>
+{% endif %}
+
+{% if service.address %}
+  <p class="results__item__link">
+    <a class="maplink" href="{{service.mapUrl}}" target="_blank">See map and directions<span class="sr-only"> for {{ service.name }} at {{ service.address.line1 }}</span></a>
+  </p>
+{% endif %}
+
+{% if service.openingTimes %}
+  <details class="results__item__opening-times" role="group">
+    <summary data-analytics="summary" role="button" aria-controls="details-content-0" aria-expanded="true">
+      <span class="details__summary">See opening times</span>
+    </summary>
+
+    <div class="details__content" id="details-content-0" aria-hidden="false">
+      <div class="reading-width">
+        <p class="results__openingTimes">
+          {{ service.openingTimes }}
+        </p>
+      </div>
+    </div>
+  </details>
+{% endif %}
+
+{% if service.serviceDetails %}
+  <details class="results__item__service-details" role="group">
+    <summary data-analytics="summary" role="button" aria-controls="details-content-0" aria-expanded="true">
+      <span class="details__summary">See service information</span>
+    </summary>
+
+    <div class="details__content" id="details-content-0" aria-hidden="false">
+      <div class="reading-width">
+        <p class="results__serviceDetails">
+          {{ service.serviceDetails }}
+        </p>
+      </div>
+    </div>
+  </details>
+{% endif %}

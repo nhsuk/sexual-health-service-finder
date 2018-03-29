@@ -1,6 +1,7 @@
 const PostcodesIOClient = require('postcodesio-client');
 const errorCounter = require('../lib/promCounters').errorPageViews;
 const log = require('../lib/logger');
+const postcodesIORequestHistogram = require('../lib/promHistograms').postcodesIORequest;
 const validationCounter = require('../lib/promCounters').validationLocationErrors;
 
 // rewire (a framework for mocking) doesn't support const
@@ -32,6 +33,7 @@ async function lookupPostcode(req, res, next) {
   const location = res.locals.location;
 
   log.debug({ location }, 'Postcode search text');
+  const endTimer = postcodesIORequestHistogram.startTimer();
   if (location) {
     try {
       const postcodeDetails = await PostcodesIO.lookup(location);
@@ -47,6 +49,8 @@ async function lookupPostcode(req, res, next) {
       log.debug({ location }, 'Error in postcode lookup');
       errorCounter.inc(1);
       next(error);
+    } finally {
+      endTimer();
     }
   } else {
     log.debug('No postcode');

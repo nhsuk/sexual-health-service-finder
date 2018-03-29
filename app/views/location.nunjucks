@@ -4,11 +4,17 @@
 <h1 class="local-header--title--question">{{ locationHeading }}</h1>
 {% endblock %}
 
+{% if (outsideOfEnglandPostcodeFlag) %}
+  {% set errorMessage %}
+      {% include 'includes/outOfEnglandMessage.nunjucks' %}
+  {% endset %}
+{% endif %}
+
 {% block content %}
 {% if errorMessage %}
 <div class="error-summary">
   <h2 class="local-header--error error-summary-heading">
-    {{ errorMessage }}
+    {{ errorMessage | safe }}
   </h2>
 </div>
 {% endif %}
@@ -17,7 +23,7 @@
   <div class="reading-width">
     <div class="form-item-wrapper">
       <div class="form-group {% if errorMessage %} error {% endif %}">
-        <label class="form-label-bold" for="location">Enter a postcode.</label>
+        <label class="form-label-bold" for="location">Enter a postcode in England</label>
           <div class="form-group">
             <input autocomplete="off" type="text" class="form-control" name="location" id="location" value=""{% if errorMessage %} aria-describedby="error-message" aria-invalid="true"{% endif %}>
           </div>

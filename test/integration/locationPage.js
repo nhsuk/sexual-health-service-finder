@@ -63,7 +63,7 @@ describe('Location page', () => {
     it('should ask for location of paid kits for people over 25', async () => {
       await assertMapping(
         { origin: constants.serviceChoices.over25, type: constants.serviceTypes.kit },
-        'Where would you like to collect your test kit?'
+        'Where would you like to buy your test kit?'
       );
     });
   });
