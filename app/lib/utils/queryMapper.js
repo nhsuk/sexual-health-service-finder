@@ -26,18 +26,16 @@ function getLocationHeading(query) {
 }
 
 function getResultsHeading(query, loc) {
-  if (loc) {
+  if (loc && query.type) {
     const location = loc.toUpperCase();
-    if (query.type) {
-      if (isProfessionalChoice(query)) {
-        return `Sexual health professionals near '${location}'`;
-      }
-      if (utils.areEqual(query.type, constants.serviceTypes.kit)) {
-        if (query.origin === constants.serviceChoices['16to25']) {
-          return `Where you can pick up a free test kit near '${location}'`;
-        } else if (query.origin === constants.serviceChoices.over25) {
-          return `Where you can buy a test near '${location}'`;
-        }
+    if (isProfessionalChoice(query)) {
+      return `Sexual health professionals near '${location}'`;
+    }
+    if (utils.areEqual(query.type, constants.serviceTypes.kit)) {
+      if (query.origin === constants.serviceChoices['16to25']) {
+        return `Where you can pick up a free test kit near '${location}'`;
+      } else if (query.origin === constants.serviceChoices.over25) {
+        return `Where you can buy a test near '${location}'`;
       }
     }
   }
