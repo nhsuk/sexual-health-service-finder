@@ -48,11 +48,9 @@ describe('Results page for sexual health professionals (symptoms and under16)', 
         const $ = cheerio.load(res.text);
         const resultsHeader = $('.local-header--title--question').text();
         const resultsSubHeader = $('.results p.explanation').text();
-        const resultsOnwards = $('.results p.gp-info').text();
 
         expect(resultsHeader).to.contain('Sexual health professionals near \'LS1\'');
         expect(resultsSubHeader).to.contain('Here is a list of places where you can get tested by a sexual health professional.');
-        expect(resultsOnwards).to.contain('In case the results are not convenient, you can always speak to your GP to get a chlamydia test.');
       });
     });
   });

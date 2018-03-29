@@ -36,10 +36,6 @@ function getResultsInfoForProfessionalsByAge(ageChoice, location) {
   if (ageChoice === constants.serviceChoices.over25) {
     resultsOnwardsJourneyPartial = 'includes/onwardsJourneyProfessionalOver25.nunjucks';
   }
-  if ((ageChoice === constants.serviceChoices.symptoms)
-    || (ageChoice === constants.serviceChoices.under16)) {
-    resultsOnwardsJourneyPartial = 'includes/onwardsJourneyProfessionalGp.nunjucks';
-  }
   return {
     correctResultsParams,
     resultsExplanation,
@@ -54,15 +50,13 @@ function getResultsInfoForKitsByAge(ageChoice, location) {
   let resultsHeading;
   let resultsOnwardsJourneyPartial;
   if (ageChoice === constants.serviceChoices['16to24']) {
-    resultsHeading = `Where you can pick up a free test kit near '${location}'`;
-    resultsExplanation = 'You can pick up a chlamydia test kit from any of the places below. You\'ll take your own samples and ' +
-      'send them by Freepost to be tested. You\'ll usually get the results within 2 weeks.';
+    resultsHeading = `Places you can collect a free test kit near '${location}'`;
+    resultsExplanation = 'Here is a list of places where you can get a free chlamydia test kit.';
     resultsOnwardsJourneyPartial = 'includes/onwardsJourneyKit16to24.nunjucks';
     correctResultsParams = true;
   } else if (ageChoice === constants.serviceChoices.over25) {
-    resultsHeading = `Where you can buy a test near '${location}'`;
-    resultsExplanation = 'You can buy a chlamydia test kit from any of the places below. You\'ll take your own samples and send ' +
-      'them by Freepost to be tested. You\'ll usually get the results within 2 weeks.';
+    resultsHeading = `Places you can buy a test kit near '${location}'`;
+    resultsExplanation = 'Here is a list of pharmacies where you can buy a chlamydia test kit.';
     resultsOnwardsJourneyPartial = 'includes/onwardsJourneyKitOver25.nunjucks';
     correctResultsParams = true;
   }

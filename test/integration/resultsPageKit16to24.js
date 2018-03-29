@@ -51,11 +51,11 @@ describe('Results page', function test() {
         const resultsOnwards1 = $('.results p.link1').text();
         const resultsOnwards2 = $('.results p.link2').text();
 
-        expect(resultsHeader).to.contain('Where you can pick up a free test kit near \'LS1\'');
+        expect(resultsHeader).to.contain('Places you can collect a free test kit near \'LS1\'');
         expect(resultsSubHeader).to.contain('You can pick up a chlamydia test kit from any of the places below. You\'ll ' +
           'take your own samples and send them by Freepost to be tested. You\'ll usually get the results within 2 weeks.');
-        expect(resultsOnwards1).to.contain('If you would prefer to have a test kit delivered to you, you could order a free test kit online instead.');
-        expect(resultsOnwards2).to.contain('If you would prefer to be tested by a professional, you could see a sexual health professional instead.');
+        expect(resultsOnwards1).to.contain('If you want a kit delivered to you, you can find a free test kit online.');
+        expect(resultsOnwards2).to.contain('You can also see places where you can get tested by a sexual health professional.');
       });
     });
   });

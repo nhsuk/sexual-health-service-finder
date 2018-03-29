@@ -103,7 +103,7 @@ describe('queryMapper', () => {
           type: constants.serviceTypes.kit,
         };
         const output = queryMapper.getResultsInfo(query, location).resultsHeading;
-        expect(output).to.equal('Where you can pick up a free test kit near \'LS1\'');
+        expect(output).to.equal('Places you can collect a free test kit near \'LS1\'');
       });
 
       it('should return a paid for kit message when the query is related to kit and age is over 25', () => {
@@ -112,7 +112,7 @@ describe('queryMapper', () => {
           type: constants.serviceTypes.kit,
         };
         const output = queryMapper.getResultsInfo(query, location).resultsHeading;
-        expect(output).to.equal('Where you can buy a test near \'LS1\'');
+        expect(output).to.equal('Places you can buy a test kit near \'LS1\'');
       });
     });
 
@@ -133,8 +133,7 @@ describe('queryMapper', () => {
           type: constants.serviceTypes.kit,
         };
         const output = queryMapper.getResultsInfo(query, location).resultsExplanation;
-        expect(output).to.equal('You can pick up a chlamydia test kit from any of the places below. You\'ll take your own samples and ' +
-          'send them by Freepost to be tested. You\'ll usually get the results within 2 weeks.');
+        expect(output).to.equal('Here is a list of places where you can get a free chlamydia test kit.');
       });
 
       it('should return a paid for kit message when the query is related to kit and age is over 25', () => {
@@ -143,31 +142,12 @@ describe('queryMapper', () => {
           type: constants.serviceTypes.kit,
         };
         const output = queryMapper.getResultsInfo(query, location).resultsExplanation;
-        expect(output).to.equal('You can buy a chlamydia test kit from any of the places below. You\'ll take your own samples and send ' +
-          'them by Freepost to be tested. You\'ll usually get the results within 2 weeks.');
+        expect(output).to.equal('Here is a list of pharmacies where you can buy a chlamydia test kit.');
       });
     });
 
     describe('resultsOnwardsJourneyPartial', () => {
       const location = 'ls1';
-      it('should offer GP alternative if recommended to see a sexual health professional with symptoms partial', () => {
-        const query = {
-          origin: constants.serviceChoices.symptoms,
-          type: constants.serviceTypes.professional,
-        };
-        const output = queryMapper.getResultsInfo(query, location).resultsOnwardsJourneyPartial;
-        expect(output).to.equal('includes/onwardsJourneyProfessionalGp.nunjucks');
-      });
-
-      it('should offer GP alternative if recommended to see a sexual health professional as under 16 partial', () => {
-        const query = {
-          origin: constants.serviceChoices.under16,
-          type: constants.serviceTypes.professional,
-        };
-        const output = queryMapper.getResultsInfo(query, location).resultsOnwardsJourneyPartial;
-        expect(output).to.equal('includes/onwardsJourneyProfessionalGp.nunjucks');
-      });
-
       it('should return alternative service links as free kit message when the query is related to professional and age between 16 and 25 partial', () => {
         const query = {
           origin: constants.serviceChoices['16to24'],

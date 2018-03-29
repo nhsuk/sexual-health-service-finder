@@ -50,10 +50,9 @@ describe('Results page for kits in over 25 year olds', function test() {
         const resultsSubHeader = $('.results p.explanation').text();
         const resultsOnwards2 = $('.results p.link2').text();
 
-        expect(resultsHeader).to.contain('Where you can buy a test near \'LS1\'');
-        expect(resultsSubHeader).to.contain('You can buy a chlamydia test kit from any of the places below. You\'ll take ' +
-          'your own samples and send them by Freepost to be tested. You\'ll usually get the results within 2 weeks.');
-        expect(resultsOnwards2).to.contain('If you would prefer to be tested by a professional, you could see a sexual health professional instead.');
+        expect(resultsHeader).to.contain('Places you can buy a test kit near \'LS1\'');
+        expect(resultsSubHeader).to.contain('Here is a list of pharmacies where you can buy a chlamydia test kit.');
+        expect(resultsOnwards2).to.contain('Or you can see a list of places where you can get tested by a sexual health professional.');
       });
     });
   });

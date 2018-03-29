@@ -1,1 +1,1 @@
-<p class='links'>If you decide not to visit a sexual health professional, you can <a href='{{ internalLink(siteRoot, location, 'kit', origin) }}'>see places where you can buy a test kit</a> instead.</p>
+<p class='links'>Or you can <a href='{{ internalLink(siteRoot, location, 'kit', origin) }}'>see places where you can buy a test kit</a>.</p>
