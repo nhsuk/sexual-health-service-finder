@@ -19,8 +19,14 @@ function build(location, searchType, size) {
   ];
 
   if (getFilter(searchType)) {
+    if (getFilter(searchType).mustClause) {
+      query.body.query.bool.must = getFilter(searchType).mustClause;
+    }
+    if (getFilter(searchType).shouldClause) {
+      query.body.query.bool.minimum_should_match = getFilter(searchType).minShouldMatch;
+      query.body.query.bool.should = getFilter(searchType).shouldClause;
+    }
     query.body.query.bool.must_not = getFilter(searchType).mustNotClause;
-    query.body.query.bool.must = getFilter(searchType).mustClause;
   }
 
   return query;
