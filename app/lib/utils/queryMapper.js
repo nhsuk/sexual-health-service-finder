@@ -22,7 +22,7 @@ function getLocationHeading(query) {
       return 'redirect';
     }
   }
-  return undefined;
+  return false;
 }
 
 function getResultsInfoForProfessionalsByAge(ageChoice, location) {
@@ -45,56 +45,56 @@ function getResultsInfoForProfessionalsByAge(ageChoice, location) {
 }
 
 function getResultsInfoForKitsByAge(ageChoice, location) {
-  let correctResultsParams;
-  let resultsExplanation;
-  let resultsHeading;
-  let resultsOnwardsJourneyPartial;
   if (ageChoice === constants.serviceChoices['16to24']) {
-    resultsHeading = `Places you can collect a free test kit near '${location}'`;
-    resultsExplanation = 'Here is a list of places where you can get a free chlamydia test kit.';
-    resultsOnwardsJourneyPartial = 'includes/onwardsJourneyKit16to24.nunjucks';
-    correctResultsParams = true;
+    return {
+      correctResultsParams: true,
+      resultsExplanation: 'Here is a list of places where you can get a free chlamydia test kit.',
+      resultsHeading: `Places you can collect a free test kit near '${location}'`,
+      resultsOnwardsJourneyPartial: 'includes/onwardsJourneyKit16to24.nunjucks',
+    };
   } else if (ageChoice === constants.serviceChoices.over25) {
-    resultsHeading = `Places you can buy a test kit near '${location}'`;
-    resultsExplanation = 'Here is a list of pharmacies where you can buy a chlamydia test kit.';
-    resultsOnwardsJourneyPartial = 'includes/onwardsJourneyKitOver25.nunjucks';
-    correctResultsParams = true;
+    return {
+      correctResultsParams: true,
+      resultsExplanation: 'Here is a list of pharmacies where you can buy a chlamydia test kit.',
+      resultsHeading: `Places you can buy a test kit near '${location}'`,
+      resultsOnwardsJourneyPartial: 'includes/onwardsJourneyKitOver25.nunjucks',
+    };
   }
   return {
-    correctResultsParams,
-    resultsExplanation,
-    resultsHeading,
-    resultsOnwardsJourneyPartial,
+    correctResultsParams: false,
+    resultsExplanation: false,
+    resultsHeading: false,
+    resultsOnwardsJourneyPartial: false,
   };
 }
 
 function getResultsInfo(query, loc) {
-  let correctResultsParams;
-  let resultsExplanation;
-  let resultsHeading;
-  let resultsOnwardsJourneyPartial;
   if (loc && query.type) {
     const location = loc.toUpperCase();
     if (isProfessionalChoice(query)) {
       /* eslint-disable max-len */
-      correctResultsParams = getResultsInfoForProfessionalsByAge(query.origin, location).correctResultsParams;
-      resultsHeading = getResultsInfoForProfessionalsByAge(query.origin, location).resultsHeading;
-      resultsOnwardsJourneyPartial = getResultsInfoForProfessionalsByAge(query.origin, location).resultsOnwardsJourneyPartial;
-      resultsExplanation = getResultsInfoForProfessionalsByAge(query.origin, location).resultsExplanation;
+      return {
+        correctResultsParams: getResultsInfoForProfessionalsByAge(query.origin, location).correctResultsParams,
+        resultsExplanation: getResultsInfoForProfessionalsByAge(query.origin, location).resultsExplanation,
+        resultsHeading: getResultsInfoForProfessionalsByAge(query.origin, location).resultsHeading,
+        resultsOnwardsJourneyPartial: getResultsInfoForProfessionalsByAge(query.origin, location).resultsOnwardsJourneyPartial,
+      };
     }
     if (utils.areEqual(query.type, constants.serviceTypes.kit)) {
-      correctResultsParams = getResultsInfoForKitsByAge(query.origin, location).correctResultsParams;
-      resultsHeading = getResultsInfoForKitsByAge(query.origin, location).resultsHeading;
-      resultsOnwardsJourneyPartial = getResultsInfoForKitsByAge(query.origin, location).resultsOnwardsJourneyPartial;
-      resultsExplanation = getResultsInfoForKitsByAge(query.origin, location).resultsExplanation;
+      return {
+        correctResultsParams: getResultsInfoForKitsByAge(query.origin, location).correctResultsParams,
+        resultsExplanation: getResultsInfoForKitsByAge(query.origin, location).resultsExplanation,
+        resultsHeading: getResultsInfoForKitsByAge(query.origin, location).resultsHeading,
+        resultsOnwardsJourneyPartial: getResultsInfoForKitsByAge(query.origin, location).resultsOnwardsJourneyPartial,
+      };
       /* eslint-enable max-len */
     }
   }
   return {
-    correctResultsParams,
-    resultsExplanation,
-    resultsHeading,
-    resultsOnwardsJourneyPartial,
+    correctResultsParams: false,
+    resultsExplanation: false,
+    resultsHeading: false,
+    resultsOnwardsJourneyPartial: false,
   };
 }
 
@@ -106,7 +106,7 @@ function mapServiceType(query) {
     || (query.symptoms && (query.symptoms === constants.symptoms.yes))) {
     return constants.serviceTypes.professional;
   }
-  return undefined;
+  return false;
 }
 
 function mapServiceChoice(query) {
@@ -129,7 +129,7 @@ function mapServiceChoice(query) {
       return constants.serviceChoices.over25;
     }
   }
-  return undefined;
+  return false;
 }
 
 module.exports = {

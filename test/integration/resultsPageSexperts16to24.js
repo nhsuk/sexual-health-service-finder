@@ -52,7 +52,8 @@ describe('Results page for sexual health professionals for 16 to 25', function t
 
         expect(resultsHeader).to.contain('Sexual health professionals near \'LS1\'');
         expect(resultsSubHeader).to.contain('Here is a list of places where you can get tested by a sexual health professional.');
-        expect(resultsOnwards).to.contain('Here is a list of places where you can get a free chlamydia test kit');
+        expect(resultsOnwards).to.contain('If you decide not to visit a sexual health professional, you can see places where you can ' +
+          'collect a free test kit or find a free test kit online instead.');
       });
     });
   });

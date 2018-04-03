@@ -6,10 +6,10 @@ const expect = chai.expect;
 
 describe('queryMapper', () => {
   describe('getLocationHeading', () => {
-    it('should return undefined when empty query', () => {
+    it('should return false when empty query', () => {
       const query = {};
       const output = queryMapper.getLocationHeading(query);
-      expect(output).to.equal(undefined);
+      expect(output).to.equal(false);
     });
 
     it('should return a sexual professionals message when the query is related to professionals and origin is any', () => {
@@ -50,19 +50,19 @@ describe('queryMapper', () => {
   });
 
   describe('getResultsInfo', () => {
-    it('should return undefined when empty query', () => {
+    it('should return false when empty query', () => {
       const query = {};
       const location = 'ls1';
       const output = queryMapper.getResultsInfo(query, location);
       expect(output).to.eql({
-        correctResultsParams: undefined,
-        resultsExplanation: undefined,
-        resultsHeading: undefined,
-        resultsOnwardsJourneyPartial: undefined,
+        correctResultsParams: false,
+        resultsExplanation: false,
+        resultsHeading: false,
+        resultsOnwardsJourneyPartial: false,
       });
     });
 
-    it('should return undefined when empty location', () => {
+    it('should return false when empty location', () => {
       const emptyLocation = undefined;
       const query = {
         origin: constants.serviceChoices.symptoms,
@@ -70,10 +70,10 @@ describe('queryMapper', () => {
       };
       const output = queryMapper.getResultsInfo(query, emptyLocation);
       expect(output).to.eql({
-        correctResultsParams: undefined,
-        resultsExplanation: undefined,
-        resultsHeading: undefined,
-        resultsOnwardsJourneyPartial: undefined,
+        correctResultsParams: false,
+        resultsExplanation: false,
+        resultsHeading: false,
+        resultsOnwardsJourneyPartial: false,
       });
     });
 
@@ -213,13 +213,13 @@ describe('queryMapper', () => {
         expect(output).to.equal(true);
       });
 
-      it('should return an undefined if the query is not right', () => {
+      it('should return false if the query is not right', () => {
         const query = {
           origin: constants.serviceChoices.over25,
           type: constants.serviceTypes.online,
         };
         const output = queryMapper.getResultsInfo(query, location).correctResultsParams;
-        expect(output).to.equal(undefined);
+        expect(output).to.equal(false);
       });
     });
   });
@@ -249,20 +249,20 @@ describe('queryMapper', () => {
       expect(output).to.equal(constants.serviceTypes.professional);
     });
 
-    it('should map to undefined if query contains no symptoms', () => {
+    it('should map to false if query contains no symptoms', () => {
       const query = {
         symptoms: constants.symptoms.false,
       };
       const output = queryMapper.mapServiceType(query);
-      expect(output).to.equal(undefined);
+      expect(output).to.equal(false);
     });
 
-    it('should map to undefined if query contains age is over 16', () => {
+    it('should map to false if query contains age is over 16', () => {
       const query = {
         age: constants.age.over25,
       };
       const output = queryMapper.mapServiceType(query);
-      expect(output).to.equal(undefined);
+      expect(output).to.equal(false);
     });
   });
 
@@ -291,12 +291,12 @@ describe('queryMapper', () => {
       expect(output).to.equal(constants.serviceChoices.symptoms);
     });
 
-    it('should map to undefined if query contains no symptoms', () => {
+    it('should map to false if query contains no symptoms', () => {
       const query = {
         symptoms: constants.symptoms.false,
       };
       const output = queryMapper.mapServiceChoice(query);
-      expect(output).to.equal(undefined);
+      expect(output).to.equal(false);
     });
 
     it('should map to 16 to 24 if query contains age is between 16 and 24', () => {
@@ -315,11 +315,11 @@ describe('queryMapper', () => {
       expect(output).to.equal(constants.serviceChoices.over25);
     });
 
-    it('should map to undefined if no age or symptoms', () => {
+    it('should map to false if no age or symptoms', () => {
       const query = {
       };
       const output = queryMapper.mapServiceChoice(query);
-      expect(output).to.equal(undefined);
+      expect(output).to.equal(false);
     });
   });
 });

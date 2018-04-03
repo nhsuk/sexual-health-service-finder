@@ -24,7 +24,7 @@ function assertSearchResponse(location, type, origin, done, assertions) {
     });
 }
 
-describe('Results page', function test() {
+describe('Results page for kits in under 16 year olds', function test() {
   // Setting this timeout as it is calling the real DB...
   this.timeout(utils.maxWaitTimeMs);
 
@@ -52,8 +52,7 @@ describe('Results page', function test() {
         const resultsOnwards2 = $('.results p.link2').text();
 
         expect(resultsHeader).to.contain('Places you can collect a free test kit near \'LS1\'');
-        expect(resultsSubHeader).to.contain('You can pick up a chlamydia test kit from any of the places below. You\'ll ' +
-          'take your own samples and send them by Freepost to be tested. You\'ll usually get the results within 2 weeks.');
+        expect(resultsSubHeader).to.contain('Here is a list of places where you can get a free chlamydia test kit.');
         expect(resultsOnwards1).to.contain('If you want a kit delivered to you, you can find a free test kit online.');
         expect(resultsOnwards2).to.contain('You can also see places where you can get tested by a sexual health professional.');
       });
