@@ -1,1 +1,1 @@
-<p class='links'>Or you can <a href='{{ internalLink(siteRoot, location, 'kit', origin) }}'>see places where you can buy a test kit</a>.</p>
+<p class='links'>Or you can <a href='{{ resultsInternalLink }}'>see places where you can buy a test kit</a>.</p>

@@ -6,6 +6,19 @@ function isProfessionalChoice(query) {
     && (utils.getValues(constants.serviceChoices).includes(query.origin)));
 }
 
+function getAlternativeTypeFor(type) {
+  if (type === constants.serviceTypes.professional) {
+    return constants.serviceTypes.kit;
+  } else if (type === constants.serviceTypes.kit) {
+    return constants.serviceTypes.professional;
+  }
+  return type;
+}
+
+function getResultsInternalLink(query, location) {
+  return `${constants.siteRoot}/results?location=${location}&type=${getAlternativeTypeFor(query.type)}&origin=${query.origin}`;
+}
+
 function getLocationHeading(query) {
   if (query.type) {
     if (isProfessionalChoice(query)) {
@@ -26,10 +39,7 @@ function getLocationHeading(query) {
 }
 
 function getResultsInfoForProfessionalsByAge(ageChoice, location) {
-  const correctResultsParams = true;
-  const resultsHeading = `Sexual health professionals near '${location}'`;
-  const resultsExplanation = 'Here is a list of places where you can get tested by a sexual health professional.';
-  let resultsOnwardsJourneyPartial;
+  let resultsOnwardsJourneyPartial = false;
   if (ageChoice === constants.serviceChoices['16to24']) {
     resultsOnwardsJourneyPartial = 'includes/onwardsJourneyProfessional16to24.nunjucks';
   }
@@ -37,9 +47,9 @@ function getResultsInfoForProfessionalsByAge(ageChoice, location) {
     resultsOnwardsJourneyPartial = 'includes/onwardsJourneyProfessionalOver25.nunjucks';
   }
   return {
-    correctResultsParams,
-    resultsExplanation,
-    resultsHeading,
+    correctResultsParams: true,
+    resultsExplanation: 'Here is a list of places where you can get tested by a sexual health professional.',
+    resultsHeading: `Sexual health professionals near '${location}'`,
     resultsOnwardsJourneyPartial,
   };
 }
@@ -68,32 +78,36 @@ function getResultsInfoForKitsByAge(ageChoice, location) {
   };
 }
 
-function getResultsInfo(query, loc) {
-  if (loc && query.type) {
-    const location = loc.toUpperCase();
+function getResultsInfo(query, location) {
+  if (location && query.type) {
+    const mappedLocation = location.toUpperCase();
+    const resultsInternalLink = getResultsInternalLink(query, location);
     if (isProfessionalChoice(query)) {
-      /* eslint-disable max-len */
+      const getResults = getResultsInfoForProfessionalsByAge(query.origin, mappedLocation);
       return {
-        correctResultsParams: getResultsInfoForProfessionalsByAge(query.origin, location).correctResultsParams,
-        resultsExplanation: getResultsInfoForProfessionalsByAge(query.origin, location).resultsExplanation,
-        resultsHeading: getResultsInfoForProfessionalsByAge(query.origin, location).resultsHeading,
-        resultsOnwardsJourneyPartial: getResultsInfoForProfessionalsByAge(query.origin, location).resultsOnwardsJourneyPartial,
+        correctResultsParams: getResults.correctResultsParams,
+        resultsExplanation: getResults.resultsExplanation,
+        resultsHeading: getResults.resultsHeading,
+        resultsInternalLink,
+        resultsOnwardsJourneyPartial: getResults.resultsOnwardsJourneyPartial,
       };
     }
     if (utils.areEqual(query.type, constants.serviceTypes.kit)) {
+      const getResults = getResultsInfoForKitsByAge(query.origin, mappedLocation);
       return {
-        correctResultsParams: getResultsInfoForKitsByAge(query.origin, location).correctResultsParams,
-        resultsExplanation: getResultsInfoForKitsByAge(query.origin, location).resultsExplanation,
-        resultsHeading: getResultsInfoForKitsByAge(query.origin, location).resultsHeading,
-        resultsOnwardsJourneyPartial: getResultsInfoForKitsByAge(query.origin, location).resultsOnwardsJourneyPartial,
+        correctResultsParams: getResults.correctResultsParams,
+        resultsExplanation: getResults.resultsExplanation,
+        resultsHeading: getResults.resultsHeading,
+        resultsInternalLink,
+        resultsOnwardsJourneyPartial: getResults.resultsOnwardsJourneyPartial,
       };
-      /* eslint-enable max-len */
     }
   }
   return {
     correctResultsParams: false,
     resultsExplanation: false,
     resultsHeading: false,
+    resultsInternalLink: false,
     resultsOnwardsJourneyPartial: false,
   };
 }
@@ -135,6 +149,8 @@ function mapServiceChoice(query) {
 module.exports = {
   getLocationHeading,
   getResultsInfo,
+  getResultsInternalLink,
+  isProfessionalChoice,
   mapServiceChoice,
   mapServiceType,
 };

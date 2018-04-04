@@ -12,7 +12,6 @@ services:
       NODE_ENV: ${NODE_ENV-development}
       ES_HOST: ${ES_HOST}
       ES_PORT: ${ES_PORT}
-      COMPOSE_HTTP_TIMEOUT: 200
 
   frontend:
     extends:

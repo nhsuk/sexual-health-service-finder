@@ -1,12 +1,5 @@
 {% extends 'layout.nunjucks' %}
 
-{% macro externalLink(location, lat, lon) %}
-  https://www.nhs.uk/service-search/Chlamydia-free-online-tests-for-u-25s/{{location}}/Results/105/{{lon}}/{{lat}}/344/0?distance=25
-{% endmacro %}
-{% macro internalLink(root, location, type, origin) %}
-  {{root}}/results?location={{location}}&type={{type}}&origin={{origin}}
-{% endmacro %}
-
 {% block header %}
 <h1 class="local-header--title--question">{{ resultsHeading }}</h1>
 {% endblock %}
@@ -18,10 +11,7 @@
   {% endif %}
 
   {% if resultsOnwardsJourneyPartial %}
-    {% set resultsOnwardsJourney %}
-      {% include resultsOnwardsJourneyPartial %}
-    {% endset %}
-    {{ resultsOnwardsJourney | safe }}
+    {% include resultsOnwardsJourneyPartial %}
   {% endif %}
 
   <h2 class="sr-only" data-results="{{services.length}}" data-term="{{location}} class="local-header--title--question">Results</h1>
