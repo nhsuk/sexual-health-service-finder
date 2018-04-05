@@ -92,16 +92,14 @@ describe('Results page results', function test() {
         expect(searchResultsAddress).to.not.equal(undefined);
         expect(searchResultsPhone).to.not.equal(undefined);
         expect(searchResultsMapLink.text()).to.contain('See map and directions');
-        expect(searchResultsOpeningTimes.text()).to.contain('See opening times');
-        expect(searchResultsService.text()).to.contain('See service information');
+        expect(searchResultsOpeningTimes.text()).to.equal('See opening times'.repeat(30));
+        expect(searchResultsService.text()).to.equal('See service information'.repeat(30));
 
         expect(searchResultsDistance).to.have.lengthOf(30);
         expect(searchResultsName).to.have.lengthOf(30);
         expect(searchResultsAddress).to.have.lengthOf(30);
         expect(searchResultsPhone).to.have.lengthOf(30);
         expect(searchResultsMapLink).to.have.lengthOf(30);
-        expect(searchResultsOpeningTimes).to.have.lengthOf(30);
-        expect(searchResultsService).to.have.lengthOf(30);
       });
     });
   });

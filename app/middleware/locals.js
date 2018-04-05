@@ -18,7 +18,7 @@ module.exports = config =>
     res.locals.correctLocationParams = res.locals.locationHeading;
     const resultsInfo = queryMapper.getResultsInfo(req.query, res.locals.location);
     res.locals.resultsHeading = resultsInfo.resultsHeading;
-    res.locals.resultsInternalLink = resultsInfo.resultsInternalLink;
+    res.locals.resultsInternalUrl = resultsInfo.resultsInternalUrl;
     res.locals.resultsExplanation = resultsInfo.resultsExplanation;
     res.locals.resultsOnwardsJourneyPartial = resultsInfo.resultsOnwardsJourneyPartial;
     res.locals.correctResultsParams = resultsInfo.correctResultsParams;

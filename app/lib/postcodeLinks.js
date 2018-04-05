@@ -31,14 +31,14 @@ function addMapUrl(postcodeLocationDetails, inputList) {
   });
 }
 
-function addExternalUrl(postcodeLocationDetails, location) {
+function getChoicesResultsUrlToOnlineTests(postcodeLocationDetails, location) {
   if (location && postcodeLocationDetails && postcodeLocationDetails.location) {
     return `https://www.nhs.uk/service-search/Chlamydia-free-online-tests-for-u-25s/${location}/Results/105/${postcodeLocationDetails.location.lon}/${postcodeLocationDetails.location.lat}/344/0?distance=25`;
   }
-  return false;
+  return undefined;
 }
 
 module.exports = {
-  addExternalUrl,
   addMapUrl,
+  getChoicesResultsUrlToOnlineTests,
 };

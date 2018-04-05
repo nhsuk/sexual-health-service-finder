@@ -7,7 +7,7 @@ const expect = chai.expect;
 
 describe('postcodeLinks', () => {
   describe('addMapUrl', () => {
-    const postcodeLocationDetails = { location: { lat: 52.4, lon: -1.9 } };
+    const locationDetails = { location: { lat: 52.4, lon: -1.9 } };
 
     it(
       'should add an additional property to all items in the input list with the google maps Url',
@@ -31,7 +31,7 @@ describe('postcodeLinks', () => {
           name: nameTwo,
         }];
 
-        const startLocation = `saddr=${postcodeLocationDetails.location.lat}%2C${postcodeLocationDetails.location.lon}`;
+        const startLocation = `saddr=${locationDetails.location.lat}%2C${locationDetails.location.lon}`;
         const nameAndAddressOne = `${nameOne},${Object.values(address).join()}`;
         const nameAndAddressOneEncoded = qs.escape(nameAndAddressOne);
         const destinationOne = `daddr=${nameAndAddressOneEncoded}`;
@@ -45,7 +45,7 @@ describe('postcodeLinks', () => {
         const expectedMapLinkOne = `https://maps.google.com/maps?${encodedQueryOne}`;
         const expectedMapLinkTwo = `https://maps.google.com/maps?${encodedQueryTwo}`;
 
-        const results = postcodeLinks.addMapUrl(postcodeLocationDetails, inputList);
+        const results = postcodeLinks.addMapUrl(locationDetails, inputList);
 
         expect(results).to.not.be.undefined;
         expect(results).to.be.an('array');
@@ -69,10 +69,10 @@ describe('postcodeLinks', () => {
       }];
 
       const destination = 'name,line1,AB12 3CD';
-      const encodedQuery = `daddr=${qs.escape(destination)}&near=${qs.escape(destination)}&saddr=${postcodeLocationDetails.location.lat}%2C${postcodeLocationDetails.location.lon}`;
+      const encodedQuery = `daddr=${qs.escape(destination)}&near=${qs.escape(destination)}&saddr=${locationDetails.location.lat}%2C${locationDetails.location.lon}`;
       const expectedMapLink = `https://maps.google.com/maps?${encodedQuery}`;
 
-      const results = postcodeLinks.addMapUrl(postcodeLocationDetails, inputList);
+      const results = postcodeLinks.addMapUrl(locationDetails, inputList);
 
       expect(results).to.not.be.undefined;
       expect(results).to.not.be.equal(undefined);
@@ -95,10 +95,10 @@ describe('postcodeLinks', () => {
       }];
 
       const destination = 'line1,AB12 3CD';
-      const encodedQuery = `daddr=${qs.escape(destination)}&near=${qs.escape(destination)}&saddr=${postcodeLocationDetails.location.lat}%2C${postcodeLocationDetails.location.lon}`;
+      const encodedQuery = `daddr=${qs.escape(destination)}&near=${qs.escape(destination)}&saddr=${locationDetails.location.lat}%2C${locationDetails.location.lon}`;
       const expectedMapLink = `https://maps.google.com/maps?${encodedQuery}`;
 
-      const results = postcodeLinks.addMapUrl(postcodeLocationDetails, inputList);
+      const results = postcodeLinks.addMapUrl(locationDetails, inputList);
 
       expect(results).to.not.equal(undefined);
       expect(results).to.be.an('array');
@@ -117,49 +117,53 @@ describe('postcodeLinks', () => {
       const params = {
         daddr: destination,
         near: destination,
-        saddr: `${postcodeLocationDetails.location.lat},${postcodeLocationDetails.location.lon}`,
+        saddr: `${locationDetails.location.lat},${locationDetails.location.lon}`,
       };
       const expectedMapLink = `https://maps.google.com/maps?${qs.stringify(params)}`;
 
-      const results = postcodeLinks.addMapUrl(postcodeLocationDetails, inputList);
+      const results = postcodeLinks.addMapUrl(locationDetails, inputList);
 
       expect(results.length).to.be.equal(1);
       expect(results[0].mapUrl).to.be.equal(expectedMapLink);
     });
   });
 
-  describe('addExternalUrl', () => {
+  describe('getChoicesResultsUrlToOnlineTests', () => {
     const location = 'ls1';
-    const postcodeLocationDetails = { location: { lat: 52.4, lon: -1.9 } };
-    it('should return false if no location', () => {
+    const locationDetails = { location: { lat: 52.4, lon: -1.9 } };
+    it('should return undefined if no location', () => {
       const emptyLocation = '';
 
-      const results = postcodeLinks.addExternalUrl(postcodeLocationDetails, emptyLocation);
+      const results = postcodeLinks
+        .getChoicesResultsUrlToOnlineTests(locationDetails, emptyLocation);
 
-      expect(results).to.equal(false);
+      expect(results).to.equal(undefined);
     });
 
-    it('should return false if no postcodeLocationDetails', () => {
-      const emptyPostcodeLocationDetails = {};
+    it('should return undefined if no locationDetails', () => {
+      const emptyLocationDetails = {};
 
-      const results = postcodeLinks.addExternalUrl(emptyPostcodeLocationDetails, location);
+      const results = postcodeLinks
+        .getChoicesResultsUrlToOnlineTests(emptyLocationDetails, location);
 
-      expect(results).to.equal(false);
+      expect(results).to.equal(undefined);
     });
 
-    it('should return invalid url if malformed postcodeLocationDetails', () => {
-      const emptyPostcodeLocationDetails = { location: {} };
+    it('should return invalid url if malformed locationDetails', () => {
+      const emptyLocationDetails = { location: {} };
 
       const expectedExternalLink = 'https://www.nhs.uk/service-search/Chlamydia-free-online-tests-for-u-25s/ls1/Results/105/undefined/undefined/344/0?distance=25';
-      const results = postcodeLinks.addExternalUrl(emptyPostcodeLocationDetails, location);
+      const results = postcodeLinks
+        .getChoicesResultsUrlToOnlineTests(emptyLocationDetails, location);
 
       expect(results).to.not.equal(undefined);
       expect(results).to.equal(expectedExternalLink);
     });
 
-    it('should return a valid url if location and valid postcodeLocationDetails', () => {
+    it('should return a valid url if location and valid PostcodeLocationDetails', () => {
       const expectedExternalLink = 'https://www.nhs.uk/service-search/Chlamydia-free-online-tests-for-u-25s/ls1/Results/105/-1.9/52.4/344/0?distance=25';
-      const results = postcodeLinks.addExternalUrl(postcodeLocationDetails, location);
+      const results = postcodeLinks
+        .getChoicesResultsUrlToOnlineTests(locationDetails, location);
 
       expect(results).to.not.equal(undefined);
       expect(results).to.equal(expectedExternalLink);

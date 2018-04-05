@@ -1,27 +1,9 @@
 const constants = require('../constants');
 const utils = require('./utils');
 
-function isProfessionalChoice(query) {
-  return (utils.areEqual(query.type, constants.serviceTypes.professional)
-    && (utils.getValues(constants.serviceChoices).includes(query.origin)));
-}
-
-function getAlternativeTypeFor(type) {
-  if (type === constants.serviceTypes.professional) {
-    return constants.serviceTypes.kit;
-  } else if (type === constants.serviceTypes.kit) {
-    return constants.serviceTypes.professional;
-  }
-  return type;
-}
-
-function getResultsInternalLink(query, location) {
-  return `${constants.siteRoot}/results?location=${location}&type=${getAlternativeTypeFor(query.type)}&origin=${query.origin}`;
-}
-
 function getLocationHeading(query) {
   if (query.type) {
-    if (isProfessionalChoice(query)) {
+    if (utils.isProfessionalChoice(query)) {
       return 'Where would you like to see a sexual health professional?';
     }
     if (utils.areEqual(query.type, constants.serviceTypes.kit)) {
@@ -35,15 +17,14 @@ function getLocationHeading(query) {
       return 'redirect';
     }
   }
-  return false;
+  return undefined;
 }
 
 function getResultsInfoForProfessionalsByAge(ageChoice, location) {
-  let resultsOnwardsJourneyPartial = false;
+  let resultsOnwardsJourneyPartial;
   if (ageChoice === constants.serviceChoices['16to24']) {
     resultsOnwardsJourneyPartial = 'includes/onwardsJourneyProfessional16to24.nunjucks';
-  }
-  if (ageChoice === constants.serviceChoices.over25) {
+  } else if (ageChoice === constants.serviceChoices.over25) {
     resultsOnwardsJourneyPartial = 'includes/onwardsJourneyProfessionalOver25.nunjucks';
   }
   return {
@@ -71,24 +52,24 @@ function getResultsInfoForKitsByAge(ageChoice, location) {
     };
   }
   return {
-    correctResultsParams: false,
-    resultsExplanation: false,
-    resultsHeading: false,
-    resultsOnwardsJourneyPartial: false,
+    correctResultsParams: undefined,
+    resultsExplanation: undefined,
+    resultsHeading: undefined,
+    resultsOnwardsJourneyPartial: undefined,
   };
 }
 
 function getResultsInfo(query, location) {
   if (location && query.type) {
     const mappedLocation = location.toUpperCase();
-    const resultsInternalLink = getResultsInternalLink(query, location);
-    if (isProfessionalChoice(query)) {
+    const resultsInternalUrl = utils.getResultsInternalUrl(query, location);
+    if (utils.isProfessionalChoice(query)) {
       const getResults = getResultsInfoForProfessionalsByAge(query.origin, mappedLocation);
       return {
         correctResultsParams: getResults.correctResultsParams,
         resultsExplanation: getResults.resultsExplanation,
         resultsHeading: getResults.resultsHeading,
-        resultsInternalLink,
+        resultsInternalUrl,
         resultsOnwardsJourneyPartial: getResults.resultsOnwardsJourneyPartial,
       };
     }
@@ -98,17 +79,17 @@ function getResultsInfo(query, location) {
         correctResultsParams: getResults.correctResultsParams,
         resultsExplanation: getResults.resultsExplanation,
         resultsHeading: getResults.resultsHeading,
-        resultsInternalLink,
+        resultsInternalUrl,
         resultsOnwardsJourneyPartial: getResults.resultsOnwardsJourneyPartial,
       };
     }
   }
   return {
-    correctResultsParams: false,
-    resultsExplanation: false,
-    resultsHeading: false,
-    resultsInternalLink: false,
-    resultsOnwardsJourneyPartial: false,
+    correctResultsParams: undefined,
+    resultsExplanation: undefined,
+    resultsHeading: undefined,
+    resultsInternalUrl: undefined,
+    resultsOnwardsJourneyPartial: undefined,
   };
 }
 
@@ -120,7 +101,7 @@ function mapServiceType(query) {
     || (query.symptoms && (query.symptoms === constants.symptoms.yes))) {
     return constants.serviceTypes.professional;
   }
-  return false;
+  return undefined;
 }
 
 function mapServiceChoice(query) {
@@ -143,14 +124,12 @@ function mapServiceChoice(query) {
       return constants.serviceChoices.over25;
     }
   }
-  return false;
+  return undefined;
 }
 
 module.exports = {
   getLocationHeading,
   getResultsInfo,
-  getResultsInternalLink,
-  isProfessionalChoice,
   mapServiceChoice,
   mapServiceType,
 };

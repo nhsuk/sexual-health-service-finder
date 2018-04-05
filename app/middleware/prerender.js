@@ -1,10 +1,10 @@
 const links = require('../lib/postcodeLinks');
 
 function results(req, res, next) {
-  res.locals.services =
-    links.addMapUrl(res.locals.postcodeLocationDetails, res.locals.services);
-  res.locals.resultsInternalLink =
-    links.addExternalUrl(res.locals.postcodeLocationDetails, res.locals.location);
+  const locationDetails = res.locals.postcodeLocationDetails;
+  res.locals.services = links.addMapUrl(locationDetails, res.locals.services);
+  res.locals.resultsExternalUrl =
+    links.getChoicesResultsUrlToOnlineTests(locationDetails, res.locals.location);
   next();
 }
 

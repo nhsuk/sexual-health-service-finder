@@ -8,13 +8,13 @@ const resultsRoute = `${constants.siteRoot}/results`;
 
 describe('queryMapper', () => {
   describe('getLocationHeading', () => {
-    it('should return false when empty query', () => {
+    it('should return undefined when empty query', () => {
       const query = {};
       const output = queryMapper.getLocationHeading(query);
-      expect(output).to.equal(false);
+      expect(output).to.equal(undefined);
     });
 
-    it('should return a sexual professionals message when the query is related to professionals and origin is symtomps', () => {
+    it('should return a sexual professionals message when the query is related to professionals and origin is symptoms', () => {
       const query = {
         origin: constants.serviceChoices.symptoms,
         type: constants.serviceTypes.professional,
@@ -79,20 +79,20 @@ describe('queryMapper', () => {
   });
 
   describe('getResultsInfo', () => {
-    it('should return false when empty query', () => {
+    it('should return undefined when empty query', () => {
       const query = {};
       const location = 'ls1';
       const output = queryMapper.getResultsInfo(query, location);
       expect(output).to.eql({
-        correctResultsParams: false,
-        resultsExplanation: false,
-        resultsHeading: false,
-        resultsInternalLink: false,
-        resultsOnwardsJourneyPartial: false,
+        correctResultsParams: undefined,
+        resultsExplanation: undefined,
+        resultsHeading: undefined,
+        resultsInternalUrl: undefined,
+        resultsOnwardsJourneyPartial: undefined,
       });
     });
 
-    it('should return false when empty location', () => {
+    it('should return undefined when empty location', () => {
       const emptyLocation = undefined;
       const query = {
         origin: constants.serviceChoices.symptoms,
@@ -100,11 +100,11 @@ describe('queryMapper', () => {
       };
       const output = queryMapper.getResultsInfo(query, emptyLocation);
       expect(output).to.eql({
-        correctResultsParams: false,
-        resultsExplanation: false,
-        resultsHeading: false,
-        resultsInternalLink: false,
-        resultsOnwardsJourneyPartial: false,
+        correctResultsParams: undefined,
+        resultsExplanation: undefined,
+        resultsHeading: undefined,
+        resultsInternalUrl: undefined,
+        resultsOnwardsJourneyPartial: undefined,
       });
     });
 
@@ -222,14 +222,14 @@ describe('queryMapper', () => {
       });
     });
 
-    describe('resultsInternalLink', () => {
+    describe('resultsInternalUrl', () => {
       const location = 'ls1';
       it('should return an alternative service url when the query is related to professionals and origin is symptoms but it will not be valid', () => {
         const query = {
           origin: constants.serviceChoices.symptoms,
           type: constants.serviceTypes.professional,
         };
-        const output = queryMapper.getResultsInfo(query, location).resultsInternalLink;
+        const output = queryMapper.getResultsInfo(query, location).resultsInternalUrl;
         expect(output).to.equal(`${resultsRoute}?location=ls1&type=${constants.serviceTypes.kit}&origin=${constants.serviceChoices.symptoms}`);
       });
 
@@ -238,7 +238,7 @@ describe('queryMapper', () => {
           origin: constants.serviceChoices.under16,
           type: constants.serviceTypes.professional,
         };
-        const output = queryMapper.getResultsInfo(query, location).resultsInternalLink;
+        const output = queryMapper.getResultsInfo(query, location).resultsInternalUrl;
         expect(output).to.equal(`${resultsRoute}?location=ls1&type=${constants.serviceTypes.kit}&origin=${constants.serviceChoices.under16}`);
       });
 
@@ -247,7 +247,7 @@ describe('queryMapper', () => {
           origin: constants.serviceChoices['16to24'],
           type: constants.serviceTypes.professional,
         };
-        const output = queryMapper.getResultsInfo(query, location).resultsInternalLink;
+        const output = queryMapper.getResultsInfo(query, location).resultsInternalUrl;
         expect(output).to.equal(`${resultsRoute}?location=ls1&type=${constants.serviceTypes.kit}&origin=${constants.serviceChoices['16to24']}`);
       });
 
@@ -256,7 +256,7 @@ describe('queryMapper', () => {
           origin: constants.serviceChoices.over25,
           type: constants.serviceTypes.professional,
         };
-        const output = queryMapper.getResultsInfo(query, location).resultsInternalLink;
+        const output = queryMapper.getResultsInfo(query, location).resultsInternalUrl;
         expect(output).to.equal(`${resultsRoute}?location=ls1&type=${constants.serviceTypes.kit}&origin=${constants.serviceChoices.over25}`);
       });
 
@@ -265,7 +265,7 @@ describe('queryMapper', () => {
           origin: constants.serviceChoices['16to24'],
           type: constants.serviceTypes.kit,
         };
-        const output = queryMapper.getResultsInfo(query, location).resultsInternalLink;
+        const output = queryMapper.getResultsInfo(query, location).resultsInternalUrl;
         expect(output).to.equal(`${resultsRoute}?location=ls1&type=${constants.serviceTypes.professional}&origin=${constants.serviceChoices['16to24']}`);
       });
 
@@ -274,7 +274,7 @@ describe('queryMapper', () => {
           origin: constants.serviceChoices.over25,
           type: constants.serviceTypes.kit,
         };
-        const output = queryMapper.getResultsInfo(query, location).resultsInternalLink;
+        const output = queryMapper.getResultsInfo(query, location).resultsInternalUrl;
         expect(output).to.equal(`${resultsRoute}?location=ls1&type=${constants.serviceTypes.professional}&origin=${constants.serviceChoices.over25}`);
       });
     });
@@ -287,7 +287,7 @@ describe('queryMapper', () => {
           type: constants.serviceTypes.professional,
         };
         const output = queryMapper.getResultsInfo(query, location).resultsOnwardsJourneyPartial;
-        expect(output).to.equal(false);
+        expect(output).to.equal(undefined);
       });
 
       it('should not return alternative service partial as free kit message when the query is related to professional and under 16', () => {
@@ -296,7 +296,7 @@ describe('queryMapper', () => {
           type: constants.serviceTypes.professional,
         };
         const output = queryMapper.getResultsInfo(query, location).resultsOnwardsJourneyPartial;
-        expect(output).to.equal(false);
+        expect(output).to.equal(undefined);
       });
 
       it('should return alternative service partial as free kit message when the query is related to professional and age between 16 and 25', () => {
@@ -392,13 +392,13 @@ describe('queryMapper', () => {
         expect(output).to.equal(true);
       });
 
-      it('should return false if the query is not right', () => {
+      it('should return undefined if the query is not right', () => {
         const query = {
           origin: constants.serviceChoices.over25,
           type: constants.serviceTypes.online,
         };
         const output = queryMapper.getResultsInfo(query, location).correctResultsParams;
-        expect(output).to.equal(false);
+        expect(output).to.equal(undefined);
       });
     });
   });
@@ -428,20 +428,20 @@ describe('queryMapper', () => {
       expect(output).to.equal(constants.serviceTypes.professional);
     });
 
-    it('should map to false if query contains no symptoms', () => {
+    it('should map to undefined if query contains no symptoms', () => {
       const query = {
-        symptoms: constants.symptoms.false,
+        symptoms: constants.symptoms.undefined,
       };
       const output = queryMapper.mapServiceType(query);
-      expect(output).to.equal(false);
+      expect(output).to.equal(undefined);
     });
 
-    it('should map to false if query contains age is over 16', () => {
+    it('should map to undefined if query contains age is over 16', () => {
       const query = {
         age: constants.age.over25,
       };
       const output = queryMapper.mapServiceType(query);
-      expect(output).to.equal(false);
+      expect(output).to.equal(undefined);
     });
   });
 
@@ -470,12 +470,12 @@ describe('queryMapper', () => {
       expect(output).to.equal(constants.serviceChoices.symptoms);
     });
 
-    it('should map to false if query contains no symptoms', () => {
+    it('should map to undefined if query contains no symptoms', () => {
       const query = {
-        symptoms: constants.symptoms.false,
+        symptoms: constants.symptoms.undefined,
       };
       const output = queryMapper.mapServiceChoice(query);
-      expect(output).to.equal(false);
+      expect(output).to.equal(undefined);
     });
 
     it('should map to 16 to 24 if query contains age is between 16 and 24', () => {
@@ -494,86 +494,11 @@ describe('queryMapper', () => {
       expect(output).to.equal(constants.serviceChoices.over25);
     });
 
-    it('should map to false if no age or symptoms', () => {
+    it('should map to undefined if no age or symptoms', () => {
       const query = {
       };
       const output = queryMapper.mapServiceChoice(query);
-      expect(output).to.equal(false);
-    });
-  });
-
-  describe('isProfessionalChoice', () => {
-    it('should return true when the query is related to professionals and origin is symptoms', () => {
-      const query = {
-        origin: constants.serviceChoices.symptoms,
-        type: constants.serviceTypes.professional,
-      };
-      const output = queryMapper.isProfessionalChoice(query);
-      expect(output).to.equal(true);
-    });
-
-    it('should return true when the query is related to professionals and origin is under 16', () => {
-      const query = {
-        origin: constants.serviceChoices.under16,
-        type: constants.serviceTypes.professional,
-      };
-      const output = queryMapper.isProfessionalChoice(query);
-      expect(output).to.equal(true);
-    });
-
-    it('should return true when the query is related to professionals and origin is 16 to 24', () => {
-      const query = {
-        origin: constants.serviceChoices['16to24'],
-        type: constants.serviceTypes.professional,
-      };
-      const output = queryMapper.isProfessionalChoice(query);
-      expect(output).to.equal(true);
-    });
-
-    it('should return true when the query is related to professionals and origin is over 25', () => {
-      const query = {
-        origin: constants.serviceChoices.over25,
-        type: constants.serviceTypes.professional,
-      };
-      const output = queryMapper.isProfessionalChoice(query);
-      expect(output).to.equal(true);
-    });
-
-    it('should return false if the query is related to kits', () => {
-      const query = {
-        origin: constants.serviceChoices.over25,
-        type: constants.serviceTypes.kit,
-      };
-      const output = queryMapper.isProfessionalChoice(query);
-      expect(output).to.equal(false);
-    });
-  });
-
-  describe('getResultsInternalLink', () => {
-    it('should return a link with kit when the type is related to professional', () => {
-      const location = 'ls1';
-      const query = {
-        origin: constants.serviceChoices['16to24'],
-        type: constants.serviceTypes.professional,
-      };
-
-      const expectedInternalLink = `${constants.siteRoot}/results?location=ls1&type=${constants.serviceTypes.kit}&origin=${constants.serviceChoices['16to24']}`;
-
-      const output = queryMapper.getResultsInternalLink(query, location);
-      expect(output).to.equal(expectedInternalLink);
-    });
-
-    it('should return a link with professional when the type is related to kit', () => {
-      const location = 'ls1';
-      const query = {
-        origin: constants.serviceChoices['16to24'],
-        type: constants.serviceTypes.kit,
-      };
-
-      const expectedInternalLink = `${constants.siteRoot}/results?location=ls1&type=${constants.serviceTypes.professional}&origin=${constants.serviceChoices['16to24']}`;
-
-      const output = queryMapper.getResultsInternalLink(query, location);
-      expect(output).to.equal(expectedInternalLink);
+      expect(output).to.equal(undefined);
     });
   });
 });
