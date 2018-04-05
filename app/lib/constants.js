@@ -13,13 +13,13 @@ module.exports = {
   },
   age: {
     under16: '1',
-    '16to25': '2',
+    '16to24': '2',
     over25: '3',
   },
   serviceChoices: {
     symptoms: '0',
     under16: '1',
-    '16to25': '2',
+    '16to24': '2',
     over25: '3',
   },
   serviceTypes: {

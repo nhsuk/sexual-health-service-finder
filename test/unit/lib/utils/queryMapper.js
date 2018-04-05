@@ -21,9 +21,9 @@ describe('queryMapper', () => {
       expect(output).to.equal('Where would you like to see a sexual health professional?');
     });
 
-    it('should return a free kit message when the query is related to kit and age between 16 and 25', () => {
+    it('should return a free kit message when the query is related to kit and age between 16 and 24', () => {
       const query = {
-        origin: constants.serviceChoices['16to25'],
+        origin: constants.serviceChoices['16to24'],
         type: constants.serviceTypes.kit,
       };
       const output = queryMapper.getLocationHeading(query);
@@ -76,9 +76,9 @@ describe('queryMapper', () => {
       expect(output).to.equal('Sexual health professionals near \'LS1\'');
     });
 
-    it('should return a free kit message when the query is related to kit and age between 16 and 25', () => {
+    it('should return a free kit message when the query is related to kit and age between 16 and 24', () => {
       const query = {
-        origin: constants.serviceChoices['16to25'],
+        origin: constants.serviceChoices['16to24'],
         type: constants.serviceTypes.kit,
       };
       const output = queryMapper.getResultsHeading(query, location);
@@ -111,9 +111,9 @@ describe('queryMapper', () => {
       expect(output).to.equal('Here is a list of places where you can get tested by a sexual health professional.');
     });
 
-    it('should return a free kit message when the query is related to kit and age between 16 and 25', () => {
+    it('should return a free kit message when the query is related to kit and age between 16 and 24', () => {
       const query = {
-        origin: constants.serviceChoices['16to25'],
+        origin: constants.serviceChoices['16to24'],
         type: constants.serviceTypes.kit,
       };
       const output = queryMapper.getResultsExplanation(query);
@@ -207,12 +207,12 @@ describe('queryMapper', () => {
       expect(output).to.equal(undefined);
     });
 
-    it('should map to 16 to 25 if query contains age is between 16 and 25', () => {
+    it('should map to 16 to 24 if query contains age is between 16 and 24', () => {
       const query = {
-        age: constants.age['16to25'],
+        age: constants.age['16to24'],
       };
       const output = queryMapper.mapServiceChoice(query);
-      expect(output).to.equal(constants.serviceChoices['16to25']);
+      expect(output).to.equal(constants.serviceChoices['16to24']);
     });
 
     it('should map to over 25 if query contains age is over 25', () => {

@@ -12,7 +12,7 @@ function getLocationHeading(query) {
       return 'Where would you like to see a sexual health professional?';
     }
     if (utils.areEqual(query.type, constants.serviceTypes.kit)) {
-      if (query.origin === constants.serviceChoices['16to25']) {
+      if (query.origin === constants.serviceChoices['16to24']) {
         return 'Where would you like to collect your free test kit?';
       } else if (query.origin === constants.serviceChoices.over25) {
         return 'Where would you like to buy your test kit?';
@@ -32,7 +32,7 @@ function getResultsHeading(query, loc) {
       return `Sexual health professionals near '${location}'`;
     }
     if (utils.areEqual(query.type, constants.serviceTypes.kit)) {
-      if (query.origin === constants.serviceChoices['16to25']) {
+      if (query.origin === constants.serviceChoices['16to24']) {
         return `Where you can pick up a free test kit near '${location}'`;
       } else if (query.origin === constants.serviceChoices.over25) {
         return `Where you can buy a test near '${location}'`;
@@ -48,7 +48,7 @@ function getResultsExplanation(query) {
       return 'Here is a list of places where you can get tested by a sexual health professional.';
     }
     if (utils.areEqual(query.type, constants.serviceTypes.kit)) {
-      if (query.origin === constants.serviceChoices['16to25']) {
+      if (query.origin === constants.serviceChoices['16to24']) {
         return 'You can pick up a chlamydia test kit from any of the places below. You\'ll take your own samples and ' +
           'send them by Freepost to be tested. You\'ll usually get the results within 2 weeks.';
       } else if (query.origin === constants.serviceChoices.over25) {
@@ -84,8 +84,8 @@ function mapServiceChoice(query) {
     if (query.age === constants.age.under16) {
       return constants.serviceChoices.under16;
     }
-    if (query.age === constants.age['16to25']) {
-      return constants.serviceChoices['16to25'];
+    if (query.age === constants.age['16to24']) {
+      return constants.serviceChoices['16to24'];
     }
     if (query.age === constants.age.over25) {
       return constants.serviceChoices.over25;

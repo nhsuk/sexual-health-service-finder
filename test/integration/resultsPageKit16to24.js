@@ -34,7 +34,7 @@ describe('Results page', function test() {
 
   const location = 'ls1';
   const type = constants.serviceTypes.kit;
-  const origin = constants.serviceChoices['16to25'];
+  const origin = constants.serviceChoices['16to24'];
 
   describe('layout', () => {
     it('should contain HTML', (done) => {

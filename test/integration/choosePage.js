@@ -15,7 +15,7 @@ describe('Choose page', () => {
   it('page title should be \'How do you want to get a test?\' if age question is answered 16-24', async () => {
     const res = await chai.request(server)
       .get(chooseRoute)
-      .query({ age: '2' });
+      .query({ age: constants.age['16to24'] });
 
     iExpect.htmlWith200Status(res);
     const $ = cheerio.load(res.text);
@@ -25,33 +25,33 @@ describe('Choose page', () => {
   it('page options should be related to being under 25 (free), if age question is answered 16-24', async () => {
     const res = await chai.request(server)
       .get(chooseRoute)
-      .query({ age: '2' });
+      .query({ age: constants.age['16to24'] });
 
     iExpect.htmlWith200Status(res);
     const $ = cheerio.load(res.text);
 
-    expect($($('.multiple-choice .multiple--choice-option')[0]).text()).to.equal('Pick up a free test kit');
+    expect($($('.multiple-choice .multiple--choice-option')[0]).text()).to.equal('Collect a free test kit near you');
   });
 
   it('page title should be \'How do you want to get a test?\' if age question is answered 25 or older', async () => {
     const res = await chai.request(server)
       .get(chooseRoute)
-      .query({ age: '3' });
+      .query({ age: constants.age.over25 });
 
     iExpect.htmlWith200Status(res);
     const $ = cheerio.load(res.text);
     expect($('.local-header--title--question').text()).to.equal('How do you want to get a test?');
   });
 
-  it('page options should be related to being over 25 (paid), if age question is answered 16-24', async () => {
+  it('page options should be related to being over 25 (paid), if age question is answered 25 or older', async () => {
     const res = await chai.request(server)
       .get(chooseRoute)
-      .query({ age: '3' });
+      .query({ age: constants.age.over25 });
 
     iExpect.htmlWith200Status(res);
     const $ = cheerio.load(res.text);
 
-    expect($($('.multiple-choice .multiple--choice-option')[0]).text()).to.equal('See a sexual health professional');
+    expect($($('.multiple-choice .multiple--choice-option')[0]).text()).to.equal('See a sexual health professional for free near you');
   });
 
   describe('return to Choices services', () => {
