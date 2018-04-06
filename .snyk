@@ -124,9 +124,15 @@ ignore:
     - nunjucks > chokidar > fsevents > node-pre-gyp > tar-pack > debug:
         reason: no fix available
         expires: '2018-03-24T16:54:35.090Z'
+      brunch > debug:
+        reason: None given
+        expires: '2018-04-26T13:46:05.479Z'
     - brunch > debug:
         reason: no fix available
         expires: '2018-03-24T16:54:35.090Z'
+      brunch > since-app-start > debug:
+        reason: None given
+        expires: '2018-04-26T13:46:05.479Z'
     - brunch > since-app-start > debug:
         reason: no fix available
         expires: '2018-03-24T16:54:35.090Z'
@@ -139,12 +145,6 @@ ignore:
     - node-pre-gyp > tar-pack > debug:
         reason: no fix available
         expires: '2018-04-26T11:04:31.180Z'
-    - brunch > debug:
-        reason: None given
-        expires: '2018-04-26T13:46:05.479Z'
-    - brunch > since-app-start > debug:
-        reason: None given
-        expires: '2018-04-26T13:46:05.479Z'
   'npm:tough-cookie:20170905':
     - brunch > chokidar > fsevents > node-pre-gyp > request > tough-cookie:
         reason: no fix available

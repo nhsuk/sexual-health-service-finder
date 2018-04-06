@@ -13,7 +13,7 @@ function filterNotFoundNames(name, address) {
   return `${name},${address}`;
 }
 
-function addUrl(postcodeLocationDetails, inputList) {
+function addMapUrl(postcodeLocationDetails, inputList) {
   return inputList.map((item) => {
     const address = joinAllTruthyValues(item.address);
     const saddr = `${postcodeLocationDetails.location.lat},${postcodeLocationDetails.location.lon}`;
@@ -31,6 +31,14 @@ function addUrl(postcodeLocationDetails, inputList) {
   });
 }
 
+function getChoicesResultsUrlToOnlineTests(postcodeLocationDetails, location) {
+  if (location && postcodeLocationDetails && postcodeLocationDetails.location) {
+    return `https://www.nhs.uk/service-search/Chlamydia-free-online-tests-for-u-25s/${location}/Results/105/${postcodeLocationDetails.location.lon}/${postcodeLocationDetails.location.lat}/344/0?distance=25`;
+  }
+  return undefined;
+}
+
 module.exports = {
-  addUrl,
+  addMapUrl,
+  getChoicesResultsUrlToOnlineTests,
 };

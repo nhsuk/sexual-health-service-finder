@@ -12,19 +12,36 @@ chai.use(chaiHttp);
 
 const resultsRoute = `${constants.siteRoot}/results/`;
 
-function assertSearchResponse(location, type, origin, done, assertions) {
-  chai.request(app)
-    .get(resultsRoute)
-    .query({ location, origin, type })
-    .end((err, res) => {
-      expect(err).to.equal(null);
-      iExpect.htmlWith200Status(res);
-      assertions(err, res);
-      done();
-    });
+function setTypeAndOriginPairs() {
+  return [
+    {
+      origin: constants.serviceChoices.symptoms,
+      type: constants.serviceTypes.professional,
+    },
+    {
+      origin: constants.serviceChoices.under16,
+      type: constants.serviceTypes.professional,
+    },
+  ];
 }
 
-describe('Results page for kits in over 25 year olds', function test() {
+function assertSearchResponse(location, done, assertions) {
+  setTypeAndOriginPairs().forEach((queryParams) => {
+    const origin = queryParams.origin;
+    const type = queryParams.type;
+    chai.request(app)
+      .get(resultsRoute)
+      .query({ location, origin, type })
+      .end((err, res) => {
+        expect(err).to.equal(null);
+        iExpect.htmlWith200Status(res);
+        assertions(err, res);
+      });
+  });
+  done();
+}
+
+describe('Results page for sexual health professionals (symptoms and under16)', function test() {
   // Setting this timeout as it is calling the real DB...
   this.timeout(utils.maxWaitTimeMs);
 
@@ -33,12 +50,10 @@ describe('Results page for kits in over 25 year olds', function test() {
   });
 
   const location = 'ls1';
-  const type = constants.serviceTypes.kit;
-  const origin = constants.serviceChoices.over25;
 
   describe('layout', () => {
     it('should contain a header and other info related to the search', (done) => {
-      assertSearchResponse(location, type, origin, done, (err, res) => {
+      assertSearchResponse(location, done, (err, res) => {
         const $ = cheerio.load(res.text);
         const resultsHeader = $('.local-header--title--question').text();
         const resultsSubHeader = $('.results p.explanation').text();
@@ -46,18 +61,31 @@ describe('Results page for kits in over 25 year olds', function test() {
         const resultsOnwards1 = $('.results p.link1').text();
         const resultsOnwards2 = $('.results p.link2').text();
 
-        expect(resultsHeader).to.contain('Places you can buy a test kit near \'LS1\'');
-        expect(resultsSubHeader).to.contain('Here is a list of pharmacies where you can buy a chlamydia test kit.');
-        expect(resultsOnwards2).to.contain('Or you can see a list of places where you can get tested by a sexual health professional.');
+        expect(resultsHeader).to.contain('Sexual health professionals near \'LS1\'');
+        expect(resultsSubHeader).to.contain('Here is a list of places where you can get tested by a sexual health professional.');
         expect(resultsOnwards).to.be.empty;
         expect(resultsOnwards1).to.be.empty;
+        expect(resultsOnwards2).to.be.empty;
+      });
+    });
+  });
+
+  describe('matching sexual health professionals found', () => {
+    describe('multiple matches', () => {
+      it('should have more than one result', (done) => {
+        assertSearchResponse(location, done, (err, res) => {
+          const $ = cheerio.load(res.text);
+          const searchResults = $('.results__item--nearby');
+
+          expect(searchResults.length).to.equal(30);
+        });
       });
     });
   });
 
   describe('First service', () => {
     it('should have distance, name, an address and phone number', (done) => {
-      assertSearchResponse(location, type, origin, done, (err, res) => {
+      assertSearchResponse(location, done, (err, res) => {
         const $ = cheerio.load(res.text);
         const searchResultsDistance = $('.results__address.results__address-distance').first();
         const searchResultsName = $('.results__name').first();

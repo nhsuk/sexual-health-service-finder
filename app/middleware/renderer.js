@@ -38,7 +38,11 @@ function chlamydiaOnlineRedirect(req, res) {
 }
 
 function results(req, res) {
-  res.render('results');
+  if (!res.locals.correctResultsParams) {
+    res.locals.errorMessage = messages.invalidUrlMessage();
+    return res.render('start');
+  }
+  return res.render('results');
 }
 
 function emptyPostcode(req, res) {

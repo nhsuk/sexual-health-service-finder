@@ -24,7 +24,7 @@ function assertSearchResponse(location, type, origin, done, assertions) {
     });
 }
 
-describe('Results page for kits in over 25 year olds', function test() {
+describe('Results page for sexual health professionals for 16 to 24', function test() {
   // Setting this timeout as it is calling the real DB...
   this.timeout(utils.maxWaitTimeMs);
 
@@ -33,10 +33,16 @@ describe('Results page for kits in over 25 year olds', function test() {
   });
 
   const location = 'ls1';
-  const type = constants.serviceTypes.kit;
-  const origin = constants.serviceChoices.over25;
+  const type = constants.serviceTypes.professional;
+  const origin = constants.serviceChoices['16to24'];
 
   describe('layout', () => {
+    it('should contain HTML', (done) => {
+      assertSearchResponse(location, type, origin, done, (err, res) => {
+        iExpect.htmlWith200Status(res);
+      });
+    });
+
     it('should contain a header and other info related to the search', (done) => {
       assertSearchResponse(location, type, origin, done, (err, res) => {
         const $ = cheerio.load(res.text);
@@ -46,11 +52,24 @@ describe('Results page for kits in over 25 year olds', function test() {
         const resultsOnwards1 = $('.results p.link1').text();
         const resultsOnwards2 = $('.results p.link2').text();
 
-        expect(resultsHeader).to.contain('Places you can buy a test kit near \'LS1\'');
-        expect(resultsSubHeader).to.contain('Here is a list of pharmacies where you can buy a chlamydia test kit.');
-        expect(resultsOnwards2).to.contain('Or you can see a list of places where you can get tested by a sexual health professional.');
-        expect(resultsOnwards).to.be.empty;
+        expect(resultsHeader).to.contain('Sexual health professionals near \'LS1\'');
+        expect(resultsSubHeader).to.contain('Here is a list of places where you can get tested by a sexual health professional.');
+        expect(resultsOnwards).to.contain('If you decide not to visit a sexual health professional, you can see places where you can collect a free test kit or find a free test kit online instead.');
         expect(resultsOnwards1).to.be.empty;
+        expect(resultsOnwards2).to.be.empty;
+      });
+    });
+  });
+
+  describe('matching sexual health professionals found', () => {
+    describe('multiple matches', () => {
+      it('should have more than one result', (done) => {
+        assertSearchResponse(location, type, origin, done, (err, res) => {
+          const $ = cheerio.load(res.text);
+          const searchResults = $('.results__item--nearby');
+
+          expect(searchResults.length).to.equal(30);
+        });
       });
     });
   });

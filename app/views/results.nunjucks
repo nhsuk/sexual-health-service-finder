@@ -6,8 +6,13 @@
 
 {% block content %}
 <div class="results">
+  {% if resultsExplanation %}
+    <p class='explanation'>{{ resultsExplanation }}</p>
+  {% endif %}
 
-  <p>{{ resultsExplanation }}</p>
+  {% if resultsOnwardsJourneyPartial %}
+    {% include resultsOnwardsJourneyPartial %}
+  {% endif %}
 
   <h2 class="sr-only" data-results="{{services.length}}" data-term="{{location}} class="local-header--title--question">Results</h1>
   <h2 class="local-header--title--question">Results</h1>

@@ -1,14 +1,9 @@
 const constants = require('../constants');
 const utils = require('./utils');
 
-function isProfessionalChoice(query) {
-  return (utils.areEqual(query.type, constants.serviceTypes.professional)
-    && (utils.getValues(constants.serviceChoices).includes(query.origin)));
-}
-
 function getLocationHeading(query) {
   if (query.type) {
-    if (isProfessionalChoice(query)) {
+    if (utils.isProfessionalChoice(query)) {
       return 'Where would you like to see a sexual health professional?';
     }
     if (utils.areEqual(query.type, constants.serviceTypes.kit)) {
@@ -25,39 +20,77 @@ function getLocationHeading(query) {
   return undefined;
 }
 
-function getResultsHeading(query, loc) {
-  if (loc && query.type) {
-    const location = loc.toUpperCase();
-    if (isProfessionalChoice(query)) {
-      return `Sexual health professionals near '${location}'`;
-    }
-    if (utils.areEqual(query.type, constants.serviceTypes.kit)) {
-      if (query.origin === constants.serviceChoices['16to24']) {
-        return `Where you can pick up a free test kit near '${location}'`;
-      } else if (query.origin === constants.serviceChoices.over25) {
-        return `Where you can buy a test near '${location}'`;
-      }
-    }
+function getResultsInfoForProfessionalsByAge(ageChoice, location) {
+  let resultsOnwardsJourneyPartial;
+  if (ageChoice === constants.serviceChoices['16to24']) {
+    resultsOnwardsJourneyPartial = 'includes/onwardsJourneyProfessional16to24.nunjucks';
+  } else if (ageChoice === constants.serviceChoices.over25) {
+    resultsOnwardsJourneyPartial = 'includes/onwardsJourneyProfessionalOver25.nunjucks';
   }
-  return undefined;
+  return {
+    correctResultsParams: true,
+    resultsExplanation: 'Here is a list of places where you can get tested by a sexual health professional.',
+    resultsHeading: `Sexual health professionals near '${location}'`,
+    resultsOnwardsJourneyPartial,
+  };
 }
 
-function getResultsExplanation(query) {
-  if (query.type) {
-    if (isProfessionalChoice(query)) {
-      return 'Here is a list of places where you can get tested by a sexual health professional.';
+function getResultsInfoForKitsByAge(ageChoice, location) {
+  if (ageChoice === constants.serviceChoices['16to24']) {
+    return {
+      correctResultsParams: true,
+      resultsExplanation: 'Here is a list of places where you can get a free chlamydia test kit.',
+      resultsHeading: `Places you can collect a free test kit near '${location}'`,
+      resultsOnwardsJourneyPartial: 'includes/onwardsJourneyKit16to24.nunjucks',
+    };
+  } else if (ageChoice === constants.serviceChoices.over25) {
+    return {
+      correctResultsParams: true,
+      resultsExplanation: 'Here is a list of pharmacies where you can buy a chlamydia test kit.',
+      resultsHeading: `Places you can buy a test kit near '${location}'`,
+      resultsOnwardsJourneyPartial: 'includes/onwardsJourneyKitOver25.nunjucks',
+    };
+  }
+  return {
+    correctResultsParams: undefined,
+    resultsExplanation: undefined,
+    resultsHeading: undefined,
+    resultsOnwardsJourneyPartial: undefined,
+  };
+}
+
+function getResultsInfo(query, location) {
+  if (location && query.type) {
+    const mappedLocation = location.toUpperCase();
+    const resultsInternalUrl = utils.getResultsInternalUrl(query, location);
+    if (utils.isProfessionalChoice(query)) {
+      const getResults = getResultsInfoForProfessionalsByAge(query.origin, mappedLocation);
+      return {
+        correctResultsParams: getResults.correctResultsParams,
+        resultsExplanation: getResults.resultsExplanation,
+        resultsHeading: getResults.resultsHeading,
+        resultsInternalUrl,
+        resultsOnwardsJourneyPartial: getResults.resultsOnwardsJourneyPartial,
+      };
     }
     if (utils.areEqual(query.type, constants.serviceTypes.kit)) {
-      if (query.origin === constants.serviceChoices['16to24']) {
-        return 'You can pick up a chlamydia test kit from any of the places below. You\'ll take your own samples and ' +
-          'send them by Freepost to be tested. You\'ll usually get the results within 2 weeks.';
-      } else if (query.origin === constants.serviceChoices.over25) {
-        return 'You can buy a chlamydia test kit from any of the places below. You\'ll take your own samples and send ' +
-          'them by Freepost to be tested. You\'ll usually get the results within 2 weeks.';
-      }
+      const getResults = getResultsInfoForKitsByAge(query.origin, mappedLocation);
+      return {
+        correctResultsParams: getResults.correctResultsParams,
+        resultsExplanation: getResults.resultsExplanation,
+        resultsHeading: getResults.resultsHeading,
+        resultsInternalUrl,
+        resultsOnwardsJourneyPartial: getResults.resultsOnwardsJourneyPartial,
+      };
     }
   }
-  return undefined;
+  return {
+    correctResultsParams: undefined,
+    resultsExplanation: undefined,
+    resultsHeading: undefined,
+    resultsInternalUrl: undefined,
+    resultsOnwardsJourneyPartial: undefined,
+  };
 }
 
 function mapServiceType(query) {
@@ -96,8 +129,7 @@ function mapServiceChoice(query) {
 
 module.exports = {
   getLocationHeading,
-  getResultsExplanation,
-  getResultsHeading,
+  getResultsInfo,
   mapServiceChoice,
   mapServiceType,
 };

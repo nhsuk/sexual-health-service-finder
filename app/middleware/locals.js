@@ -15,8 +15,12 @@ module.exports = config =>
     res.locals.origin = queryMapper.mapServiceChoice(req.query);
     res.locals.location = req.query.location;
     res.locals.locationHeading = queryMapper.getLocationHeading(req.query);
-    res.locals.resultsHeading = queryMapper.getResultsHeading(req.query, res.locals.location);
-    res.locals.resultsExplanation = queryMapper.getResultsExplanation(req.query);
     res.locals.correctLocationParams = res.locals.locationHeading;
+    const resultsInfo = queryMapper.getResultsInfo(req.query, res.locals.location);
+    res.locals.resultsHeading = resultsInfo.resultsHeading;
+    res.locals.resultsInternalUrl = resultsInfo.resultsInternalUrl;
+    res.locals.resultsExplanation = resultsInfo.resultsExplanation;
+    res.locals.resultsOnwardsJourneyPartial = resultsInfo.resultsOnwardsJourneyPartial;
+    res.locals.correctResultsParams = resultsInfo.correctResultsParams;
     next();
   };

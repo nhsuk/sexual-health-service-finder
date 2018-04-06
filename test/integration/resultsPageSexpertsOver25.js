@@ -24,7 +24,7 @@ function assertSearchResponse(location, type, origin, done, assertions) {
     });
 }
 
-describe('Results page', function test() {
+describe('Results page for sexual health professionals for over 25', function test() {
   // Setting this timeout as it is calling the real DB...
   this.timeout(utils.maxWaitTimeMs);
 
@@ -34,23 +34,23 @@ describe('Results page', function test() {
 
   const location = 'ls1';
   const type = constants.serviceTypes.professional;
-  const origin = constants.serviceChoices.symptoms;
+  const origin = constants.serviceChoices.over25;
 
   describe('layout', () => {
-    it('should contain HTML', (done) => {
-      assertSearchResponse(location, type, origin, done, (err, res) => {
-        iExpect.htmlWith200Status(res);
-      });
-    });
-
     it('should contain a header and other info related to the search', (done) => {
       assertSearchResponse(location, type, origin, done, (err, res) => {
         const $ = cheerio.load(res.text);
         const resultsHeader = $('.local-header--title--question').text();
-        const resultsSubHeader = $('.results p').text();
+        const resultsSubHeader = $('.results p.explanation').text();
+        const resultsOnwards = $('.results p.links').text();
+        const resultsOnwards1 = $('.results p.link1').text();
+        const resultsOnwards2 = $('.results p.link2').text();
 
         expect(resultsHeader).to.contain('Sexual health professionals near \'LS1\'');
         expect(resultsSubHeader).to.contain('Here is a list of places where you can get tested by a sexual health professional.');
+        expect(resultsOnwards).to.contain('Or you can see places where you can buy a test kit.');
+        expect(resultsOnwards1).to.be.empty;
+        expect(resultsOnwards2).to.be.empty;
       });
     });
   });
@@ -68,65 +68,24 @@ describe('Results page', function test() {
     });
   });
 
-  describe('Each service', () => {
-    it('should have distance', (done) => {
+  describe('First service', () => {
+    it('should have distance, name, an address and phone number', (done) => {
       assertSearchResponse(location, type, origin, done, (err, res) => {
         const $ = cheerio.load(res.text);
-        const searchResults = $('.results__address.results__address-distance').first();
-
-        expect(searchResults).to.not.equal(undefined);
-        expect(searchResults.text()).to.contain('Distance: 0.46 miles');
-      });
-    });
-
-    it('should have a name', (done) => {
-      assertSearchResponse(location, type, origin, done, (err, res) => {
-        const $ = cheerio.load(res.text);
-        const searchResults = $('.results__name').first();
-
-        expect(searchResults).to.not.equal(undefined);
-        expect(searchResults.text()).to.contain('Leeds Sexual Health @ The Merrion Centre');
-      });
-    });
-
-    it('should have the address and telephone number', (done) => {
-      assertSearchResponse(location, type, origin, done, (err, res) => {
-        const $ = cheerio.load(res.text);
+        const searchResultsDistance = $('.results__address.results__address-distance').first();
+        const searchResultsName = $('.results__name').first();
         const searchResultsAddress = $('.results__address.results__address-lines').first();
         const searchResultsPhone = $('.results__address.results__telephone a').first();
 
+        expect(searchResultsDistance).to.not.equal(undefined);
+        expect(searchResultsName).to.not.equal(undefined);
         expect(searchResultsAddress).to.not.equal(undefined);
         expect(searchResultsPhone).to.not.equal(undefined);
+
+        expect(searchResultsDistance.text()).to.contain('Distance: 0.46 miles');
+        expect(searchResultsName.text()).to.contain('Leeds Sexual Health @ The Merrion Centre');
         expect(searchResultsAddress.text()).to.contain('Merrion Centre - 1st Floor');
         expect(searchResultsPhone.text()).to.contain('0113 392 0333');
-      });
-    });
-
-    it('should have a google map link', (done) => {
-      assertSearchResponse(location, type, origin, done, (err, res) => {
-        const $ = cheerio.load(res.text);
-        const searchResults = $('.results__item__link a').first();
-
-        expect(searchResults).to.not.equal(undefined);
-        expect(searchResults.text()).to.contain('See map and directions');
-      });
-    });
-
-    it('should have a See opening times toggle', (done) => {
-      assertSearchResponse(location, type, origin, done, (err, res) => {
-        const $ = cheerio.load(res.text);
-        const searchResults = $('.results__item__opening-times summary span').first();
-
-        expect(searchResults.text()).to.contain('See opening times');
-      });
-    });
-
-    it('should have a See service information toggle', (done) => {
-      assertSearchResponse(location, type, origin, done, (err, res) => {
-        const $ = cheerio.load(res.text);
-        const searchResults = $('.results__item__service-details summary span').first();
-
-        expect(searchResults.text()).to.contain('See service information');
       });
     });
   });

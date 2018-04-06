@@ -15,5 +15,4 @@
       scrollTop: $('#' + anchor).offset().top
     });
   }
-
 })(window);
