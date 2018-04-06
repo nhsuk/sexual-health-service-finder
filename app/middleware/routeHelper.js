@@ -1,4 +1,5 @@
 const renderer = require('./renderer');
+const constants = require('../lib/constants');
 const messages = require('../lib/messages');
 
 function renderSymptomsWithError(req, res) {
@@ -33,6 +34,12 @@ function renderChooseTestOver25Page(req, res) {
 
 function renderChoosePageWithError(req, res) {
   res.locals.errorMessage = messages.mandatorySelectionMessage();
+  if (res.locals.origin === constants.serviceChoices['16to24']) {
+    res.locals.under25 = true;
+  } else {
+    res.locals.under25 = false;
+    res.locals.under16 = false;
+  }
   renderer.choose(req, res);
 }
 

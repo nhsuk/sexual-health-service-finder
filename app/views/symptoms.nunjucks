@@ -10,13 +10,13 @@
 
 {% block content %}
   <ul>
-    <li>discomfort or pain when you urinate (pee)</li>
+    <li>discomfort or pain when you pee</li>
     <li>discharge from your anus</li>
     <li>vaginal discharge that's not usual for you</li>
     <li>vaginal bleeding between periods</li>
     <li>vaginal bleeding during or after sex</li>
     <li>vaginal pain during sex</li>
-    <li>pelvic pain in females (pain in your lower stomach)</li>
+    <li>pelvic pain if you're female (your pelvic area is between your stomach and your thighs)</li>
     <li>discharge from your penis</li>
     <li>pain in your testicles</li>
   </ul>

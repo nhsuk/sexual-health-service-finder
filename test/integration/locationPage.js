@@ -39,9 +39,9 @@ describe('Location page', () => {
       );
     });
 
-    it('should ask for location of sexual health professionals for people between 16 and 25', async () => {
+    it('should ask for location of sexual health professionals for people between 16 and 24', async () => {
       await assertMapping(
-        { origin: constants.serviceChoices['16to25'], type: constants.serviceTypes.professional },
+        { origin: constants.serviceChoices['16to24'], type: constants.serviceTypes.professional },
         'Where would you like to see a sexual health professional?'
       );
     });
@@ -53,9 +53,9 @@ describe('Location page', () => {
       );
     });
 
-    it('should ask for location of free kits for people between 16 and 25', async () => {
+    it('should ask for location of free kits for people between 16 and 24', async () => {
       await assertMapping(
-        { origin: constants.serviceChoices['16to25'], type: constants.serviceTypes.kit },
+        { origin: constants.serviceChoices['16to24'], type: constants.serviceTypes.kit },
         'Where would you like to collect your free test kit?'
       );
     });
