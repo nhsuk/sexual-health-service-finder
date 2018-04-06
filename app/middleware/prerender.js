@@ -1,4 +1,4 @@
-const links = require('../lib/postcodeLinks');
+const links = require('../lib/externalUrlGenerator');
 
 function results(req, res, next) {
   const locationDetails = res.locals.postcodeLocationDetails;

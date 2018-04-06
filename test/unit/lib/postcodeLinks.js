@@ -1,7 +1,7 @@
 const qs = require('querystring');
 const chai = require('chai');
 
-const postcodeLinks = require('../../../app/lib/postcodeLinks');
+const postcodeLinks = require('../../../app/lib/externalUrlGenerator');
 
 const expect = chai.expect;
 
