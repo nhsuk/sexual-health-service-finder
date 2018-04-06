@@ -1,9 +1,5 @@
 {% extends 'layout.nunjucks' %}
 
-{% block breadcrumbItems %}
-  {% include 'includes/breadcrumbs.nunjucks' %}
-{% endblock %}
-
 {% block header %}
   <h1 class="local-header--title--question">Do you have any of the following symptoms?</h1>
 {% endblock %}
