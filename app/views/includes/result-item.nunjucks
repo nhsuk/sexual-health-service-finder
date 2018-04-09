@@ -39,6 +39,42 @@
         <p class="results__openingTimes">
           {{ service.openingTimes }}
         </p>
+        <table class="results__openingTimesTable">
+          <tbody>
+            <tr>
+              <th>Day of the week</th>
+              <th>Opening hours</th>
+            </tr>
+            <tr>
+              <th rowspan="1">Monday</th>
+              <td>9am to 8pm</td>
+            </tr>
+            <tr>
+              <th rowspan="1">Tuesday</th>
+              <td>9am to 8pm</td>
+            </tr>
+            <tr>
+              <th rowspan="1">Wednesday</th>
+              <td>9am to 8pm</td>
+            </tr>
+            <tr>
+              <th rowspan="1">Thursday</th>
+              <td>9am to 8pm</td>
+            </tr>
+            <tr>
+              <th rowspan="1">Friday</th>
+              <td>9am to 8pm</td>
+            </tr>
+            <tr>
+              <th rowspan="1">Saturday</th>
+              <td>9am to 7pm</td>
+            </tr>
+            <tr>
+              <th rowspan="1">Sunday</th>
+              <td>11am to 5pm</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </details>
