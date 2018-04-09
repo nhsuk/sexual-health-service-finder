@@ -28,8 +28,14 @@ function getResultsInternalUrl(query, location) {
   return `${constants.siteRoot}/results?location=${location}&type=${getAlternativeTypeFor(query.type)}&origin=${query.origin}`;
 }
 
+function checkRightReferer(headers, referer) {
+  // TODO: enable before go-live
+  return (headers.referer === referer); // This doesn't work all the time
+}
+
 module.exports = {
   areEqual,
+  checkRightReferer,
   getResultsInternalUrl,
   isProfessionalChoice,
 };
