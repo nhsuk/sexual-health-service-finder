@@ -20,7 +20,7 @@ describe('getFilteredOutTermsQuery', () => {
 
     it('should return mustClause for search type of sexual health professionals', () => {
       const query = getFilter(searchType);
-      expect(query.mustClause)
+      expect(query.must)
         .to.be.eql(
           [
             { match: { type: 'Sexual health information and support' } },
@@ -32,7 +32,7 @@ describe('getFilteredOutTermsQuery', () => {
 
     it('should return mustNotClause for search type of sexual health professionals', () => {
       const query = getFilter(searchType);
-      expect(query.mustNotClause)
+      expect(query.must_not)
         .to.be.eql(
           [
             { match: { name: 'Marie Stopes' } },
@@ -49,7 +49,7 @@ describe('getFilteredOutTermsQuery', () => {
 
     it('should return should clause for search type of kits and ages 16 to 24', () => {
       const query = getFilter(searchType);
-      expect(query.shouldClause)
+      expect(query.should)
         .to.be.eql(
           [
             {
@@ -97,7 +97,7 @@ describe('getFilteredOutTermsQuery', () => {
 
     it('should return should clause minimum for search type of kits and ages 16 to 24', () => {
       const query = getFilter(searchType);
-      expect(query.minShouldMatch)
+      expect(query.minimum_should_match)
         .to.be.eql(
           1,
           `"should min clause found in\n${util.inspect(query, { depth: null })}`
@@ -106,7 +106,7 @@ describe('getFilteredOutTermsQuery', () => {
 
     it('should return mustNotClause for search type of sexual health professionals', () => {
       const query = getFilter(searchType);
-      expect(query.mustNotClause)
+      expect(query.must_not)
         .to.be.eql(
           [
             { match: { name: 'Marie Stopes' } },

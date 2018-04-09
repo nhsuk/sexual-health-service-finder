@@ -6,34 +6,40 @@ function getFilter(searchType) {
     { match: { name: 'Young People Friendly Practice' } },
     { match: { name: 'BPAS' } },
   ];
+
   if (searchType === constants.searchTypes.sexperts) {
-    const mustClause = [
-      { match: { type: 'Sexual health information and support' } },
-      { match: { venueType: 'Clinic' } },
-    ];
-    return { mustClause, mustNotClause };
-  } else if (searchType === constants.searchTypes.kits16to24) {
-    const mustClause = [
-      { match: { type: 'Sexual health information and support' } },
-      { match: { venueType: 'Community' } },
-    ];
-    const shouldSubClause =
-    {
-      bool: {
-        minimum_should_match: 1,
-        must: { match: { type: 'Chlamydia screening under 25s' } },
-        should: [
-          { match: { venueType: 'Clinic' } },
-          { match: { venueType: 'Community' } },
-        ],
-      },
+    return {
+      must: [
+        { match: { type: 'Sexual health information and support' } },
+        { match: { venueType: 'Clinic' } },
+      ],
+      must_not: mustNotClause,
     };
-    const shouldClause = [
-      { bool: { must: mustClause } },
-      shouldSubClause,
-    ];
-    const minShouldMatch = 1;
-    return { minShouldMatch, mustNotClause, shouldClause };
+  } else if (searchType === constants.searchTypes.kits16to24) {
+    return {
+      minimum_should_match: 1,
+      must_not: mustNotClause,
+      should: [
+        {
+          bool: {
+            must: [
+              { match: { type: 'Sexual health information and support' } },
+              { match: { venueType: 'Community' } },
+            ],
+          },
+        },
+        {
+          bool: {
+            minimum_should_match: 1,
+            must: { match: { type: 'Chlamydia screening under 25s' } },
+            should: [
+              { match: { venueType: 'Clinic' } },
+              { match: { venueType: 'Community' } },
+            ],
+          },
+        },
+      ],
+    };
   }
   return undefined;
 }
