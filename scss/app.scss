@@ -304,15 +304,19 @@ form {
         padding: 0;
         border: none;
         border-top: 2px solid $border-grey;
-        &:first-of-type {
-          margin-top: 15px;
+        &.results__item {
+          background-color: $white;
+          padding: 32px;
+          margin-top: 35px;
+          &:first-of-type {
+            margin-top: 25px;
+          }
         }
       }
       details {
         margin-top: 16px;
       }
       .results__details {
-        padding: 20px 0;
         p {
           &.results__address-distance {
             font-size: 16px;
@@ -383,6 +387,32 @@ form {
             }
             p {
               padding:0;
+            }
+          }
+        }
+      }
+      .results__openingTimesTable {
+        margin: 32px 0 8px;
+        tr {
+          padding: 5px 0;
+          &:first-child {
+            display:none;
+          }
+          &:nth-child(2){
+            th,td {
+              padding-top:0px;
+            }
+          }
+          td, th {
+            font-size:20px;
+            line-height: 20px;
+            padding:15px 0;
+            font-weight: 400;
+          }
+          td {
+            text-align: right;
+            &:last-child {
+              text-align: left;
             }
           }
         }
