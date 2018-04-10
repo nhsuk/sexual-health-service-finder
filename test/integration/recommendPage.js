@@ -25,10 +25,20 @@ describe('Recommend page', () => {
     expect($('.local-header--title--question').text()).to.equal('We recommend that you');
   });
 
+  it('should not be indexed', async () => {
+    const res = await chai.request(server)
+      .get(recommendRoute)
+      .query({ symptoms: constants.symptoms.yes });
+
+    iExpect.htmlWith200Status(res);
+    const $ = cheerio.load(res.text);
+    expect($('meta[name=robots]').attr('content')).to.equal('noindex');
+  });
+
   it('page content should be related to having symptoms, if symptoms question is answered yes', async () => {
     const res = await chai.request(server)
       .get(recommendRoute)
-      .query({ symptoms: 'yes' });
+      .query({ symptoms: constants.symptoms.yes });
 
     iExpect.htmlWith200Status(res);
     const $ = cheerio.load(res.text);
@@ -50,7 +60,7 @@ describe('Recommend page', () => {
   it('page content should be related to being under 16, if age question is answered 15 or younger', async () => {
     const res = await chai.request(server)
       .get(chooseRoute)
-      .query({ age: '1' });
+      .query({ age: constants.age.under16 });
 
     iExpect.htmlWith200Status(res);
     const $ = cheerio.load(res.text);

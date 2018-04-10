@@ -18,6 +18,12 @@ describe('Start page', () => {
     expect($('.local-header--title--question').text()).to.equal('Find a chlamydia test');
   });
 
+  it('should be indexed', async () => {
+    const res = await chai.request(server).get(`${constants.siteRoot}`);
+    const $ = cheerio.load(res.text);
+    expect($('meta[name=robots]').attr('content')).to.equal(undefined);
+  });
+
   it('should link to the \'Symptoms\' page', async () => {
     const res = await chai.request(server).get(`${constants.siteRoot}`);
     const $ = cheerio.load(res.text);

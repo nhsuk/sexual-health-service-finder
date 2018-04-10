@@ -25,6 +25,17 @@ async function assertMapping(args, expectedMessage1, expectedMessage2) {
 
 describe('Location page', () => {
   describe('accessed via journey', () => {
+    it('should not be indexed', async () => {
+      const res = await chai.request(server)
+        .get(`${constants.siteRoot}/location`)
+        .query({
+          origin: constants.serviceChoices.under16,
+          type: constants.serviceTypes.professional,
+        });
+      const $ = cheerio.load(res.text);
+      expect($('meta[name=robots]').attr('content')).to.equal('noindex');
+    });
+
     it('should ask for location of sexual health professionals for under 16 year olds', async () => {
       await assertMapping(
         { origin: constants.serviceChoices.under16, type: constants.serviceTypes.professional },

@@ -23,11 +23,21 @@ describe('Age page', () => {
   it('page title should be \'How old are you?\' if symptoms question is answered no', async () => {
     const res = await chai.request(server)
       .get(recommendRoute)
-      .query({ symptoms: 'no' });
+      .query({ symptoms: constants.symptoms.no });
 
     iExpect.htmlWith200Status(res);
     const $ = cheerio.load(res.text);
     expect($('.local-header--title--question').text()).to.equal('How old are you?');
+  });
+
+  it('should not be indexed', async () => {
+    const res = await chai.request(server)
+      .get(recommendRoute)
+      .query({ symptoms: constants.symptoms.no });
+
+    iExpect.htmlWith200Status(res);
+    const $ = cheerio.load(res.text);
+    expect($('meta[name=robots]').attr('content')).to.equal('noindex');
   });
 
   it('should return age page with an error message if age question is not answered', async () => {
