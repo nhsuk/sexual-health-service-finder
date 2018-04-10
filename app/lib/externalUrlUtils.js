@@ -6,18 +6,18 @@ function joinAllTruthyValues(obj) {
     .join();
 }
 
-function filterNotFoundNames(name, address) {
+function filterNotFoundNames(name, addressLines) {
   if (name.includes('@')) {
-    return address;
+    return addressLines;
   }
-  return `${name},${address}`;
+  return `${name},${addressLines}`;
 }
 
 function addMapUrl(postcodeLocationDetails, inputList) {
   return inputList.map((item) => {
-    const address = joinAllTruthyValues(item.address);
+    const addressLines = `${joinAllTruthyValues(item.address.addressLines)},${item.address.postcode}`;
     const saddr = `${postcodeLocationDetails.location.lat},${postcodeLocationDetails.location.lon}`;
-    const fullNameAndAddress = filterNotFoundNames(item.name, address);
+    const fullNameAndAddress = filterNotFoundNames(item.name, addressLines);
 
     const params = {
       daddr: fullNameAndAddress,
