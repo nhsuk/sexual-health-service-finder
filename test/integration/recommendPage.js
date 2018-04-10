@@ -14,6 +14,17 @@ const chooseRoute = `${constants.siteRoot}/choose`;
 const locationSearchRoute = `${constants.siteRoot}/location`;
 
 describe('Recommend page', () => {
+  it('step count should be \'Step 3 of 4\'', async () => {
+    const res = await chai.request(server)
+      .get(recommendRoute)
+      .query({ symptoms: constants.symptoms.yes });
+
+    iExpect.htmlWith200Status(res);
+    const $ = cheerio.load(res.text);
+
+    expect($('.local-header--step').text()).to.equal('Step 3 of 4');
+  });
+
   it('page title should be \'We recommend that you\' if symptoms question is answered yes', async () => {
     const res = await chai.request(server)
       .get(recommendRoute)
@@ -33,7 +44,7 @@ describe('Recommend page', () => {
     iExpect.htmlWith200Status(res);
     const $ = cheerio.load(res.text);
 
-    expect($($('.page-section p')[2]).text()).to.equal('This is because you have symptoms.');
+    expect($($('.page-section p')[3]).text()).to.equal('This is because you have symptoms.');
   });
 
   it('page title should be \'We recommend that you\' if age question is answered 15 or younger', async () => {
@@ -55,7 +66,7 @@ describe('Recommend page', () => {
     iExpect.htmlWith200Status(res);
     const $ = cheerio.load(res.text);
 
-    expect($($('.page-section p')[2]).text()).to.equal('This is because you’re under the legal age of consent for sex.');
+    expect($($('.page-section p')[3]).text()).to.equal('This is because you’re under the legal age of consent for sex.');
   });
 
   it('the page should have a link to the Location search page with the right params for symptoms', async () => {

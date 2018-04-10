@@ -1,7 +1,8 @@
 {% extends 'layout.nunjucks' %}
 
 {% block header %}
-  <h1 class="local-header--title--question">How do you want to get a test?</h1>
+  <p class="local-header--step">Step 3 of 4</p>
+  <h1 class="local-header--title--question local-header--title__step">How do you want to get a test?</h1>
 {% endblock %}
 {% block content %}
   {% if errorMessage %}
