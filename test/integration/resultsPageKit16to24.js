@@ -24,7 +24,7 @@ function assertSearchResponse(location, type, origin, done, assertions) {
     });
 }
 
-describe('Results page for kits in under 16 year olds', function test() {
+describe('Results page for kits for 16 to 24 year olds', function test() {
   // Setting this timeout as it is calling the real DB...
   this.timeout(utils.maxWaitTimeMs);
 
@@ -69,10 +69,10 @@ describe('Results page for kits in under 16 year olds', function test() {
         expect(searchResultsAddress).to.not.equal(undefined);
         expect(searchResultsPhone).to.not.equal(undefined);
 
-        expect(searchResultsDistance.text()).to.contain('Distance: 0.46 miles');
-        expect(searchResultsName.text()).to.contain('Leeds Sexual Health @ The Merrion Centre');
-        expect(searchResultsAddress.text()).to.contain('Merrion Centre - 1st Floor');
-        expect(searchResultsPhone.text()).to.contain('0113 392 0333');
+        expect(searchResultsDistance.text()).to.contain('Distance: 0.45 miles');
+        expect(searchResultsName.text()).to.contain('MESMAC - Leeds');
+        expect(searchResultsAddress.text()).to.contain('22/23 Blayds Yard');
+        expect(searchResultsPhone.text()).to.contain('0113 244 4209');
       });
     });
   });

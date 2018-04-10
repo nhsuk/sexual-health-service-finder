@@ -19,8 +19,7 @@ function build(location, searchType, size) {
   ];
 
   if (getFilter(searchType)) {
-    query.body.query.bool.must_not = getFilter(searchType).mustNotClause;
-    query.body.query.bool.must = getFilter(searchType).mustClause;
+    query.body.query.bool = getFilter(searchType);
   }
 
   return query;

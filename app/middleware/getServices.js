@@ -1,9 +1,9 @@
 const VError = require('verror').VError;
-const constants = require('../lib/constants');
 const elasticsearchClient = require('../lib/elasticsearchClient');
 const esGeoQueryBuilder = require('../lib/esGeoQueryBuilder');
 const esGetServiceHistogram = require('../lib/promHistograms').esGetServices;
 const esQueryLabelName = require('../lib/constants').promEsQueryLabelName;
+const queryMapper = require('../lib/utils/queryMapper');
 const serviceDataMapper = require('../lib/utils/serviceDataMapper');
 const log = require('../lib/logger');
 
@@ -24,7 +24,6 @@ function mapResults(results, res) {
       if (result.sort) {
         service.distance = result.sort[0];
       }
-
       service.address.fullAddress = serviceDataMapper.addressFormatter(service.address);
     }
 
@@ -43,9 +42,10 @@ function getServices(req, res, next) {
   const location = res.locals.location;
   const resultsLimit = res.locals.RESULTS_LIMIT;
   const postcodeLocationDetails = res.locals.postcodeLocationDetails;
+  const searchType = queryMapper.getEsQueryType(res.locals.type, res.locals.origin);
   const esQuery = getEsQuery(
     postcodeLocationDetails,
-    constants.searchTypes.sexperts,
+    searchType,
     resultsLimit
   );
 

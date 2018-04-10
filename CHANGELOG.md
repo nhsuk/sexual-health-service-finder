@@ -9,6 +9,7 @@
 - Accessibility improvements
 - Results opening times table
 - Journey step count
+- Queries for sexual health professionals and chlamydia kits under 25
 
 0.3.0 / 2018-03-19
 =======
