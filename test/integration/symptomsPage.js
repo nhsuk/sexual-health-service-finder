@@ -19,6 +19,14 @@ function expectSymptomsPageAgain($) {
 }
 
 describe('Symptoms page', () => {
+  it('step count should be \'Step 1 of 4\'', async () => {
+    const res = await chai.request(server).get(symptomsRoute);
+
+    const $ = cheerio.load(res.text);
+
+    expect($('.local-header--step').text()).to.equal('Step 1 of 4');
+  });
+
   it('page title should be \'Do you have any of the following symptoms?\'', async () => {
     const res = await chai.request(server).get(symptomsRoute);
 

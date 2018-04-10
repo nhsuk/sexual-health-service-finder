@@ -14,6 +14,17 @@ const chooseRoute = `${constants.siteRoot}/choose`;
 const locationSearchRoute = `${constants.siteRoot}/location`;
 
 describe('Recommend page', () => {
+  it('step count should be \'Step 3 of 4\'', async () => {
+    const res = await chai.request(server)
+      .get(recommendRoute)
+      .query({ symptoms: constants.symptoms.yes });
+
+    iExpect.htmlWith200Status(res);
+    const $ = cheerio.load(res.text);
+
+    expect($('.local-header--step').text()).to.equal('Step 3 of 4');
+  });
+
   it('page title should be \'We recommend that you\' if symptoms question is answered yes', async () => {
     const res = await chai.request(server)
       .get(recommendRoute)
