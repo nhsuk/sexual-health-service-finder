@@ -20,6 +20,17 @@ function expectAgePageAgain($) {
 }
 
 describe('Age page', () => {
+  it('step count should be \'Step 3 of 4\'', async () => {
+    const res = await chai.request(server)
+      .get(recommendRoute)
+      .query({ symptoms: 'no' });
+
+    iExpect.htmlWith200Status(res);
+    const $ = cheerio.load(res.text);
+
+    expect($('.local-header--step').text()).to.equal('Step 2 of 4');
+  });
+
   it('page title should be \'How old are you?\' if symptoms question is answered no', async () => {
     const res = await chai.request(server)
       .get(recommendRoute)
