@@ -10,12 +10,27 @@ body {
     background-color: $white;
   }
   .page-section {
+    padding: 32px 0 48px 0;
     p, ul{
       margin-top: 16px;
     }
   }
   .breadcrumb {
     background-color: $white;
+  }
+  .local-header--title--question {
+    &.local-header--title__step {
+      margin-top: 10px;
+      padding-top: 0;
+    }
+  }
+  p {
+    &.local-header--step {
+      display: block;
+      font-size: 18px;
+      font-weight: 400;
+      margin-top: 0;
+    }
   }
   details {
     &.details--country {
