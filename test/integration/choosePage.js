@@ -21,6 +21,11 @@ describe('Choose page', () => {
       iExpect.htmlWith200Status(res);
     });
 
+    it('step count should be \'Step 3 of 4\'', async () => {
+      const $ = cheerio.load(res.text);
+      expect($('.local-header--step').text()).to.equal('Step 3 of 4');
+    });
+
     it('should not be indexed', async () => {
       const $ = cheerio.load(res.text);
       expect($('meta[name=robots]').attr('content')).to.equal('noindex');
@@ -45,6 +50,11 @@ describe('Choose page', () => {
         .get(chooseRoute)
         .query({ age: constants.age.over25 });
       iExpect.htmlWith200Status(res);
+    });
+
+    it('step count should be \'Step 3 of 4\'', async () => {
+      const $ = cheerio.load(res.text);
+      expect($('.local-header--step').text()).to.equal('Step 3 of 4');
     });
 
     it('page title should be \'How do you want to get a test?\' if age question is answered 25 or older', async () => {
