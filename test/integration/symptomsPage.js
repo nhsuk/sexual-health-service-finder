@@ -28,6 +28,12 @@ describe('Symptoms page', () => {
     expect($('.local-header--title--question').text()).to.equal('Do you have any of the following symptoms?');
   });
 
+  it('should not be indexed', async () => {
+    const res = await chai.request(server).get(symptomsRoute);
+    const $ = cheerio.load(res.text);
+    expect($('meta[name=robots]').attr('content')).to.equal('noindex');
+  });
+
   it('should return symptoms page with an error message if symptoms question is not answered', async () => {
     const res = await chai.request(server)
       .get(recommendRoute)

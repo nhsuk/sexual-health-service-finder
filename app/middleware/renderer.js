@@ -18,7 +18,7 @@ function age(req, res) {
 }
 
 function choose(req, res) {
-  return res.render('choose');
+  res.render('choose');
 }
 
 function location(req, res) {
@@ -26,11 +26,10 @@ function location(req, res) {
     if (res.locals.correctLocationParams === 'redirect') {
       return res.render('chlamydiaOnlineRedirect');
     }
-  } else {
-    res.locals.errorMessage = messages.invalidUrlMessage();
-    return res.render('start');
+    return res.render('location');
   }
-  return res.render('location');
+  res.locals.errorMessage = messages.invalidUrlMessage();
+  return res.render('start');
 }
 
 function chlamydiaOnlineRedirect(req, res) {
@@ -38,7 +37,7 @@ function chlamydiaOnlineRedirect(req, res) {
 }
 
 function results(req, res) {
-  if (!res.locals.correctResultsParams) {
+  if ((!res.locals.correctResultsParams)) {
     res.locals.errorMessage = messages.invalidUrlMessage();
     return res.render('start');
   }

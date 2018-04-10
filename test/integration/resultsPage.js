@@ -73,6 +73,13 @@ describe('Results page results', function test() {
         iExpect.htmlWith200Status(res);
       });
     });
+
+    it('should not be indexed', (done) => {
+      assertSearchResponse(location, done, (err, res) => {
+        const $ = cheerio.load(res.text);
+        expect($('meta[name=robots]').attr('content')).to.equal('noindex');
+      });
+    });
   });
 
   describe('Each service', () => {

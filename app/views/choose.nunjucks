@@ -1,5 +1,9 @@
 {% extends 'layout.nunjucks' %}
 
+{% block meta %}
+  <meta name='robots' content='noindex'>
+{% endblock %}
+
 {% block header %}
   <h1 class="local-header--title--question">How do you want to get a test?</h1>
 {% endblock %}

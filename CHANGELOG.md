@@ -1,4 +1,4 @@
-0.4.0 / TBC
+0.4.0 / 2018-04-10
 =======
 - Choose pages
 - ES integration
@@ -9,6 +9,7 @@
 - Accessibility improvements
 - Results opening times table
 - Queries for sexual health professionals and chlamydia kits under 25
+- No indexing for intermediate steps by search engines
 
 0.3.0 / 2018-03-19
 =======

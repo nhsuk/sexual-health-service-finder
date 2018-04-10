@@ -21,6 +21,11 @@ describe('Choose page', () => {
       iExpect.htmlWith200Status(res);
     });
 
+    it('should not be indexed', async () => {
+      const $ = cheerio.load(res.text);
+      expect($('meta[name=robots]').attr('content')).to.equal('noindex');
+    });
+
     it('page title should be \'How do you want to get a test?\' if age question is answered 16-24', async () => {
       const $ = cheerio.load(res.text);
       expect($('.local-header--title--question').text()).to.equal('How do you want to get a test?');
