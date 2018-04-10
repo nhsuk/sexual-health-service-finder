@@ -1,6 +1,5 @@
 const log = require('../lib/logger');
 const messages = require('../lib/messages');
-// const utils = require('../lib/utils/utils');
 
 function startPage(req, res) {
   res.render('start');
@@ -24,14 +23,13 @@ function choose(req, res) {
 
 function location(req, res) {
   if (res.locals.correctLocationParams) {
-    if ((res.locals.correctLocationParams === 'redirect')) {
+    if (res.locals.correctLocationParams === 'redirect') {
       return res.render('chlamydiaOnlineRedirect');
     }
-  } else {
-    res.locals.errorMessage = messages.invalidUrlMessage();
-    return res.render('start');
+    return res.render('location');
   }
-  return res.render('location');
+  res.locals.errorMessage = messages.invalidUrlMessage();
+  return res.render('start');
 }
 
 function chlamydiaOnlineRedirect(req, res) {
