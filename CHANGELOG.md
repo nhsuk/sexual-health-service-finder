@@ -10,6 +10,7 @@
 - Results opening times table
 - Queries for sexual health professionals and chlamydia kits under 25
 - No indexing for intermediate steps by search engines
+- Journey step count
 
 0.3.0 / 2018-03-19
 =======
