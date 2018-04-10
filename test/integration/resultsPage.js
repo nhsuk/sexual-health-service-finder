@@ -91,9 +91,15 @@ describe('Results page results', function test() {
         expect(searchResultsName).to.not.equal(undefined);
         expect(searchResultsAddress).to.not.equal(undefined);
         expect(searchResultsPhone).to.not.equal(undefined);
-        expect(searchResultsMapLink.text()).to.contain('See map and directions');
         expect(searchResultsOpeningTimes.text()).to.equal('See opening times'.repeat(30));
         expect(searchResultsService.text()).to.equal('See service information'.repeat(30));
+
+        searchResultsMapLink.toArray().forEach((result, index) => {
+          const name = $(searchResultsName.toArray()[index]).text().trim().replace('\n', '');
+          const address = $(searchResultsAddress.toArray()[index]).text().trim().replace('\n', '');
+          const mapLinkText = $(result).text().replace('\n', '');
+          expect(mapLinkText).to.contain(`See map and directions for ${name} at ${address}`);
+        });
 
         expect(searchResultsDistance).to.have.lengthOf(30);
         expect(searchResultsName).to.have.lengthOf(30);
