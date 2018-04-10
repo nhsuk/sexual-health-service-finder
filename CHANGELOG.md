@@ -8,6 +8,7 @@
 - Skip to page content links & accessibility help pages
 - Accessibility improvements
 - Results opening times table
+- Journey step count
 
 0.3.0 / 2018-03-19
 =======
