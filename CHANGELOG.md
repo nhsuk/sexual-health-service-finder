@@ -2,6 +2,7 @@
 ==================
 - Add page descriptions
 - Support latest service data model changes
+- Add meta description
 
 0.4.0 / 2018-04-10
 ==================
