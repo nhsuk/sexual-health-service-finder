@@ -10,7 +10,7 @@ function getFilter(searchType) {
   if (searchType === constants.searchTypes.sexperts) {
     return {
       must: [
-        { match: { type: 'Sexual health information and support' } },
+        { match: { serviceType: 'Sexual health information and support' } },
         { match: { venueType: 'Clinic' } },
       ],
       must_not: mustNotClause,
@@ -23,7 +23,7 @@ function getFilter(searchType) {
         {
           bool: {
             must: [
-              { match: { type: 'Sexual health information and support' } },
+              { match: { serviceType: 'Sexual health information and support' } },
               { match: { venueType: 'Community' } },
             ],
           },
@@ -31,7 +31,7 @@ function getFilter(searchType) {
         {
           bool: {
             minimum_should_match: 1,
-            must: { match: { type: 'Chlamydia screening under 25s' } },
+            must: { match: { serviceType: 'Chlamydia screening under 25s' } },
             should: [
               { match: { venueType: 'Clinic' } },
               { match: { venueType: 'Community' } },

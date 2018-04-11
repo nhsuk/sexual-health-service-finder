@@ -18,7 +18,7 @@
 
 {% if service.contacts %}
   <p class="results__address results__telephone">
-    {% if service.contacts.telephone %} <a href="tel:{{ service.contacts.telephone }}"> {{ service.contacts.telephone }} </a>{% endif %}
+    {% if service.contacts.telephoneNumber %} <a href="tel:{{ service.contacts.telephoneNumber }}"> {{ service.contacts.telephoneNumber }} </a>{% endif %}
   </p>
 {% endif %}
 
@@ -37,7 +37,7 @@
     <div class="details__content" id="details-content-0" aria-hidden="false">
       <div class="reading-width">
         <p class="results__openingTimes">
-          {{ service.openingTimes }}
+          {{ service.openingTimes.description }}
         </p>
         <table class="results__openingTimesTable">
           <tbody>

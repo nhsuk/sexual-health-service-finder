@@ -1,6 +1,7 @@
-0.4.1 / 2018-04-11
+0.5.0 / 2018-04-11
 ==================
 - Add page descriptions
+- Support latest service data model changes
 
 0.4.0 / 2018-04-10
 ==================

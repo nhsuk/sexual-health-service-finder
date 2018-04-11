@@ -23,7 +23,7 @@ describe('getFilteredOutTermsQuery', () => {
       expect(query.must)
         .to.be.eql(
           [
-            { match: { type: 'Sexual health information and support' } },
+            { match: { serviceType: 'Sexual health information and support' } },
             { match: { venueType: 'Clinic' } },
           ],
           `"must clause found in\n${util.inspect(query, { depth: null })}`
@@ -57,7 +57,7 @@ describe('getFilteredOutTermsQuery', () => {
                 must: [
                   {
                     match: {
-                      type: 'Sexual health information and support',
+                      serviceType: 'Sexual health information and support',
                     },
                   },
                   {
@@ -73,7 +73,7 @@ describe('getFilteredOutTermsQuery', () => {
                 minimum_should_match: 1,
                 must: {
                   match: {
-                    type: 'Chlamydia screening under 25s',
+                    serviceType: 'Chlamydia screening under 25s',
                   },
                 },
                 should: [
