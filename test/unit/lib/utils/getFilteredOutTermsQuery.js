@@ -44,6 +44,24 @@ describe('getFilteredOutTermsQuery', () => {
     });
   });
 
+  describe('for kits and over 25', () => {
+    const searchType = constants.searchTypes.kitsOver25;
+
+    it('should return should clause for search type of kits and over 25', () => {
+      const query = getFilter(searchType);
+      expect(query.should)
+        .to.be.eql([
+          {
+            bool: {
+              must: [
+                { match: { serviceType: 'SRV0531' } },
+              ],
+            },
+          },
+        ]);
+    });
+  });
+
   describe('for kits and 16 to 24', () => {
     const searchType = constants.searchTypes.kits16to24;
 
