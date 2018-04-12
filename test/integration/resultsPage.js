@@ -30,10 +30,6 @@ function setTypeAndOriginPairs() {
       origin: constants.serviceChoices.over25,
       type: constants.serviceTypes.professional,
     },
-    {
-      origin: constants.serviceChoices.over25,
-      type: constants.serviceTypes.kit,
-    },
   ];
 }
 

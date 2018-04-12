@@ -8,6 +8,9 @@ function getEsQueryType(type, origin) {
     if (origin === constants.serviceChoices['16to24']) {
       return constants.searchTypes.kits16to24;
     }
+    if (origin === constants.serviceChoices.over25) {
+      return constants.searchTypes.kitsOver25;
+    }
   }
   return constants.searchTypes.sexperts;
 }
