@@ -55,6 +55,13 @@ describe('getFilteredOutTermsQuery', () => {
             {
               bool: {
                 must: [
+                  { match: { serviceType: 'SRV0267' } },
+                ],
+              },
+            },
+            {
+              bool: {
+                must: [
                   {
                     match: {
                       serviceType: 'Sexual health information and support',

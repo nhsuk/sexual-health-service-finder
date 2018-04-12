@@ -23,6 +23,13 @@ function getFilter(searchType) {
         {
           bool: {
             must: [
+              { match: { serviceType: 'SRV0267' } },
+            ],
+          },
+        },
+        {
+          bool: {
+            must: [
               { match: { serviceType: 'Sexual health information and support' } },
               { match: { venueType: 'Community' } },
             ],
