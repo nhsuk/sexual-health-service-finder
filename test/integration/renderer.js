@@ -1,8 +1,8 @@
 const chai = require('chai');
-const renderer = require('../../../app/middleware/renderer');
-const constants = require('../../../app/lib/constants');
-const spyUtils = require('../../lib/spy-utils');
-const messages = require('../../../app/lib/messages');
+const renderer = require('../../app/middleware/renderer');
+const constants = require('../../app/lib/constants');
+const spyUtils = require('../lib/spy-utils');
+const messages = require('../../app/lib/messages');
 
 const expect = chai.expect;
 const getSpy = spyUtils.getSpy;
