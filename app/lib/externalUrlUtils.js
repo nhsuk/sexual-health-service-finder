@@ -7,8 +7,10 @@ function joinAllTruthyValues(obj) {
 }
 
 function filterNotFoundNames(name, addressLines) {
-  if (name.includes('@')) {
-    return addressLines;
+  const matches = name.match(/@/);
+  if (matches) {
+    // eslint-disable-next-line no-param-reassign
+    name = name.substring(0, matches.index - 1);
   }
   return `${name},${addressLines}`;
 }

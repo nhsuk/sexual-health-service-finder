@@ -41,7 +41,6 @@ describe('externalUrlUtils', () => {
 
       const results = urlUtils.addMapUrl(locationDetails, inputList);
 
-      expect(results).to.not.be.undefined;
       expect(results).to.be.an('array');
       expect(results.length).to.be.equal(2);
       expect(results[0].mapUrl).to.be.equal(expectedMapLinkOne);
@@ -63,29 +62,26 @@ describe('externalUrlUtils', () => {
 
       const results = urlUtils.addMapUrl(locationDetails, inputList);
 
-      expect(results).to.not.be.undefined;
-      expect(results).to.not.be.equal(undefined);
       expect(results).to.be.an('array');
       expect(results.length).to.be.equal(1);
       expect(results[0].mapUrl).to.be.equal(expectedMapLink);
     });
 
-    it('should not add name as a property if it contains a special symbol', () => {
+    it('should only include name prior to any blacklisted character', () => {
       const inputList = [{
         address: {
           addressLines: ['', undefined, 'line1', '', null],
           postcode: 'AB12 3CD',
         },
-        name: 'name @ subname',
+        name: 'name before @ subname',
       }];
 
-      const destination = 'line1,AB12 3CD';
+      const destination = 'name before,line1,AB12 3CD';
       const encodedQuery = `daddr=${qs.escape(destination)}&near=${qs.escape(destination)}&saddr=${locationDetails.location.lat}%2C${locationDetails.location.lon}`;
       const expectedMapLink = `https://maps.google.com/maps?${encodedQuery}`;
 
       const results = urlUtils.addMapUrl(locationDetails, inputList);
 
-      expect(results).to.not.equal(undefined);
       expect(results).to.be.an('array');
       expect(results.length).to.be.equal(1);
       expect(results[0].mapUrl).to.be.equal(expectedMapLink);
