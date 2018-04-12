@@ -7,7 +7,7 @@ const expect = chai.expect;
 
 describe('externalUrlUtils', () => {
   describe('addMapUrl', () => {
-    const locationDetails = { location: { lat: 52.4, lon: -1.9 } };
+    const location = 'location';
 
     it('should add additional property to all items in the input list for google maps Url', () => {
       const nameOne = 'place name one';
@@ -25,7 +25,7 @@ describe('externalUrlUtils', () => {
         name: nameTwo,
       }];
 
-      const startLocation = `saddr=${locationDetails.location.lat}%2C${locationDetails.location.lon}`;
+      const startLocation = `saddr=${location}`;
       const nameAndAddressOne = `${nameOne},${Object.values(address).join()}`;
       const nameAndAddressOneEncoded = qs.escape(nameAndAddressOne);
       const destinationOne = `daddr=${nameAndAddressOneEncoded}`;
@@ -39,7 +39,7 @@ describe('externalUrlUtils', () => {
       const expectedMapLinkOne = `https://maps.google.com/maps?${encodedQueryOne}`;
       const expectedMapLinkTwo = `https://maps.google.com/maps?${encodedQueryTwo}`;
 
-      const results = urlUtils.addMapUrl(locationDetails, inputList);
+      const results = urlUtils.addMapUrl(location, inputList);
 
       expect(results).to.be.an('array');
       expect(results.length).to.be.equal(2);
@@ -57,37 +57,58 @@ describe('externalUrlUtils', () => {
       }];
 
       const destination = 'name,line1,AB12 3CD';
-      const encodedQuery = `daddr=${qs.escape(destination)}&near=${qs.escape(destination)}&saddr=${locationDetails.location.lat}%2C${locationDetails.location.lon}`;
+      const encodedQuery = `daddr=${qs.escape(destination)}&near=${qs.escape(destination)}&saddr=${location}`;
       const expectedMapLink = `https://maps.google.com/maps?${encodedQuery}`;
 
-      const results = urlUtils.addMapUrl(locationDetails, inputList);
+      const results = urlUtils.addMapUrl(location, inputList);
 
       expect(results).to.be.an('array');
       expect(results.length).to.be.equal(1);
       expect(results[0].mapUrl).to.be.equal(expectedMapLink);
     });
 
-    it('should only include name prior to any blacklisted character', () => {
-      const inputList = [{
-        address: {
-          addressLines: ['', undefined, 'line1', '', null],
-          postcode: 'AB12 3CD',
-        },
-        name: 'name before @ subname',
-      }];
+    ['@', '-'].forEach((char) => {
+      it(`should only include name prior to blacklisted character ('${char}') when character is surrounded with spaces`, () => {
+        const validName = 'words before character';
+        const name = `${validName} ${char} words after`;
+        const inputList = [{
+          address: { addressLines: ['line1'], postcode: 'AB12 3CD' },
+          name,
+        }];
 
-      const destination = 'name before,line1,AB12 3CD';
-      const encodedQuery = `daddr=${qs.escape(destination)}&near=${qs.escape(destination)}&saddr=${locationDetails.location.lat}%2C${locationDetails.location.lon}`;
-      const expectedMapLink = `https://maps.google.com/maps?${encodedQuery}`;
+        const destination = `${validName},line1,AB12 3CD`;
+        const encodedQuery = `daddr=${qs.escape(destination)}&near=${qs.escape(destination)}&saddr=${location}`;
+        const expectedMapLink = `https://maps.google.com/maps?${encodedQuery}`;
 
-      const results = urlUtils.addMapUrl(locationDetails, inputList);
+        const results = urlUtils.addMapUrl(location, inputList);
 
-      expect(results).to.be.an('array');
-      expect(results.length).to.be.equal(1);
-      expect(results[0].mapUrl).to.be.equal(expectedMapLink);
+        expect(results).to.be.an('array');
+        expect(results.length).to.be.equal(1);
+        expect(results[0].mapUrl).to.be.equal(expectedMapLink);
+      });
     });
 
-    it('should use coordinates as start address for location searches', () => {
+    ['@', '-'].forEach((char) => {
+      it(`should include the full name when the name contains a blacklisted character ('${char}') and there are no spaces surrounding it`, () => {
+        const name = `words before character${char}words after`;
+        const inputList = [{
+          address: { addressLines: ['line1'], postcode: 'AB12 3CD' },
+          name,
+        }];
+
+        const destination = `${name},line1,AB12 3CD`;
+        const encodedQuery = `daddr=${qs.escape(destination)}&near=${qs.escape(destination)}&saddr=${location}`;
+        const expectedMapLink = `https://maps.google.com/maps?${encodedQuery}`;
+
+        const results = urlUtils.addMapUrl(location, inputList);
+
+        expect(results).to.be.an('array');
+        expect(results.length).to.be.equal(1);
+        expect(results[0].mapUrl).to.be.equal(expectedMapLink);
+      });
+    });
+
+    it('should use the user\'s input as the start address for location searches', () => {
       const inputList = [{
         address: {
           addressLines: ['line1'],
@@ -99,11 +120,11 @@ describe('externalUrlUtils', () => {
       const params = {
         daddr: destination,
         near: destination,
-        saddr: `${locationDetails.location.lat},${locationDetails.location.lon}`,
+        saddr: `${location}`,
       };
       const expectedMapLink = `https://maps.google.com/maps?${qs.stringify(params)}`;
 
-      const results = urlUtils.addMapUrl(locationDetails, inputList);
+      const results = urlUtils.addMapUrl(location, inputList);
 
       expect(results.length).to.be.equal(1);
       expect(results[0].mapUrl).to.be.equal(expectedMapLink);
@@ -113,6 +134,7 @@ describe('externalUrlUtils', () => {
   describe('getChoicesResultsUrlToOnlineTests', () => {
     const location = 'ls1';
     const locationDetails = { location: { lat: 52.4, lon: -1.9 } };
+
     it('should return undefined if no location', () => {
       const emptyLocation = '';
 
