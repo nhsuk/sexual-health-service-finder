@@ -4,6 +4,8 @@
 - Add pharmacies to kit pickup for 16-24
 - Replace sexperts search with kit locations for over 25s
 - Use `arc` rather than `plane` for precision in distance
+- Use location input for map link
+- Use name prior to special characters in map link
 
 0.5.0 / 2018-04-11
 ==================
