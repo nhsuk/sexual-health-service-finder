@@ -1,3 +1,7 @@
+0.6.0 / 2018-04-17
+==================
+- Collapse duplicate results in Elasticsearch query on uid
+
 0.5.0 / 2018-04-11
 ==================
 - Add page descriptions
