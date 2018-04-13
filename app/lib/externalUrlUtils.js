@@ -6,24 +6,14 @@ function joinAllTruthyValues(obj) {
     .join();
 }
 
-function filterNotFoundNames(name, addressLines) {
-  const matches = name.match(/ [@|-] /);
-  if (matches) {
-    // eslint-disable-next-line no-param-reassign
-    name = name.substring(0, matches.index).trim();
-  }
-  return `${name},${addressLines}`;
-}
-
 function addMapUrl(location, inputList) {
   return inputList.map((item) => {
     const addressLines = `${joinAllTruthyValues(item.address.addressLines)},${item.address.postcode}`;
     const saddr = location;
-    const fullNameAndAddress = filterNotFoundNames(item.name, addressLines);
 
     const params = {
-      daddr: fullNameAndAddress,
-      near: fullNameAndAddress,
+      daddr: addressLines,
+      near: addressLines,
       saddr,
     };
 
