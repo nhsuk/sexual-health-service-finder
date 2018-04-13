@@ -9,65 +9,12 @@ describe('externalUrlUtils', () => {
   describe('addMapUrl', () => {
     const location = 'location';
 
-    it('should add additional property to all items in the input list for google maps Url', () => {
-      const address = {
-        addressLines: ['city', 'county', 'line1', 'line2', 'line3'],
-        postcode: 'AB12 3CD',
-      };
-      const inputList = [{ address }, { address }];
-
-      const startLocation = `saddr=${location}`;
-      const addressOne = Object.values(address).join();
-      const addressOneEncoded = qs.escape(addressOne);
-      const destinationOne = `daddr=${addressOneEncoded}`;
-      const nearOne = `near=${addressOneEncoded}`;
-      const addressTwo = Object.values(address).join();
-      const addressTwoEncoded = qs.escape(addressTwo);
-      const destinationTwo = `daddr=${addressTwoEncoded}`;
-      const nearTwo = `near=${addressTwoEncoded}`;
-      const encodedQueryOne = `${destinationOne}&${nearOne}&${startLocation}`;
-      const encodedQueryTwo = `${destinationTwo}&${nearTwo}&${startLocation}`;
-      const expectedMapLinkOne = `https://maps.google.com/maps?${encodedQueryOne}`;
-      const expectedMapLinkTwo = `https://maps.google.com/maps?${encodedQueryTwo}`;
-
-      const results = urlUtils.addMapUrl(location, inputList);
-
-      expect(results).to.be.an('array');
-      expect(results.length).to.be.equal(2);
-      expect(results[0].mapUrl).to.be.equal(expectedMapLinkOne);
-      expect(results[1].mapUrl).to.be.equal(expectedMapLinkTwo);
-    });
-
-    it('should remove any empty, null or undefined address properties', () => {
-      const inputList = [{
-        address: {
-          addressLines: ['', undefined, 'line1', '', null],
-          postcode: 'AB12 3CD',
-        },
-      }];
-
-      const destination = 'line1,AB12 3CD';
-      const encodedQuery = `daddr=${qs.escape(destination)}&near=${qs.escape(destination)}&saddr=${location}`;
-      const expectedMapLink = `https://maps.google.com/maps?${encodedQuery}`;
-
-      const results = urlUtils.addMapUrl(location, inputList);
-
-      expect(results).to.be.an('array');
-      expect(results.length).to.be.equal(1);
-      expect(results[0].mapUrl).to.be.equal(expectedMapLink);
-    });
-
-    it('should use the user\'s input as the start address for location searches', () => {
-      const inputList = [{
-        address: {
-          addressLines: ['line1'],
-          postcode: 'AB12',
-        },
-      }];
-      const destination = 'line1,AB12';
+    it('should set \'saddr\' as first param and use the full address from the item for \'daddr\' and \'near\'', () => {
+      const fullAddress = 'line1, AB12';
+      const inputList = [{ address: { fullAddress } }];
       const params = {
-        daddr: destination,
-        near: destination,
+        daddr: fullAddress,
+        near: fullAddress,
         saddr: `${location}`,
       };
       const expectedMapLink = `https://maps.google.com/maps?${qs.stringify(params)}`;

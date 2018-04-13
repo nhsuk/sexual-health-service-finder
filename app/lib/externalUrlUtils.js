@@ -1,19 +1,10 @@
 const qs = require('querystring');
 
-function joinAllTruthyValues(obj) {
-  return Object.values(obj)
-    .filter(value => value)
-    .join();
-}
-
-function addMapUrl(location, inputList) {
+function addMapUrl(saddr, inputList) {
   return inputList.map((item) => {
-    const addressLines = `${joinAllTruthyValues(item.address.addressLines)},${item.address.postcode}`;
-    const saddr = location;
-
     const params = {
-      daddr: addressLines,
-      near: addressLines,
+      daddr: item.address.fullAddress,
+      near: item.address.fullAddress,
       saddr,
     };
 
