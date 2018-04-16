@@ -31,9 +31,9 @@ describe('formatOpeningTimes', () => {
       const result = formatTimeString('23:59');
       expect(result).to.equal('midnight');
     });
-    it('should display \'00:00\' as \'12am\'', () => {
+    it('should display \'00:00\' as \'midnight\'', () => {
       const result = formatTimeString('00:00');
-      expect(result).to.equal('12am');
+      expect(result).to.equal('midnight');
     });
   });
 });

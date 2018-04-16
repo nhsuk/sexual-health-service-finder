@@ -1,7 +1,7 @@
 const moment = require('moment');
 
 function formatTimeString(timeString) {
-  if (timeString === '23:59') {
+  if (timeString === '23:59' || timeString === '00:00') {
     return 'midnight';
   }
   const time = moment();

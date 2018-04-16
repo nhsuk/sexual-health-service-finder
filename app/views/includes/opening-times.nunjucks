@@ -9,11 +9,11 @@
           {% if loop.first %}
             <tr>
               <th rowspan="{{loop.length}}">{{ openingTime.day }}</th>
-              <td>{{sessions.opens}} to {{ "midnight" if sessions.closes === "11:59pm" else sessions.closes }}</td>
+              <td>{{sessions.opens}} to {{ sessions.closes }}</td>
             </tr>
           {% else %}
             <tr class="hasSessions">
-              <td>{{sessions.opens}} to {{ "midnight" if sessions.closes === "11:59pm" else sessions.closes }}</td>
+              <td>{{sessions.opens}} to {{ sessions.closes }}</td>
             </tr>
           {% endif %}
         {% else %}
