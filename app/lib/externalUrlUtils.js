@@ -1,27 +1,10 @@
 const qs = require('querystring');
 
-function joinAllTruthyValues(obj) {
-  return Object.values(obj)
-    .filter(value => value)
-    .join();
-}
-
-function filterNotFoundNames(name, addressLines) {
-  if (name.includes('@')) {
-    return addressLines;
-  }
-  return `${name},${addressLines}`;
-}
-
-function addMapUrl(postcodeLocationDetails, inputList) {
+function addMapUrl(saddr, inputList) {
   return inputList.map((item) => {
-    const addressLines = `${joinAllTruthyValues(item.address.addressLines)},${item.address.postcode}`;
-    const saddr = `${postcodeLocationDetails.location.lat},${postcodeLocationDetails.location.lon}`;
-    const fullNameAndAddress = filterNotFoundNames(item.name, addressLines);
-
     const params = {
-      daddr: fullNameAndAddress,
-      near: fullNameAndAddress,
+      daddr: item.address.fullAddress,
+      near: item.address.fullAddress,
       saddr,
     };
 

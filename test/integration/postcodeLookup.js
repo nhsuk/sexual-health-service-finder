@@ -1,13 +1,13 @@
 const chai = require('chai');
 const sinon = require('sinon');
 const rewire = require('rewire');
-const spyUtils = require('../../lib/spy-utils');
+const spyUtils = require('../lib/spy-utils');
 // eslint-disable-next-line camelcase
-const postcodeSampleResponse_HG50JL = require('./samples/postcodeResponse_HG50JL');
+const postcodeSampleResponse_HG50JL = require('../resources/postcodeResponse_HG50JL');
 // eslint-disable-next-line camelcase
-const outcodeSampleResponse_HG5 = require('./samples/outcodeResponse_HG5');
+const outcodeSampleResponse_HG5 = require('../resources/outcodeResponse_HG5');
 // eslint-disable-next-line camelcase
-const outcodeSampleResponseCrossBorder_TD9 = require('./samples/outcodeResponseCrossBorder_TD9');
+const outcodeSampleResponseCrossBorder_TD9 = require('../resources/outcodeResponseCrossBorder_TD9');
 
 const expect = chai.expect;
 const getNextSpy = spyUtils.getNextSpy;
@@ -32,7 +32,7 @@ function getRendererFake(methodName) {
 }
 
 function getRewiredPostcodeLookup(postcodesIOClientFake, rendererFake) {
-  const postcodeLookup = rewire('../../../app/middleware/postcodeLookup');
+  const postcodeLookup = rewire('../../app/middleware/postcodeLookup');
 
   // eslint-disable-next-line no-underscore-dangle
   postcodeLookup.__set__('PostcodesIO', postcodesIOClientFake);
