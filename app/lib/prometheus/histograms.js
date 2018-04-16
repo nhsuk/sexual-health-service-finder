@@ -1,6 +1,6 @@
-const promClient = require('./promBundle').promClient;
-const buckets = require('./constants').promHistogramBuckets;
-const esQueryLabelName = require('./constants').promEsQueryLabelName;
+const promClient = require('./bundle').promClient;
+const buckets = require('../constants').promHistogramBuckets;
+const esQueryLabelName = require('../constants').promEsQueryLabelName;
 
 module.exports = {
   esGetServices: new promClient.Histogram({

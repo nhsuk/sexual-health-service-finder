@@ -1,5 +1,5 @@
 const renderer = require('../middleware/renderer');
-const warningCounter = require('../lib/promCounters').outOfEnglandLocationWarnings;
+const warningCounter = require('../lib/prometheus/counters').outOfEnglandLocationWarnings;
 
 function outsideEngland(countries) {
   return !countries.includes('England');

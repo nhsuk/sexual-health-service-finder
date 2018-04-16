@@ -1,4 +1,4 @@
-const emptySearchErrors = require('../lib/promCounters').emptySearchLocationErrors;
+const emptySearchErrors = require('../lib/prometheus/counters').emptySearchLocationErrors;
 const renderer = require('../middleware/renderer');
 
 function validateLocation(req, res, next) {

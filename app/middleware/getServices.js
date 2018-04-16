@@ -1,7 +1,7 @@
 const VError = require('verror').VError;
-const elasticsearchClient = require('../lib/elasticsearchClient');
-const esGeoQueryBuilder = require('../lib/esGeoQueryBuilder');
-const esGetServiceHistogram = require('../lib/promHistograms').esGetServices;
+const esClient = require('../lib/elasticsearch/client');
+const queryBuilder = require('../lib/elasticsearch/queryBuilder');
+const esGetServiceHistogram = require('../lib/prometheus/histograms').esGetServices;
 const esQueryLabelName = require('../lib/constants').promEsQueryLabelName;
 const queryMapper = require('../lib/utils/queryMapper');
 const serviceDataMapper = require('../lib/utils/serviceDataMapper');
@@ -34,7 +34,7 @@ function mapResults(results, res) {
 function getEsQuery(postcodeLocationDetails, searchType, size) {
   return {
     label: searchType,
-    query: esGeoQueryBuilder.build(postcodeLocationDetails.location, searchType, size),
+    query: queryBuilder.build(postcodeLocationDetails.location, searchType, size),
   };
 }
 
@@ -52,7 +52,7 @@ function getServices(req, res, next) {
   const endTimer = esGetServiceHistogram.startTimer();
   const timerLabel = {};
   timerLabel[esQueryLabelName] = esQuery.label;
-  elasticsearchClient
+  esClient
     .client
     .search(esQuery.query)
     .then((results) => {

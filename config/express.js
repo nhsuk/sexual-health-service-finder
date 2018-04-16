@@ -6,10 +6,10 @@ const express = require('express');
 const helmet = require('helmet');
 const nunjucks = require('nunjucks');
 const constants = require('../app/lib/constants');
-const errorCounter = require('../app/lib/promCounters').errorPageViews;
+const errorCounter = require('../app/lib/prometheus/counters').errorPageViews;
 const locals = require('../app/middleware/locals');
 const log = require('../app/lib/logger');
-const promBundle = require('../app/lib/promBundle').middleware;
+const promBundle = require('../app/lib/prometheus/bundle').middleware;
 const router = require('./routes');
 
 module.exports = (app, config) => {

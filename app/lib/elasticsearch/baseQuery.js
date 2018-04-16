@@ -1,6 +1,6 @@
 const esConfig = require('../../../config/config').es;
 
-function getBaseQuery(location, size) {
+function baseQuery(location, size) {
   return {
     body: {
       collapse: {
@@ -28,4 +28,4 @@ function getBaseQuery(location, size) {
   };
 }
 
-module.exports = getBaseQuery;
+module.exports = baseQuery;

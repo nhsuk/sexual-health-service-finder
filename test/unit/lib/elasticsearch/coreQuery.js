@@ -1,7 +1,7 @@
 const chai = require('chai');
 const util = require('util');
 const constants = require('../../../../app/lib/constants');
-const getFilter = require('../../../../app/lib/utils/getFilteredOutTermsQuery');
+const coreQuery = require('../../../../app/lib/elasticsearch/coreQuery');
 
 const expect = chai.expect;
 
@@ -11,9 +11,9 @@ const mustNotClause = [
   { match: { name: 'BPAS' } },
 ];
 
-describe('getFilteredOutTermsQuery', () => {
+describe('coreQuery', () => {
   it('should return undefined for empty searchType', () => {
-    const query = getFilter(undefined);
+    const query = coreQuery(undefined);
     expect(query)
       .to.be.equal(
         undefined,
@@ -25,7 +25,7 @@ describe('getFilteredOutTermsQuery', () => {
     const searchType = constants.searchTypes.sexperts;
 
     it('should return mustClause for search type of sexual health professionals', () => {
-      const query = getFilter(searchType);
+      const query = coreQuery(searchType);
       expect(query.must)
         .to.be.eql(
           [
@@ -37,7 +37,7 @@ describe('getFilteredOutTermsQuery', () => {
     });
 
     it('should return mustNotClause for search type of sexual health professionals', () => {
-      const query = getFilter(searchType);
+      const query = coreQuery(searchType);
       expect(query.must_not)
         .to.be.eql(
           [
@@ -54,7 +54,7 @@ describe('getFilteredOutTermsQuery', () => {
     const searchType = constants.searchTypes.kitsOver25;
 
     it('should return should clause for search type of kits and over 25', () => {
-      const query = getFilter(searchType);
+      const query = coreQuery(searchType);
       expect(query)
         .to.be.eql({
           must: [
@@ -69,7 +69,7 @@ describe('getFilteredOutTermsQuery', () => {
     const searchType = constants.searchTypes.kits16to24;
 
     it('should return should clause for search type of kits and ages 16 to 24', () => {
-      const query = getFilter(searchType);
+      const query = coreQuery(searchType);
       expect(query.should)
         .to.be.eql(
           [
@@ -124,7 +124,7 @@ describe('getFilteredOutTermsQuery', () => {
     });
 
     it('should return should clause minimum for search type of kits and ages 16 to 24', () => {
-      const query = getFilter(searchType);
+      const query = coreQuery(searchType);
       expect(query.minimum_should_match)
         .to.be.eql(
           1,
@@ -133,7 +133,7 @@ describe('getFilteredOutTermsQuery', () => {
     });
 
     it('should return mustNotClause for search type of sexual health professionals', () => {
-      const query = getFilter(searchType);
+      const query = coreQuery(searchType);
       expect(query.must_not)
         .to.be.eql(mustNotClause, `"must not clause found in\n${util.inspect(query, { depth: null })}`);
     });

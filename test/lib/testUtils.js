@@ -1,4 +1,4 @@
-const esClient = require('../../app/lib/elasticsearchClient');
+const esClient = require('../../app/lib/elasticsearch/client');
 
 const maxWaitTimeMs = 3 * 60 * 1000;
 const gracePeriodMs = 5000;
