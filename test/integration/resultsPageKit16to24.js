@@ -56,23 +56,42 @@ describe('Results page for kits for 16 to 24 year olds', function test() {
   });
 
   describe('First service', () => {
-    it('should have distance, name, an address and phone number', (done) => {
+    it('should have distance, name, an address, phone number, a map link, See opening times toggle and See service information toggle', (done) => {
       assertSearchResponse(location, type, origin, done, (err, res) => {
         const $ = cheerio.load(res.text);
         const searchResultsDistance = $('.results__address.results__address-distance').first();
         const searchResultsName = $('.results__name').first();
         const searchResultsAddress = $('.results__address.results__address-lines').first();
         const searchResultsPhone = $('.results__address.results__telephone a').first();
+        const searchResultsMapLink = $('.results__item__link a').first();
+        const searchResultsOpeningTimes = $('.results__item__opening-times summary span').first();
+        const searchResultsService = $('.results__item__service-details summary span').first();
 
         expect(searchResultsDistance).to.not.equal(undefined);
         expect(searchResultsName).to.not.equal(undefined);
         expect(searchResultsAddress).to.not.equal(undefined);
         expect(searchResultsPhone).to.not.equal(undefined);
-
+        expect(searchResultsOpeningTimes.text()).to.equal('See opening times');
+        expect(searchResultsService).to.not.equal(undefined);
+        const name = searchResultsName.text().trim().replace('\n', '');
+        const address = searchResultsAddress.text().trim().replace('\n', '');
+        expect(name).to.contain('MESMAC - Leeds');
+        expect(address).to.contain('22/23 Blayds Yard');
+        const mapLinkText = $(searchResultsMapLink).text().replace('\n', '');
+        expect(mapLinkText).to.contain(`See map and directions for ${name} at ${address}`);
         expect(searchResultsDistance.text()).to.contain('Distance: 0.45 miles');
-        expect(searchResultsName.text()).to.contain('MESMAC - Leeds');
-        expect(searchResultsAddress.text()).to.contain('22/23 Blayds Yard');
         expect(searchResultsPhone.text()).to.contain('0113 244 4209');
+      });
+    });
+  });
+
+  describe('matching results found', () => {
+    it('should have 30 results', (done) => {
+      assertSearchResponse(location, type, origin, done, (err, res) => {
+        const $ = cheerio.load(res.text);
+        const searchResults = $('.results__item--nearby');
+
+        expect(searchResults.length).to.equal(30);
       });
     });
   });

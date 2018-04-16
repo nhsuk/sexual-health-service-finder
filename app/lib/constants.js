@@ -6,6 +6,7 @@ module.exports = {
   promEsQueryLabelName: 'query_type',
   searchTypes: {
     kits16to24: 'kits_16to24_geo',
+    kitsOver25: 'kits_over25_geo',
     sexperts: 'sexual_health_professionals_geo',
   },
   symptoms: {

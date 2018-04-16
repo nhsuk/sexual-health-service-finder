@@ -1,3 +1,9 @@
+0.6.0 / 2018-04-17
+==================
+- Collapse duplicate results in Elasticsearch query on uid
+- Add pharmacies to kit pickup for 16-24
+- Replace sexperts search with kit locations for over 25s
+
 0.5.0 / 2018-04-11
 ==================
 - Add page descriptions

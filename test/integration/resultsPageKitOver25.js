@@ -63,16 +63,35 @@ describe('Results page for kits in over 25 year olds', function test() {
         const searchResultsName = $('.results__name').first();
         const searchResultsAddress = $('.results__address.results__address-lines').first();
         const searchResultsPhone = $('.results__address.results__telephone a').first();
+        const searchResultsMapLink = $('.results__item__link a').first();
+        const searchResultsOpeningTimes = $('.results__item__opening-times summary span').first();
+        const searchResultsService = $('.results__item__service-details summary span').first();
 
         expect(searchResultsDistance).to.not.equal(undefined);
         expect(searchResultsName).to.not.equal(undefined);
         expect(searchResultsAddress).to.not.equal(undefined);
         expect(searchResultsPhone).to.not.equal(undefined);
+        expect(searchResultsOpeningTimes.text()).to.equal('See opening times');
+        expect(searchResultsService).to.not.equal(undefined);
+        const name = searchResultsName.text().trim().replace('\n', '');
+        const address = searchResultsAddress.text().trim().replace('\n', '');
+        expect(name).to.contain('Ma Manning (Pharmacy) Ltd');
+        expect(address).to.contain('97 Lidgett Lane');
+        const mapLinkText = $(searchResultsMapLink).text().replace('\n', '');
+        expect(mapLinkText).to.contain(`See map and directions for ${name} at ${address}`);
+        expect(searchResultsDistance.text()).to.contain('Distance: 2.96 miles');
+        expect(searchResultsPhone.text()).to.contain('0113 266 1786');
+      });
+    });
+  });
 
-        expect(searchResultsDistance.text()).to.contain('Distance: 0.46 miles');
-        expect(searchResultsName.text()).to.contain('Leeds Sexual Health @ The Merrion Centre');
-        expect(searchResultsAddress.text()).to.contain('Merrion Centre - 1st Floor');
-        expect(searchResultsPhone.text()).to.contain('0113 392 0333');
+  describe('matching results found', () => {
+    it('should have 30 results', (done) => {
+      assertSearchResponse(location, type, origin, done, (err, res) => {
+        const $ = cheerio.load(res.text);
+        const searchResults = $('.results__item--nearby');
+
+        expect(searchResults.length).to.equal(30);
       });
     });
   });

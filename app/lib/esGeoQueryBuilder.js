@@ -3,7 +3,6 @@ const getFilter = require('./utils/getFilteredOutTermsQuery');
 
 function build(location, searchType, size) {
   const query = getBaseQuery(size);
-
   query.body.sort = [
     {
       _geo_distance: {
@@ -17,11 +16,7 @@ function build(location, searchType, size) {
       },
     },
   ];
-
-  if (getFilter(searchType)) {
-    query.body.query.bool = getFilter(searchType);
-  }
-
+  query.body.query.bool = getFilter(searchType) || {};
   return query;
 }
 

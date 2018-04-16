@@ -29,11 +29,11 @@ describe('queryMapper', () => {
       expect(output).to.equal(constants.searchTypes.kits16to24);
     });
 
-    it('should return a paid for kit message when the type and origin query is related to kit and age is over 25', () => {
+    it('should return a paid for kit type when the type and origin query is related to kit and age is over 25', () => {
       const origin = constants.serviceChoices.over25;
       const type = constants.serviceTypes.kit;
       const output = queryMapper.getEsQueryType(type, origin);
-      expect(output).to.equal(constants.searchTypes.sexperts);
+      expect(output).to.equal(constants.searchTypes.kitsOver25);
     });
   });
 
