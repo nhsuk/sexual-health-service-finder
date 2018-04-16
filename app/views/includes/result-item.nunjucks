@@ -36,9 +36,11 @@
 
     <div class="details__content" id="details-content-0" aria-hidden="false">
       <div class="reading-width">
-        <p class="results__openingTimes">
-          {{ service.openingTimes.description }}
-        </p>
+        {% if service.openingTimes.description %}
+          <p class="results__openingTimes">
+            {{ service.openingTimes.description }}
+          </p>
+        {% endif %}
         {% if service.openingTimes.formatted %}
           {% include "includes/opening-times.nunjucks" %}
         {% endif %}
