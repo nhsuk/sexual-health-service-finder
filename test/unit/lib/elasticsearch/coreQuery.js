@@ -60,7 +60,6 @@ describe('coreQuery', () => {
           must: [
             { match: { serviceType: 'SRV0531' } },
           ],
-          must_not: mustNotClause,
         });
     });
   });
