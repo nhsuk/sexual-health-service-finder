@@ -1,11 +1,12 @@
 const VError = require('verror').VError;
+
+const addressFormatter = require('../lib/utils/addressFormatter');
 const esClient = require('../lib/elasticsearch/client');
-const queryBuilder = require('../lib/elasticsearch/queryBuilder');
 const esGetServiceHistogram = require('../lib/prometheus/histograms').esGetServices;
 const esQueryLabelName = require('../lib/constants').promEsQueryLabelName;
-const queryMapper = require('../lib/utils/queryMapper');
-const serviceDataMapper = require('../lib/utils/serviceDataMapper');
 const log = require('../lib/logger');
+const queryBuilder = require('../lib/elasticsearch/queryBuilder');
+const queryMapper = require('../lib/utils/queryMapper');
 
 function handleError(error, next) {
   const errMsg = 'Error with ES';
@@ -25,7 +26,7 @@ function mapResults(results, res) {
       if (result.sort) {
         service.distance = result.sort[0];
       }
-      service.address.fullAddress = serviceDataMapper.addressFormatter(service.address);
+      service.address.fullAddress = addressFormatter(service.address);
     }
 
     return service;

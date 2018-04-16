@@ -1,5 +1,11 @@
 const constants = require('../constants');
 
+function joinTruthyValues(obj) {
+  return Object.values(obj)
+    .filter(value => value)
+    .join(', ');
+}
+
 function getValues(myHash) {
   const keys = Object.keys(myHash);
 
@@ -32,4 +38,5 @@ module.exports = {
   areEqual,
   getResultsInternalUrl,
   isProfessionalChoice,
+  joinTruthyValues,
 };

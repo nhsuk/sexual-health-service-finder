@@ -1,8 +1,4 @@
-function joinTruthyValues(obj) {
-  return Object.values(obj)
-    .filter(value => value)
-    .join(', ');
-}
+const joinTruthyValues = require('./utils').joinTruthyValues;
 
 function addressFormatter(address) {
   if (!address || Object.keys(address).length === 0) { return undefined; }
@@ -17,6 +13,4 @@ function addressFormatter(address) {
   return joinTruthyValues(addressLines);
 }
 
-module.exports = {
-  addressFormatter,
-};
+module.exports = addressFormatter;

@@ -97,4 +97,17 @@ describe('utils', () => {
       expect(output).to.equal(false);
     });
   });
+
+  describe('joinTruthyValues', () => {
+    it('should return a string containing only truthy values', () => {
+      const falseyValues = [null, undefined, 0, '', false];
+      const truthyValues = ['a', 1, true];
+      const input = falseyValues.concat(truthyValues);
+
+      const output = utils.joinTruthyValues(input);
+
+      expect(output).to.be.a('string');
+      expect(output).to.equal('a, 1, true');
+    });
+  });
 });
