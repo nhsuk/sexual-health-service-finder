@@ -1,0 +1,27 @@
+<table class="results__openingTimesTable">
+  <tbody>
+    <tr>
+      <th>Day of the week</th>
+      <th>Opening hours</th>
+    </tr>
+     {% for openingTime in service.openingTimes.formatted %}
+        {% for sessions in openingTime.openingTimes %}
+          {% if loop.first %}
+            <tr>
+              <th rowspan="{{loop.length}}">{{ openingTime.day }}</th>
+              <td>{{sessions.opens}} to {{ "midnight" if sessions.closes === "11:59pm" else sessions.closes }}</td>
+            </tr>
+          {% else %}
+            <tr class="hasSessions">
+              <td>{{sessions.opens}} to {{ "midnight" if sessions.closes === "11:59pm" else sessions.closes }}</td>
+            </tr>
+          {% endif %}
+        {% else %}
+          <tr>
+            <th>{{ openingTime.day }}</th>
+            <td>Closed</td>
+          </tr>
+        {% endfor %}
+      {% endfor %}
+  </tbody>
+</table>
