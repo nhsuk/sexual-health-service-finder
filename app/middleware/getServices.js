@@ -1,6 +1,5 @@
 const VError = require('verror').VError;
 
-const addressFormatter = require('../lib/utils/addressFormatter');
 const esClient = require('../lib/elasticsearch/client');
 const esGetServiceHistogram = require('../lib/prometheus/histograms').esGetServices;
 const esQueryLabelName = require('../lib/constants').promEsQueryLabelName;
@@ -28,7 +27,6 @@ function mapResults(results, res) {
       if (result.sort) {
         service.distance = result.sort[0];
       }
-      service.address.fullAddress = addressFormatter(service.address);
       service.address.fullAddress = formatAddress(service.address);
       if (service.openingTimes) {
         service.openingTimes.formatted = formatOpeningTimes(service.openingTimes);
