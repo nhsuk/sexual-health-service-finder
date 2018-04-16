@@ -38,7 +38,13 @@ function getEsQuery(postcodeLocationDetails, searchType, size) {
   };
 }
 
-function getServices(req, res, next) {
+function processResults(results, res, logResults) {
+  logResults();
+  mapResults(results, res);
+  res.locals.resultsCount = results.hits.total;
+}
+
+async function getServices(req, res, next) {
   const location = res.locals.location;
   const resultsLimit = res.locals.RESULTS_LIMIT;
   const postcodeLocationDetails = res.locals.postcodeLocationDetails;
@@ -52,10 +58,11 @@ function getServices(req, res, next) {
   const endTimer = esGetServiceHistogram.startTimer();
   const timerLabel = {};
   timerLabel[esQueryLabelName] = esQuery.label;
-  esClient
-    .client
-    .search(esQuery.query)
-    .then((results) => {
+
+  try {
+    const results = await esClient.client.search(esQuery.query);
+
+    const logResults = () => {
       endTimer(timerLabel);
       log.info({
         esQuery,
@@ -63,11 +70,13 @@ function getServices(req, res, next) {
         postcodeLocationDetails,
         resultCount: results.hits.total,
       }, 'getServices ES query and params');
-      res.locals.resultsCount = results.hits.total;
-      mapResults(results, res);
-    })
-    .then(next)
-    .catch(error => handleError(error, next));
+    };
+
+    processResults(results, res, logResults);
+    next();
+  } catch (error) {
+    handleError(error, next);
+  }
 }
 
 module.exports = getServices;
