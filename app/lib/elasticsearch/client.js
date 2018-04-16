@@ -1,5 +1,5 @@
 const elasticsearch = require('elasticsearch');
-const esConfig = require('../../config/config').es;
+const esConfig = require('../../../config/config').es;
 
 const client = elasticsearch.Client({ host: `${esConfig.host}:${esConfig.port}` });
 

@@ -1,7 +1,7 @@
 const VError = require('verror').VError;
-const elasticsearchClient = require('../lib/elasticsearchClient');
-const esGeoQueryBuilder = require('../lib/esGeoQueryBuilder');
-const esGetServiceHistogram = require('../lib/promHistograms').esGetServices;
+const esClient = require('../lib/elasticsearch/client');
+const queryBuilder = require('../lib/elasticsearch/queryBuilder');
+const esGetServiceHistogram = require('../lib/prometheus/histograms').esGetServices;
 const esQueryLabelName = require('../lib/constants').promEsQueryLabelName;
 const queryMapper = require('../lib/utils/queryMapper');
 const serviceDataMapper = require('../lib/utils/serviceDataMapper');
@@ -16,6 +16,7 @@ function handleError(error, next) {
 }
 
 function mapResults(results, res) {
+  res.locals.resultsCount = results.hits.total;
   res.locals.services = results.hits.hits.map((result) => {
     // eslint-disable-next-line no-underscore-dangle
     const service = result._source;
@@ -34,11 +35,16 @@ function mapResults(results, res) {
 function getEsQuery(postcodeLocationDetails, searchType, size) {
   return {
     label: searchType,
-    query: esGeoQueryBuilder.build(postcodeLocationDetails.location, searchType, size),
+    query: queryBuilder.build(postcodeLocationDetails.location, searchType, size),
   };
 }
 
-function getServices(req, res, next) {
+function processResults(results, res, logResults) {
+  logResults(results.hits.total);
+  mapResults(results, res);
+}
+
+async function getServices(req, res, next) {
   const location = res.locals.location;
   const resultsLimit = res.locals.RESULTS_LIMIT;
   const postcodeLocationDetails = res.locals.postcodeLocationDetails;
@@ -52,22 +58,23 @@ function getServices(req, res, next) {
   const endTimer = esGetServiceHistogram.startTimer();
   const timerLabel = {};
   timerLabel[esQueryLabelName] = esQuery.label;
-  elasticsearchClient
-    .client
-    .search(esQuery.query)
-    .then((results) => {
-      endTimer(timerLabel);
-      log.info({
-        esQuery,
-        location,
-        postcodeLocationDetails,
-        resultCount: results.hits.total,
-      }, 'getServices ES query and params');
-      res.locals.resultsCount = results.hits.total;
-      mapResults(results, res);
-    })
-    .then(next)
-    .catch(error => handleError(error, next));
+  const logResults = (resultCount) => {
+    endTimer(timerLabel);
+    log.info({
+      esQuery,
+      location,
+      postcodeLocationDetails,
+      resultCount,
+    }, 'getServices ES query and params');
+  };
+
+  try {
+    const results = await esClient.client.search(esQuery.query);
+    processResults(results, res, logResults);
+    next();
+  } catch (error) {
+    handleError(error, next);
+  }
 }
 
 module.exports = getServices;

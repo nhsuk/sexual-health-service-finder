@@ -20,7 +20,6 @@ queryFilters[constants.searchTypes.kitsOver25] = {
   must: [
     { match: { serviceType: 'SRV0531' } },
   ],
-  must_not: mustNotClause,
 };
 
 queryFilters[constants.searchTypes.kits16to24] = {
@@ -55,8 +54,8 @@ queryFilters[constants.searchTypes.kits16to24] = {
   ],
 };
 
-function getFilter(searchType) {
+function coreQuery(searchType) {
   return queryFilters[searchType];
 }
 
-module.exports = getFilter;
+module.exports = coreQuery;
