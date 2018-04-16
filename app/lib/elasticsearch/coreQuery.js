@@ -54,8 +54,8 @@ queryFilters[constants.searchTypes.kits16to24] = {
   ],
 };
 
-function getFilter(searchType) {
+function coreQuery(searchType) {
   return queryFilters[searchType];
 }
 
-module.exports = getFilter;
+module.exports = coreQuery;
