@@ -5,6 +5,12 @@ const getFilter = require('../../../../app/lib/utils/getFilteredOutTermsQuery');
 
 const expect = chai.expect;
 
+const mustNotClause = [
+  { match: { name: 'Marie Stopes' } },
+  { match: { name: 'Young People Friendly Practice' } },
+  { match: { name: 'BPAS' } },
+];
+
 describe('getFilteredOutTermsQuery', () => {
   it('should return undefined for empty searchType', () => {
     const query = getFilter(undefined);
@@ -49,16 +55,13 @@ describe('getFilteredOutTermsQuery', () => {
 
     it('should return should clause for search type of kits and over 25', () => {
       const query = getFilter(searchType);
-      expect(query.should)
-        .to.be.eql([
-          {
-            bool: {
-              must: [
-                { match: { serviceType: 'SRV0531' } },
-              ],
-            },
-          },
-        ]);
+      expect(query)
+        .to.be.eql({
+          must: [
+            { match: { serviceType: 'SRV0531' } },
+          ],
+          must_not: mustNotClause,
+        });
     });
   });
 
@@ -132,14 +135,7 @@ describe('getFilteredOutTermsQuery', () => {
     it('should return mustNotClause for search type of sexual health professionals', () => {
       const query = getFilter(searchType);
       expect(query.must_not)
-        .to.be.eql(
-          [
-            { match: { name: 'Marie Stopes' } },
-            { match: { name: 'Young People Friendly Practice' } },
-            { match: { name: 'BPAS' } },
-          ],
-          `"must not clause found in\n${util.inspect(query, { depth: null })}`
-        );
+        .to.be.eql(mustNotClause, `"must not clause found in\n${util.inspect(query, { depth: null })}`);
     });
   });
 });

@@ -17,17 +17,10 @@ queryFilters[constants.searchTypes.sexperts] = {
 };
 
 queryFilters[constants.searchTypes.kitsOver25] = {
-  minimum_should_match: 1,
-  must_not: mustNotClause,
-  should: [
-    {
-      bool: {
-        must: [
-          { match: { serviceType: 'SRV0531' } },
-        ],
-      },
-    },
+  must: [
+    { match: { serviceType: 'SRV0531' } },
   ],
+  must_not: mustNotClause,
 };
 
 queryFilters[constants.searchTypes.kits16to24] = {
