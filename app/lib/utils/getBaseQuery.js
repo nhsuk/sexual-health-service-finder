@@ -1,15 +1,27 @@
 const esConfig = require('../../../config/config').es;
 
-function getBaseQuery(size) {
+function getBaseQuery(location, size) {
   return {
     body: {
       collapse: {
         field: 'uid',
       },
       query: {
-        bool: {},
       },
       size,
+      sort: [
+        {
+          _geo_distance: {
+            distance_type: 'arc',
+            'location.coordinates': {
+              lat: location.lat,
+              lon: location.lon,
+            },
+            order: 'asc',
+            unit: 'mi',
+          },
+        },
+      ],
     },
     index: esConfig.index,
     type: esConfig.type,
