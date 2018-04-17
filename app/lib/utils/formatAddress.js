@@ -1,8 +1,13 @@
+const joinTruthyValues = require('./utils').joinTruthyValues;
+
 function formatAddress(address) {
-  if ((address) && (address.addressLines) && (address.postcode)) {
-    return `${address.addressLines.join(', ')}, ${address.postcode}`;
+  if (!address || Object.keys(address).length === 0) { return undefined; }
+
+  const addressLines = address.addressLines || [];
+  if (address.postcode) {
+    addressLines.push(address.postcode);
   }
-  return undefined;
+  return joinTruthyValues(addressLines);
 }
 
 module.exports = formatAddress;
