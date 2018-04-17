@@ -5,23 +5,14 @@
       <th>Opening hours</th>
     </tr>
      {% for openingTime in service.openingTimes.formatted %}
-        {% for sessions in openingTime.openingTimes %}
-          {% if loop.first %}
-            <tr>
-              <th rowspan="{{loop.length}}">{{ openingTime.day }}</th>
-              <td>{{sessions.opens}} to {{ sessions.closes }}</td>
-            </tr>
+        <tr>
+          <th>{{ openingTime.day }}</th>
+          {% for sessions in openingTime.openingTimes %}
+              <td colspan="{{3 - loop.length}}">{{sessions.opens}} to {{ sessions.closes }}</td>
           {% else %}
-            <tr class="hasSessions">
-              <td>{{sessions.opens}} to {{ sessions.closes }}</td>
-            </tr>
-          {% endif %}
-        {% else %}
-          <tr>
-            <th>{{ openingTime.day }}</th>
-            <td>Closed</td>
-          </tr>
-        {% endfor %}
+              <td colspan="2" >Closed</td>
+          {% endfor %}
+        </tr>
       {% endfor %}
   </tbody>
 </table>
