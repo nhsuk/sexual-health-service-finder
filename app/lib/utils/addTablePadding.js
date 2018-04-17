@@ -6,13 +6,16 @@ function getMaxSessions(openingTimesForWeek) {
 function addColumnPadding(openingTimesForWeek) {
   const maxColumns = getMaxSessions(openingTimesForWeek);
   openingTimesForWeek.forEach((time) => {
+    /* eslint-disable no-param-reassign */
     if (time.openingTimes === undefined) {
-      // eslint-disable-next-line no-param-reassign
       time.padding = maxColumns;
+    } else if (time.openingTimes.length === 0) {
+      // special case - an empty list will be replaced with 'Closed' taking up one cell
+      time.padding = maxColumns - 1;
     } else if (time.openingTimes.length < maxColumns) {
-      // eslint-disable-next-line no-param-reassign
       time.padding = maxColumns - time.openingTimes.length;
     }
+    /* eslint-enable no-param-reassign */
   });
   return openingTimesForWeek;
 }
