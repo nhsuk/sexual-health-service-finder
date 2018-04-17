@@ -2,7 +2,7 @@
 
 {% if service.distance %}
   <p class="results__address results__address-distance">
-    {{ distance }} miles away
+    <span class="sr-only">{{ service.name }} is </span>{{ distance }} miles away
   </p>
 {% endif %}
 
@@ -30,11 +30,11 @@
 
 {% if service.openingTimes %}
   <details class="results__item__opening-times" role="group">
-    <summary data-analytics="summary" role="button" aria-controls="details-content-0" aria-expanded="true">
+    <summary data-analytics="summary" role="button" aria-controls="details-content-0" aria-expanded="false">
       <span class="details__summary">See opening times</span>
     </summary>
 
-    <div class="details__content" id="details-content-0" aria-hidden="false">
+    <div class="details__content" id="details-content-0" aria-hidden="true">
       <div class="reading-width">
         {% if service.openingTimes.description %}
           <p class="results__openingTimes">
@@ -51,11 +51,11 @@
 
 {% if service.serviceDetails %}
   <details class="results__item__service-details" role="group">
-    <summary data-analytics="summary" role="button" aria-controls="details-content-0" aria-expanded="true">
+    <summary data-analytics="summary" role="button" aria-controls="details-content-0" aria-expanded="false">
       <span class="details__summary">See service information</span>
     </summary>
 
-    <div class="details__content" id="details-content-0" aria-hidden="false">
+    <div class="details__content" id="details-content-0" aria-hidden="true">
       <div class="reading-width">
         <p class="results__serviceDetails">
           {{ service.serviceDetails }}
