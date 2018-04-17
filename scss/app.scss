@@ -342,6 +342,10 @@ form {
       }
       details {
         margin-top: 16px;
+        .details__content {
+          margin-top: 16px;
+          margin-bottom: 32px;
+        }
       }
       .results__details {
         p {
