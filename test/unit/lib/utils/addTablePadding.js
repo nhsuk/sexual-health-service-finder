@@ -2,19 +2,19 @@
 const expect = require('chai').expect;
 const addTablePadding = require('../../../../app/lib/utils/addTablePadding');
 
-const openingTimes = [
-  { day: 'Monday', openingTimes: [{ opens: '8am', closes: '3pm' }, { opens: '4pm', closes: '5pm' }] },
-  { day: 'Tuesday', openingTimes: [{ opens: '9am', closes: '3pm' }, { opens: '4pm', closes: '6pm' }] },
-  { day: 'Wednesday', openingTimes: [{ opens: '10am', closes: '3pm' }, { opens: '4pm', closes: '7pm' }] },
-  { day: 'Thursday', openingTimes: [{ opens: '11am', closes: '3pm' }, { opens: '4pm', closes: '8pm' }] },
-  { day: 'Friday', openingTimes: [{ opens: '12pm', closes: '3pm' }, { opens: '4pm', closes: '9pm' }] },
-  { day: 'Saturday', openingTimes: [{ opens: '1pm', closes: '3pm' }] },
-  { day: 'Sunday', openingTimes: [{ opens: '1pm', closes: '3pm' }] },
-];
-
 describe('addTableMarkup', () => {
   it('should add padding to columns with fewer sessions', () => {
+    const openingTimes = [
+      { day: 'Monday', openingTimes: [{ opens: '8am', closes: '3pm' }, { opens: '4pm', closes: '5pm' }] },
+      { day: 'Tuesday', openingTimes: [{ opens: '9am', closes: '3pm' }, { opens: '4pm', closes: '6pm' }] },
+      { day: 'Wednesday', openingTimes: [{ opens: '10am', closes: '3pm' }, { opens: '4pm', closes: '7pm' }] },
+      { day: 'Thursday', openingTimes: [{ opens: '11am', closes: '3pm' }, { opens: '4pm', closes: '8pm' }] },
+      { day: 'Friday', openingTimes: [{ opens: '12pm', closes: '3pm' }, { opens: '4pm', closes: '9pm' }] },
+      { day: 'Saturday', openingTimes: [{ opens: '1pm', closes: '3pm' }] },
+      { day: 'Sunday', openingTimes: [{ opens: '1pm', closes: '3pm' }] },
+    ];
     const result = addTablePadding(openingTimes);
+
     expect(result[0].padding).to.be.undefined;
     expect(result[1].padding).to.be.undefined;
     expect(result[2].padding).to.be.undefined;
