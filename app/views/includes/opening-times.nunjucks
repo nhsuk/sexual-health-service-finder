@@ -7,11 +7,14 @@
      {% for openingTime in service.openingTimes.formatted %}
         <tr>
           <th>{{ openingTime.day }}</th>
-          {% for sessions in openingTime.openingTimes %}
-              <td colspan="{{3 - loop.length}}">{{sessions.opens}} to {{ sessions.closes }}</td>
+          {% for session in openingTime.openingTimes %}
+              <td>{{ session.opens }} to {{ session.closes }}</td>
           {% else %}
-              <td colspan="2" >Closed</td>
+              <td >Closed</td>
           {% endfor %}
+          {% if (openingTime.padding) %}
+              <td colspan="{{ openingTime.padding }}" ></td>
+          {% endif %}
         </tr>
       {% endfor %}
   </tbody>

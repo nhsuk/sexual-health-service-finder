@@ -1,5 +1,6 @@
 const VError = require('verror').VError;
 
+const addTablePadding = require('../lib/utils/addTablePadding');
 const esClient = require('../lib/elasticsearch/client');
 const esGetServiceHistogram = require('../lib/prometheus/histograms').esGetServices;
 const esQueryLabelName = require('../lib/constants').promEsQueryLabelName;
@@ -29,7 +30,7 @@ function mapResults(results, res) {
       }
       service.address.fullAddress = formatAddress(service.address);
       if (service.openingTimes) {
-        service.openingTimes.formatted = formatOpeningTimes(service.openingTimes);
+        service.openingTimes.formatted = addTablePadding(formatOpeningTimes(service.openingTimes));
       }
     }
     return service;
