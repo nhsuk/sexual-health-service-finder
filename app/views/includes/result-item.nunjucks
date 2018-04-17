@@ -18,7 +18,10 @@
 
 {% if service.contacts %}
   <p class="results__address results__telephone">
-    {% if service.contacts.telephoneNumber %} <a href="tel:{{ service.contacts.telephoneNumber }}"> {{ service.contacts.telephoneNumber }} </a>{% endif %}
+    {% if service.contacts.telephoneNumber %} 
+      <a href="tel:{{ service.contacts.telephoneNumber }}" class="results__telephone--mobile"> {{ service.contacts.telephoneNumber }} </a>
+      <span class="results__telephone--desktop"> {{ service.contacts.telephoneNumber }} </span>
+    {% endif %}
   </p>
 {% endif %}
 

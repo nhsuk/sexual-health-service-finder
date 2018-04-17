@@ -1,3 +1,11 @@
+0.7.0 / TBA
+==================
+- England start page accordion tweaks
+- Results distance to 1 decimal place
+- Mobile typography improvements
+- Mobile viewport click to call (tel) links.
+- Accessibility improvements
+
 0.6.0 / 2018-04-19
 ==================
 - Collapse duplicate results in Elasticsearch query on uid
@@ -9,10 +17,6 @@
 - Display address when there is no postcode
 - Add formatted opening times for pharmacies
 - Trim leading and trailing spaces on postcode
-- England start page accordion tweaks
-- Results distance to 1 decimal place
-- Mobile typography improvements
-- Accessibility improvements
 
 0.5.0 / 2018-04-11
 ==================
