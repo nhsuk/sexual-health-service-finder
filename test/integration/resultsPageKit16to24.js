@@ -79,7 +79,7 @@ describe('Results page for kits for 16 to 24 year olds', function test() {
         expect(address).to.contain('22/23 Blayds Yard');
         const mapLinkText = $(searchResultsMapLink).text().replace('\n', '');
         expect(mapLinkText).to.contain(`See map and directions for ${name} at ${address}`);
-        expect(searchResultsDistance.text()).to.contain('Distance: 0.45 miles');
+        expect(searchResultsDistance.text()).to.contain('0.4 miles away');
         expect(searchResultsPhone.text()).to.contain('0113 244 4209');
       });
     });

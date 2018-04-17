@@ -79,7 +79,7 @@ describe('Results page for kits in over 25 year olds', function test() {
         expect(address).to.contain('97 Lidgett Lane');
         const mapLinkText = $(searchResultsMapLink).text().replace('\n', '');
         expect(mapLinkText).to.contain(`See map and directions for ${name} at ${address}`);
-        expect(searchResultsDistance.text()).to.contain('Distance: 2.96 miles');
+        expect(searchResultsDistance.text()).to.contain('3 miles away');
         expect(searchResultsPhone.text()).to.contain('0113 266 1786');
       });
     });
