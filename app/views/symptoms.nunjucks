@@ -35,12 +35,14 @@
       <div class="form-group {% if errorMessage %} error {% endif %}">
         <fieldset id="symptoms">
           <div class="multiple-choice">
+            <label class="sr-only" for="yes">Yes - I have one or more of these symptoms</label>
             <input id="yes" name="symptoms" type="radio" value="yes" {% if errorMessage %} aria-describedby="error-message" aria-invalid="true"{% endif %}>
-            <label class="multiple-choice--radio" for="yes">Yes - I have one or more of these symptoms</label>
+            <label class="multiple-choice--radio" aria-hidden="true" for="yes">Yes - I have one or more of these symptoms</label>
           </div>
           <div class="multiple-choice">
+            <label class="sr-only" for="no">No - I don't have any of these symptoms</label>
             <input id="no" name="symptoms" type="radio" value="no" {% if errorMessage %} aria-describedby="error-message" aria-invalid="true"{% endif %}>
-            <label class="multiple-choice--radio" for="no">No - I don't have any of these symptoms</label>
+            <label class="multiple-choice--radio" aria-hidden="true" for="no">No - I don't have any of these symptoms</label>
           </div>
         </fieldset>
       </div>
