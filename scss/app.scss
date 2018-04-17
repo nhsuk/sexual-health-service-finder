@@ -32,31 +32,43 @@ body {
       margin-top: 0;
     }
   }
-  details {
-    &.details--country {
-      background-color: $white;
-      padding: 32px;
-    }
-    summary {
-      padding-top: 0;
-      .details__summary--country {
-        font-size: 28px;
-      }
-    }
-    .details__opening-times,
-    .details__call-charges {
-      display: block;
+  .details--country {
+    background-color: $white;
+    padding: 32px;
+    h2, 
+    .details__summary--country {
+      font-size: 28px;
       margin-top: 0;
       padding-top: 0;
+      font-weight: 600;
+      line-height: 32px;
     }
-    .details__call-charges {
-      font-size: 16px;
-    }
-    .button {
-      width: 80%;
-      @include media(tablet) {
-        width: auto;
+    .details__content {
+      .details__opening-times,
+      .details__call-charges {
+        display: block;
+        margin-top: 0;
+        padding-top: 0;
       }
+      .details__call-charges {
+        font-size: 16px;
+      }
+      .button {
+        width: 80%;
+        @include media(tablet) {
+          width: auto;
+        }
+      }
+    }
+    &.details--country--england {
+      .details__content {
+        margin-top: 16px;
+      }
+    }
+  }
+  details {
+    summary {
+      padding-top: 0;
     }
   }
   .recommend__tick {
