@@ -8,6 +8,7 @@
 - Do not use name of place in map link
 - Display address when there is no postcode
 - Add formatted opening times for pharmacies
+- Trim leading and trailing spaces on postcode
 
 0.5.0 / 2018-04-11
 ==================

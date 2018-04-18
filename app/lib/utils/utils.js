@@ -34,9 +34,14 @@ function getResultsInternalUrl(query, location) {
   return `${constants.siteRoot}/results?location=${location}&type=${getAlternativeTypeFor(query.type)}&origin=${query.origin}`;
 }
 
+function trim(string) {
+  return string && string.trim();
+}
+
 module.exports = {
   areEqual,
   getResultsInternalUrl,
   isProfessionalChoice,
   joinTruthyValues,
+  trim,
 };
