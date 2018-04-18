@@ -1,6 +1,6 @@
 const joinTruthyValues = require('./utils').joinTruthyValues;
 
-function addressFormatter(address) {
+function formatAddress(address) {
   if (!address || Object.keys(address).length === 0) { return undefined; }
 
   const addressLines = address.addressLines || [];
@@ -10,4 +10,4 @@ function addressFormatter(address) {
   return joinTruthyValues(addressLines);
 }
 
-module.exports = addressFormatter;
+module.exports = formatAddress;

@@ -1,0 +1,21 @@
+<table class="results__openingTimesTable">
+  <tbody>
+    <tr>
+      <th>Day of the week</th>
+      <th>Opening hours</th>
+    </tr>
+     {% for openingTime in service.openingTimes.formatted %}
+        <tr>
+          <th>{{ openingTime.day }}</th>
+          {% for session in openingTime.openingTimes %}
+              <td>{{ session.opens }} to {{ session.closes }}</td>
+          {% else %}
+              <td >Closed</td>
+          {% endfor %}
+          {% if (openingTime.padding) %}
+              <td colspan="{{ openingTime.padding }}" ></td>
+          {% endif %}
+        </tr>
+      {% endfor %}
+  </tbody>
+</table>

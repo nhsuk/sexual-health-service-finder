@@ -1,4 +1,4 @@
-0.6.0 / 2018-04-17
+0.6.0 / 2018-04-19
 ==================
 - Collapse duplicate results in Elasticsearch query on uid
 - Add pharmacies to kit pickup for 16-24
@@ -7,6 +7,7 @@
 - Use location input for map link
 - Do not use name of place in map link
 - Display address when there is no postcode
+- Add formatted opening times for pharmacies
 
 0.5.0 / 2018-04-11
 ==================
