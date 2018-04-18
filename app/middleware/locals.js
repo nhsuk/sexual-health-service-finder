@@ -1,4 +1,5 @@
 const queryMapper = require('../lib/utils/queryMapper');
+const trim = require('../lib/utils/utils').trim;
 
 module.exports = config =>
   (req, res, next) => {
@@ -13,7 +14,7 @@ module.exports = config =>
     res.locals.choices = req.query.choices;
     res.locals.type = queryMapper.mapServiceType(req.query);
     res.locals.origin = queryMapper.mapServiceChoice(req.query);
-    res.locals.location = req.query.location;
+    res.locals.location = trim(req.query.location);
     res.locals.locationHeading = queryMapper.getLocationHeading(req.query);
     res.locals.correctLocationParams = res.locals.locationHeading;
     const resultsInfo = queryMapper.getResultsInfo(req.query, res.locals.location);

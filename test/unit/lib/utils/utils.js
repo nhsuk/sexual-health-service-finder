@@ -110,4 +110,15 @@ describe('utils', () => {
       expect(output).to.equal('a, 1, true');
     });
   });
+
+  describe('trim', () => {
+    it('should remove leading and trailing whitespace', () => {
+      const result = utils.trim('  test  ');
+      expect(result).to.equal('test');
+    });
+    it('should gracefully handled undefined values', () => {
+      const result = utils.trim(undefined);
+      expect(result).to.equal(undefined);
+    });
+  });
 });
