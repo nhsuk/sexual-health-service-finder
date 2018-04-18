@@ -25,7 +25,7 @@ function assertDay(result, day, opens1, closes1, opens2, closes2) {
 }
 
 describe('formatOpeningTimes', () => {
-  it('should restrucure opening times as array, and format time', () => {
+  it('should restructure opening times as array, and format time', () => {
     const result = formatOpeningTimes(openingTimes);
     expect(result).to.be.an('array');
     assertDay(result[0], 'Monday', '8am', '3pm', '4pm', '5pm');

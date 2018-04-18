@@ -34,4 +34,3 @@ function formatOpeningTimes(openingTimes) {
 }
 
 module.exports = formatOpeningTimes;
-

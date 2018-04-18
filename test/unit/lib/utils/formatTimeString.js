@@ -1,7 +1,7 @@
 const expect = require('chai').expect;
 const formatTimeString = require('../../../../app/lib/utils/formatTimeString');
 
-describe('formatOpeningTimes', () => {
+describe('formatTimeString', () => {
   describe('24 hour to 12 hour', () => {
     it('should format time before 12:00 as \'am\'', () => {
       const result = formatTimeString('08:30');
@@ -20,7 +20,7 @@ describe('formatOpeningTimes', () => {
       expect(result).to.equal('1:30pm');
     });
 
-    it('should no display minutes if time is on the the hour', () => {
+    it('should not display minutes if time is on the hour', () => {
       const result = formatTimeString('13:00');
       expect(result).to.equal('1pm');
     });
