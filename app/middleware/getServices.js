@@ -17,9 +17,8 @@ function handleError(error, next) {
   next(newError);
 }
 
-function mapResults(results, res) {
-  res.locals.resultsCount = results.hits.total;
-  res.locals.services = results.hits.hits.map((result) => {
+function mapResults(results) {
+  const services = results.hits.hits.map((result) => {
     // eslint-disable-next-line no-underscore-dangle
     const service = result._source;
 
@@ -34,6 +33,7 @@ function mapResults(results, res) {
     }
     return service;
   });
+  return services;
 }
 
 function getEsQuery(postcodeLocationDetails, searchType, size) {
@@ -43,9 +43,10 @@ function getEsQuery(postcodeLocationDetails, searchType, size) {
   };
 }
 
-function processResults(results, res, logResults) {
-  logResults(results.hits.total);
-  mapResults(results, res);
+function processResults(results, logResults) {
+  const resultsCount = results.hits.total;
+  logResults(resultsCount);
+  return [mapResults(results), resultsCount];
 }
 
 async function getServices(req, res, next) {
@@ -74,7 +75,7 @@ async function getServices(req, res, next) {
 
   try {
     const results = await esClient.client.search(esQuery.query);
-    processResults(results, res, logResults);
+    [res.locals.services, res.locals.resultsCount] = processResults(results, logResults);
     next();
   } catch (error) {
     handleError(error, next);
