@@ -18,8 +18,7 @@
     {% include resultsOnwardsJourneyPartial %}
   {% endif %}
 
-  <h2 class="sr-only" data-results="{{services.length}}" data-term="{{location}}" class="local-header--title--question">Results</h2>
-  <h2 class="local-header--title--question">Results</h1>
+  <h2 data-results="{{services.length}}" data-term="{{location}}" class="local-header--title--question">Results</h1>
 
   <div class="grid-row">
     <ol class="results">

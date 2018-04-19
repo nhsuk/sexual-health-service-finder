@@ -82,7 +82,7 @@ describe('Results page for sexual health professionals for over 25', function te
         expect(searchResultsAddress).to.not.equal(undefined);
         expect(searchResultsPhone).to.not.equal(undefined);
 
-        expect(searchResultsDistance.text()).to.contain('Distance: 0.46 miles');
+        expect(searchResultsDistance.text()).to.contain('0.5 miles away');
         expect(searchResultsName.text()).to.contain('Leeds Sexual Health @ The Merrion Centre');
         expect(searchResultsAddress.text()).to.contain('Merrion Centre - 1st Floor');
         expect(searchResultsPhone.text()).to.contain('0113 392 0333');

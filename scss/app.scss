@@ -11,8 +11,26 @@ body {
   }
   .page-section {
     padding: 32px 0 48px 0;
-    p, ul{
+    h1 {
+      font-size: 30px;
+    }
+    h2 {
+      font-size: 24px;
+    }
+    p, ul {
+      font-size: 18px;
       margin-top: 16px;
+    }
+    @include media(tablet) {
+      h1 {
+        font-size: 40px;
+      }
+      h2 {
+        font-size: 28px;
+      }
+      p, ul {
+        font-size: 20px;
+      }
     }
   }
   .breadcrumb {
@@ -32,31 +50,43 @@ body {
       margin-top: 0;
     }
   }
-  details {
-    &.details--country {
-      background-color: $white;
-      padding: 32px;
-    }
-    summary {
-      padding-top: 0;
-      .details__summary--country {
-        font-size: 28px;
-      }
-    }
-    .details__opening-times,
-    .details__call-charges {
-      display: block;
+  .details--country {
+    background-color: $white;
+    padding: 32px;
+    h2, 
+    .details__summary--country {
+      font-size: 28px;
       margin-top: 0;
       padding-top: 0;
+      font-weight: 600;
+      line-height: 32px;
     }
-    .details__call-charges {
-      font-size: 16px;
-    }
-    .button {
-      width: 80%;
-      @include media(tablet) {
-        width: auto;
+    .details__content {
+      .details__opening-times,
+      .details__call-charges {
+        display: block;
+        margin-top: 0;
+        padding-top: 0;
       }
+      .details__call-charges {
+        font-size: 16px;
+      }
+      .button {
+        width: 80%;
+        @include media(tablet) {
+          width: auto;
+        }
+      }
+    }
+    &.details--country--england {
+      .details__content {
+        margin-top: 16px;
+      }
+    }
+  }
+  details {
+    summary {
+      padding-top: 0;
     }
   }
   .recommend__tick {
@@ -330,8 +360,27 @@ form {
       }
       details {
         margin-top: 16px;
+        .details__content {
+          margin-top: 16px;
+          margin-bottom: 32px;
+        }
       }
       .results__details {
+        .results__telephone {
+          .results__telephone--mobile {
+           display: block; 
+           @include media(tablet) {
+            display: none;
+            }
+          }
+          .results__telephone--desktop {
+            display: none;
+            margin-top: 0;
+            @include media(tablet) {
+              display: block;
+            }
+          }
+        }
         p {
           &.results__address-distance {
             font-size: 16px;

@@ -11,7 +11,7 @@
 
 {% block content %}
     <div class="reading-width">
-      <p><span class="recommend__tick"></span>should see a sexual heath professional</p>
+      <p><span class="recommend__tick"></span>should see a sexual health professional</p>
       <p><span class="recommend__cross"></span>should not get a chlamydia postal test kit</p>
 
       {% if under16 %}

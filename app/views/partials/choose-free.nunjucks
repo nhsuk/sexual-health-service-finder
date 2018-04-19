@@ -1,7 +1,8 @@
 <fieldset id="choose">
   <div class="multiple-choice multiple-choice--description">
+    <label class="sr-only" for="1">Collect a free test kit near you</label>
     <input id="1" name="type" type="radio" value="kit" {% if errorMessage %} aria-describedby="error-message" aria-invalid="true"{% endif %}>
-    <label class="multiple-choice--radio" for="1">
+    <label class="multiple-choice--radio" aria-hidden="true" for="1">
       <span class="multiple--choice-option">Collect a free test kit near you</span>
     </label>
     <details class="details--choice multiple-choice--option-description" role="group">
@@ -21,8 +22,9 @@
     </details>
   </div>
   <div class="multiple-choice multiple-choice--description">
+    <label class="sr-only" for="2">Order a free test kit online</label>
     <input id="2" name="type" type="radio" value="online" {% if errorMessage %} aria-describedby="error-message" aria-invalid="true"{% endif %}>
-    <label class="multiple-choice--radio" for="2">
+    <label class="multiple-choice--radio" aria-hidden="true" for="2">
       <span class="multiple--choice-option">Order a free test kit online</span>
     </label>
     <details class="details--choice multiple-choice--option-description" role="group">
@@ -42,8 +44,9 @@
     </details>
   </div>
   <div class="multiple-choice multiple-choice--description">
+    <label class="sr-only" for="3">See a sexual health professional near you</label>
     <input id="3" name="type" type="radio" value="professional" {% if errorMessage %} aria-describedby="error-message" aria-invalid="true"{% endif %}>
-    <label class="multiple-choice--radio" for="3">
+    <label class="multiple-choice--radio" aria-hidden="true" for="3">
       <span class="multiple--choice-option">See a sexual health professional near you</span>
     </label>
     <details class="details--choice multiple-choice--option-description" role="group">
