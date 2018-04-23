@@ -30,7 +30,7 @@ describe('mapResults', () => {
       expect(output.length).to.equal(1);
     });
 
-    it('should work when there is no \'address.\'', () => {
+    it('should work when there is no \'address\'', () => {
       const input = { hits: [{ _source: { } }] };
       const output = mapResults(input);
 
