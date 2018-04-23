@@ -59,14 +59,19 @@ typings/
 
 # code compiled by brunch
 public/js
+
 # css files
 *.css
 *.css.map
 
 .DS_Store
-# the header-items file is generated from an online resource when building the container 
+
+# the header-items file is generated from an online resource when building the container
 app/views/includes/header-items.nunjucks
 
 # Editors of choice internal files (Vim, WebStorm)
 *.swp
 .idea/*
+
+# JMeter reports
+*.jtl
