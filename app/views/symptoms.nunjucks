@@ -1,3 +1,4 @@
+{% set analyticsPageTitle = 'Symptoms' %}
 {% extends 'layout.nunjucks' %}
 
 {% block meta %}

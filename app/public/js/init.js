@@ -2,3 +2,4 @@
 require('./cookieMessage');
 require('./radioSelect');
 require('./anchorsAndDetailsToggle');
+require('./analytics');

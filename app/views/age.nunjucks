@@ -1,3 +1,4 @@
+{% set analyticsPageTitle = 'Age' %}
 {% extends 'layout.nunjucks' %}
 
 {% block meta %}

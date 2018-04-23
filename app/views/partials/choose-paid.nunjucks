@@ -6,10 +6,10 @@
       <span class="multiple--choice-option">See a sexual health professional for free near you</span>
     </label>
     <details class="details--choice multiple-choice--option-description" role="group">
-      <summary data-analytics="summary" role="button" aria-controls="details-content-1" aria-expanded="true">
+      <summary data-analytics="summary" role="button" aria-controls="details-content-1" aria-expanded="false" class="about_sexual_health_professionals_tracking">
         <span class="details__summary details__summary--choice">About sexual health professionals</span>
       </summary>
-      <div class="details__content" id="details-content-1" aria-hidden="false">
+      <div class="details__content" id="details-content-1" aria-hidden="true">
         <div class="reading-width">
           <p>They will ask you questions about your sexual activity. This will help them decide what samples to test. You or they will take samples from the areas that might be infected. This can be done by:</p>
           <ul>
@@ -28,10 +28,10 @@
       <span class="multiple--choice-option">Buy a test kit near you</span>
     </label>
     <details class="details--choice multiple-choice--option-description" role="group">
-      <summary data-analytics="summary" role="button" aria-controls="details-content-1" aria-expanded="true">
+      <summary data-analytics="summary" role="button" aria-controls="details-content-1" aria-expanded="false" class="about_test_kits_tracking">
         <span class="details__summary details__summary--choice">About test kits</span>
       </summary>
-      <div class="details__content" id="details-content-1" aria-hidden="false">
+      <div class="details__content" id="details-content-1" aria-hidden="true">
         <div class="reading-width">
           <p>You can buy a test kit from some pharmacies. You'll need to take samples from the areas that might be infected. You may have to:</p>
           <ul>

@@ -6,10 +6,10 @@
       <span class="multiple--choice-option">Collect a free test kit near you</span>
     </label>
     <details class="details--choice multiple-choice--option-description" role="group">
-      <summary data-analytics="summary" role="button" aria-controls="details-content-1" aria-expanded="true">
+      <summary data-analytics="summary" role="button" aria-controls="details-content-1" aria-expanded="false" class="about_free_test_kits_tracking">
         <span class="details__summary details__summary--choice">About free test kits</span>
       </summary>
-      <div class="details__content" id="details-content-1" aria-hidden="false">
+      <div class="details__content" id="details-content-1" aria-hidden="true">
         <div class="reading-width">
           <p>You'll need to take samples from the areas that might be infected. You may have to:</p>
           <ul>
@@ -28,10 +28,10 @@
       <span class="multiple--choice-option">Order a free test kit online</span>
     </label>
     <details class="details--choice multiple-choice--option-description" role="group">
-      <summary data-analytics="summary" role="button" aria-controls="details-content-1" aria-expanded="true">
+      <summary data-analytics="summary" role="button" aria-controls="details-content-1" aria-expanded="false" class="about_free_test_kits_online_tracking">
         <span class="details__summary details__summary--choice">About free test kits online</span>
       </summary>
-      <div class="details__content" id="details-content-1" aria-hidden="false">
+      <div class="details__content" id="details-content-1" aria-hidden="true">
         <div class="reading-width">
           <p>A kit will be sent to you in a plain envelope. You'll need to take samples from the areas that might be infected. You may have to:</p>
           <ul>
@@ -50,10 +50,10 @@
       <span class="multiple--choice-option">See a sexual health professional near you</span>
     </label>
     <details class="details--choice multiple-choice--option-description" role="group">
-      <summary data-analytics="summary" role="button" aria-controls="details-content-1" aria-expanded="true">
+      <summary data-analytics="summary" role="button" aria-controls="details-content-1" aria-expanded="false" class="about_sexual_health_professionals_tracking">
         <span class="details__summary details__summary--choice">About sexual health professionals</span>
       </summary>
-      <div class="details__content" id="details-content-1" aria-hidden="false">
+      <div class="details__content" id="details-content-1" aria-hidden="true">
         <div class="reading-width">
           <p>They will ask you questions about your sexual activity. This will help them decide what samples to test.</p>
           <p>You or they will take samples from the areas that might be infected. This can be done by:</p>
