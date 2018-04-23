@@ -1,3 +1,4 @@
+{% set analyticsPageTitle = 'Start' %}
 {% extends 'layout.nunjucks' %}
 
 {% block header %}
@@ -14,7 +15,7 @@
 {% endif %}
 
 <div class="reading-width">
-  <p>The only way to know if you have <a href="https://www.nhs.uk/conditions/chlamydia/">chlamydia</a> is to get tested.</p>
+  <p>The only way to know if you have <a href="https://www.nhs.uk/conditions/chlamydia/" onclick="DCSMultiTrack('DCSext.Chlamydia','ChlamydiaConditionsPage','WT.dl','121')">chlamydia</a> is to get tested.</p>
 
   <p>To get a chlamydia test you can:</p>
 
@@ -35,13 +36,13 @@
       <div class="reading-width">
         <p>If you’re in England, we can help you find a chlamydia test. We’ll ask you a few questions, and use your answers to show you where to get a test. It will take about 5 minutes.</p>
       
-        <p>We may also use your answers to improve the NHS website. <a href="https://www.nhs.uk/aboutNHSChoices/aboutnhschoices/termsandconditions/Pages/Privacypolicy.aspx">Read the full NHS.UK privacy policy</a>.</p>
+        <p>We may also use your answers to improve the NHS website. <a href="https://www.nhs.uk/aboutNHSChoices/aboutnhschoices/termsandconditions/Pages/Privacypolicy.aspx" onclick="DCSMultiTrack('DCSext.Chlamydia','NHSUKPrivacyPolicy','WT.dl','121')">Read the full NHS.UK privacy policy</a>.</p>
 
-        <a href="{{ siteRoot }}/symptoms" class="button start-button" role="button">
+        <a href="{{ siteRoot }}/symptoms" class="button start-button" role="button" onclick="DCSMultiTrack('DCSext.Chlamydia','StartButton','WT.dl','121')">
           Find a chlamydia test
         </a>
 
-        <p>If you would prefer to speak to someone, call the sexual health helpline on <a href="tel:03001237123">0300 123 7123</a>. Open Monday to Friday, 9am to 8pm.</p>
+        <p>If you would prefer to speak to someone, call the sexual health helpline on <a href="tel:03001237123" onclick="DCSMultiTrack('DCSext.Chlamydia','EnglandSexualHealthHelpline','WT.dl','121')">0300 123 7123</a>. Open Monday to Friday, 9am to 8pm.</p>
 
         <p><a href="https://www.gov.uk/call-charges" class="details__call-charges" target="_blank">Find out about call charges on GOV.UK.</a></p>
       </div>
@@ -49,7 +50,7 @@
   </div>
 
   <details class="details--country details--country--scotland" id="scotland" role="group">
-    <summary data-analytics="summary" role="button" aria-controls="details-content-1" aria-expanded="false">
+    <summary data-analytics="summary" role="button" aria-controls="details-content-1" aria-expanded="false" onclick="DCSMultiTrack('DCSext.Chlamydia','ScotlandInformation','WT.dl','121')">
       <span class="details__summary details__summary--country">Scotland</span>
     </summary>
 
@@ -58,8 +59,8 @@
         <p>To find a chlamydia test in Scotland you can:</p>
 
         <ul>
-          <li>use the <a href="http://www.sexualhealthscotland.co.uk/get-help/sexual-health-service-finder" target="_blank">Sexual Health Scotland website</a></li>
-          <li>call Sexual Health Scotland on <a href="tel:0800224488">0800 22 44 88</a>
+          <li>use the <a href="http://www.sexualhealthscotland.co.uk/get-help/sexual-health-service-finder" target="_blank" onclick="DCSMultiTrack('DCSext.Chlamydia','ScotlandSexualHealthServiceFinder','WT.dl','121')">Sexual Health Scotland website</a></li>
+          <li>call Sexual Health Scotland on <a href="tel:0800224488" onclick="DCSMultiTrack('DCSext.Chlamydia','ScotlandSexualHealthHelpline','WT.dl','121')">0800 22 44 88</a>
           <span class="details__opening-times">Monday to Friday, 8am to 10pm</span>
           <span class="details__opening-times">Saturday and Sunday, 9am to 5pm</span>
           <a href="https://www.gov.uk/call-charges" class="details__call-charges" target="_blank">Find out about call charges on GOV.UK</a>
@@ -70,7 +71,7 @@
   </details>
 
   <details class="details--country details--country--wales" id="wales" role="group">
-    <summary data-analytics="summary" role="button" aria-controls="details-content-2" aria-expanded="false">
+    <summary data-analytics="summary" role="button" aria-controls="details-content-2" aria-expanded="false" onclick="DCSMultiTrack('DCSext.Chlamydia','WalesInformation','WT.dl','121')">
       <span class="details__summary details__summary--country">Wales</span>
     </summary>
 
@@ -79,8 +80,8 @@
         <p>To find a chlamydia test in Wales you can:</p>
 
         <ul>
-          <li>use the <a href="https://www.nhsdirect.wales.nhs.uk/LocalServices/?s=SexualHealth" target="_blank">NHS Direct Wales website</a></li>
-          <li>call NHS Direct Wales on <a href="tel:08454647">0845 46 47</a> (open 24 hours)
+          <li>use the <a href="https://www.nhsdirect.wales.nhs.uk/LocalServices/?s=SexualHealth" target="_blank" onclick="DCSMultiTrack('DCSext.Chlamydia','WalesNHSDirectWebsite','WT.dl','121')">NHS Direct Wales website</a></li>
+          <li>call NHS Direct Wales on <a href="tel:08454647" onclick="DCSMultiTrack('DCSext.Chlamydia','WalesNHSDirectHelpline','WT.dl','121')">0845 46 47</a> (open 24 hours)
           <a href="https://www.gov.uk/call-charges" class="details__call-charges" target="_blank">Find out about call charges on GOV.UK</a>
           </li>
         </ul>
@@ -89,7 +90,7 @@
   </details>
 
   <details class="details--country details--country--northern" id="northern" role="group">
-    <summary data-analytics="summary" role="button" aria-controls="details-content-3" aria-expanded="false">
+    <summary data-analytics="summary" role="button" aria-controls="details-content-3" aria-expanded="false" onclick="DCSMultiTrack('DCSext.Chlamydia','NorthernIrelandInformation','WT.dl','121')">
       <span class="details__summary details__summary--country">Northern Ireland</span>
     </summary>
 
@@ -98,8 +99,8 @@
         <p>To find a chlamydia test in Northern Ireland you can:</p>
 
         <ul>
-          <li>use the <a href="https://sexualhealthni.info/chlamydia" target="_blank">Sexual Health NI website</a></li>
-          <li>call the Family Planning Association sexual health helpline on <a href="tel:03451228687">0345 122 8687</a>
+          <li>use the <a href="https://sexualhealthni.info/chlamydia" target="_blank" onclick="DCSMultiTrack('DCSext.Chlamydia','NorthernIrelandSexualHealthWebsite','WT.dl','121')">Sexual Health NI website</a></li>
+          <li>call the Family Planning Association sexual health helpline on <a href="tel:03451228687" onclick="DCSMultiTrack('DCSext.Chlamydia','NorthernIrelandSexualHealthHelpline','WT.dl','121')">0345 122 8687</a>
           <span class="details__opening-times">Monday to Friday, 9am to 5pm (closed on bank holidays)</span>
           <a href="https://www.gov.uk/call-charges" class="details__call-charges" target="_blank">Find out about call charges on GOV.UK</a>
           </li>

@@ -1,2 +1,2 @@
-<p class='link1'>If you want a kit delivered to you, you can <a href='{{ resultsExternalUrl }}'>find a free test kit online</a>.</p>
-<p class='link2'>You can also <a href='{{ resultsInternalUrl }}'>see places where you can get tested by a sexual health professional</a>.</p>
+<p class='link1'>If you want a kit delivered to you, you can <a href='{{ resultsExternalUrl }}' onclick="DCSMultiTrack('DCSext.Chlamydia','FindFreeTestKitOnline','WT.dl','121')">find a free test kit online</a>.</p>
+<p class='link2'>You can also <a href='{{ resultsInternalUrl }}' onclick="DCSMultiTrack('DCSext.Chlamydia','SexualHealthProfessional','WT.dl','121')">see places where you can get tested by a sexual health professional</a>.</p>

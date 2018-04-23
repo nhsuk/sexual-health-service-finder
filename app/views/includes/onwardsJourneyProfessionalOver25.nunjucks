@@ -1,1 +1,1 @@
-<p class='links'>Or you can <a href='{{ resultsInternalUrl }}'>see places where you can buy a test kit</a>.</p>
+<p class='links'>Or you can <a href='{{ resultsInternalUrl }}' onclick="DCSMultiTrack('DCSext.Chlamydia','BuyTestKit','WT.dl','121')">see places where you can buy a test kit</a>.</p>

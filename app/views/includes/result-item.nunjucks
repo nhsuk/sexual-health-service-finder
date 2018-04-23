@@ -19,7 +19,7 @@
 {% if service.contacts %}
   <p class="results__address results__telephone">
     {% if service.contacts.telephoneNumber %} 
-      <a href="tel:{{ service.contacts.telephoneNumber }}" class="results__telephone--mobile"> {{ service.contacts.telephoneNumber }} </a>
+      <a href="tel:{{ service.contacts.telephoneNumber }}" class="results__telephone--mobile" onclick="DCSMultiTrack('DCSext.Chlamydia','ResultTelephoneNumber','WT.dl','121')"> {{ service.contacts.telephoneNumber }} </a>
       <span class="results__telephone--desktop"> {{ service.contacts.telephoneNumber }} </span>
     {% endif %}
   </p>
@@ -27,13 +27,13 @@
 
 {% if service.address %}
   <p class="results__item__link">
-    <a class="maplink" href="{{service.mapUrl}}" target="_blank">See map and directions<span class="sr-only"> for {{ service.name }} at {{ service.address.fullAddress }}</span></a>
+    <a class="maplink" href="{{service.mapUrl}}" target="_blank" onclick="DCSMultiTrack('DCSext.Chlamydia','SeeMapDirections','WT.dl','121')">See map and directions<span class="sr-only"> for {{ service.name }} at {{ service.address.fullAddress }}</span></a>
   </p>
 {% endif %}
 
 {% if service.openingTimes %}
   <details class="results__item__opening-times" role="group">
-    <summary data-analytics="summary" role="button" aria-controls="details-content-0" aria-expanded="false">
+    <summary data-analytics="summary" role="button" aria-controls="details-content-0" aria-expanded="false" onclick="DCSMultiTrack('DCSext.Chlamydia','SeeOpeningTimes','WT.dl','121')">
       <span class="details__summary">See opening times</span>
     </summary>
 
@@ -54,7 +54,7 @@
 
 {% if service.serviceDetails %}
   <details class="results__item__service-details" role="group">
-    <summary data-analytics="summary" role="button" aria-controls="details-content-0" aria-expanded="false">
+    <summary data-analytics="summary" role="button" aria-controls="details-content-0" aria-expanded="false" onclick="DCSMultiTrack('DCSext.Chlamydia','SeeServiceInformation','WT.dl','121')">
       <span class="details__summary">See service information</span>
     </summary>
 
