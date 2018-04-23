@@ -1,4 +1,4 @@
-0.7.0 / TBA
+0.7.0 / 2018-04-24
 ==================
 - England start page accordion tweaks
 - Results distance to 1 decimal place

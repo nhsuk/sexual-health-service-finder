@@ -3,9 +3,8 @@ const VError = require('verror').VError;
 const esClient = require('../lib/elasticsearch/client');
 const esGetServiceHistogram = require('../lib/prometheus/histograms').esGetServices;
 const esQueryLabelName = require('../lib/constants').promEsQueryLabelName;
-const formatAddress = require('../lib/utils/formatAddress');
-const formatOpeningTimes = require('../lib/utils/formatOpeningTimes');
 const log = require('../lib/logger');
+const mapResults = require('../lib/utils/mapResults');
 const queryBuilder = require('../lib/elasticsearch/queryBuilder');
 const queryMapper = require('../lib/utils/queryMapper');
 
@@ -17,25 +16,6 @@ function handleError(error, next) {
   next(newError);
 }
 
-function mapResults(results, res) {
-  res.locals.resultsCount = results.hits.total;
-  res.locals.services = results.hits.hits.map((result) => {
-    // eslint-disable-next-line no-underscore-dangle
-    const service = result._source;
-
-    if (service) {
-      if (result.sort) {
-        service.distance = result.sort[0];
-      }
-      service.address.fullAddress = formatAddress(service.address);
-      if (service.openingTimes) {
-        service.openingTimes.formatted = formatOpeningTimes(service.openingTimes);
-      }
-    }
-    return service;
-  });
-}
-
 function getEsQuery(postcodeLocationDetails, searchType, size) {
   return {
     label: searchType,
@@ -43,9 +23,10 @@ function getEsQuery(postcodeLocationDetails, searchType, size) {
   };
 }
 
-function processResults(results, res, logResults) {
-  logResults(results.hits.total);
-  mapResults(results, res);
+function processResults(hits, logResults) {
+  const resultsCount = hits.total;
+  logResults(resultsCount);
+  return [mapResults(hits), resultsCount];
 }
 
 async function getServices(req, res, next) {
@@ -73,8 +54,8 @@ async function getServices(req, res, next) {
   };
 
   try {
-    const results = await esClient.client.search(esQuery.query);
-    processResults(results, res, logResults);
+    const esResults = await esClient.client.search(esQuery.query);
+    [res.locals.services, res.locals.resultsCount] = processResults(esResults.hits, logResults);
     next();
   } catch (error) {
     handleError(error, next);
