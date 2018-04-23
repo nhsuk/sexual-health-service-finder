@@ -37,45 +37,16 @@ describe('mapResults', () => {
       expect(output).to.be.an('array');
       expect(output[0].address).to.equal(undefined);
     });
-
-    it('should work when there is no \'openingTimes.description\'', () => {
-      const input = {
-        hits: [{
-          _source: {
-            address: {},
-            openingTimes: {
-              general: { monday: [{ closes: '23:30', opens: '07:00' }] },
-            },
-          },
-        }],
-      };
-      const output = mapResults(input);
-
-      expect(output).to.be.an('array');
-      expect(output[0].openingTimes.description).to.equal(undefined);
-    });
-
-    it('should work when there is no \'serviceDetails.\'', () => {
-      const input = { hits: [{ _source: { } }] };
-      const output = mapResults(input);
-
-      expect(output).to.be.an('array');
-      expect(output[0].serviceDetails).to.equal(undefined);
-    });
   });
 
   describe('should set properties on the returned services', () => {
     let output;
     const distance = 1.23;
-    const encodedHtmlChars = '&quot;&apos;a &amp; b &amp; not c.&apos;&quot;';
-    const cleanedDescription = '\'a & b & not c.\'';
     const rawService = {
       address: { addressLines: ['line1', 'line2'] },
       openingTimes: {
-        description: encodedHtmlChars,
         general: { monday: [{ closes: '23:30', opens: '07:00' }] },
       },
-      serviceDetails: encodedHtmlChars,
     };
 
     before('run test', () => {
@@ -98,22 +69,6 @@ describe('mapResults', () => {
     it('should set \'openingTimes.formatted\' based on \'openingTimes\'', () => {
       expect(output[0].openingTimes.formatted).to.be.an('array');
       expect(output[0].openingTimes.formatted.length).to.equal(7);
-    });
-
-    it('should remove html encoded quotation characters from \'serviceDetails\'', () => {
-      expect(output[0].serviceDetails).to.not.have.string('&quot;');
-    });
-
-    it('should remove html encoded quotation characters from \'openingTimes.description\'', () => {
-      expect(output[0].openingTimes.description).to.not.have.string('&quot;');
-    });
-
-    it('should decode html encoded characters excluding quotations from \'serviceDetails\'', () => {
-      expect(output[0].serviceDetails).to.equal(cleanedDescription);
-    });
-
-    it('should decode html encoded characters excluding quotations from \'openingTimes.description\'', () => {
-      expect(output[0].openingTimes.description).to.equal(cleanedDescription);
     });
   });
 });

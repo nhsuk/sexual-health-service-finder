@@ -60,7 +60,6 @@
     "express": "^4.16.2",
     "express-prom-bundle": "^3.3.0",
     "helmet": "^3.11.0",
-    "html-entities": "^1.2.1",
     "moment": "^2.22.0",
     "nhsuk-bunyan-logger": "^1.7.0",
     "node-sass": "4.8.3",
