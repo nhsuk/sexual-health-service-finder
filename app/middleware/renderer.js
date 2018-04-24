@@ -1,4 +1,5 @@
 const log = require('../lib/logger');
+const constants = require('../lib/constants');
 const messages = require('../lib/messages');
 
 function startPage(req, res) {
@@ -12,6 +13,9 @@ function symptoms(req, res) {
 }
 
 function recommend(req, res) {
+  if (!(res.locals.analyticsPageTitle) && (res.locals.symptoms === constants.symptoms.yes)) {
+    res.locals.analyticsPageTitle = 'RecommendSymptoms';
+  }
   res.render('recommend');
 }
 
