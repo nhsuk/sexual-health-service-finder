@@ -1,3 +1,7 @@
+0.8.0 / 2018-04-27
+==================
+- Add performance tests
+
 0.7.0 / 2018-04-24
 ==================
 - England start page accordion tweaks
