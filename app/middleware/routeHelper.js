@@ -18,17 +18,20 @@ function renderAgePageWithError(req, res) {
 
 function renderSeeExpertUnder16Page(req, res) {
   res.locals.under16 = true;
+  res.locals.analyticsPageTitle = 'RecommendU16';
   renderer.recommend(req, res);
 }
 
 function renderChooseTestUnder25Page(req, res) {
   res.locals.under25 = true;
+  res.locals.analyticsPageTitle = 'Options16-24';
   renderer.choose(req, res);
 }
 
 function renderChooseTestOver25Page(req, res) {
   res.locals.under25 = false;
   res.locals.under16 = false;
+  res.locals.analyticsPageTitle = 'Options25+';
   renderer.choose(req, res);
 }
 

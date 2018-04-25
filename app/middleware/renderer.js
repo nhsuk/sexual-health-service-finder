@@ -1,19 +1,26 @@
 const log = require('../lib/logger');
+const constants = require('../lib/constants');
 const messages = require('../lib/messages');
 
 function startPage(req, res) {
+  res.locals.analyticsPageTitle = 'Start';
   res.render('start');
 }
 
 function symptoms(req, res) {
+  res.locals.analyticsPageTitle = 'Symptoms';
   res.render('symptoms');
 }
 
 function recommend(req, res) {
+  if (!(res.locals.analyticsPageTitle) && (res.locals.symptoms === constants.symptoms.yes)) {
+    res.locals.analyticsPageTitle = 'RecommendSymptoms';
+  }
   res.render('recommend');
 }
 
 function age(req, res) {
+  res.locals.analyticsPageTitle = 'Age';
   res.render('age');
 }
 

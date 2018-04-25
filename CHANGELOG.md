@@ -5,6 +5,7 @@
 - Mobile typography improvements
 - Mobile viewport click to call (tel) links.
 - Accessibility improvements
+- Webtrends analytics tags
 
 0.6.0 / 2018-04-19
 ==================

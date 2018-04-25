@@ -14,33 +14,61 @@ function getEsQueryType(type, origin) {
   }
   return constants.searchTypes.sexperts;
 }
-function getLocationHeading(query) {
+
+function getLocationInfo(query) {
   if (query.type) {
     if (utils.isProfessionalChoice(query)) {
-      return 'Where would you like to see a sexual health professional?';
+      return {
+        analyticsPageTitle: 'PostcodeSexpert',
+        correctLocationParams: true,
+        locationHeading: 'Where would you like to see a sexual health professional?',
+      };
     }
     if (utils.areEqual(query.type, constants.serviceTypes.kit)) {
       if (query.origin === constants.serviceChoices['16to24']) {
-        return 'Where would you like to collect your free test kit?';
+        return {
+          analyticsPageTitle: 'PostcodeFreeKit',
+          correctLocationParams: true,
+          locationHeading: 'Where would you like to collect your free test kit?',
+        };
       } else if (query.origin === constants.serviceChoices.over25) {
-        return 'Where would you like to buy your test kit?';
+        return {
+          analyticsPageTitle: 'PostcodeBuyKit',
+          correctLocationParams: true,
+          locationHeading: 'Where would you like to buy your test kit?',
+        };
       }
     }
     if (utils.areEqual(query.type, constants.serviceTypes.online)) {
-      return 'redirect';
+      return {
+        analyticsPageTitle: 'RedirectToChoices',
+        correctLocationParams: true,
+        locationHeading: 'redirect',
+      };
     }
   }
-  return undefined;
+  return {
+    analyticsPageTitle: undefined,
+    correctLocationParams: undefined,
+    locationHeading: undefined,
+  };
 }
 
 function getResultsInfoForProfessionalsByAge(ageChoice, location) {
   let resultsOnwardsJourneyPartial;
-  if (ageChoice === constants.serviceChoices['16to24']) {
+  let analyticsPageTitle;
+  if (ageChoice === constants.serviceChoices.symptoms
+    || ageChoice === constants.serviceChoices.under16) {
+    analyticsPageTitle = 'ResultsSexpertRecommendation';
+  } else if (ageChoice === constants.serviceChoices['16to24']) {
+    analyticsPageTitle = 'ResultsSexpert16-24';
     resultsOnwardsJourneyPartial = 'includes/onwardsJourneyProfessional16to24.nunjucks';
   } else if (ageChoice === constants.serviceChoices.over25) {
+    analyticsPageTitle = 'ResultsSexpert25+';
     resultsOnwardsJourneyPartial = 'includes/onwardsJourneyProfessionalOver25.nunjucks';
   }
   return {
+    analyticsPageTitle,
     correctResultsParams: true,
     resultsExplanation: 'Here is a list of places where you can get tested by a sexual health professional.',
     resultsHeading: `Sexual health professionals near '${location}'`,
@@ -51,6 +79,7 @@ function getResultsInfoForProfessionalsByAge(ageChoice, location) {
 function getResultsInfoForKitsByAge(ageChoice, location) {
   if (ageChoice === constants.serviceChoices['16to24']) {
     return {
+      analyticsPageTitle: 'ResultsFreeKit',
       correctResultsParams: true,
       resultsExplanation: 'Here is a list of places where you can get a free chlamydia test kit.',
       resultsHeading: `Places you can collect a free test kit near '${location}'`,
@@ -58,6 +87,7 @@ function getResultsInfoForKitsByAge(ageChoice, location) {
     };
   } else if (ageChoice === constants.serviceChoices.over25) {
     return {
+      analyticsPageTitle: 'ResultsBuyKit',
       correctResultsParams: true,
       resultsExplanation: 'Here is a list of pharmacies where you can buy a chlamydia test kit.',
       resultsHeading: `Places you can buy a test kit near '${location}'`,
@@ -65,6 +95,7 @@ function getResultsInfoForKitsByAge(ageChoice, location) {
     };
   }
   return {
+    analyticsPageTitle: undefined,
     correctResultsParams: undefined,
     resultsExplanation: undefined,
     resultsHeading: undefined,
@@ -79,6 +110,7 @@ function getResultsInfo(query, location) {
     if (utils.isProfessionalChoice(query)) {
       const getResults = getResultsInfoForProfessionalsByAge(query.origin, mappedLocation);
       return {
+        analyticsPageTitle: getResults.analyticsPageTitle,
         correctResultsParams: getResults.correctResultsParams,
         resultsExplanation: getResults.resultsExplanation,
         resultsHeading: getResults.resultsHeading,
@@ -89,6 +121,7 @@ function getResultsInfo(query, location) {
     if (utils.areEqual(query.type, constants.serviceTypes.kit)) {
       const getResults = getResultsInfoForKitsByAge(query.origin, mappedLocation);
       return {
+        analyticsPageTitle: getResults.analyticsPageTitle,
         correctResultsParams: getResults.correctResultsParams,
         resultsExplanation: getResults.resultsExplanation,
         resultsHeading: getResults.resultsHeading,
@@ -98,6 +131,7 @@ function getResultsInfo(query, location) {
     }
   }
   return {
+    analyticsPageTitle: undefined,
     correctResultsParams: undefined,
     resultsExplanation: undefined,
     resultsHeading: undefined,
@@ -142,7 +176,7 @@ function mapServiceChoice(query) {
 
 module.exports = {
   getEsQueryType,
-  getLocationHeading,
+  getLocationInfo,
   getResultsInfo,
   mapServiceChoice,
   mapServiceType,

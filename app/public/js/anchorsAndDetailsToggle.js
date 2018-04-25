@@ -5,7 +5,7 @@
 
   if (window.location.hash !== '') {
     var anchor = window.location.hash.substr(1);
-    var anchors = ['england', 'scotland', 'wales', 'northern'];
+    var anchors = ['scotland', 'wales', 'northern'];
     $.each(anchors, function (index, value) {
       $('#' + value).removeAttr('open');
     });

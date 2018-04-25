@@ -37,74 +37,210 @@ describe('queryMapper', () => {
     });
   });
 
-  describe('getLocationHeading', () => {
+  describe('getLocationInfo', () => {
     it('should return undefined when empty query', () => {
       const query = {};
-      const output = queryMapper.getLocationHeading(query);
-      expect(output).to.equal(undefined);
+      const output = queryMapper.getLocationInfo(query);
+      expect(output).to.eql({
+        analyticsPageTitle: undefined,
+        correctLocationParams: undefined,
+        locationHeading: undefined,
+      });
     });
 
-    it('should return a sexual professionals message when the query is related to professionals and origin is symptoms', () => {
-      const query = {
-        origin: constants.serviceChoices.symptoms,
-        type: constants.serviceTypes.professional,
-      };
-      const output = queryMapper.getLocationHeading(query);
-      expect(output).to.equal('Where would you like to see a sexual health professional?');
+    describe('analyticsPageTitle', () => {
+      it('should return a sexual professionals analyticsPageTitle when the query is related to professionals and origin is symptoms', () => {
+        const query = {
+          origin: constants.serviceChoices.symptoms,
+          type: constants.serviceTypes.professional,
+        };
+        const output = queryMapper.getLocationInfo(query).analyticsPageTitle;
+        expect(output).to.equal('PostcodeSexpert');
+      });
+
+      it('should return a sexual professionals analyticsPageTitle when the query is related to professionals and origin is under16', () => {
+        const query = {
+          origin: constants.serviceChoices.under16,
+          type: constants.serviceTypes.professional,
+        };
+        const output = queryMapper.getLocationInfo(query).analyticsPageTitle;
+        expect(output).to.equal('PostcodeSexpert');
+      });
+
+      it('should return a sexual professionals analyticsPageTitle when the query is related to professionals and origin is 16 to 24', () => {
+        const query = {
+          origin: constants.serviceChoices['16to24'],
+          type: constants.serviceTypes.professional,
+        };
+        const output = queryMapper.getLocationInfo(query).analyticsPageTitle;
+        expect(output).to.equal('PostcodeSexpert');
+      });
+
+      it('should return a sexual professionals analyticsPageTitle when the query is related to professionals and origin is over 25', () => {
+        const query = {
+          origin: constants.serviceChoices.over25,
+          type: constants.serviceTypes.professional,
+        };
+        const output = queryMapper.getLocationInfo(query).analyticsPageTitle;
+        expect(output).to.equal('PostcodeSexpert');
+      });
+
+      it('should return a free kit analyticsPageTitle when the query is related to kit and age between 16 and 24', () => {
+        const query = {
+          origin: constants.serviceChoices['16to24'],
+          type: constants.serviceTypes.kit,
+        };
+        const output = queryMapper.getLocationInfo(query).analyticsPageTitle;
+        expect(output).to.equal('PostcodeFreeKit');
+      });
+
+      it('should return a paid for kit analyticsPageTitle when the query is related to kit and age is over 25', () => {
+        const query = {
+          origin: constants.serviceChoices.over25,
+          type: constants.serviceTypes.kit,
+        };
+        const output = queryMapper.getLocationInfo(query).analyticsPageTitle;
+        expect(output).to.equal('PostcodeBuyKit');
+      });
+
+      it('should return a redirect analyticsPageTitle when the query is related to online', () => {
+        const query = {
+          origin: constants.serviceChoices.over25,
+          type: constants.serviceTypes.online,
+        };
+        const output = queryMapper.getLocationInfo(query).analyticsPageTitle;
+        expect(output).to.equal('RedirectToChoices');
+      });
     });
 
-    it('should return a sexual professionals message when the query is related to professionals and origin is under16', () => {
-      const query = {
-        origin: constants.serviceChoices.under16,
-        type: constants.serviceTypes.professional,
-      };
-      const output = queryMapper.getLocationHeading(query);
-      expect(output).to.equal('Where would you like to see a sexual health professional?');
+    describe('correctLocationParams', () => {
+      it('should return true when the query is related to professionals and origin is symptoms', () => {
+        const query = {
+          origin: constants.serviceChoices.symptoms,
+          type: constants.serviceTypes.professional,
+        };
+        const output = queryMapper.getLocationInfo(query).correctLocationParams;
+        expect(output).to.equal(true);
+      });
+
+      it('should return true when the query is related to professionals and origin is under16', () => {
+        const query = {
+          origin: constants.serviceChoices.under16,
+          type: constants.serviceTypes.professional,
+        };
+        const output = queryMapper.getLocationInfo(query).correctLocationParams;
+        expect(output).to.equal(true);
+      });
+
+      it('should return true when the query is related to professionals and origin is 16 to 24', () => {
+        const query = {
+          origin: constants.serviceChoices['16to24'],
+          type: constants.serviceTypes.professional,
+        };
+        const output = queryMapper.getLocationInfo(query).correctLocationParams;
+        expect(output).to.equal(true);
+      });
+
+      it('should return true when the query is related to professionals and origin is over 25', () => {
+        const query = {
+          origin: constants.serviceChoices.over25,
+          type: constants.serviceTypes.professional,
+        };
+        const output = queryMapper.getLocationInfo(query).correctLocationParams;
+        expect(output).to.equal(true);
+      });
+
+      it('should return true when the query is related to kit and age between 16 and 24', () => {
+        const query = {
+          origin: constants.serviceChoices['16to24'],
+          type: constants.serviceTypes.kit,
+        };
+        const output = queryMapper.getLocationInfo(query).correctLocationParams;
+        expect(output).to.equal(true);
+      });
+
+      it('should return true when the query is related to kit and age is over 25', () => {
+        const query = {
+          origin: constants.serviceChoices.over25,
+          type: constants.serviceTypes.kit,
+        };
+        const output = queryMapper.getLocationInfo(query).correctLocationParams;
+        expect(output).to.equal(true);
+      });
+
+      it('should return true when the query is related to online', () => {
+        const query = {
+          origin: constants.serviceChoices.over25,
+          type: constants.serviceTypes.online,
+        };
+        const output = queryMapper.getLocationInfo(query).correctLocationParams;
+        expect(output).to.equal(true);
+      });
     });
 
-    it('should return a sexual professionals message when the query is related to professionals and origin is 16 to 24', () => {
-      const query = {
-        origin: constants.serviceChoices['16to24'],
-        type: constants.serviceTypes.professional,
-      };
-      const output = queryMapper.getLocationHeading(query);
-      expect(output).to.equal('Where would you like to see a sexual health professional?');
-    });
+    describe('locationHeading', () => {
+      it('should return a sexual professionals message when the query is related to professionals and origin is symptoms', () => {
+        const query = {
+          origin: constants.serviceChoices.symptoms,
+          type: constants.serviceTypes.professional,
+        };
+        const output = queryMapper.getLocationInfo(query).locationHeading;
+        expect(output).to.equal('Where would you like to see a sexual health professional?');
+      });
 
-    it('should return a sexual professionals message when the query is related to professionals and origin is over 25', () => {
-      const query = {
-        origin: constants.serviceChoices.over25,
-        type: constants.serviceTypes.professional,
-      };
-      const output = queryMapper.getLocationHeading(query);
-      expect(output).to.equal('Where would you like to see a sexual health professional?');
-    });
+      it('should return a sexual professionals message when the query is related to professionals and origin is under16', () => {
+        const query = {
+          origin: constants.serviceChoices.under16,
+          type: constants.serviceTypes.professional,
+        };
+        const output = queryMapper.getLocationInfo(query).locationHeading;
+        expect(output).to.equal('Where would you like to see a sexual health professional?');
+      });
 
-    it('should return a free kit message when the query is related to kit and age between 16 and 24', () => {
-      const query = {
-        origin: constants.serviceChoices['16to24'],
-        type: constants.serviceTypes.kit,
-      };
-      const output = queryMapper.getLocationHeading(query);
-      expect(output).to.equal('Where would you like to collect your free test kit?');
-    });
+      it('should return a sexual professionals message when the query is related to professionals and origin is 16 to 24', () => {
+        const query = {
+          origin: constants.serviceChoices['16to24'],
+          type: constants.serviceTypes.professional,
+        };
+        const output = queryMapper.getLocationInfo(query).locationHeading;
+        expect(output).to.equal('Where would you like to see a sexual health professional?');
+      });
 
-    it('should return a paid for kit message when the query is related to kit and age is over 25', () => {
-      const query = {
-        origin: constants.serviceChoices.over25,
-        type: constants.serviceTypes.kit,
-      };
-      const output = queryMapper.getLocationHeading(query);
-      expect(output).to.equal('Where would you like to buy your test kit?');
-    });
+      it('should return a sexual professionals message when the query is related to professionals and origin is over 25', () => {
+        const query = {
+          origin: constants.serviceChoices.over25,
+          type: constants.serviceTypes.professional,
+        };
+        const output = queryMapper.getLocationInfo(query).locationHeading;
+        expect(output).to.equal('Where would you like to see a sexual health professional?');
+      });
 
-    it('should return a redirect message when the query is related to online', () => {
-      const query = {
-        origin: constants.serviceChoices.over25,
-        type: constants.serviceTypes.online,
-      };
-      const output = queryMapper.getLocationHeading(query);
-      expect(output).to.equal('redirect');
+      it('should return a free kit message when the query is related to kit and age between 16 and 24', () => {
+        const query = {
+          origin: constants.serviceChoices['16to24'],
+          type: constants.serviceTypes.kit,
+        };
+        const output = queryMapper.getLocationInfo(query).locationHeading;
+        expect(output).to.equal('Where would you like to collect your free test kit?');
+      });
+
+      it('should return a paid for kit message when the query is related to kit and age is over 25', () => {
+        const query = {
+          origin: constants.serviceChoices.over25,
+          type: constants.serviceTypes.kit,
+        };
+        const output = queryMapper.getLocationInfo(query).locationHeading;
+        expect(output).to.equal('Where would you like to buy your test kit?');
+      });
+
+      it('should return a redirect message when the query is related to online', () => {
+        const query = {
+          origin: constants.serviceChoices.over25,
+          type: constants.serviceTypes.online,
+        };
+        const output = queryMapper.getLocationInfo(query).locationHeading;
+        expect(output).to.equal('redirect');
+      });
     });
   });
 
@@ -114,6 +250,7 @@ describe('queryMapper', () => {
       const location = 'ls1';
       const output = queryMapper.getResultsInfo(query, location);
       expect(output).to.eql({
+        analyticsPageTitle: undefined,
         correctResultsParams: undefined,
         resultsExplanation: undefined,
         resultsHeading: undefined,
@@ -130,6 +267,7 @@ describe('queryMapper', () => {
       };
       const output = queryMapper.getResultsInfo(query, emptyLocation);
       expect(output).to.eql({
+        analyticsPageTitle: undefined,
         correctResultsParams: undefined,
         resultsExplanation: undefined,
         resultsHeading: undefined,
@@ -138,9 +276,66 @@ describe('queryMapper', () => {
       });
     });
 
+    describe('analyticsPageTitle', () => {
+      const location = 'ls1';
+      it('should return a sexual professionals analyticsPageTitle when the query is related to professionals and origin is symptoms', () => {
+        const query = {
+          origin: constants.serviceChoices.symptoms,
+          type: constants.serviceTypes.professional,
+        };
+        const output = queryMapper.getResultsInfo(query, location).analyticsPageTitle;
+        expect(output).to.equal('ResultsSexpertRecommendation');
+      });
+
+      it('should return a sexual professionals analyticsPageTitle when the query is related to professionals and origin is under16', () => {
+        const query = {
+          origin: constants.serviceChoices.under16,
+          type: constants.serviceTypes.professional,
+        };
+        const output = queryMapper.getResultsInfo(query, location).analyticsPageTitle;
+        expect(output).to.equal('ResultsSexpertRecommendation');
+      });
+
+      it('should return a sexual professionals analyticsPageTitle when the query is related to professionals and origin is 16 to 24', () => {
+        const query = {
+          origin: constants.serviceChoices['16to24'],
+          type: constants.serviceTypes.professional,
+        };
+        const output = queryMapper.getResultsInfo(query, location).analyticsPageTitle;
+        expect(output).to.equal('ResultsSexpert16-24');
+      });
+
+      it('should return a sexual professionals analyticsPageTitle when the query is related to professionals and origin is over25', () => {
+        const query = {
+          origin: constants.serviceChoices.over25,
+          type: constants.serviceTypes.professional,
+        };
+        const output = queryMapper.getResultsInfo(query, location).analyticsPageTitle;
+        expect(output).to.equal('ResultsSexpert25+');
+      });
+
+      it('should return a free kit analyticsPageTitle when the query is related to kit and age between 16 and 24', () => {
+        const query = {
+          origin: constants.serviceChoices['16to24'],
+          type: constants.serviceTypes.kit,
+        };
+        const output = queryMapper.getResultsInfo(query, location).analyticsPageTitle;
+        expect(output).to.equal('ResultsFreeKit');
+      });
+
+      it('should return a paid for kit analyticsPageTitle when the query is related to kit and age is over 25', () => {
+        const query = {
+          origin: constants.serviceChoices.over25,
+          type: constants.serviceTypes.kit,
+        };
+        const output = queryMapper.getResultsInfo(query, location).analyticsPageTitle;
+        expect(output).to.equal('ResultsBuyKit');
+      });
+    });
+
     describe('resultsHeading', () => {
       const location = 'ls1';
-      it('should return a sexual professionals message when the query is related to professionals and origin is symptoms', () => {
+      it('should return a sexual professionals analyticsPageTitle when the query is related to professionals and origin is symptoms', () => {
         const query = {
           origin: constants.serviceChoices.symptoms,
           type: constants.serviceTypes.professional,
@@ -149,7 +344,7 @@ describe('queryMapper', () => {
         expect(output).to.equal('Sexual health professionals near \'LS1\'');
       });
 
-      it('should return a sexual professionals message when the query is related to professionals and origin is under16', () => {
+      it('should return a sexual professionals analyticsPageTitle when the query is related to professionals and origin is under16', () => {
         const query = {
           origin: constants.serviceChoices.under16,
           type: constants.serviceTypes.professional,
@@ -158,7 +353,7 @@ describe('queryMapper', () => {
         expect(output).to.equal('Sexual health professionals near \'LS1\'');
       });
 
-      it('should return a sexual professionals message when the query is related to professionals and origin is 16 to 24', () => {
+      it('should return a sexual professionals analyticsPageTitle when the query is related to professionals and origin is 16 to 24', () => {
         const query = {
           origin: constants.serviceChoices['16to24'],
           type: constants.serviceTypes.professional,
@@ -167,7 +362,7 @@ describe('queryMapper', () => {
         expect(output).to.equal('Sexual health professionals near \'LS1\'');
       });
 
-      it('should return a sexual professionals message when the query is related to professionals and origin is over25', () => {
+      it('should return a sexual professionals analyticsPageTitle when the query is related to professionals and origin is over25', () => {
         const query = {
           origin: constants.serviceChoices.over25,
           type: constants.serviceTypes.professional,
@@ -176,7 +371,7 @@ describe('queryMapper', () => {
         expect(output).to.equal('Sexual health professionals near \'LS1\'');
       });
 
-      it('should return a free kit message when the query is related to kit and age between 16 and 24', () => {
+      it('should return a free kit analyticsPageTitle when the query is related to kit and age between 16 and 24', () => {
         const query = {
           origin: constants.serviceChoices['16to24'],
           type: constants.serviceTypes.kit,
@@ -185,7 +380,7 @@ describe('queryMapper', () => {
         expect(output).to.equal('Places you can collect a free test kit near \'LS1\'');
       });
 
-      it('should return a paid for kit message when the query is related to kit and age is over 25', () => {
+      it('should return a paid for kit analyticsPageTitle when the query is related to kit and age is over 25', () => {
         const query = {
           origin: constants.serviceChoices.over25,
           type: constants.serviceTypes.kit,
@@ -197,7 +392,7 @@ describe('queryMapper', () => {
 
     describe('resultsExplanation', () => {
       const location = 'ls1';
-      it('should return a sexual professionals message when the query is related to professionals and origin is symptoms', () => {
+      it('should return a sexual professionals analyticsPageTitle when the query is related to professionals and origin is symptoms', () => {
         const query = {
           origin: constants.serviceChoices.symptoms,
           type: constants.serviceTypes.professional,
@@ -206,7 +401,7 @@ describe('queryMapper', () => {
         expect(output).to.equal('Here is a list of places where you can get tested by a sexual health professional.');
       });
 
-      it('should return a sexual professionals message when the query is related to professionals and origin is under 16', () => {
+      it('should return a sexual professionals analyticsPageTitle when the query is related to professionals and origin is under 16', () => {
         const query = {
           origin: constants.serviceChoices.under16,
           type: constants.serviceTypes.professional,
@@ -215,7 +410,7 @@ describe('queryMapper', () => {
         expect(output).to.equal('Here is a list of places where you can get tested by a sexual health professional.');
       });
 
-      it('should return a sexual professionals message when the query is related to professionals and origin is 16 to 24', () => {
+      it('should return a sexual professionals analyticsPageTitle when the query is related to professionals and origin is 16 to 24', () => {
         const query = {
           origin: constants.serviceChoices['16to24'],
           type: constants.serviceTypes.professional,
@@ -224,7 +419,7 @@ describe('queryMapper', () => {
         expect(output).to.equal('Here is a list of places where you can get tested by a sexual health professional.');
       });
 
-      it('should return a sexual professionals message when the query is related to professionals and origin is over 25', () => {
+      it('should return a sexual professionals analyticsPageTitle when the query is related to professionals and origin is over 25', () => {
         const query = {
           origin: constants.serviceChoices.over25,
           type: constants.serviceTypes.professional,
@@ -233,7 +428,7 @@ describe('queryMapper', () => {
         expect(output).to.equal('Here is a list of places where you can get tested by a sexual health professional.');
       });
 
-      it('should return a free kit message when the query is related to kit and age between 16 and 25', () => {
+      it('should return a free kit analyticsPageTitle the query is related to kit and age between 16 and 25', () => {
         const query = {
           origin: constants.serviceChoices['16to24'],
           type: constants.serviceTypes.kit,
@@ -242,7 +437,7 @@ describe('queryMapper', () => {
         expect(output).to.equal('Here is a list of places where you can get a free chlamydia test kit.');
       });
 
-      it('should return a paid for kit message when the query is related to kit and age is over 25', () => {
+      it('should return a paid for kit analyticsPageTitle when the query is related to kit and age is over 25', () => {
         const query = {
           origin: constants.serviceChoices.over25,
           type: constants.serviceTypes.kit,

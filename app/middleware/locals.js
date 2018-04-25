@@ -15,9 +15,16 @@ module.exports = config =>
     res.locals.type = queryMapper.mapServiceType(req.query);
     res.locals.origin = queryMapper.mapServiceChoice(req.query);
     res.locals.location = trim(req.query.location);
-    res.locals.locationHeading = queryMapper.getLocationHeading(req.query);
-    res.locals.correctLocationParams = res.locals.locationHeading;
+    const locationInfo = queryMapper.getLocationInfo(req.query);
+    if (locationInfo.analyticsPageTitle) {
+      res.locals.analyticsPageTitle = locationInfo.analyticsPageTitle;
+    }
+    res.locals.correctLocationParams = locationInfo.correctLocationParams;
+    res.locals.locationHeading = locationInfo.locationHeading;
     const resultsInfo = queryMapper.getResultsInfo(req.query, res.locals.location);
+    if (resultsInfo.analyticsPageTitle) {
+      res.locals.analyticsPageTitle = resultsInfo.analyticsPageTitle;
+    }
     res.locals.resultsHeading = resultsInfo.resultsHeading;
     res.locals.resultsInternalUrl = resultsInfo.resultsInternalUrl;
     res.locals.resultsExplanation = resultsInfo.resultsExplanation;
