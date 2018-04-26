@@ -38,14 +38,14 @@ Your code should be tested in the browsers listed below.
 The lists are based on usage statistics for NHS Choices (current NHS.UK) and
 represent approximately 95% of the most popular browsers.
 
-Each browser is assigned a ‘level of support’ that your service should meet.
-‘Compliant’ means your service must look as good as it does in other modern
+Each browser is assigned a 'level of support' that your service should meet.
+'Compliant' means your service must look as good as it does in other modern
 browsers.
 
-If a browser is assigned a ‘functional’ level of support, it means your service
+If a browser is assigned a 'functional' level of support, it means your service
 might not look perfect but must still be usable.
 
-‘Latest version’ refers to the latest stable version and the version immediately
+'Latest version' refers to the latest stable version and the version immediately
 before that.
 
 ### Desktop

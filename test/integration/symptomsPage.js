@@ -15,7 +15,7 @@ const recommendRoute = `${constants.siteRoot}/recommend`;
 function expectSymptomsPageAgain($) {
   expect($('.error-summary-heading').text())
     .to.contain('You must choose one of the options.');
-  expect($('.local-header--title--question').text()).to.equal('Do you have any of the following symptoms?');
+  expect($('.local-header--title--question').text()).to.equal('Do you have any of these symptoms?');
 }
 
 describe('Symptoms page', () => {
@@ -32,7 +32,7 @@ describe('Symptoms page', () => {
     const $ = cheerio.load(res.text);
 
     expect($('title').text()).to.equal('Find a chlamydia test - NHS.UK');
-    expect($('.local-header--title--question').text()).to.equal('Do you have any of the following symptoms?');
+    expect($('.local-header--title--question').text()).to.equal('Do you have any of these symptoms?');
   });
 
   it('should not be indexed', async () => {

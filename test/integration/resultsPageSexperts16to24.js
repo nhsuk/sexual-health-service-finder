@@ -48,15 +48,13 @@ describe('Results page for sexual health professionals for 16 to 24', function t
         const $ = cheerio.load(res.text);
         const resultsHeader = $('.local-header--title--question').text();
         const resultsSubHeader = $('.results p.explanation').text();
-        const resultsOnwards = $('.results p.links').text();
-        const resultsOnwards1 = $('.results p.link1').text();
-        const resultsOnwards2 = $('.results p.link2').text();
+        const resultsOnwards1 = $('.results li.link1').text();
+        const resultsOnwards2 = $('.results li.link2').text();
 
         expect(resultsHeader).to.contain('Sexual health professionals near \'LS1\'');
-        expect(resultsSubHeader).to.contain('Here is a list of places where you can get tested by a sexual health professional.');
-        expect(resultsOnwards).to.contain('If you decide not to visit a sexual health professional, you can see places where you can collect a free test kit or find a free test kit online instead.');
-        expect(resultsOnwards1).to.be.empty;
-        expect(resultsOnwards2).to.be.empty;
+        expect(resultsSubHeader).to.contain('You can get tested for chlamydia at these places.');
+        expect(resultsOnwards1).to.contain('see where you can collect a free test kit');
+        expect(resultsOnwards2).to.contain('order a free test kit online');
       });
     });
   });

@@ -1,1 +1,1 @@
-<p class='links'>Or you can <a href='{{ resultsInternalUrl }}' class="buy_kit_tracking">see places where you can buy a test kit</a>.</p>
+<p class="links">Or: <a href='{{ resultsInternalUrl }}' class="buy_kit_tracking">see where you can buy a test kit</a>.</p>

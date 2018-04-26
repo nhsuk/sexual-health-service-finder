@@ -1,1 +1,1 @@
-<p class='link2'>Or you can <a href='{{ resultsInternalUrl }}' class="find_sexual_health_professional_tracking">see a list of places where you can get tested by a sexual health professional</a>.</p>
+<p class="links">Or: <a href='{{ resultsInternalUrl }}' class="find_sexual_health_professional_tracking">see where you can get tested by a sexual health professional</a>.</p>

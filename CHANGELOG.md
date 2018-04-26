@@ -1,3 +1,8 @@
+0.9.0 / 2018-04-27
+==================
+- Update content post sign-off
+- Update `npm` dependencies
+
 0.8.0 / 2018-04-27
 ==================
 - Add performance tests

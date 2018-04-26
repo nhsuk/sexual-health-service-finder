@@ -42,15 +42,13 @@ describe('Results page for kits for 16 to 24 year olds', function test() {
         const $ = cheerio.load(res.text);
         const resultsHeader = $('.local-header--title--question').text();
         const resultsSubHeader = $('.results p.explanation').text();
-        const resultsOnwards = $('.results p.links').text();
-        const resultsOnwards1 = $('.results p.link1').text();
-        const resultsOnwards2 = $('.results p.link2').text();
+        const resultsOnwards1 = $('.results li.link1').text();
+        const resultsOnwards2 = $('.results li.link2').text();
 
         expect(resultsHeader).to.contain('Places you can collect a free test kit near \'LS1\'');
-        expect(resultsSubHeader).to.contain('Here is a list of places where you can get a free chlamydia test kit.');
-        expect(resultsOnwards1).to.contain('If you want a kit delivered to you, you can find a free test kit online.');
-        expect(resultsOnwards2).to.contain('You can also see places where you can get tested by a sexual health professional.');
-        expect(resultsOnwards).to.be.empty;
+        expect(resultsSubHeader).to.contain('You can get a free chlamydia test kit from these places.');
+        expect(resultsOnwards1).to.contain('order a free test kit online');
+        expect(resultsOnwards2).to.contain('see where you can get tested by a sexual health professional');
       });
     });
   });

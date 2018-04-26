@@ -33,7 +33,7 @@ describe('Recommend page', () => {
     iExpect.htmlWith200Status(res);
     const $ = cheerio.load(res.text);
 
-    expect($('.local-header--title--question').text()).to.equal('We recommend that you');
+    expect($('.local-header--title--question').text()).to.equal('We recommend');
   });
 
   it('should not be indexed', async () => {
@@ -65,7 +65,7 @@ describe('Recommend page', () => {
     iExpect.htmlWith200Status(res);
     const $ = cheerio.load(res.text);
 
-    expect($('.local-header--title--question').text()).to.equal('We recommend that you');
+    expect($('.local-header--title--question').text()).to.equal('We recommend');
   });
 
   it('page content should be related to being under 16, if age question is answered 15 or younger', async () => {
@@ -76,7 +76,7 @@ describe('Recommend page', () => {
     iExpect.htmlWith200Status(res);
     const $ = cheerio.load(res.text);
 
-    expect($($('.page-section p')[3]).text()).to.equal('This is because you’re under the legal age of consent for sex.');
+    expect($($('.page-section p')[3]).text()).to.equal('We\'re not able to offer test kits if you\'re under 16. You\'ll need to see a health professional to get tested.');
   });
 
   it('the page should have a link to the Location search page with the right params for symptoms', async () => {

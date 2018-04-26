@@ -43,14 +43,10 @@ describe('Results page for kits in over 25 year olds', function test() {
         const resultsHeader = $('.local-header--title--question').text();
         const resultsSubHeader = $('.results p.explanation').text();
         const resultsOnwards = $('.results p.links').text();
-        const resultsOnwards1 = $('.results p.link1').text();
-        const resultsOnwards2 = $('.results p.link2').text();
 
         expect(resultsHeader).to.contain('Places you can buy a test kit near \'LS1\'');
-        expect(resultsSubHeader).to.contain('Here is a list of pharmacies where you can buy a chlamydia test kit.');
-        expect(resultsOnwards2).to.contain('Or you can see a list of places where you can get tested by a sexual health professional.');
-        expect(resultsOnwards).to.be.empty;
-        expect(resultsOnwards1).to.be.empty;
+        expect(resultsSubHeader).to.contain('You can buy a test kit from these places.');
+        expect(resultsOnwards).to.contain('Or: see where you can get tested by a sexual health professional.');
       });
     });
   });
