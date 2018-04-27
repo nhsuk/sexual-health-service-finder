@@ -6,13 +6,13 @@
 
 {% block header %}
   <p class="local-header--step">Step 3 of 4</p>
-  <h1 class="local-header--title--question local-header--title__step">We recommend that you</h1>
+  <h1 class="local-header--title--question local-header--title__step">We recommend</h1>
 {% endblock %}
 
 {% block content %}
     <div class="reading-width">
-      <p><span class="recommend__tick"></span>should see a sexual health professional</p>
-      <p><span class="recommend__cross"></span>should not get a chlamydia postal test kit</p>
+      <p><span class="recommend__tick"></span>getting tested by a sexual health professional</p>
+      <p><span class="recommend__cross"></span>not getting a chlamydia home test kit</p>
 
       {% if under16 %}
         {% include "partials/recommend-under16.nunjucks" %}

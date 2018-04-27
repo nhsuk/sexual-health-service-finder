@@ -29,7 +29,7 @@ function getLocationInfo(query) {
         return {
           analyticsPageTitle: 'PostcodeFreeKit',
           correctLocationParams: true,
-          locationHeading: 'Where would you like to collect your free test kit?',
+          locationHeading: 'Where would you like to collect a free test kit?',
         };
       } else if (query.origin === constants.serviceChoices.over25) {
         return {
@@ -70,7 +70,7 @@ function getResultsInfoForProfessionalsByAge(ageChoice, location) {
   return {
     analyticsPageTitle,
     correctResultsParams: true,
-    resultsExplanation: 'Here is a list of places where you can get tested by a sexual health professional.',
+    resultsExplanation: 'You can get tested for chlamydia at these places.',
     resultsHeading: `Sexual health professionals near '${location}'`,
     resultsOnwardsJourneyPartial,
   };
@@ -81,7 +81,7 @@ function getResultsInfoForKitsByAge(ageChoice, location) {
     return {
       analyticsPageTitle: 'ResultsFreeKit',
       correctResultsParams: true,
-      resultsExplanation: 'Here is a list of places where you can get a free chlamydia test kit.',
+      resultsExplanation: 'You can get a free chlamydia test kit from these places.',
       resultsHeading: `Places you can collect a free test kit near '${location}'`,
       resultsOnwardsJourneyPartial: 'includes/onwardsJourneyKit16to24.nunjucks',
     };
@@ -89,7 +89,7 @@ function getResultsInfoForKitsByAge(ageChoice, location) {
     return {
       analyticsPageTitle: 'ResultsBuyKit',
       correctResultsParams: true,
-      resultsExplanation: 'Here is a list of pharmacies where you can buy a chlamydia test kit.',
+      resultsExplanation: 'You can buy a test kit from these places.',
       resultsHeading: `Places you can buy a test kit near '${location}'`,
       resultsOnwardsJourneyPartial: 'includes/onwardsJourneyKitOver25.nunjucks',
     };

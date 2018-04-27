@@ -34,7 +34,7 @@ describe('Choose page with error', () => {
     it('page options should be related to being under 25 (free), if errors and age is 16-24', async () => {
       const $ = cheerio.load(res.text);
 
-      expect($($('.multiple-choice .multiple--choice-option')[0]).text()).to.equal('Collect a free test kit near you');
+      expect($('.multiple-choice .multiple--choice-option').first().text()).to.equal('Collect a free test kit near you');
     });
   });
 
@@ -60,7 +60,7 @@ describe('Choose page with error', () => {
     it('page options should be related to being over 25 (paid), if errors and age is over 25', async () => {
       const $ = cheerio.load(res.text);
 
-      expect($($('.multiple-choice .multiple--choice-option')[0]).text()).to.equal('See a sexual health professional for free near you');
+      expect($('.multiple-choice .multiple--choice-option').first().text()).to.equal('See a sexual health professional near you');
     });
   });
 });

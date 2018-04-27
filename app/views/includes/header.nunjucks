@@ -2,7 +2,7 @@
   <div class="site-header__top">
     <div class="site-header__brand">
       <!-- noindex -->
-      <a href="/">
+      <a href="/" title="NHS logo">
         <img
           src="{{ assetsUrl }}/images/choices-logo.png" srcset="
               {{ assetsUrl }}/images/choices-logo.png 1x,
@@ -23,6 +23,7 @@
       </div>
       <div id="search" class="site-header__search search">
         <form id="gs" method="get" action="https://www.nhs.uk/Search/">
+          <label for="q" class="sr-only">Enter a search term</label>
           <input name="q" class="search__input" type="text" placeholder="Enter a search term" />
           <div class="search__button icon-Search">
             <input type="submit" value=""/>

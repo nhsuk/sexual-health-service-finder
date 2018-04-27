@@ -6,18 +6,17 @@
 
 {% block header %}
   <p class="local-header--step">Step 1 of 4</p>
-  <h1 class="local-header--title--question local-header--title__step">Do you have any of the following symptoms?</h1>
+  <h1 class="local-header--title--question local-header--title__step">Do you have any of these symptoms?</h1>
 {% endblock %}
 
 {% block content %}
   <ul>
-    <li>discomfort or pain when you pee</li>
-    <li>discharge from your anus</li>
+    <li>pain when peeing</li>
+    <li>discharge from your bottom</li>
     <li>vaginal discharge that's not usual for you</li>
-    <li>vaginal bleeding between periods</li>
-    <li>vaginal bleeding during or after sex</li>
-    <li>vaginal pain during sex</li>
-    <li>pelvic pain if you're female (your pelvic area is between your stomach and your thighs)</li>
+    <li>bleeding between periods</li>
+    <li>bleeding during or after sex</li>
+    <li>pelvic pain (in your lower tummy) - you may have this during sex</li>
     <li>discharge from your penis</li>
     <li>pain in your testicles</li>
   </ul>
@@ -37,12 +36,12 @@
           <div class="multiple-choice">
             <label class="sr-only" for="yes">Yes - I have one or more of these symptoms</label>
             <input id="yes" name="symptoms" type="radio" value="yes" {% if errorMessage %} aria-describedby="error-message" aria-invalid="true"{% endif %}>
-            <label class="multiple-choice--radio" aria-hidden="true" for="yes">Yes - I have one or more of these symptoms</label>
+            <label class="multiple-choice--radio" aria-hidden="true" for="yes"><strong>Yes</strong> - I have one or more of these symptoms</label>
           </div>
           <div class="multiple-choice">
             <label class="sr-only" for="no">No - I don't have any of these symptoms</label>
             <input id="no" name="symptoms" type="radio" value="no" {% if errorMessage %} aria-describedby="error-message" aria-invalid="true"{% endif %}>
-            <label class="multiple-choice--radio" aria-hidden="true" for="no">No - I don't have any of these symptoms</label>
+            <label class="multiple-choice--radio" aria-hidden="true" for="no"><strong>No</strong> - I don't have any of these symptoms</label>
           </div>
         </fieldset>
       </div>

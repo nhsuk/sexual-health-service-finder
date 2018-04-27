@@ -1,1 +1,5 @@
-<p class='links'>If you decide not to visit a sexual health professional, you can <a href='{{ resultsInternalUrl }}' class="collect_free_kit_tracking">see places where you can collect a free test kit</a> or <a href='{{ resultsExternalUrl }}' class="find_free_kit_online_tracking">find a free test kit online</a> instead.</p>
+<p>Or:</p>
+<ul>
+  <li class='link1'><a href='{{ resultsInternalUrl }}' class="collect_free_kit_tracking">see where you can collect a free test kit</a></li>
+  <li class='link2'><a href='{{ resultsExternalUrl }}' class="find_free_kit_online_tracking">order a free test kit online</a></li>
+</ul>

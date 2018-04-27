@@ -62,7 +62,7 @@ describe('Results page for sexual health professionals (symptoms and under16)', 
         const resultsOnwards2 = $('.results p.link2').text();
 
         expect(resultsHeader).to.contain('Sexual health professionals near \'LS1\'');
-        expect(resultsSubHeader).to.contain('Here is a list of places where you can get tested by a sexual health professional.');
+        expect(resultsSubHeader).to.contain('You can get tested for chlamydia at these places.');
         expect(resultsOnwards).to.be.empty;
         expect(resultsOnwards1).to.be.empty;
         expect(resultsOnwards2).to.be.empty;

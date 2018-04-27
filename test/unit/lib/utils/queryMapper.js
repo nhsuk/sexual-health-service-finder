@@ -221,7 +221,7 @@ describe('queryMapper', () => {
           type: constants.serviceTypes.kit,
         };
         const output = queryMapper.getLocationInfo(query).locationHeading;
-        expect(output).to.equal('Where would you like to collect your free test kit?');
+        expect(output).to.equal('Where would you like to collect a free test kit?');
       });
 
       it('should return a paid for kit message when the query is related to kit and age is over 25', () => {
@@ -398,7 +398,7 @@ describe('queryMapper', () => {
           type: constants.serviceTypes.professional,
         };
         const output = queryMapper.getResultsInfo(query, location).resultsExplanation;
-        expect(output).to.equal('Here is a list of places where you can get tested by a sexual health professional.');
+        expect(output).to.equal('You can get tested for chlamydia at these places.');
       });
 
       it('should return a sexual professionals analyticsPageTitle when the query is related to professionals and origin is under 16', () => {
@@ -407,7 +407,7 @@ describe('queryMapper', () => {
           type: constants.serviceTypes.professional,
         };
         const output = queryMapper.getResultsInfo(query, location).resultsExplanation;
-        expect(output).to.equal('Here is a list of places where you can get tested by a sexual health professional.');
+        expect(output).to.equal('You can get tested for chlamydia at these places.');
       });
 
       it('should return a sexual professionals analyticsPageTitle when the query is related to professionals and origin is 16 to 24', () => {
@@ -416,7 +416,7 @@ describe('queryMapper', () => {
           type: constants.serviceTypes.professional,
         };
         const output = queryMapper.getResultsInfo(query, location).resultsExplanation;
-        expect(output).to.equal('Here is a list of places where you can get tested by a sexual health professional.');
+        expect(output).to.equal('You can get tested for chlamydia at these places.');
       });
 
       it('should return a sexual professionals analyticsPageTitle when the query is related to professionals and origin is over 25', () => {
@@ -425,7 +425,7 @@ describe('queryMapper', () => {
           type: constants.serviceTypes.professional,
         };
         const output = queryMapper.getResultsInfo(query, location).resultsExplanation;
-        expect(output).to.equal('Here is a list of places where you can get tested by a sexual health professional.');
+        expect(output).to.equal('You can get tested for chlamydia at these places.');
       });
 
       it('should return a free kit analyticsPageTitle the query is related to kit and age between 16 and 25', () => {
@@ -434,7 +434,7 @@ describe('queryMapper', () => {
           type: constants.serviceTypes.kit,
         };
         const output = queryMapper.getResultsInfo(query, location).resultsExplanation;
-        expect(output).to.equal('Here is a list of places where you can get a free chlamydia test kit.');
+        expect(output).to.equal('You can get a free chlamydia test kit from these places.');
       });
 
       it('should return a paid for kit analyticsPageTitle when the query is related to kit and age is over 25', () => {
@@ -443,7 +443,7 @@ describe('queryMapper', () => {
           type: constants.serviceTypes.kit,
         };
         const output = queryMapper.getResultsInfo(query, location).resultsExplanation;
-        expect(output).to.equal('Here is a list of pharmacies where you can buy a chlamydia test kit.');
+        expect(output).to.equal('You can buy a test kit from these places.');
       });
     });
 
