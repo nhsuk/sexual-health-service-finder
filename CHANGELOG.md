@@ -2,6 +2,7 @@
 ==================
 - Update content post sign-off
 - Update `npm` dependencies
+- Improve accessibility of search and logos
 
 0.8.0 / 2018-04-27
 ==================
