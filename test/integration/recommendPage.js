@@ -33,7 +33,7 @@ describe('Recommend page', () => {
     iExpect.htmlWith200Status(res);
     const $ = cheerio.load(res.text);
 
-    expect($('.local-header--title--question').text()).to.equal('We recommend');
+    expect($('.local-header--title--question').text()).to.equal('We recommend:');
   });
 
   it('should not be indexed', async () => {
@@ -65,7 +65,7 @@ describe('Recommend page', () => {
     iExpect.htmlWith200Status(res);
     const $ = cheerio.load(res.text);
 
-    expect($('.local-header--title--question').text()).to.equal('We recommend');
+    expect($('.local-header--title--question').text()).to.equal('We recommend:');
   });
 
   it('page content should be related to being under 16, if age question is answered 15 or younger', async () => {

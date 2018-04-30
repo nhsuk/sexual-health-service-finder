@@ -1,13 +1,13 @@
-/* eslint-disable sort-keys */
 const bodyParser = require('body-parser');
 const compression = require('compression');
 const cookieParser = require('cookie-parser');
 const express = require('express');
-const helmet = require('helmet');
 const nunjucks = require('nunjucks');
+
 const constants = require('../app/lib/constants');
 const errorCounter = require('../app/lib/prometheus/counters').errorPageViews;
 const locals = require('../app/middleware/locals');
+const helmet = require('./helmet');
 const log = require('../app/lib/logger');
 const promBundle = require('../app/lib/prometheus/bundle').middleware;
 const router = require('./routes');
@@ -30,51 +30,7 @@ module.exports = (app, config) => {
     });
   log.debug({ config: { nunjucksEnvironment } }, 'nunjucks environment configuration');
 
-  app.use(helmet({
-    frameguard: { action: 'deny' },
-    hsts: { includeSubDomains: false },
-    contentSecurityPolicy: {
-      directives: {
-        defaultSrc: [
-          '\'self\'',
-        ],
-        childSrc: [
-          '*.hotjar.com',
-        ],
-        scriptSrc: [
-          '\'self\'',
-          '\'unsafe-eval\'',
-          '\'unsafe-inline\'',
-          'data:',
-          '*.google-analytics.com',
-          '*.hotjar.com',
-          '*.webtrends.com',
-          '*.webtrendslive.com',
-        ],
-        imgSrc: [
-          '\'self\'',
-          'data:',
-          '*.google-analytics.com',
-          '*.hotjar.com',
-          '*.webtrends.com',
-          '*.webtrendslive.com',
-          '*.nhs.uk',
-        ],
-        styleSrc: [
-          '\'self\'',
-          '\'unsafe-inline\'',
-          '*.nhs.uk',
-        ],
-        fontSrc: [
-          '*.nhs.uk',
-        ],
-        connectSrc: [
-          '\'self\'',
-          '*.hotjar.com:*',
-        ],
-      },
-    },
-  }));
+  helmet(app);
 
   app.use(locals(config));
 
@@ -111,8 +67,8 @@ module.exports = (app, config) => {
     log.error({ error: { err, req, res } }, 'Error');
     res.status(statusCode);
     res.render('error', {
-      message: err,
       error: app.get('env') === 'development' ? err : {},
+      message: err,
       title: 'error',
     });
   });
@@ -121,4 +77,3 @@ module.exports = (app, config) => {
     res.redirect(constants.siteRoot);
   });
 };
-/* eslint-enable sort-keys */
