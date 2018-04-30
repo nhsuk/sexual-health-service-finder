@@ -1,6 +1,7 @@
-0.9.1 / 2018-04-27
+0.9.1 / 2018-04-30
 ==================
 - Final content tweaks
+- Allow fonts to be loaded from `*.hotjar.com`
 
 0.9.0 / N/A
 ==================
