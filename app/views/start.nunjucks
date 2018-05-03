@@ -15,13 +15,13 @@
 {% endif %}
 
 <div class="reading-width">
-  <p>The only way to know if you have <a href="https://www.nhs.uk/conditions/chlamydia/" class="conditions_page_tracking">chlamydia</a> is to get tested.</p>
+  <p>The only way to know if you have <a href="https://beta.nhs.uk/conditions/chlamydia/about/?WT.mc_id=ChlamydiaTestService" class="conditions_page_tracking">chlamydia</a> is to get tested.</p>
 
   <p>This service can help you:</p>
 
   <ul>
     <li>find places near you to get tested by a sexual health professional</li>
-    <li>get a chlamydia home test kit</li>
+    <li>get a chlamydia home test kit (you may have to pay for this)</li>
   </ul>
 
   <p>You may also be able to get a test from your GP.</p>

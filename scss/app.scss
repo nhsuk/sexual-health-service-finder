@@ -21,6 +21,7 @@ body {
       font-size: 18px;
       margin-top: 16px;
     }
+
     @include media(tablet) {
       h1 {
         font-size: 40px;
@@ -583,6 +584,9 @@ form {
   }
   * + * {
     margin-top: 0;
+  }
+  .page-section p {
+    margin-bottom: 16px;
   }
   .multiple-choice:not(:first-child) {
     margin-top: 32px;

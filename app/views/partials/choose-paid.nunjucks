@@ -5,22 +5,7 @@
     <label class="multiple-choice--radio" aria-hidden="true" for="1">
       <span class="multiple--choice-option">See a sexual health professional near you</span>
     </label>
-    <details class="details--choice multiple-choice--option-description" role="group">
-      <summary data-analytics="summary" role="button" aria-controls="details-content-1" aria-expanded="false" class="about_sexual_health_professionals_tracking">
-        <span class="details__summary details__summary--choice">About sexual health professionals</span>
-      </summary>
-      <div class="details__content" id="details-content-1" aria-hidden="true">
-        <div class="reading-width">
-          <p>They'll ask about your sexual activity.</p>
-          <p>You or they take samples from the areas that might be infected. This may be done by:</p>
-          <ul>
-            <li>wiping a cotton bud inside your vagina, anus or mouth</a></li>
-            <li>peeing into a container</a></li>
-          </ul>
-          <p>Tests are free, and treatment is free if you need it. You'll usually get your results by phone or text message within 2 weeks. Your results are private.</p>
-        </div>
-      </div>
-    </details>
+    {% include "partials/about-sexperts.nunjucks" %}
   </div>
   <div class="multiple-choice multiple-choice--description">
     <label class="sr-only" for="2">Buy a test kit near you</label>
@@ -34,7 +19,7 @@
       </summary>
       <div class="details__content" id="details-content-1" aria-hidden="true">
         <div class="reading-width">
-          <p>You can buy a test kit from some pharmacies. You need to take samples from areas that might be infected. You may have to:</p>
+          <p>You can buy a test kit from some pharmacies. They typically cost around £20 to £30. You need to take samples from areas that might be infected. You may have to:</p>
           <ul>
             <li>wipe a cotton bud inside your vagina, anus or mouth</a></li>
             <li>pee into a container</a></li>

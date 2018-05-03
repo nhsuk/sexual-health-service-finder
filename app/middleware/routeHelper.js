@@ -55,7 +55,6 @@ function renderOnlinePage(req, res) {
 }
 
 function renderStartPageWithError(req, res) {
-  res.locals.errorMessage = messages.invalidUrlMessage();
   renderer.startPage(req, res);
 }
 

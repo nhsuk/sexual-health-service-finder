@@ -1,0 +1,16 @@
+<details class="details--choice multiple-choice--option-description" role="group">
+  <summary data-analytics="summary" role="button" aria-controls="details-content-1" aria-expanded="false" class="about_sexual_health_professionals_tracking">
+    <span class="details__summary details__summary--choice">About sexual health professionals</span>
+  </summary>
+  <div class="details__content" id="details-content-1" aria-hidden="true">
+    <div class="reading-width">
+      <p>They'll ask you about your sexual activity.</p>
+      <p>You or they take samples from the areas that might be infected. This may be done by:</p>
+      <ul>
+        <li>wiping a cotton bud inside your vagina, anus or mouth</a></li>
+        <li>peeing into a container</a></li>
+      </ul>
+      <p>Tests are free, and treatment is free if you need it. You'll usually get your results by phone or text message within 2 weeks. Your results are private.</p>
+    </div>
+  </div>
+</details>

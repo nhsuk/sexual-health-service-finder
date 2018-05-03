@@ -35,7 +35,6 @@ function location(req, res) {
     }
     return res.render('location');
   }
-  res.locals.errorMessage = messages.invalidUrlMessage();
   return res.render('start');
 }
 
@@ -45,7 +44,6 @@ function chlamydiaOnlineRedirect(req, res) {
 
 function results(req, res) {
   if ((!res.locals.correctResultsParams)) {
-    res.locals.errorMessage = messages.invalidUrlMessage();
     return res.render('start');
   }
   return res.render('results');

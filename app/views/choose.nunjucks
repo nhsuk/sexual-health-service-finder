@@ -21,6 +21,7 @@
     <div class="reading-width">
       <div class="form-group {% if errorMessage %} error {% endif %}">
         <input type="hidden" name="origin" value="{{ origin }}" />
+        <p>Choose one option.</p>
         {% if under25 %}
           {% include "partials/choose-free.nunjucks" %}
         {% else %}

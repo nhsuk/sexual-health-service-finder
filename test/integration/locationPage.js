@@ -2,7 +2,6 @@ const chai = require('chai');
 const chaiHttp = require('chai-http');
 const cheerio = require('cheerio');
 const constants = require('../../app/lib/constants');
-const messages = require('../../app/lib/messages');
 const server = require('../../server');
 
 const expect = chai.expect;
@@ -19,7 +18,7 @@ async function assertMapping(args, expectedMessage1, errorMessage) {
   expect($('title').text()).to.equal('Find a chlamydia test - NHS.UK');
   expect($('.local-header--title--question').text()).to.equal(expectedMessage1);
   if (errorMessage) {
-    expect($('.local-header--error.error-summary-heading').text()).to.contain(errorMessage);
+    expect($('.local-header--step').text()).to.equal('');
   } else {
     expect($('.local-header--step').text()).to.equal('Step 4 of 4');
   }
@@ -86,7 +85,7 @@ describe('Location page', () => {
       await assertMapping(
         {},
         'Find a chlamydia test',
-        messages.invalidUrlMessage()
+        'error'
       );
     });
 
@@ -94,7 +93,7 @@ describe('Location page', () => {
       await assertMapping(
         { type: constants.serviceTypes.kit },
         'Find a chlamydia test',
-        messages.invalidUrlMessage()
+        'error'
       );
     });
 
@@ -102,7 +101,7 @@ describe('Location page', () => {
       await assertMapping(
         { origin: constants.serviceChoices.under16, type: constants.serviceTypes.kit },
         'Find a chlamydia test',
-        messages.invalidUrlMessage()
+        'error'
       );
     });
 
@@ -110,7 +109,7 @@ describe('Location page', () => {
       await assertMapping(
         { origin: constants.serviceChoices.symptoms, type: constants.serviceTypes.kit },
         'Find a chlamydia test',
-        messages.invalidUrlMessage()
+        'error'
       );
     });
   });

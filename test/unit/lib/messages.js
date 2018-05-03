@@ -4,13 +4,6 @@ const messages = require('../../../app/lib/messages');
 const expect = chai.expect;
 
 describe('messages', () => {
-  describe('invalid url message', () => {
-    it('should have an error message for when no answer for symptoms is selected', () => {
-      const message = messages.invalidUrlMessage();
-      expect(message).to.equal('This is not a valid url, please start again.');
-    });
-  });
-
   describe('mandatory selection message', () => {
     it('should have an error message for when no answer for symptoms is selected', () => {
       const message = messages.mandatorySelectionMessage();
