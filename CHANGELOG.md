@@ -1,3 +1,7 @@
+0.9.2 / 2018-05-03
+==================
+- Content based on accessibility lab and link to beta chlamydia page
+
 0.9.1 / 2018-04-30
 ==================
 - Final content tweaks
@@ -21,6 +25,7 @@
 - Mobile viewport click to call (tel) links.
 - Accessibility improvements
 - Webtrends analytics tags
+
 
 0.6.0 / 2018-04-19
 ==================
