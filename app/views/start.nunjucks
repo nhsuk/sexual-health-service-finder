@@ -65,7 +65,7 @@
   </details>
 
   <details class="details--country details--country--wales" id="wales" role="group">
-    <summary data-analytics="summary" role="button" aria-controls="details-content-2" aria-expanded="false" class="wales_information_tracking">
+    <summary data-analytics="summary" role="button" aria-controls="details-content-2" aria-expanded="false" class="summary--toggle wales_information_tracking">
       <span class="details__summary details__summary--country">Wales</span>
     </summary>
 
@@ -83,7 +83,7 @@
   </details>
 
   <details class="details--country details--country--northern" id="northern" role="group">
-    <summary data-analytics="summary" role="button" aria-controls="details-content-3" aria-expanded="false" class="northern_ireland_information_tracking">
+    <summary data-analytics="summary" role="button" aria-controls="details-content-3" aria-expanded="false" class="summary--toggle northern_ireland_information_tracking">
       <span class="details__summary details__summary--country">Northern Ireland</span>
     </summary>
 

@@ -1,5 +1,5 @@
 <details class="details--choice multiple-choice--option-description" role="group">
-  <summary data-analytics="summary" role="button" aria-controls="details-content-1" aria-expanded="false" class="about_sexual_health_professionals_tracking">
+  <summary data-analytics="summary" role="button" aria-controls="details-content-1" aria-expanded="false" class="summary--toggle about_sexual_health_professionals_tracking">
     <span class="details__summary details__summary--choice">About sexual health professionals</span>
   </summary>
   <div class="details__content" id="details-content-1" aria-hidden="true">

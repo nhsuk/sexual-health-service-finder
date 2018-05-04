@@ -56,7 +56,9 @@ body {
       display: none;
     }
     &.open {
-      display: block;
+      .details__content {
+        display: block;
+      }
     }
   }
   .details--country {

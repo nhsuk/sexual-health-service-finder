@@ -6,7 +6,7 @@
       <span class="multiple--choice-option">Collect a free test kit near you</span>
     </label>
     <details class="details--choice multiple-choice--option-description" role="group">
-      <summary data-analytics="summary" role="button" aria-controls="details-content-1" aria-expanded="false" class="about_free_test_kits_tracking">
+      <summary data-analytics="summary" role="button" aria-controls="details-content-1" aria-expanded="false" class="summary--toggle about_free_test_kits_tracking">
         <span class="details__summary details__summary--choice">About free test kits</span>
       </summary>
       <div class="details__content" id="details-content-1" aria-hidden="true">
@@ -28,7 +28,7 @@
       <span class="multiple--choice-option">Order a free test kit online</span>
     </label>
     <details class="details--choice multiple-choice--option-description" role="group">
-      <summary data-analytics="summary" role="button" aria-controls="details-content-1" aria-expanded="false" class="about_free_test_kits_online_tracking">
+      <summary data-analytics="summary" role="button" aria-controls="details-content-1" aria-expanded="false" class="summary--toggle about_free_test_kits_online_tracking">
         <span class="details__summary details__summary--choice">About free test kits online</span>
       </summary>
       <div class="details__content" id="details-content-1" aria-hidden="true">
