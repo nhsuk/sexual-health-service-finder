@@ -47,7 +47,7 @@
   </div>
 
   <details class="details--country details--country--scotland" id="scotland" role="group">
-    <summary data-analytics="summary" role="button" aria-controls="details-content-1" aria-expanded="false" class="scotland_information_tracking">
+    <summary data-analytics="summary" role="button" aria-controls="details-content-1" aria-expanded="false" class="summary--toggle scotland_information_tracking">
       <span class="details__summary details__summary--country">Scotland</span>
     </summary>
 
