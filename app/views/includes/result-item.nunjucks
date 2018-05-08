@@ -54,11 +54,11 @@
 
 {% if service.serviceDetails %}
   <details class="results__item__service-details" role="group">
-    <summary data-analytics="summary" role="button" aria-controls="details-content-0" aria-expanded="false" class="summary--toggle service_information_tracking">
+    <summary data-analytics="summary" role="button" aria-controls="details-content-1" aria-expanded="false" class="summary--toggle service_information_tracking">
       <span class="details__summary">See service information</span>
     </summary>
 
-    <div class="details__content" id="details-content-0" aria-hidden="true">
+    <div class="details__content" id="details-content-1" aria-hidden="true">
       <div class="reading-width">
         <p class="results__serviceDetails">
           {{ service.serviceDetails }}
