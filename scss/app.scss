@@ -51,16 +51,6 @@ body {
       margin-top: 0;
     }
   }
-  details {
-    .details__content {
-      display: none;
-    }
-    &.open {
-      .details__content {
-        display: block;
-      }
-    }
-  }
   .details--country {
     background-color: $white;
     padding: 32px;
