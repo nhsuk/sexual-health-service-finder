@@ -1,5 +1,7 @@
 <p>We're not able to offer test kits if you're under 16. You'll need to see a health professional to get tested.</p>
 
+{% include "partials/about-sexperts.nunjucks" %}
+
 <p>The health professional will also want to check you're safe. They won't tell anyone you saw them, or share what you said - unless they're worried about your safety.</p>
 
 <p>They'll usually speak to you before asking for help from anyone else.</p>

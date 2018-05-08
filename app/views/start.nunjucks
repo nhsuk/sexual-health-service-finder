@@ -15,13 +15,13 @@
 {% endif %}
 
 <div class="reading-width">
-  <p>The only way to know if you have <a href="https://www.nhs.uk/conditions/chlamydia/" class="conditions_page_tracking">chlamydia</a> is to get tested.</p>
+  <p>The only way to know if you have <a href="https://beta.nhs.uk/conditions/chlamydia/about/?WT.mc_id=ChlamydiaTestService" class="conditions_page_tracking">chlamydia</a> is to get tested.</p>
 
   <p>This service can help you:</p>
 
   <ul>
     <li>find places near you to get tested by a sexual health professional</li>
-    <li>get a chlamydia home test kit</li>
+    <li>get a chlamydia home test kit (you may have to pay for this)</li>
   </ul>
 
   <p>You may also be able to get a test from your GP.</p>
@@ -41,13 +41,13 @@
 
         <p>If you would prefer to speak to someone, call the sexual health helpline for advice on <a href="tel:03001237123" class="england_helpline_tracking">0300 123 7123</a>. Open Monday to Friday, 9am to 8pm.</p>
 
-        <p><a href="https://www.gov.uk/call-charges" class="details__call-charges" target="_blank">Find out about call charges on GOV.UK</a></p>
+        <p><a href="https://www.gov.uk/call-charges" class="details__call-charges">Find out about call charges on GOV.UK</a></p>
       </div>
     </div>
   </div>
 
   <details class="details--country details--country--scotland" id="scotland" role="group">
-    <summary data-analytics="summary" role="button" aria-controls="details-content-1" aria-expanded="false" class="scotland_information_tracking">
+    <summary data-analytics="summary" role="button" aria-controls="details-content-1" aria-expanded="false" class="summary--toggle scotland_information_tracking">
       <span class="details__summary details__summary--country">Scotland</span>
     </summary>
 
@@ -56,16 +56,16 @@
         <p>To find a chlamydia test in Scotland:</p>
 
         <ul>
-          <li>use the <a href="http://www.sexualhealthscotland.co.uk/get-help/sexual-health-service-finder" target="_blank" class="scotland_finder_tracking">Sexual Health Scotland website</a></li>
+          <li>use the <a href="http://www.sexualhealthscotland.co.uk/get-help/sexual-health-service-finder" class="scotland_finder_tracking">Sexual Health Scotland website</a></li>
           <li>call Sexual Health Scotland on <a href="tel:0800224488" class="scotland_helpline_tracking">0800 22 44 88</a> (open Monday to Friday, 8am to 10pm; Saturday and Sunday, 9am to 5pm)</li>
         </ul>
-        <p><a href="https://www.gov.uk/call-charges" class="details__call-charges" target="_blank">Find out about call charges on GOV.UK</a></p>
+        <p><a href="https://www.gov.uk/call-charges" class="details__call-charges">Find out about call charges on GOV.UK</a></p>
       </div>
     </div>
   </details>
 
   <details class="details--country details--country--wales" id="wales" role="group">
-    <summary data-analytics="summary" role="button" aria-controls="details-content-2" aria-expanded="false" class="wales_information_tracking">
+    <summary data-analytics="summary" role="button" aria-controls="details-content-2" aria-expanded="false" class="summary--toggle wales_information_tracking">
       <span class="details__summary details__summary--country">Wales</span>
     </summary>
 
@@ -74,16 +74,16 @@
         <p>To find a chlamydia test in Wales:</p>
 
         <ul>
-          <li>use the <a href="https://www.nhsdirect.wales.nhs.uk/LocalServices/?s=SexualHealth" target="_blank" class="wales_nhsdirect_tracking">NHS Direct Wales website</a></li>
+          <li>use the <a href="https://www.nhsdirect.wales.nhs.uk/LocalServices/?s=SexualHealth" class="wales_nhsdirect_tracking">NHS Direct Wales website</a></li>
           <li>call NHS Direct Wales on <a href="tel:08454647" class="wales_nhsdirect_helpline_tracking">0845 46 47</a> (open 24 hours a day, every day)</li>
         </ul>
-        <p><a href="https://www.gov.uk/call-charges" class="details__call-charges" target="_blank">Find out about call charges on GOV.UK</a></p>
+        <p><a href="https://www.gov.uk/call-charges" class="details__call-charges">Find out about call charges on GOV.UK</a></p>
       </div>
     </div>
   </details>
 
   <details class="details--country details--country--northern" id="northern" role="group">
-    <summary data-analytics="summary" role="button" aria-controls="details-content-3" aria-expanded="false" class="northern_ireland_information_tracking">
+    <summary data-analytics="summary" role="button" aria-controls="details-content-3" aria-expanded="false" class="summary--toggle northern_ireland_information_tracking">
       <span class="details__summary details__summary--country">Northern Ireland</span>
     </summary>
 
@@ -92,11 +92,11 @@
         <p>To find a chlamydia test in Northern Ireland:</p>
 
         <ul>
-          <li>use the <a href="https://sexualhealthni.info/chlamydia" target="_blank" class="northern_ireland_website_tracking">Sexual Health NI website</a></li>
+          <li>use the <a href="https://sexualhealthni.info/chlamydia" class="northern_ireland_website_tracking">Sexual Health NI website</a></li>
           <li>call the Family Planning Association sexual health helpline on <a href="tel:03451228687" class="northern_ireland_helpline_tracking">0345 122 8687</a> (open Monday to Friday, 9am to 5pm; closed on bank holidays)</li>
           </li>
         </ul>
-        <p><a href="https://www.gov.uk/call-charges" class="details__call-charges" target="_blank">Find out about call charges on GOV.UK</a></p>
+        <p><a href="https://www.gov.uk/call-charges" class="details__call-charges">Find out about call charges on GOV.UK</a></p>
       </div>
     </div>
   </details>

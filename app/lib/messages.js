@@ -1,7 +1,3 @@
-function invalidUrlMessage() {
-  return 'This is not a valid url, please start again.';
-}
-
 function mandatorySelectionMessage() {
   return 'You must choose one of the options.';
 }
@@ -21,7 +17,6 @@ function technicalProblems() {
 module.exports = {
   emptyPostcodeMessage,
   invalidPostcodeMessage,
-  invalidUrlMessage,
   mandatorySelectionMessage,
   technicalProblems,
 };

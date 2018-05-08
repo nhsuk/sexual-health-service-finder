@@ -21,6 +21,7 @@ body {
       font-size: 18px;
       margin-top: 16px;
     }
+
     @include media(tablet) {
       h1 {
         font-size: 40px;
@@ -48,6 +49,16 @@ body {
       font-size: 18px;
       font-weight: 400;
       margin-top: 0;
+    }
+  }
+  details {
+    .details__content {
+      display: none;
+    }
+    &.open {
+      .details__content {
+        display: block;
+      }
     }
   }
   .details--country {
@@ -583,6 +594,9 @@ form {
   }
   * + * {
     margin-top: 0;
+  }
+  .page-section p {
+    margin-bottom: 16px;
   }
   .multiple-choice:not(:first-child) {
     margin-top: 32px;
