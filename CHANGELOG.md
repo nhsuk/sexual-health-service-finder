@@ -2,7 +2,7 @@
 ==================
 - Content based on accessibility lab and link to beta chlamydia page
 - Open links in same window
-- Stopped using details summary for show/hide panels due to lack of IE & accessibility support
+- HTML5 summary polyfill for Internet Explorer
 
 0.9.1 / 2018-04-30
 ==================
