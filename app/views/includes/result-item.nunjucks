@@ -32,7 +32,7 @@
 {% endif %}
 
 {% if service.openingTimes %}
-  <details class="results__item__opening-times" role="group">
+  <details class="results__item__opening-times" role="group" data-open="">
     <summary data-analytics="summary" role="button" aria-controls="details-content-0" aria-expanded="false" class="summary--toggle opening_times_tracking">
       <span class="details__summary">See opening times</span>
     </summary>
@@ -53,7 +53,7 @@
 {% endif %}
 
 {% if service.serviceDetails %}
-  <details class="results__item__service-details" role="group">
+  <details class="results__item__service-details" role="group" data-open="">
     <summary data-analytics="summary" role="button" aria-controls="details-content-0" aria-expanded="false" class="summary--toggle service_information_tracking">
       <span class="details__summary">See service information</span>
     </summary>
