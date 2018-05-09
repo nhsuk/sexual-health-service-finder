@@ -51,16 +51,6 @@ body {
       margin-top: 0;
     }
   }
-  details {
-    .details__content {
-      display: none;
-    }
-    &.open {
-      .details__content {
-        display: block;
-      }
-    }
-  }
   .details--country {
     background-color: $white;
     padding: 32px;
@@ -705,13 +695,13 @@ details {
     display: inline-block;
     content: "\25b6";
     padding: 0 0.1em;
-    margin-right: 0.4em;
-    font-size: 0.9em;
+    margin-right: 5px;
+    font-size: 30px;
   }
   &.details_shim_open > summary:before {
     display: inline-block;
     content: "\25bc";
     padding: 0;
-    margin-right: 0.35em;
+    margin-right: 5px;
   }
 }
