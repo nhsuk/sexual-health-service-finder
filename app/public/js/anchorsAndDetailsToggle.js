@@ -7,9 +7,9 @@
     var anchor = window.location.hash.substr(1);
     var anchors = ['scotland', 'wales', 'northern'];
     $.each(anchors, function (index, value) {
-      $('#' + value).removeAttr('open');
+      $('#' + value).removeClass('open');
     });
-    $('#' + anchor).attr('open', 'true');
+    $('#' + anchor).addClass('open');
 
     $('html,body').animate({
       scrollTop: $('#' + anchor).offset().top
