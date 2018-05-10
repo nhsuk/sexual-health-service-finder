@@ -62,14 +62,14 @@ describe('Results page for kits for 16 to 24 year olds', function test() {
         const searchResultsAddress = $('.results__address.results__address-lines').first();
         const searchResultsPhone = $('.results__address.results__telephone a').first();
         const searchResultsMapLink = $('.results__item__link a').first();
-        const searchResultsOpeningTimes = $('.results__item__opening-times summary span').first();
-        const searchResultsService = $('.results__item__service-details summary span').first();
+        const searchResultsOpeningTimes = $('.results__item__opening-times a').first();
+        const searchResultsService = $('.results__item__service-details a').first();
 
         expect(searchResultsDistance).to.not.equal(undefined);
         expect(searchResultsName).to.not.equal(undefined);
         expect(searchResultsAddress).to.not.equal(undefined);
         expect(searchResultsPhone).to.not.equal(undefined);
-        expect(searchResultsOpeningTimes.text()).to.equal('See opening times');
+        expect(searchResultsOpeningTimes.text()).to.contain('See opening times');
         expect(searchResultsService).to.not.equal(undefined);
         const name = searchResultsName.text().trim().replace('\n', '');
         const address = searchResultsAddress.text().trim().replace('\n', '');

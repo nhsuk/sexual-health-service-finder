@@ -51,27 +51,78 @@ body {
       margin-top: 0;
     }
   }
-  details {
+  .details {
+    .summary--toggle {
+      padding-left: 25px;
+      position: relative;
+      .caret {
+        margin-right: 15px;
+        -ms-transform: rotate(270deg); 
+        -webkit-transform: rotate(270deg); 
+        transform: rotate(270deg);
+        border-top: 10px dashed;
+        border-right: 7px solid transparent;
+        border-left: 7px solid transparent;
+        position: absolute;
+        left: 0;
+        top: 11px;
+      }
+    }
     .details__content {
       display: none;
     }
     &.open {
+      .summary--toggle {
+        .caret {
+          -ms-transform: rotate(360deg); 
+          -webkit-transform: rotate(360deg); 
+          transform: rotate(360deg);
+        }
+      }
       .details__content {
         display: block;
       }
     }
-  }
-  .details--country {
-    background-color: $white;
-    padding: 32px;
-    h2, 
-    .details__summary--country {
-      font-size: 28px;
+    .summary--toggle {
+      font-size: 24px;
       margin-top: 0;
       padding-top: 0;
       font-weight: 600;
       line-height: 32px;
     }
+    @include media(tablet) {
+      .summary--toggle {
+        font-size: 28px;
+      }
+    }
+    &__small {
+      .summary--toggle {
+        font-size: 20px;
+        font-weight: 400;
+        line-height: 32px;
+        .caret {
+          top: 8px;
+        }
+      }
+    }
+    &.multiple-choice--option-description {
+      .summary--toggle,
+      .details__content {
+        margin-left: 50px;
+      }
+    }
+    &__results {
+      margin-top: 16px;
+      .summary--toggle,
+      .details__content {
+        margin-left: 0;
+      }
+    }
+  }
+  // Start page details
+  .details--country {
+    background-color: $white;
+    padding: 32px;
     .details__content {
       .details__opening-times,
       .details__call-charges {
@@ -88,16 +139,6 @@ body {
           width: auto;
         }
       }
-    }
-    &.details--country--england {
-      .details__content {
-        margin-top: 16px;
-      }
-    }
-  }
-  details {
-    summary {
-      padding-top: 0;
     }
   }
   .recommend__tick {
@@ -684,34 +725,6 @@ form {
   }
 }
 
-/* HTML5 summary polyfill for IE */
-
-details {
-  &.details_shim_closed, &.details_shim_open {
-    display: block;
-  }
-  &.details_shim_closed > {
-    * {
-      display: none;
-    }
-    summary {
-      display: block;
-    }
-  }
-  &.details_shim_open > summary {
-    display: block;
-  }
-  &.details_shim_closed > summary:before {
-    display: inline-block;
-    content: "\25b6";
-    padding: 0 0.1em;
-    margin-right: 0.4em;
-    font-size: 0.9em;
-  }
-  &.details_shim_open > summary:before {
-    display: inline-block;
-    content: "\25bc";
-    padding: 0;
-    margin-right: 0.35em;
-  }
+.summary--toggle {
+  
 }

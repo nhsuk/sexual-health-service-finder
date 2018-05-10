@@ -1,8 +1,11 @@
+0.9.3 / 2018-05-11
+==================
+- JavaScript/CSS instead of HTML5 details as its not supported any version of IE
+
 0.9.2 / 2018-05-03
 ==================
 - Content based on accessibility lab and link to beta chlamydia page
 - Open links in same window
-- HTML5 summary polyfill for Internet Explorer
 
 0.9.1 / 2018-04-30
 ==================

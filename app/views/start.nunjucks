@@ -26,7 +26,7 @@
 
   <p>You may also be able to get a test from your GP.</p>
 
-  <div class="details--country details--country--england" id="england">
+  <div class="details--country" id="england">
     <div class="details__header">
         <h2>England</h2>
     </div>
@@ -46,12 +46,10 @@
     </div>
   </div>
 
-  <details class="details--country details--country--scotland" id="scotland" role="group">
-    <summary data-analytics="summary" role="button" aria-controls="details-content-1" aria-expanded="false" class="summary--toggle scotland_information_tracking">
-      <span class="details__summary details__summary--country">Scotland</span>
-    </summary>
+  <div class="details details--country" id="scotland" role="group">
+    <a href="javascript:void(0)" class="summary--toggle scotland_information_tracking" aria-expanded="false"><span class="caret"></span>Scotland</a>
 
-    <div class="details__content" id="details-content-1" aria-hidden="true">
+    <div class="details__content" id="details-content-1">
       <div class="reading-width">
         <p>To find a chlamydia test in Scotland:</p>
 
@@ -62,14 +60,12 @@
         <p><a href="https://www.gov.uk/call-charges" class="details__call-charges">Find out about call charges on GOV.UK</a></p>
       </div>
     </div>
-  </details>
+  </div>
 
-  <details class="details--country details--country--wales" id="wales" role="group">
-    <summary data-analytics="summary" role="button" aria-controls="details-content-2" aria-expanded="false" class="summary--toggle wales_information_tracking">
-      <span class="details__summary details__summary--country">Wales</span>
-    </summary>
+  <div class="details details--country" id="wales" role="group">
+    <a href="javascript:void(0)" class="summary--toggle wales_information_tracking" aria-expanded="false"><span class="caret"></span>Wales</a>
 
-    <div class="details__content" id="details-content-2" aria-hidden="true">
+    <div class="details__content" id="details-content-2">
       <div class="reading-width">
         <p>To find a chlamydia test in Wales:</p>
 
@@ -80,14 +76,12 @@
         <p><a href="https://www.gov.uk/call-charges" class="details__call-charges">Find out about call charges on GOV.UK</a></p>
       </div>
     </div>
-  </details>
+  </div>
 
-  <details class="details--country details--country--northern" id="northern" role="group">
-    <summary data-analytics="summary" role="button" aria-controls="details-content-3" aria-expanded="false" class="summary--toggle northern_ireland_information_tracking">
-      <span class="details__summary details__summary--country">Northern Ireland</span>
-    </summary>
+  <div class="details details--country" id="northern" role="group">
+    <a href="javascript:void(0)" class="summary--toggle northern_ireland_information_tracking" aria-expanded="false"><span class="caret"></span>Northern Ireland</a>
 
-    <div class="details__content" id="details-content-3" aria-hidden="true">
+    <div class="details__content" id="details-content-3">
       <div class="reading-width">
         <p>To find a chlamydia test in Northern Ireland:</p>
 
@@ -99,7 +93,7 @@
         <p><a href="https://www.gov.uk/call-charges" class="details__call-charges">Find out about call charges on GOV.UK</a></p>
       </div>
     </div>
-  </details>
+  </div>
 
 </div>
 

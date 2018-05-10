@@ -32,10 +32,8 @@
 {% endif %}
 
 {% if service.openingTimes %}
-  <details class="results__item__opening-times" role="group">
-    <summary data-analytics="summary" role="button" aria-controls="details-content-0" aria-expanded="false" class="summary--toggle opening_times_tracking">
-      <span class="details__summary">See opening times</span>
-    </summary>
+  <div class="details details__small details__results results__item__opening-times" role="group">
+    <a href="javascript:void(0)" class="summary--toggle opening_times_tracking" aria-expanded="false"><span class="caret"></span>See opening times</a>
 
     <div class="details__content" id="details-content-0" aria-hidden="true">
       <div class="reading-width">
@@ -49,21 +47,19 @@
         {% endif %}
       </div>
     </div>
-  </details>
+  </div>
 {% endif %}
 
 {% if service.serviceDetails %}
-  <details class="results__item__service-details" role="group">
-    <summary data-analytics="summary" role="button" aria-controls="details-content-0" aria-expanded="false" class="summary--toggle service_information_tracking">
-      <span class="details__summary">See service information</span>
-    </summary>
+  <div class="details details__small details__results results__item__service-details" role="group">
+    <a href="javascript:void(0)" class="summary--toggle service_information_tracking" aria-expanded="false"><span class="caret"></span>See service information</a>
 
-    <div class="details__content" id="details-content-0" aria-hidden="true">
+    <div class="details__content" id="details-content-0">
       <div class="reading-width">
         <p class="results__serviceDetails">
           {{ service.serviceDetails }}
         </p>
       </div>
     </div>
-  </details>
+  </div>
 {% endif %}

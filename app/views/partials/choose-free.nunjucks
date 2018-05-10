@@ -5,10 +5,9 @@
     <label class="multiple-choice--radio" aria-hidden="true" for="1">
       <span class="multiple--choice-option">Collect a free test kit near you</span>
     </label>
-    <details class="details--choice multiple-choice--option-description" role="group">
-      <summary data-analytics="summary" role="button" aria-controls="details-content-1" aria-expanded="false" class="summary--toggle about_free_test_kits_tracking">
-        <span class="details__summary details__summary--choice">About free test kits</span>
-      </summary>
+    <div class="details details__small details--choice multiple-choice--option-description" role="group">
+      <a href="javascript:void(0)" class="summary--toggle about_free_test_kits_tracking" aria-expanded="false"><span class="caret"></span>About free test kits</a>
+
       <div class="details__content" id="details-content-1" aria-hidden="true">
         <div class="reading-width">
           <p>You pick up a kit from somewhere nearby. You'll need to take samples from areas that might be infected. You may have to:</p>
@@ -19,7 +18,7 @@
           <p>You send your samples by Freepost to be tested. You get your results by phone or text message within 2 weeks. Your results are private. You might have to pay a prescription charge if you need treatment.</p>
         </div>
       </div>
-    </details>
+    </div>
   </div>
   <div class="multiple-choice multiple-choice--description">
     <label class="sr-only" for="2">Order a free test kit online</label>
@@ -27,10 +26,9 @@
     <label class="multiple-choice--radio" aria-hidden="true" for="2">
       <span class="multiple--choice-option">Order a free test kit online</span>
     </label>
-    <details class="details--choice multiple-choice--option-description" role="group">
-      <summary data-analytics="summary" role="button" aria-controls="details-content-1" aria-expanded="false" class="summary--toggle about_free_test_kits_online_tracking">
-        <span class="details__summary details__summary--choice">About free test kits online</span>
-      </summary>
+    <div class="details details__small details--choice multiple-choice--option-description" role="group">
+      <a href="javascript:void(0)" class="summary--toggle about_free_test_kits_online_tracking" aria-expanded="false"><span class="caret"></span>About free test kits online</a>
+
       <div class="details__content" id="details-content-1" aria-hidden="true">
         <div class="reading-width">
           <p>A kit will be sent to you in a plain envelope. You'll need to take samples from the areas that might be infected. You may have to:</p>
@@ -41,7 +39,7 @@
           <p>You'll send your samples by Freepost to be tested. You'll get your results by phone or text message within 2 weeks. Your results are private. You might have to pay a prescription charge if you need treatment.</p>
         </div>
       </div>
-    </details>
+    </div>
   </div>
   <div class="multiple-choice multiple-choice--description">
     <label class="sr-only" for="3">See a sexual health professional near you</label>
