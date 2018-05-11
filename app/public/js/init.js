@@ -4,4 +4,3 @@ require('./radioSelect');
 require('./anchorsAndDetailsToggle');
 require('./analytics');
 require('./openToggle');
-require('./summary-polyfill');
