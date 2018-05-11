@@ -1,4 +1,4 @@
-<fieldset id="choose">
+<fieldset id="choose" class="mutliple-choice-choose">
   <div class="multiple-choice multiple-choice--description">
     <label class="sr-only" for="1">See a sexual health professional for free near you</label>
     <input id="1" name="type" type="radio" value="professional" {% if errorMessage %} aria-describedby="error-message" aria-invalid="true"{% endif %}>

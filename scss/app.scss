@@ -105,17 +105,15 @@ body {
         }
       }
     }
-    &.multiple-choice--option-description {
+    &__results {
+      margin-top: 16px;
+    }
+  }
+  @include media(tablet) {
+    .mutliple-choice-choose {
       .summary--toggle,
       .details__content {
         margin-left: 50px;
-      }
-    }
-    &__results {
-      margin-top: 16px;
-      .summary--toggle,
-      .details__content {
-        margin-left: 0;
       }
     }
   }

@@ -1,3 +1,7 @@
+0.9.4 / 2018-05-11
+==================
+- Fix spacing on the multiple choice options 
+
 0.9.3 / 2018-05-11
 ==================
 - JavaScript/CSS instead of HTML5 details as its not supported any version of IE
