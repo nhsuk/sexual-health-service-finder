@@ -2,7 +2,7 @@
   <div class="footer__content">
     <ul>
       <li>
-        <a href="/" title="NHS logo">
+        <a href="https://www.nhs.uk/" title="NHS logo">
           <img class="footer__logo" src="{{ assetsUrl }}/images/nhs-logo.png" srcset="
             {{ assetsUrl }}/images/nhs-logo.png 1x,
             {{ assetsUrl }}/images/nhs-logo@2x.png 2x,
