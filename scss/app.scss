@@ -55,6 +55,11 @@ body {
     .summary--toggle {
       padding-left: 25px;
       position: relative;
+      &:visited, 
+      &:focus,
+      &:active {
+        color: $nhs-blue;
+      }
       .caret {
         margin-right: 15px;
         -ms-transform: rotate(270deg); 
