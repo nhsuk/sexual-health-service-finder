@@ -1,6 +1,7 @@
 0.9.4 / 2018-05-11
 ==================
 - Fix spacing on the multiple choice options 
+- Reduce reveal font size on mobile devices
 
 0.9.3 / 2018-05-11
 ==================
