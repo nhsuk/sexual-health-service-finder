@@ -2,7 +2,7 @@
   <div class="site-header__top">
     <div class="site-header__brand">
       <!-- noindex -->
-      <a href="/" title="NHS logo">
+      <a href="https://www.nhs.uk/" title="NHS logo">
         <img
           src="{{ assetsUrl }}/images/choices-logo.png" srcset="
               {{ assetsUrl }}/images/choices-logo.png 1x,

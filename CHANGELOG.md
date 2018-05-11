@@ -2,6 +2,7 @@
 ==================
 - Fix spacing on the multiple choice options 
 - Reduce reveal font size on mobile devices
+- Logo link to https://www.nhs.uk/ instead of beta.
 
 0.9.3 / 2018-05-11
 ==================
