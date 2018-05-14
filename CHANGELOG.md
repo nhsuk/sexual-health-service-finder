@@ -1,3 +1,8 @@
+0.10.0 / 2018-05-16
+==================
+- Fix for XSS vulnerability on location entry
+- End `h2` tag on results page
+
 0.9.4 / 2018-05-11
 ==================
 - Fix spacing on the multiple choice options 
