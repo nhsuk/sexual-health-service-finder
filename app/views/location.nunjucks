@@ -9,17 +9,15 @@
   <h1 class="local-header--title--question local-header--title__step">{{ locationHeading }}</h1>
 {% endblock %}
 
-{% if (outsideOfEnglandPostcodeFlag) %}
-  {% set errorMessage %}
-      {% include 'includes/outOfEnglandMessage.nunjucks' %}
-  {% endset %}
-{% endif %}
-
 {% block content %}
-{% if errorMessage %}
+{% if errorMessage or outsideOfEnglandPostcodeFlag %}
 <div class="error-summary">
   <h2 class="local-header--error error-summary-heading">
-    {{ errorMessage | safe }}
+    {% if (outsideOfEnglandPostcodeFlag) %}
+      {% include 'includes/outOfEnglandMessage.nunjucks' %}
+    {% elif errorMessage %}
+      {{ errorMessage }}
+    {% endif %}
   </h2>
 </div>
 {% endif %}
