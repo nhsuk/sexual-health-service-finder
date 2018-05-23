@@ -1,3 +1,9 @@
+0.11.0 / 2018-05-24
+==================
+Update Webtrends and GA configuration for GDPR compliance
+Replace bespoke cookie banner with Cookiebot
+Only enable GA, Webtrends and Hotjar if consented from Cookiebot
+
 0.10.0 / 2018-05-16
 ==================
 - Fix for XSS vulnerability on location entry
