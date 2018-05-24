@@ -56,10 +56,11 @@
       }).track();
     };
     (function(){
-      var s=document.createElement('script'); s.async=true; s.src="{{ SITE_ROOT }}/js/vendor/tracking/webtrends.min.js";
+      var s=document.createElement('script'); s.async=true; s.src="{{ siteRoot }}/js/vendor/tracking/webtrends.min.js";
       var s2=document.getElementsByTagName('script')[0]; s2.parentNode.insertBefore(s,s2);
     }());
 {% else %}
+   // prevents errors when no Webtrends tracking ID provided
    window.Webtrends = { multiTrack: function() {} };
 {% endif %}
   }
@@ -75,9 +76,12 @@
     if (Cookiebot.consent.statistics) { 
       enableGoogleAnalyticsUniversal(); 
       enableWebtrends();
-      enableHotjar();
     } else {
        window.Webtrends = { multiTrack: function() {} };
+    }
+
+    if (Cookiebot.consent.preferences) {
+      enableHotjar();
     }
   }
 </script>
