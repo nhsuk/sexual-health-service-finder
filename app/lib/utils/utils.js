@@ -6,12 +6,6 @@ function joinTruthyValues(obj) {
     .join(', ');
 }
 
-function getValues(myHash) {
-  const keys = Object.keys(myHash);
-
-  return keys.map(v => myHash[v]);
-}
-
 function getAlternativeTypeFor(type) {
   if (type === constants.serviceTypes.professional) {
     return constants.serviceTypes.kit;
@@ -22,12 +16,11 @@ function getAlternativeTypeFor(type) {
 }
 
 function areEqual(queryItem, item) {
-  return (queryItem.localeCompare(item, 'en', { sensitivity: 'base' }) === 0);
+  return !!queryItem && (queryItem.localeCompare(item, 'en', { sensitivity: 'base' }) === 0);
 }
 
 function isProfessionalChoice(query) {
-  return (areEqual(query.type, constants.serviceTypes.professional)
-    && (getValues(constants.serviceChoices).includes(query.origin)));
+  return (areEqual(query.type, constants.serviceTypes.professional));
 }
 
 function getResultsInternalUrl(query, location) {

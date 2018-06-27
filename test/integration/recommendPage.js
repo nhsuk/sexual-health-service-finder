@@ -88,7 +88,7 @@ describe('Recommend page', () => {
     const $ = cheerio.load(res.text);
 
     expect($('.button').attr('href'))
-      .to.equal(`${locationSearchRoute}?type=${constants.serviceTypes.professional}&origin=${constants.serviceChoices.symptoms}`);
+      .to.equal(`${locationSearchRoute}?type=${constants.serviceTypes.professional}`);
   });
 
   it('the page should have a link to the Location search page with the right params for age 15 or younger', async () => {
@@ -100,7 +100,7 @@ describe('Recommend page', () => {
     const $ = cheerio.load(res.text);
 
     expect($('.button').attr('href'))
-      .to.equal(`${locationSearchRoute}?type=${constants.serviceTypes.professional}&origin=${constants.serviceChoices.under16}`);
+      .to.equal(`${locationSearchRoute}?type=${constants.serviceTypes.professional}`);
   });
 
   describe('return to Choices services', () => {

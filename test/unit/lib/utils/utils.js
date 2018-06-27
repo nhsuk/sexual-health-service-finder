@@ -6,47 +6,16 @@ const expect = chai.expect;
 
 describe('utils', () => {
   describe('isProfessionalChoice', () => {
-    it('should return true when the query is related to professionals and origin is symptoms', () => {
+    it('should return true when the query is for professionals', () => {
       const query = {
-        origin: constants.serviceChoices.symptoms,
         type: constants.serviceTypes.professional,
       };
       const output = utils.isProfessionalChoice(query);
       expect(output).to.equal(true);
     });
 
-    it('should return true when the query is related to professionals and origin is under 16', () => {
-      const query = {
-        origin: constants.serviceChoices.under16,
-        type: constants.serviceTypes.professional,
-      };
-      const output = utils.isProfessionalChoice(query);
-      expect(output).to.equal(true);
-    });
-
-    it('should return true when the query is related to professionals and origin is 16 to 24', () => {
-      const query = {
-        origin: constants.serviceChoices['16to24'],
-        type: constants.serviceTypes.professional,
-      };
-      const output = utils.isProfessionalChoice(query);
-      expect(output).to.equal(true);
-    });
-
-    it('should return true when the query is related to professionals and origin is over 25', () => {
-      const query = {
-        origin: constants.serviceChoices.over25,
-        type: constants.serviceTypes.professional,
-      };
-      const output = utils.isProfessionalChoice(query);
-      expect(output).to.equal(true);
-    });
-
-    it('should return false if the query is related to kits', () => {
-      const query = {
-        origin: constants.serviceChoices.over25,
-        type: constants.serviceTypes.kit,
-      };
+    it('should return false if the query is not for professionals', () => {
+      const query = { };
       const output = utils.isProfessionalChoice(query);
       expect(output).to.equal(false);
     });
