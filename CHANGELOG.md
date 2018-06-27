@@ -1,11 +1,15 @@
-0.11.0 / 2018-06-29
-==================
+0.12.0 / 2018-06-28
+===================
 - Update `npm` dependencies
 - Update to `node:8.11.3` 
 - Remove `origin` param for <16 and symptomatic sexpert results
 
+0.11.0 / N/A
+============
+No release
+
 0.10.0 / 2018-05-16
-==================
+===================
 - Fix for XSS vulnerability on location entry
 - End `h2` tag on results page
 
@@ -47,7 +51,6 @@
 - Mobile viewport click to call (tel) links.
 - Accessibility improvements
 - Webtrends analytics tags
-
 
 0.6.0 / 2018-04-19
 ==================
