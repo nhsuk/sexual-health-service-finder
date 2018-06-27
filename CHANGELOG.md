@@ -1,3 +1,7 @@
+0.11.0 / 2018-06-29
+==================
+- Update `npm` dependencies
+
 0.10.0 / 2018-05-16
 ==================
 - Fix for XSS vulnerability on location entry
