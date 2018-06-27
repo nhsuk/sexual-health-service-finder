@@ -33,7 +33,9 @@
         </div>
       </div>
       <input type="hidden" name="type" value={{type}} />
+      {% if origin %}
       <input type="hidden" name="origin" value={{origin}} />
+      {% endif %}
     </div>
     <div class="form-item-wrapper">
       <div class="form-group">

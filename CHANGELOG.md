@@ -2,6 +2,7 @@
 ==================
 - Update `npm` dependencies
 - Update to `node:8.11.3` 
+- Remove `origin` param for <16 and symptomatic sexpert results
 
 0.10.0 / 2018-05-16
 ==================
