@@ -58,7 +58,8 @@ typings/
 .env
 
 # code compiled by brunch
-public/js
+public/js/app.js
+*.js.map
 
 # css files
 *.css
