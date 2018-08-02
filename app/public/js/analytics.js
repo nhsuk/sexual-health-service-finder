@@ -1,108 +1,108 @@
 function trackClick(element, arg1, arg2) {
   Webtrends.multiTrack({
-    element: element,
-    argsa: [arg1, arg2, 'WT.dl', '121']
+    argsa: [arg1, arg2, 'WT.dl', '121'],
+    element,
   });
 }
 
-var trackingName = 'DCSext.Chlamydia';
+const trackingName = 'DCSext.Chlamydia';
 
-$('.conditions_page_tracking').on('click', function () {
+$('.conditions_page_tracking').on('click', () => {
   trackClick($(this), trackingName, 'ChlamydiaConditionsPage');
 });
 
-$('.nhsuk_privacy_policy_tracking').on('click', function () {
+$('.nhsuk_privacy_policy_tracking').on('click', () => {
   trackClick($(this), trackingName, 'NHSUKPrivacyPolicy');
 });
 
-$('.start_button_tracking').on('click', function () {
+$('.start_button_tracking').on('click', () => {
   trackClick($(this), trackingName, 'StartButton');
 });
 
-$('.england_helpline_tracking').on('click', function () {
+$('.england_helpline_tracking').on('click', () => {
   trackClick($(this), trackingName, 'EnglandSexualHealthHelpline');
 });
 
-$('.scotland_information_tracking').on('click', function () {
+$('.scotland_information_tracking').on('click', () => {
   trackClick($(this), trackingName, 'ScotlandInformation');
 });
 
-$('.scotland_finder_tracking').on('click', function () {
+$('.scotland_finder_tracking').on('click', () => {
   trackClick($(this), trackingName, 'ScotlandSexualHealthServiceFinder');
 });
 
-$('.scotland_helpline_tracking').on('click', function () {
+$('.scotland_helpline_tracking').on('click', () => {
   trackClick($(this), trackingName, 'ScotlandSexualHealthHelpline');
 });
 
-$('.wales_information_tracking').on('click', function () {
+$('.wales_information_tracking').on('click', () => {
   trackClick($(this), trackingName, 'WalesInformation');
 });
 
-$('.wales_nhsdirect_tracking').on('click', function () {
+$('.wales_nhsdirect_tracking').on('click', () => {
   trackClick($(this), trackingName, 'WalesNHSDirectWebsite');
 });
 
-$('.wales_nhsdirect_helpline_tracking').on('click', function () {
+$('.wales_nhsdirect_helpline_tracking').on('click', () => {
   trackClick($(this), trackingName, 'WalesNHSDirectHelpline');
 });
 
-$('.northern_ireland_information_tracking').on('click', function () {
+$('.northern_ireland_information_tracking').on('click', () => {
   trackClick($(this), trackingName, 'NorthernIrelandInformation');
 });
 
-$('.northern_ireland_website_tracking').on('click', function () {
+$('.northern_ireland_website_tracking').on('click', () => {
   trackClick($(this), trackingName, 'NorthernIrelandSexualHealthWebsite');
 });
 
-$('.northern_ireland_helpline_tracking').on('click', function () {
+$('.northern_ireland_helpline_tracking').on('click', () => {
   trackClick($(this), trackingName, 'NorthernIrelandSexualHealthHelpline');
 });
 
-$('.about_free_test_kits_tracking').on('click', function () {
+$('.about_free_test_kits_tracking').on('click', () => {
   trackClick($(this), trackingName, 'AboutFreeTestKits');
 });
 
-$('.about_free_test_kits_online_tracking').on('click', function () {
+$('.about_free_test_kits_online_tracking').on('click', () => {
   trackClick($(this), trackingName, 'AboutFreeTestKitsOnline');
 });
 
-$('.about_sexual_health_professionals_tracking').on('click', function () {
+$('.about_sexual_health_professionals_tracking').on('click', () => {
   trackClick($(this), trackingName, 'AboutSexualHealthProfessionals');
 });
 
-$('.about_test_kits_tracking').on('click', function () {
+$('.about_test_kits_tracking').on('click', () => {
   trackClick($(this), trackingName, 'AboutTestKits');
 });
 
-$('.telephone_tracking').on('click', function () {
+$('.telephone_tracking').on('click', () => {
   trackClick($(this), trackingName, 'ResultTelephoneNumber');
 });
 
-$('.maps_tracking').on('click', function () {
+$('.maps_tracking').on('click', () => {
   trackClick($(this), trackingName, 'SeeMapDirections');
 });
 
-$('.opening_times_tracking').on('click', function () {
+$('.opening_times_tracking').on('click', () => {
   trackClick($(this), trackingName, 'SeeOpeningTimes');
 });
 
-$('.service_information_tracking').on('click', function () {
+$('.service_information_tracking').on('click', () => {
   trackClick($(this), trackingName, 'SeeServiceInformation');
 });
 
-$('.find_free_kit_online_tracking').on('click', function () {
+$('.find_free_kit_online_tracking').on('click', () => {
   trackClick($(this), trackingName, 'FindFreeTestKitOnline');
 });
 
-$('.find_sexual_health_professional_tracking').on('click', function () {
+$('.find_sexual_health_professional_tracking').on('click', () => {
   trackClick($(this), trackingName, 'SexualHealthProfessional');
 });
 
-$('.collect_free_kit_tracking').on('click', function () {
+$('.collect_free_kit_tracking').on('click', () => {
   trackClick($(this), trackingName, 'CollectFreeTestKit');
 });
 
-$('.buy_kit_tracking').on('click', function () {
+$('.buy_kit_tracking').on('click', () => {
   trackClick($(this), trackingName, 'BuyTestKit');
 });

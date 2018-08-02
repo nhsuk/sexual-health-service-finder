@@ -1,3 +1,8 @@
+0.13.0 / 2018-08-08
+===================
+- Update `npm` dependencies
+- Transpile frontend JS from ES6 into browse compatible
+
 0.12.0 / 2018-06-28
 ===================
 - Update `npm` dependencies

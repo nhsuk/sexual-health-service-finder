@@ -43,6 +43,9 @@ module.exports = {
     },
   },
   plugins: {
+    babel: {
+      presets: ['env'],
+    },
     sass: {
       options: {
         includePaths: ['scss-live'],
