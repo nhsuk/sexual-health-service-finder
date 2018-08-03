@@ -71,23 +71,32 @@
 
     {% include "includes/header.nunjucks" %}
 
-    <main id="content" class="util-nofocus">
-
     {% include "includes/breadcrumbs.nunjucks" %}
 
-      {% block article %}
-      <div id="main-content" class="page-section">
-        {% block pageSection %}
-          {% block header %}{% endblock %}
-          {% block content %}{% endblock %}
+    <div class="nhsuk-o-width-container">
+      <main id="main-content" class="nhsuk-o-width-wrapper util-nofocus">
+        {% block article %}
+        <div class="nhsuk-o-grid">
+          {% block pageSection %}
+          <div class="nhsuk-o-grid__item nhsuk-o-grid__item--full">
+            <div class="nhsuk-page-heading">
+              {% block header %}{% endblock %}
+            </div>
+          </div>
+          <div class="nhsuk-o-grid__item nhsuk-o-grid__item--full">
+            <div class="nhsuk-reading-width">
+              <div class="nhsuk-page-content">
+                {% block content %}{% endblock %}
+              </div>
+            </div>
+          </div>
+          {% endblock %}
+        </div>
         {% endblock %}
-      </div>
-      {% endblock %}
-    </main>
+      </main>
+    </div>
 
-    <footer class="footer">
-      {% include "includes/footer.nunjucks" %}
-    </footer>
+    {% include "includes/footer.nunjucks" %}
 
     {% include "includes/foot.nunjucks" %}
   </body>

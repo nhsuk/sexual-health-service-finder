@@ -5,6 +5,9 @@ $border-grey: #BAC4C8;
 
 body {
   background-color:$grey;
+  #main-content {
+    margin-bottom: 48px;
+  }
   header {
     background-color: $white;
   }
@@ -32,9 +35,6 @@ body {
         font-size: 20px;
       }
     }
-  }
-  .breadcrumb {
-    background-color: $white;
   }
   .local-header--title--question {
     &.local-header--title__step {
@@ -128,10 +128,15 @@ body {
       }
     }
   }
+
   // Start page details
   .details--country {
     background-color: $white;
     padding: 32px;
+    margin-top: 32px;
+    h2 {
+      margin-top:0;
+    }
     .details__content {
       .details__opening-times,
       .details__call-charges {
@@ -572,7 +577,6 @@ form {
     margin-top: 32px;
   }
   .multiple-choice--description {
-    padding-top: 32px;
     &:first-of-type {
       margin-top: 0;
     }
