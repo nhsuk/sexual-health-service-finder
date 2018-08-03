@@ -5,13 +5,10 @@ $border-grey: #BAC4C8;
 
 body {
   background-color:$grey;
-  #main-content {
-    margin-bottom: 48px;
-  }
   header {
     background-color: $white;
   }
-  .page-section {
+  .nhsuk-o-grid {
     padding: 32px 0 48px 0;
     h1 {
       font-size: 30px;
@@ -307,7 +304,7 @@ form {
 /*
   Results page
 */
-.page-section{
+.nhsuk-o-grid{
   .grid-row {
     margin: 0 -16px;
     &:after {
@@ -570,7 +567,7 @@ form {
   * + * {
     margin-top: 0;
   }
-  .page-section p {
+  .nhsuk-o-grid p {
     margin-bottom: 16px;
   }
   .multiple-choice:not(:first-child) {
