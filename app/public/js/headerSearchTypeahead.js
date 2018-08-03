@@ -21,71 +21,73 @@ NHSUK.headerSearchTypeahead = ((global) => {
   function init() {
     suggestions.initialize();
 
-    $(searchField).typeahead({
-      classNames: {
-        cursor: 'c-search-menu__item--selected',
-        dataset: 'c-search-menu__results',
-        highlight: '',
-        hint: 'c-search__input--shadow',
-        menu: 'c-search-menu',
-        selectable: 'c-search-menu__item--selectable',
-        suggestion: 'c-search-menu__item',
-      },
-      highlight: true,
-      minLength: 2,
-    },
-    {
-      display: 'disp',
-      limit: maxResultCount,
-      name: '-suggestions',
-      source: suggestions.ttAdapter(),
-      templates: {
-        header: '<li class="c-search-menu__prepend">Search suggestions</li>',
-        notFound: '<li class="c-search-menu__nosuggestions">No suggestions</li>',
-        suggestion: (data) => {
-          let displayitem = '';
-          switch (data.disp_t) {
-            case 'J':
-              $.each(data.disp, (key, value) => {
-                displayitem += (key, value);
-                displayitem += ' ';
-              });
-              break;
-
-            default:
-
-              if (data.disp.length > 36) {
-                displayitem = `${data.disp.substring(0, 36)}...`;
-              } else {
-                displayitem = data.disp;
-              }
-              break;
-          }
-
-          const svg = '<svg class="nhsuk-icon nhsuk-icon__search" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M19.71 18.29l-4.11-4.1a7 7 0 1 0-1.41 1.41l4.1 4.11a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42zM5 10a5 5 0 1 1 5 5 5 5 0 0 1-5-5z"/><image class="nhsuk-icon__search nhsuk-icon__search--fallback" src="/images/icons/icon-search-blue-20px.png" xlink:href=""></svg>';
-
-          switch (data.action_t) {
-            case 'Q':
-              displayitem = `<li>${svg}<a href="${searchUrl}&query=${data.action}">${displayitem}</a></li>`;
-              break;
-            case 'E':
-              displayitem = `<li>${svg}<a href="${searchUrl}&query=${data.key}&${data.action}">${displayitem}</a></li>`;
-              break;
-            case 'U':
-              displayitem = `<li>${svg}<a href="${data.action}">${displayitem}</a></li>`;
-              break;
-            case 'C':
-              displayitem = `<li>${svg}<a href="#" onClick="${data.action}">${displayitem}</a></li>`;
-              break;
-            default:
-              displayitem = `<li>${svg}<a href="${searchUrl}&query=${data.disp}">${displayitem}</a></li>`;
-              break;
-          }
-
-          return displayitem;
+    $(searchField).typeahead(
+      {
+        classNames: {
+          cursor: 'c-search-menu__item--selected',
+          dataset: 'c-search-menu__results',
+          highlight: '',
+          hint: 'c-search__input--shadow',
+          menu: 'c-search-menu',
+          selectable: 'c-search-menu__item--selectable',
+          suggestion: 'c-search-menu__item',
         },
+        highlight: true,
+        minLength: 2,
       },
-    })
+      {
+        display: 'disp',
+        limit: maxResultCount,
+        name: '-suggestions',
+        source: suggestions.ttAdapter(),
+        templates: {
+          header: '<li class="c-search-menu__prepend">Search suggestions</li>',
+          notFound: '<li class="c-search-menu__nosuggestions">No suggestions</li>',
+          suggestion: (data) => {
+            let displayitem = '';
+            switch (data.disp_t) {
+              case 'J':
+                $.each(data.disp, (key, value) => {
+                  displayitem += (key, value);
+                  displayitem += ' ';
+                });
+                break;
+
+              default:
+
+                if (data.disp.length > 36) {
+                  displayitem = `${data.disp.substring(0, 36)}...`;
+                } else {
+                  displayitem = data.disp;
+                }
+                break;
+            }
+
+            const svg = '<svg class="nhsuk-icon nhsuk-icon__search" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M19.71 18.29l-4.11-4.1a7 7 0 1 0-1.41 1.41l4.1 4.11a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42zM5 10a5 5 0 1 1 5 5 5 5 0 0 1-5-5z"/><image class="nhsuk-icon__search nhsuk-icon__search--fallback" src="/images/icons/icon-search-blue-20px.png" xlink:href=""></svg>';
+
+            switch (data.action_t) {
+              case 'Q':
+                displayitem = `<li>${svg}<a href="${searchUrl}&query=${data.action}">${displayitem}</a></li>`;
+                break;
+              case 'E':
+                displayitem = `<li>${svg}<a href="${searchUrl}&query=${data.key}&${data.action}">${displayitem}</a></li>`;
+                break;
+              case 'U':
+                displayitem = `<li>${svg}<a href="${data.action}">${displayitem}</a></li>`;
+                break;
+              case 'C':
+                displayitem = `<li>${svg}<a href="#" onClick="${data.action}">${displayitem}</a></li>`;
+                break;
+              default:
+                displayitem = `<li>${svg}<a href="${searchUrl}&query=${data.disp}">${displayitem}</a></li>`;
+                break;
+            }
+
+            return displayitem;
+          },
+        },
+      }
+    )
       .bind('typeahead:open', () => {
         const val = $(searchField).typeahead('val');
         const value = $(searchField).attr('value');
