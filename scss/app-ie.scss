@@ -40,27 +40,6 @@ body {
   background-color: $hiviz;
 }
 
-.notification-banner--inner,
-.local-header--question,
-.global-header--inner{
-  width:960px;
-  margin:0 auto;
-}
-
-.global-header--inner {
-  padding-bottom: 24px;
-  padding-top: 24px;
-}
-
-.global-header--link {
-  background: url(../images/logotype-nhs-colour__reverse.png) no-repeat;
-  background-size: contain;
-  display: block;
-  height: 32px;
-  text-indent: -999em;
-  width: 79px;
-}
-
 form {
   .form-label-bold {
     font-size: 24px;
