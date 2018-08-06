@@ -53,7 +53,7 @@
   "dependencies": {
     "after-brunch": "^0.0.5",
     "body-parser": "^1.18.2",
-    "brunch": "2.10.12",
+    "brunch": "2.10.16",
     "compression": "^1.7.1",
     "cookie-parser": "^1.4.3",
     "elasticsearch": "^15.0.0",
