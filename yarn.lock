@@ -115,18 +115,14 @@ ansi-styles@^3.2.1:
   dependencies:
     color-convert "^1.9.0"
 
-ansicolors@~0.3.2:
-  version "0.3.2"
-  resolved "https://registry.yarnpkg.com/ansicolors/-/ansicolors-0.3.2.tgz#665597de86a9ffe3aa9bfbe6cae5c6ea426b4979"
-
-anymatch@^1.3.0, anymatch@~1.3, anymatch@~1.3.0:
+anymatch@^1.3.0, anymatch@~1.3.0:
   version "1.3.2"
   resolved "https://registry.yarnpkg.com/anymatch/-/anymatch-1.3.2.tgz#553dcb8f91e3c889845dfdba34c77721b90b9d7a"
   dependencies:
     micromatch "^2.1.5"
     normalize-path "^2.0.0"
 
-anymatch@^2.0.0:
+anymatch@^2.0, anymatch@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/anymatch/-/anymatch-2.0.0.tgz#bcb24b4f37934d9aa7ac17b4adaf89e7c76ef2eb"
   dependencies:
@@ -577,23 +573,23 @@ brunch-skeletons@~0.1.4:
   version "0.1.6"
   resolved "https://registry.yarnpkg.com/brunch-skeletons/-/brunch-skeletons-0.1.6.tgz#f15102a1b6babc964ce3d7e3c141dc0daa9d28ac"
 
-brunch@2.10.12:
-  version "2.10.12"
-  resolved "https://registry.yarnpkg.com/brunch/-/brunch-2.10.12.tgz#3aa0c515c216beb2e53a0c35a30546d0a04cee50"
+brunch@2.10.16:
+  version "2.10.16"
+  resolved "https://registry.yarnpkg.com/brunch/-/brunch-2.10.16.tgz#766434918a278ed5e302fd8346e6c2e2e30b0b11"
   dependencies:
-    anymatch "~1.3"
+    anymatch "^2.0"
     anysort "~1.0"
     check-dependencies "~1.0.1"
-    chokidar "^1.6"
-    coffee-script "~1.12.7"
+    chokidar "^2"
+    coffeescript "~1.12.7"
     commander "~2.9"
     commonjs-require-definition "~0.6.2"
-    debug "~2.2"
-    deppack "~0.7"
+    debug "^3.1.0"
+    deppack "~0.8"
     deps-install "~0.1"
     fcache "~0.3"
     init-skeleton "~1.0"
-    loggy "~1.0.2"
+    loggy "~1.0.3"
     micro-es7-shim "^0.1"
     micro-promisify "~0.1"
     mkdirp "~0.5"
@@ -788,22 +784,7 @@ cheerio@^1.0.0-rc.2:
     lodash "^4.15.0"
     parse5 "^3.0.1"
 
-chokidar@^1.6:
-  version "1.7.0"
-  resolved "https://registry.yarnpkg.com/chokidar/-/chokidar-1.7.0.tgz#798e689778151c8076b4b360e5edd28cda2bb468"
-  dependencies:
-    anymatch "^1.3.0"
-    async-each "^1.0.0"
-    glob-parent "^2.0.0"
-    inherits "^2.0.1"
-    is-binary-path "^1.0.0"
-    is-glob "^2.0.0"
-    path-is-absolute "^1.0.0"
-    readdirp "^2.0.0"
-  optionalDependencies:
-    fsevents "^1.0.0"
-
-chokidar@^2.0.0, chokidar@^2.0.2:
+chokidar@^2, chokidar@^2.0.0, chokidar@^2.0.2:
   version "2.0.4"
   resolved "https://registry.yarnpkg.com/chokidar/-/chokidar-2.0.4.tgz#356ff4e2b0e8e43e322d18a372460bbcf3accd26"
   dependencies:
@@ -895,9 +876,9 @@ code-point-at@^1.0.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/code-point-at/-/code-point-at-1.1.0.tgz#0d070b4d043a5bea33a2f1a40e2edb3d9a4ccf77"
 
-coffee-script@~1.12.7:
+coffeescript@~1.12.7:
   version "1.12.7"
-  resolved "https://registry.yarnpkg.com/coffee-script/-/coffee-script-1.12.7.tgz#c05dae0cb79591d05b3070a8433a98c9a89ccc53"
+  resolved "https://registry.yarnpkg.com/coffeescript/-/coffeescript-1.12.7.tgz#e57ee4c4867cf7f606bfc4a0f2d550c0981ddd27"
 
 collection-visit@^1.0.0:
   version "1.0.0"
@@ -1203,7 +1184,7 @@ debug@3.1.0, debug@^3.0.1, debug@^3.1.0:
   dependencies:
     ms "2.0.0"
 
-debug@~2.2, debug@~2.2.0:
+debug@~2.2.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/debug/-/debug-2.2.0.tgz#f87057e995b1a1f6ae6a4960664137bc56f039da"
   dependencies:
@@ -1305,17 +1286,17 @@ depd@~1.1.1, depd@~1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/depd/-/depd-1.1.2.tgz#9bcd52e14c097763e749b274c4346ed2e560b5a9"
 
-deppack@~0.7:
-  version "0.7.0"
-  resolved "https://registry.yarnpkg.com/deppack/-/deppack-0.7.0.tgz#fbb84f9a531ace2f28289092afc0568295c790b7"
+deppack@~0.8:
+  version "0.8.0"
+  resolved "https://registry.yarnpkg.com/deppack/-/deppack-0.8.0.tgz#f3e2c6b6a5f928f657f45ea1d58b8d9cd0760a8f"
   dependencies:
-    anymatch "^1.3.0"
+    anymatch "^2.0.0"
     async-each "^1.0.0"
     browser-resolve "^1.11.1"
     deep-assign "^2.0.0"
     detective "^4.3.1"
     glob "^7.0.3"
-    loggy "~0.3.0"
+    loggy "^1.0.3"
     micro-promisify "^0.1.1"
     node-browser-modules "^0.1.0"
     "true-case-path" "^1.0.2"
@@ -2083,7 +2064,7 @@ fs.realpath@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/fs.realpath/-/fs.realpath-1.0.0.tgz#1504ad2523158caa40db4a2787cb01411994ea4f"
 
-fsevents@^1.0.0, fsevents@^1.2.2:
+fsevents@^1.2.2:
   version "1.2.4"
   resolved "https://registry.yarnpkg.com/fsevents/-/fsevents-1.2.4.tgz#f41dcb1af2582af3692da36fc55cbd8e1041c426"
   dependencies:
@@ -2285,10 +2266,6 @@ graceful-fs@^4.1.11, graceful-fs@^4.1.2, graceful-fs@^4.1.3:
 growl@1.10.5:
   version "1.10.5"
   resolved "https://registry.yarnpkg.com/growl/-/growl-1.10.5.tgz#f2735dc2283674fa67478b10181059355c369e5e"
-
-growl@~1.8.1:
-  version "1.8.1"
-  resolved "https://registry.yarnpkg.com/growl/-/growl-1.8.1.tgz#4b2dec8d907e93db336624dcec0183502f8c9428"
 
 handlebars@^4.0.3:
   version "4.0.11"
@@ -3281,19 +3258,19 @@ log-driver@^1.2.5:
   version "1.2.7"
   resolved "https://registry.yarnpkg.com/log-driver/-/log-driver-1.2.7.tgz#63b95021f0702fedfa2c9bb0a24e7797d71871d8"
 
-loggy@^1, loggy@~1.0.2:
+loggy@^1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/loggy/-/loggy-1.0.2.tgz#d0ca31c421395f8c462d04870dd2228de3c4e219"
   dependencies:
     chalk "^1.1.1"
     native-notifier "~0.1.0"
 
-loggy@~0.3.0:
-  version "0.3.5"
-  resolved "https://registry.yarnpkg.com/loggy/-/loggy-0.3.5.tgz#33f12801b1f6063966ea79d9b6a25db8fcbc4107"
+loggy@^1.0.3, loggy@~1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/loggy/-/loggy-1.0.3.tgz#8ef7e13a688b4b997724fe16ca6e9d5d55befd76"
   dependencies:
-    ansicolors "~0.3.2"
-    growl "~1.8.1"
+    native-notifier "~0.1.0"
+    turbocolor "^2.2.0"
 
 lolex@^2.3.2, lolex@^2.4.2:
   version "2.7.0"
@@ -5384,6 +5361,10 @@ tunnel-agent@^0.6.0:
 tunnel-agent@~0.4.1:
   version "0.4.3"
   resolved "https://registry.yarnpkg.com/tunnel-agent/-/tunnel-agent-0.4.3.tgz#6373db76909fe570e08d73583365ed828a74eeeb"
+
+turbocolor@^2.2.0:
+  version "2.4.1"
+  resolved "https://registry.yarnpkg.com/turbocolor/-/turbocolor-2.4.1.tgz#92c10c3aa4f77704f29c5cdc92f29bc54166347d"
 
 tweetnacl@^0.14.3, tweetnacl@~0.14.0:
   version "0.14.5"
