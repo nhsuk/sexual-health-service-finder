@@ -54,7 +54,7 @@ describe('Recommend page', () => {
     iExpect.htmlWith200Status(res);
     const $ = cheerio.load(res.text);
 
-    expect($($('.page-section p')[3]).text()).to.equal('This is because you have symptoms.');
+    expect($($('.nhsuk-o-grid p')[3]).text()).to.equal('This is because you have symptoms.');
   });
 
   it('page title should be \'We recommend that you\' if age question is answered 15 or younger', async () => {
@@ -76,7 +76,7 @@ describe('Recommend page', () => {
     iExpect.htmlWith200Status(res);
     const $ = cheerio.load(res.text);
 
-    expect($('.page-section p').eq(3).text()).to.equal('We\'re not able to offer test kits if you\'re under 16. You\'ll need to see a health professional to get tested.');
+    expect($('.nhsuk-o-grid p').eq(3).text()).to.equal('We\'re not able to offer test kits if you\'re under 16. You\'ll need to see a health professional to get tested.');
   });
 
   it('the page should have a link to the Location search page with the right params for symptoms', async () => {
@@ -112,7 +112,7 @@ describe('Recommend page', () => {
       iExpect.htmlWith200Status(res);
       const $ = cheerio.load(res.text);
 
-      expect($($('div.breadcrumb a')[1]).attr('href'))
+      expect($($('.nhsuk-c-breadcrumb__item a')[1]).attr('href'))
         .to.equal('https://www.nhs.uk/service-search');
     });
 

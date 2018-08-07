@@ -35,14 +35,15 @@ module.exports = {
     stylesheets: {
       joinTo: {
         'nhsuk.css': /app.scss/,
-        'nhsukie6.css': /app-ie6.scss/,
-        'nhsukie7.css': /app-ie7.scss/,
-        'nhsukie8.css': /app-ie8.scss/,
+        'nhsukie78.css': /app-ie78.scss/,
         'print.css': /app-print.scss/,
       },
     },
   },
   plugins: {
+    babel: {
+      presets: ['env'],
+    },
     sass: {
       options: {
         includePaths: ['scss-live'],

@@ -20,6 +20,8 @@
         {% include "partials/recommend-symptoms.nunjucks" %}
       {% endif %}
 
+      <p>
       <a href="{{ siteRoot }}/location?type={{ type }}" class="button" role="button">Continue</a>
+      </p>
     </div>
 {% endblock %}

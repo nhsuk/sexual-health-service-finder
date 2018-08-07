@@ -1,6 +1,9 @@
 // Require all modules needed for the application
-require('./cookieMessage');
-require('./radioSelect');
-require('./anchorsAndDetailsToggle');
 require('./analytics');
+require('./anchorsAndDetailsToggle');
+require('./cookieMessage');
+require('./headerMobileMenuToggle');
+require('./headerMobileSearchToggle');
+require('./headerSearchTypeahead');
 require('./openToggle');
+require('./radioSelect');

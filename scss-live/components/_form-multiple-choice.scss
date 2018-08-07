@@ -22,7 +22,7 @@ input[type="checkbox"]  {
 }
 
 .multiple-choice {
-  margin: 0;
+  margin: 32px 0;
   position: relative;
 }
 
@@ -39,6 +39,7 @@ input[type="checkbox"] + label  {
   position: relative;
   padding-left: 55px;
   width: 100%;
+  margin-top: 32px;
 }
 
 input[type="radio"],
@@ -75,10 +76,10 @@ input[type="radio"] + label {
     content: "";
     filter: alpha(opacity=0);
     height: 0;
-    left: $_radio-spacing;
+    left: 12px;
     opacity: 0;
     position: absolute;
-    top: $_radio-spacing;
+    top: 12px;
     width: 0;
     zoom: 1;
   }

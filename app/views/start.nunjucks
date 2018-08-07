@@ -15,16 +15,18 @@
 {% endif %}
 
 <div class="reading-width">
-  <p>The only way to know if you have <a href="https://beta.nhs.uk/conditions/chlamydia/about/?WT.mc_id=ChlamydiaTestService" class="conditions_page_tracking">chlamydia</a> is to get tested.</p>
+  <p class="nhsuk-page-intro">
+    <div>The only way to know if you have <a href="https://beta.nhs.uk/conditions/chlamydia/about/?WT.mc_id=ChlamydiaTestService" class="conditions_page_tracking">chlamydia</a> is to get tested.</div>
 
-  <p>This service can help you:</p>
+    <p>This service can help you:</p>
 
-  <ul>
-    <li>find places near you to get tested by a sexual health professional</li>
-    <li>get a chlamydia home test kit (you may have to pay for this)</li>
-  </ul>
+    <ul>
+      <li>find places near you to get tested by a sexual health professional</li>
+      <li>get a chlamydia home test kit (you may have to pay for this)</li>
+    </ul>
 
-  <p>You may also be able to get a test from your GP.</p>
+    <p>You may also be able to get a test from your GP.</p>
+  </p>
 
   <div class="details--country" id="england">
     <div class="details__header">
@@ -35,7 +37,9 @@
       <div class="reading-width">
         <p>If you're in England, we can help you find a chlamydia test. We'll ask you a few questions, and use your answers to show you where to get a test. It will take about 5 minutes.</p>
 
+        <p>
         <a href="{{ siteRoot }}/symptoms" class="button start-button start_button_tracking" role="button">Start now</a>
+        </p>
 
         <p>Your answers may be used to help improve the NHS website. <a href="https://www.nhs.uk/aboutNHSChoices/aboutnhschoices/termsandconditions/Pages/Privacypolicy.aspx" class="nhsuk_privacy_policy_tracking">Read the NHS.UK privacy policy</a>.</p>
 

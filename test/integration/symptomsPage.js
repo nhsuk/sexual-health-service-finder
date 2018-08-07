@@ -31,7 +31,7 @@ describe('Symptoms page', () => {
 
     const $ = cheerio.load(res.text);
 
-    expect($('title').text()).to.equal('Find a chlamydia test - NHS.UK');
+    expect($('head title').text()).to.equal('Find a chlamydia test - NHS.UK');
     expect($('.local-header--title--question').text()).to.equal('Do you have any of these symptoms?');
   });
 
@@ -57,7 +57,7 @@ describe('Symptoms page', () => {
 
       const $ = cheerio.load(res.text);
 
-      expect($($('div.breadcrumb a')[1]).attr('href'))
+      expect($($('.nhsuk-c-breadcrumb__item a')[1]).attr('href'))
         .to.equal('https://www.nhs.uk/service-search');
     });
 

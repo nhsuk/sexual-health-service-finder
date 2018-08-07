@@ -3,13 +3,12 @@
 $grey: #E8EDEE;
 $border-grey: #BAC4C8;
 
-
 body {
   background-color:$grey;
   header {
     background-color: $white;
   }
-  .page-section {
+  .nhsuk-o-grid {
     padding: 32px 0 48px 0;
     h1 {
       font-size: 30px;
@@ -33,9 +32,6 @@ body {
         font-size: 20px;
       }
     }
-  }
-  .breadcrumb {
-    background-color: $white;
   }
   .local-header--title--question {
     &.local-header--title__step {
@@ -129,10 +125,15 @@ body {
       }
     }
   }
+
   // Start page details
   .details--country {
     background-color: $white;
     padding: 32px;
+    margin-top: 32px;
+    h2 {
+      margin-top:0;
+    }
     .details__content {
       .details__opening-times,
       .details__call-charges {
@@ -253,85 +254,6 @@ body {
     background-color: $yellow-50;
   }
 }
-.global-header {
-  &--inner {
-    padding-bottom: 16px;
-    padding-top: 16px;
-    @include media(tablet) {
-      padding-bottom: 24px;
-      padding-top: 24px;
-    }
-  }
-  &--link {
-    background: url(../images/logotype-nhs-colour__reverse.png) no-repeat;
-    background-size: contain;
-    display: block;
-    height: 32px;
-    text-indent: -999em;
-    width: 79px;
-  }
-}
-.global-footer {
-  &--inner {
-    padding-bottom: 96px;
-    padding-top: 32px;
-    &::before {
-      background: url(../images/logotype-nhs-colour.png) no-repeat;
-      background-size: contain;
-      content: "";
-      display: block;
-      height: 32px;
-      margin-bottom: 32px;
-      text-indent: -999em;
-      width: 79px;
-      @include media(desktop) {
-        margin-bottom: 48px;
-      }
-    }
-    @include media(desktop) {
-      padding-bottom: 128px;
-      padding-top: 48px;
-    }
-  }
-}
-
-/*
-   Skip Links
-*/
-.skiplinks {
-  background-color: $white;
-  ul {
-    padding-top: 0;
-    li {
-      &.skip-link {
-      list-style-type: none;
-      display: inline;
-        a {
-          position: absolute;
-          left: -999%;
-          top: 0;
-          overflow: hidden;
-          color: #d32620;
-          padding: .3em;
-          font-size: 1em;
-          height: 0;
-          &:active, &:focus {
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: auto;
-            height: auto;
-            position: absolute;
-            color: #fff;
-            background: $nhs-blue;
-            padding: .5em 2em .8em 2em;
-            text-decoration: underline;
-          }
-        }
-      }
-    }
-  }
-}
 
 /*
    Form elements
@@ -378,11 +300,11 @@ form {
     }
   }
 }
+
 /*
   Results page
 */
-
-.page-section{
+.nhsuk-o-grid{
   .grid-row {
     margin: 0 -16px;
     &:after {
@@ -631,7 +553,6 @@ form {
 /*
    Error styling
 */
-
 .error {
   margin-right: 15px;
   border-left: 4px solid $red;
@@ -646,14 +567,13 @@ form {
   * + * {
     margin-top: 0;
   }
-  .page-section p {
+  .nhsuk-o-grid p {
     margin-bottom: 16px;
   }
   .multiple-choice:not(:first-child) {
     margin-top: 32px;
   }
   .multiple-choice--description {
-    padding-top: 32px;
     &:first-of-type {
       margin-top: 0;
     }
@@ -705,36 +625,4 @@ form {
     color: $white;
     margin-bottom: 32px;
     padding: 16px;
-}
-
-/* global header */
-
-@include media(desktop) {
-  .main-nav {
-    &__page-menu {
-      .nodrop {
-        &:hover, &:focus-within {
-          background-color: inherit;
-          color: inherit;
-          text-decoration: underline;
-        }
-      }
-      li:hover, li:focus-within {
-        background-color: $white;
-        color: $blue;
-        ul {
-          display: block;
-        }
-        a {
-          background-color: inherit;
-          position: relative;
-          z-index: 200;
-        }
-      }
-    }
-  }
-}
-
-.summary--toggle {
-  
 }

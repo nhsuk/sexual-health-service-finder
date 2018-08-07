@@ -1,5 +1,6 @@
+{% from "includes/macros/nhs-logo.svg" import nhsLogo %}
 <!DOCTYPE html>
-<html lang="en" class="no-js">
+<!--[if lt IE 9]><html class="lte-ie8" lang="en"><![endif]--><!--[if IE 9]><html class="ie9" lang="en"><![endif]--><!--[if gt IE 9]><!--><html lang="en" class="no-js"><!--<![endif]-->
 
   <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
@@ -25,11 +26,8 @@
     <meta name="WT.si_p" content="{{analyticsPageTitle}}">
     {% endif %}
 
-    <!--[if gt IE 8]><!--><link href="{{ siteRoot }}/nhsuk.css" media="screen" rel="stylesheet" type="text/css"><!--<![endif]-->
-    <!--[if IE 6]><link href="{{ siteRoot }}/nhsukie6.css" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
-    <!--[if IE 7]><link href="{{ siteRoot }}/nhsukie7.css" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
-    <!--[if IE 8]><link href="{{ siteRoot }}/nhsukie8.css" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
-
+    <link href="{{ siteRoot }}/nhsuk.css" media="screen" rel="stylesheet" type="text/css">
+    <!--[if lt IE 9]><link href="{{ siteRoot }}/nhsukie78.css" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
     <link rel="stylesheet" href="{{ siteRoot }}/print.css" media="print" type="text/css">
 
     <!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script><![endif]-->
@@ -53,12 +51,8 @@
 
   <body class="{% block bodyClass %}{% endblock %}">
     <script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
-    <div class="skiplinks">
-      <ul>
-          <li class="skip-link"><a href="#main-content" ><span>Skip to main content</span></a></li>
-          <li class="skip-link"><a href="#main-nav" ><span>Skip to main navigation</span></a></li>
-          <li class="skip-link"><a href="https://www.nhs.uk/aboutnhschoices/aboutnhschoices/accessibility/pages/accessibilitystatement.aspx"><span>Help with accessibility</span></a></li>
-      </ul>
+    <div class="nhsuk-c-skiplink">
+      <a href="#main-content" class="nhsuk-c-skiplink__link">Skip to main content</a>
     </div>
 
     <div class="notification-banner notification-banner--js-hidden" id="global-cookies-banner">
@@ -74,29 +68,32 @@
 
     {% include "includes/header.nunjucks" %}
 
-    <main id="content" class="util-nofocus">
-      <div class="breadcrumb">
-        <ol>
-          <li><a href="http://www.nhs.uk">Home</a></li>
-          <li><a href="https://www.nhs.uk/service-search">Services near you</a></li>
-          {% block breadcrumbItems %}
-            <li class="breadcrumb__last">Find a chlamydia test</li>
-          {% endblock %}
-        </ol>
-      </div>
-      {% block article %}
-      <div id="main-content" class="page-section">
-        {% block pageSection %}
-          {% block header %}{% endblock %}
-          {% block content %}{% endblock %}
-        {% endblock %}
-      </div>
-      {% endblock %}
-    </main>
+    {% include "includes/breadcrumbs.nunjucks" %}
 
-    <footer class="footer">
-      {% include "includes/footer.nunjucks" %}
-    </footer>
+    <div class="nhsuk-o-width-container">
+      <main id="main-content" class="nhsuk-o-width-wrapper util-nofocus">
+        {% block article %}
+        <div class="nhsuk-o-grid">
+          {% block pageSection %}
+          <div class="nhsuk-o-grid__item nhsuk-o-grid__item--full">
+            <div class="nhsuk-page-heading">
+              {% block header %}{% endblock %}
+            </div>
+          </div>
+          <div class="nhsuk-o-grid__item nhsuk-o-grid__item--full">
+            <div class="nhsuk-reading-width">
+              <div class="nhsuk-page-content">
+                {% block content %}{% endblock %}
+              </div>
+            </div>
+          </div>
+          {% endblock %}
+        </div>
+        {% endblock %}
+      </main>
+    </div>
+
+    {% include "includes/footer.nunjucks" %}
 
     {% include "includes/foot.nunjucks" %}
   </body>

@@ -46,7 +46,9 @@
         </fieldset>
       </div>
 
+      <p>
       <input type="submit" class="button" value="Continue">
+      </p>
     </div>
   </form>
 {% endblock %}

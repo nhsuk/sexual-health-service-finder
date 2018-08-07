@@ -67,7 +67,7 @@ describe('Age page', () => {
 
       const $ = cheerio.load(res.text);
 
-      expect($($('div.breadcrumb a')[1]).attr('href'))
+      expect($($('.nhsuk-c-breadcrumb__item a')[1]).attr('href'))
         .to.equal('https://www.nhs.uk/service-search');
     });
 

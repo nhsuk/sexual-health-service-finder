@@ -10,7 +10,7 @@ services:
     links:
       - sexual-health-service-finder-db:es
     volumes:
-      - node_modules:/code/node_modules
+      - sh-test-node_modules:/code/node_modules
       - .:/code
 
   tests-unit:
@@ -19,7 +19,7 @@ services:
       service: base-app
     command: yarn run test-unit-watch
     volumes:
-      - node_modules:/code/node_modules
+      - sh-test-unit-node_modules:/code/node_modules
       - .:/code
 
   tests-integration:
@@ -30,7 +30,7 @@ services:
     links:
       - sexual-health-service-finder-db:es
     volumes:
-      - node_modules:/code/node_modules
+      - sh-test-integration-node_modules:/code/node_modules
       - .:/code
 
   test-ci:
@@ -42,7 +42,7 @@ services:
     links:
       - sexual-health-service-finder-db:es
     volumes:
-      - node_modules:/code/node_modules
+      - sh-test-ci-node_modules:/code/node_modules
     environment:
       COVERALLS_REPO_TOKEN: ${COVERALLS_REPO_TOKEN}
       TRAVIS: ${TRAVIS}
@@ -55,4 +55,7 @@ services:
     image: "nhsuk/elasticsearch-updater-snapshot:${elasticsearch_updater_snapshot_docker_image_tag-20180411}"
 
 volumes:
-  node_modules:
+  sh-test-node_modules:
+  sh-test-unit-node_modules:
+  sh-test-integration-node_modules:
+  sh-test-ci-node_modules:
