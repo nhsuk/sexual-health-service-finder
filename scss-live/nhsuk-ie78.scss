@@ -1,5 +1,7 @@
+$ie-version: 8;
+
 // Settings
-@import 'environment/settings/colours';
+@import 'settings/colours-beta';
 
 .lte-ie8 {
   .nhsuk-global-header__menu,
@@ -8,6 +10,12 @@
   .search-close,
   .c-search-menu {
     display: none !important; // sass-lint:disable-line no-important
+  }
+
+  .nhsuk-global-header .nhsuk-o-width-container,
+  .nhsuk-global-nav .nhsuk-o-width-container,
+  .nhsuk-global-footer .nhsuk-o-width-container {
+    margin: 0 auto;
   }
 
   .c-search {
@@ -38,6 +46,10 @@
       display: inline;
       padding: 10px;
       text-align: center;
+
+      &--mobile {
+        display: none;
+      }
     }
 
     &__link {
@@ -106,4 +118,32 @@
     top: -3px;
     width: 10px;
   }
+
+  .nhsuk-global-footer ul {
+    min-height: 0;
+    padding: 25px 0;
+  }
+
+  .nhsuk-global-footer ul:first-child {
+    border-bottom: 1px solid #337ec6;
+  }
+
+  .nhsuk-global-footer ul li {
+    float: left;
+    margin-right: 25px;
+    margin-top: 8px;
+  }
+
+  .nhsuk-global-footer ul li.nhsuk-global-footer__logo {
+    margin-top: 0;
+  }
+
+  .nhsuk-global-footer ul:after {
+    clear: both;
+    content: "";
+    display: block;
+    height: 0;
+    visibility: hidden;
+  }
+
 }

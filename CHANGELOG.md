@@ -1,8 +1,9 @@
-0.13.0 / 2018-08-08
+0.13.0 / 2018-08-09
 ===================
 - Update `npm` dependencies
 - Transpile frontend JS from ES6 into browse compatible
 - Update frontend to use new design
+- Update IE css to new design
 
 0.12.0 / 2018-06-28
 ===================

@@ -1,3 +1,5 @@
+@import "nhsuk-ie78.scss";
+
 $hiviz: #ffca55;
 
 .sr-only {
@@ -96,9 +98,4 @@ a.link-back {
 }
 .nhsuk-o-grid .grid-row .results__details .callout {
   margin-top:32px;
-}
-
-.geo-locate,
-.geo-locate--denied {
-  display:none;
 }
