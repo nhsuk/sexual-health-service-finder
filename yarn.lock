@@ -1034,7 +1034,7 @@ brunch-skeletons@~0.1.4:
   version "0.1.6"
   resolved "https://registry.yarnpkg.com/brunch-skeletons/-/brunch-skeletons-0.1.6.tgz#f15102a1b6babc964ce3d7e3c141dc0daa9d28ac"
 
-brunch@^2.10.15:
+brunch@^2.10.16:
   version "2.10.16"
   resolved "https://registry.yarnpkg.com/brunch/-/brunch-2.10.16.tgz#766434918a278ed5e302fd8346e6c2e2e30b0b11"
   dependencies:
