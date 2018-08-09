@@ -1,3 +1,8 @@
+0.14.0 / 2018-08-15
+===================
+- Update `npm` dependencies
+- Remove references to `NHS.UK` in favour of `NHS`
+
 0.13.0 / 2018-08-09
 ===================
 - Update `npm` dependencies
