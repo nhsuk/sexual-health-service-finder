@@ -41,7 +41,7 @@
         <a href="{{ siteRoot }}/symptoms" class="button start-button start_button_tracking" role="button">Start now</a>
         </p>
 
-        <p>Your answers may be used to help improve the NHS website. <a href="https://www.nhs.uk/aboutNHSChoices/aboutnhschoices/termsandconditions/Pages/Privacypolicy.aspx" class="nhsuk_privacy_policy_tracking">Read the NHS.UK privacy policy</a>.</p>
+        <p>Your answers may be used to help improve the NHS website. <a href="https://www.nhs.uk/aboutNHSChoices/aboutnhschoices/termsandconditions/Pages/Privacypolicy.aspx" class="nhsuk_privacy_policy_tracking">Read the NHS privacy policy</a>.</p>
 
         <p>If you would prefer to speak to someone, call the sexual health helpline for advice on <a href="tel:03001237123" class="england_helpline_tracking">0300 123 7123</a>. Open Monday to Friday, 9am to 8pm.</p>
 

@@ -15,7 +15,7 @@ async function assertMapping(args, expectedMessage1, errorMessage) {
 
   const $ = cheerio.load(res.text);
 
-  expect($('head title').text()).to.equal('Find a chlamydia test - NHS.UK');
+  expect($('head title').text()).to.equal('Find a chlamydia test - NHS');
   expect($('.local-header--title--question').text()).to.equal(expectedMessage1);
   if (errorMessage) {
     expect($('.local-header--step').text()).to.equal('');

@@ -31,7 +31,7 @@ describe('Symptoms page', () => {
 
     const $ = cheerio.load(res.text);
 
-    expect($('head title').text()).to.equal('Find a chlamydia test - NHS.UK');
+    expect($('head title').text()).to.equal('Find a chlamydia test - NHS');
     expect($('.local-header--title--question').text()).to.equal('Do you have any of these symptoms?');
   });
 
