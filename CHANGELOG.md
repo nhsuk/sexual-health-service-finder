@@ -1,7 +1,9 @@
 0.14.0 / 2018-08-15
 ===================
-- Update `npm` dependencies
+- Update npm dependencies
 - Remove references to `NHS.UK` in favour of `NHS`
+- Set background to blue
+- Fix input width
 
 0.13.0 / 2018-08-09
 ===================
