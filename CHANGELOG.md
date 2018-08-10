@@ -4,6 +4,7 @@
 - Remove references to `NHS.UK` in favour of `NHS`
 - Set background to blue
 - Fix input width
+- Add title to header and footer home page link
 
 0.13.0 / 2018-08-09
 ===================
