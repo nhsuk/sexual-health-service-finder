@@ -9,12 +9,12 @@ const expect = chai.expect;
 chai.use(chaiHttp);
 
 describe('Start page', () => {
-  it('page title should be \'Find a chlamydia test - NHS.UK\'', async () => {
+  it('page title should be \'Find a chlamydia test - NHS\'', async () => {
     const res = await chai.request(server).get(`${constants.siteRoot}`);
 
     const $ = cheerio.load(res.text);
 
-    expect($('head title').text()).to.equal('Find a chlamydia test - NHS.UK');
+    expect($('head title').text()).to.equal('Find a chlamydia test - NHS');
     expect($('.local-header--title--question').text()).to.equal('Find a chlamydia test');
   });
 
