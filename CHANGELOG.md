@@ -2,6 +2,7 @@
 ===================
 - Update to `node:8.11.4-alpine` 
 - Ensure JS and CSS are finger-printed in production
+- Update npm dependencies
 
 0.14.0 / 2018-08-15
 ===================
