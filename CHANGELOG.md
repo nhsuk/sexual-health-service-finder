@@ -1,6 +1,7 @@
 0.15.0 / TBD
 ===================
 - Update to `node:8.11.4-alpine` 
+- Ensure JS and CSS are finger-printed in production
 
 0.14.0 / 2018-08-15
 ===================
