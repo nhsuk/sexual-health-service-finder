@@ -9,7 +9,8 @@ function joinTruthyValues(obj) {
 function getAlternativeTypeFor(type) {
   if (type === constants.serviceTypes.professional) {
     return constants.serviceTypes.kit;
-  } else if (type === constants.serviceTypes.kit) {
+  }
+  if (type === constants.serviceTypes.kit) {
     return constants.serviceTypes.professional;
   }
   return type;

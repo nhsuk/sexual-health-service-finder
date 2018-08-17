@@ -4,7 +4,8 @@ const utils = require('./utils');
 function getEsQueryType(type, origin) {
   if (type === constants.serviceTypes.professional) {
     return constants.searchTypes.sexperts;
-  } else if (type === constants.serviceTypes.kit) {
+  }
+  if (type === constants.serviceTypes.kit) {
     if (origin === constants.serviceChoices['16to24']) {
       return constants.searchTypes.kits16to24;
     }
@@ -31,7 +32,8 @@ function getLocationInfo(query) {
           correctLocationParams: true,
           locationHeading: 'Where would you like to collect a free test kit?',
         };
-      } else if (query.origin === constants.serviceChoices.over25) {
+      }
+      if (query.origin === constants.serviceChoices.over25) {
         return {
           analyticsPageTitle: 'PostcodeBuyKit',
           correctLocationParams: true,
@@ -85,7 +87,8 @@ function getResultsInfoForKitsByAge(ageChoice, location) {
       resultsHeading: `Places you can collect a free test kit near '${location}'`,
       resultsOnwardsJourneyPartial: 'includes/onwardsJourneyKit16to24.nunjucks',
     };
-  } else if (ageChoice === constants.serviceChoices.over25) {
+  }
+  if (ageChoice === constants.serviceChoices.over25) {
     return {
       analyticsPageTitle: 'ResultsBuyKit',
       correctResultsParams: true,
