@@ -1,5 +1,6 @@
 0.15.0 / TBD
 ===================
+- Remove Heatmaps from Webtrends (the feature has been discontinued)
 - Update to `node:8.11.4-alpine` 
 - Update python used in container
 - Ensure JS and CSS are finger-printed in production
