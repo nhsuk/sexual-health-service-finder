@@ -5,6 +5,7 @@
 - Update python used in container
 - Ensure JS and CSS are finger-printed in production
 - Update npm dependencies
+- Anonymise IP used by Webtrends
 
 0.14.0 / 2018-08-15
 ===================
