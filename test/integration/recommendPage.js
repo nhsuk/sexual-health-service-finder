@@ -1,9 +1,10 @@
 const chai = require('chai');
 const chaiHttp = require('chai-http');
 const cheerio = require('cheerio');
+
 const constants = require('../../app/lib/constants');
-const server = require('../../server');
 const iExpect = require('../lib/expectations');
+const server = require('../../server');
 
 const expect = chai.expect;
 

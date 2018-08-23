@@ -1,13 +1,13 @@
 const chai = require('chai');
-const sinon = require('sinon');
 const rewire = require('rewire');
+const sinon = require('sinon');
+
 const spyUtils = require('../lib/spy-utils');
-// eslint-disable-next-line camelcase
+/* eslint-disable camelcase */
 const postcodeSampleResponse_HG50JL = require('../resources/postcodeResponse_HG50JL');
-// eslint-disable-next-line camelcase
 const outcodeSampleResponse_HG5 = require('../resources/outcodeResponse_HG5');
-// eslint-disable-next-line camelcase
 const outcodeSampleResponseCrossBorder_TD9 = require('../resources/outcodeResponseCrossBorder_TD9');
+/* eslint-enable camelcase */
 
 const expect = chai.expect;
 const getNextSpy = spyUtils.getNextSpy;
@@ -76,9 +76,8 @@ describe('Postcode lookup', () => {
       // postcode.io returns country as a string for postcodes and array for outcodes
       it('postcode string country should be mapped to array', async () => {
         const res = { locals: { location: 'HG5 0JL' } };
-        const postcodesIOClientFake = getResolvingPostcodeIOClientFake(
-          postcodeSampleResponse_HG50JL
-        );
+        const postcodesIOClientFake =
+          getResolvingPostcodeIOClientFake(postcodeSampleResponse_HG50JL);
         const postcodeLookup = getRewiredPostcodeLookup(postcodesIOClientFake);
 
         const next = getNextSpy();
@@ -95,9 +94,8 @@ describe('Postcode lookup', () => {
       it('outcode string array of countries should be preserved as array', async () => {
         // postcode.io returns country as a string for postcodes and array for outcodes
         const res = { locals: { location: 'TD9' } };
-        const postcodesIOClientFake = getResolvingPostcodeIOClientFake(
-          outcodeSampleResponseCrossBorder_TD9
-        );
+        const postcodesIOClientFake =
+          getResolvingPostcodeIOClientFake(outcodeSampleResponseCrossBorder_TD9);
         const postcodeLookup = getRewiredPostcodeLookup(postcodesIOClientFake);
 
         const next = getNextSpy();
@@ -114,9 +112,8 @@ describe('Postcode lookup', () => {
 
     it('outcode flag should be set to false for postcodes', async () => {
       const res = { locals: { location: 'HG5 0JL' } };
-      const postcodesIOClientFake = getResolvingPostcodeIOClientFake(
-        postcodeSampleResponse_HG50JL
-      );
+      const postcodesIOClientFake =
+        getResolvingPostcodeIOClientFake(postcodeSampleResponse_HG50JL);
       const postcodeLookup = getRewiredPostcodeLookup(postcodesIOClientFake);
 
       const next = getNextSpy();
@@ -129,9 +126,8 @@ describe('Postcode lookup', () => {
 
     it('outcode flag should be set to true for outcodes', async () => {
       const res = { locals: { location: 'HG5' } };
-      const postcodesIOClientFake = getResolvingPostcodeIOClientFake(
-        outcodeSampleResponse_HG5
-      );
+      const postcodesIOClientFake =
+        getResolvingPostcodeIOClientFake(outcodeSampleResponse_HG5);
       const postcodeLookup = getRewiredPostcodeLookup(postcodesIOClientFake);
 
       const next = getNextSpy();
@@ -144,9 +140,8 @@ describe('Postcode lookup', () => {
 
     it('coordinates should be set for postcode', async () => {
       const res = { locals: { location: 'HG5 0JL' } };
-      const postcodesIOClientFake = getResolvingPostcodeIOClientFake(
-        postcodeSampleResponse_HG50JL
-      );
+      const postcodesIOClientFake =
+        getResolvingPostcodeIOClientFake(postcodeSampleResponse_HG50JL);
       const postcodeLookup = getRewiredPostcodeLookup(postcodesIOClientFake);
 
       const next = getNextSpy();
@@ -160,9 +155,8 @@ describe('Postcode lookup', () => {
 
     it('coordinates should be set for outcode', async () => {
       const res = { locals: { location: 'HG5' } };
-      const postcodesIOClientFake = getResolvingPostcodeIOClientFake(
-        outcodeSampleResponse_HG5
-      );
+      const postcodesIOClientFake =
+        getResolvingPostcodeIOClientFake(outcodeSampleResponse_HG5);
       const postcodeLookup = getRewiredPostcodeLookup(postcodesIOClientFake);
 
       const next = getNextSpy();
