@@ -5,6 +5,7 @@
 [![Greenkeeper badge](https://badges.greenkeeper.io/nhsuk/sexual-health-service-finder.svg)](https://greenkeeper.io/)
 [![Build Status](https://travis-ci.org/nhsuk/sexual-health-service-finder.svg?branch=master)](https://travis-ci.org/nhsuk/sexual-health-service-finder)
 [![Coverage Status](https://coveralls.io/repos/github/nhsuk/sexual-health-service-finder/badge.svg?branch=master)](https://coveralls.io/github/nhsuk/sexual-health-service-finder?branch=master)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fnhsuk%2Fsexual-health-service-finder.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fnhsuk%2Fsexual-health-service-finder?ref=badge_shield)
 
 ## Installation
 
@@ -71,3 +72,7 @@ This repo uses
 [Architecture Decision Records](http://thinkrelevance.com/blog/2011/11/15/documenting-architecture-decisions)
 to record architectural decisions for this project.
 They are stored in [doc/adr](doc/adr).
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fnhsuk%2Fsexual-health-service-finder.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fnhsuk%2Fsexual-health-service-finder?ref=badge_large)
