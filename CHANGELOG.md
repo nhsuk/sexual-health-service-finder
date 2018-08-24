@@ -1,3 +1,14 @@
+0.15.0 / TBD
+===================
+- Update cookie banner link to cookie policy
+- Update favicon with latest design
+- Remove Heatmaps from Webtrends (the feature has been discontinued)
+- Update to `node:8.11.4-alpine` 
+- Update python used in container
+- Ensure JS and CSS are finger-printed in production
+- Update npm dependencies
+- Anonymise IP used by Webtrends
+
 0.14.0 / 2018-08-15
 ===================
 - Update npm dependencies
@@ -18,7 +29,7 @@
 0.12.0 / 2018-06-28
 ===================
 - Update `npm` dependencies
-- Update to `node:8.11.3` 
+- Update to `node:8.11.3-alpine` 
 - Remove `origin` param for <16 and symptomatic sexpert results
 
 0.11.0 / N/A
