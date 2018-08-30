@@ -1,6 +1,7 @@
 0.16.0 / 2018-09-07
 ===================
 - Ensure JS and CSS are finger-printed in production
+- Do not link to beta home page
 
 0.15.0 / 2018-08-30
 ===================
