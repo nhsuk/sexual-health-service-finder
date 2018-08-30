@@ -1,6 +1,6 @@
 {
   "name": "sexual-health-service-finder",
-  "version": "0.15.0",
+  "version": "0.16.0",
   "description": "Helping to connect people to sexual health services.",
   "main": "app.js",
   "scripts": {
@@ -60,6 +60,7 @@
     "elasticsearch": "^15.0.0",
     "express": "^4.16.2",
     "express-prom-bundle": "^4.2.0",
+    "fingerprint-brunch": "^2.0.5",
     "helmet": "^3.11.0",
     "map-replace": "^1.0.2",
     "moment": "^2.22.0",
