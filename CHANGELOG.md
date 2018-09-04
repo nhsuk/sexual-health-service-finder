@@ -5,6 +5,7 @@
 - Update npm dependencies
 - Update 'contact-us' footer link
 - Update 'care and support' header link
+- Update in-page links to be direct
 
 0.15.0 / 2018-08-30
 ===================
