@@ -2,6 +2,7 @@
 ===================
 - Ensure JS and CSS are finger-printed in production
 - Do not link to beta home page
+- Update npm dependencies
 
 0.15.0 / 2018-08-30
 ===================
