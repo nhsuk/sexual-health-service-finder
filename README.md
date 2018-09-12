@@ -50,13 +50,14 @@ environment.
 
 | Variable                           | Description                                                                                                                                                | Default                   | Required   |
 | :--------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------ | :--------- |
-| `NODE_ENV`                         | Node environment                                                                                                                                           | development               |            |
-| `LOG_LEVEL`                        | Numeric [log level](https://github.com/trentm/node-bunyan#levels)                                                                                          | Depends on `NODE_ENV`     |            |
-| `PORT`                             | Server port                                                                                                                                                | 3000                      |            |
-| `GOOGLE_ANALYTICS_TRACKING_ID`     | [Google Analytics](https://www.google.co.uk/analytics) property id                                                                                         |                           | No         |
-| `WEBTRENDS_ANALYTICS_TRACKING_ID`  | [Webtrends](https://www.webtrends.com/) tracking id                                                                                                        |                           | No         |
-| `HOTJAR_ANALYTICS_TRACKING_ID`     | [Hotjar](https://www.hotjar.com/) tracking id                                                                                                              |                           | No         |
+| `ADOBE_TRACKING_URL`               | [Adobe Analytics](https://www.adobe.com/analytics/adobe-analytics.html) Dynamic Tag Management URL                                                         |                           | No         |
 | `BASIC_AUTH`                       | An MD5 encrypted [htpasswd](https://httpd.apache.org/docs/2.4/misc/password_encryptions.html)                                                              | test:test                 |            |
+| `HOTJAR_ANALYTICS_TRACKING_ID`     | [Hotjar](https://www.hotjar.com/) tracking id                                                                                                              |                           | No         |
+| `GOOGLE_ANALYTICS_TRACKING_ID`     | [Google Analytics](https://www.google.co.uk/analytics) property id                                                                                         |                           | No         |
+| `LOG_LEVEL`                        | Numeric [log level](https://github.com/trentm/node-bunyan#levels)                                                                                          | Depends on `NODE_ENV`     |            |
+| `NODE_ENV`                         | Node environment                                                                                                                                           | development               |            |
+| `PORT`                             | Server port                                                                                                                                                | 3000                      |            |
+| `WEBTRENDS_ANALYTICS_TRACKING_ID`  | [Webtrends](https://www.webtrends.com/) tracking id                                                                                                        |                           | No         |
 
 ## FAQ
 

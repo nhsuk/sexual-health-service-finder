@@ -2,12 +2,16 @@ const queryMapper = require('../lib/utils/queryMapper');
 const trim = require('../lib/utils/utils').trim;
 
 module.exports = config => (req, res, next) => {
+  res.locals.ADOBE_TRACKING_URL = config.analytics.adobeTrackingUrl;
   res.locals.GOOGLE_ANALYTICS_TRACKING_ID = config.analytics.googleAnalyticsId;
   res.locals.WEBTRENDS_ANALYTICS_TRACKING_ID = config.analytics.webtrendsId;
   res.locals.HOTJAR_ANALYTICS_TRACKING_ID = config.analytics.hotjarId;
+
   res.locals.RESULTS_LIMIT = config.es.resultsLimit;
-  res.locals.siteRoot = req.app.locals.siteRoot;
+
   res.locals.assetsUrl = req.app.locals.assetsUrl;
+  res.locals.siteRoot = req.app.locals.siteRoot;
+
   res.locals.symptoms = req.query.symptoms;
   res.locals.age = req.query.age;
   res.locals.choices = req.query.choices;

@@ -48,6 +48,10 @@
     {% endif %}
 
     {% block meta %}{% endblock %}
+
+    {% if ADOBE_TRACKING_URL %}
+      <script src="{{ ADOBE_TRACKING_URL }}" async></script>
+    {% endif %}
   </head>
 
   <body class="{% block bodyClass %}{% endblock %}">
@@ -64,8 +68,6 @@
     </div>
 
     {% include "includes/back-to-choices.nunjucks" %}
-
-    {% block banner %}{% endblock %}
 
     {% include "includes/header.nunjucks" %}
 
