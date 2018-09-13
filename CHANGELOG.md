@@ -1,3 +1,8 @@
+0.17.0 / 2018-09-14
+===================
+- Update npm dependencies
+- Add Adobe Analytics
+
 0.16.0 / 2018-09-07
 ===================
 - Ensure JS and CSS are finger-printed in production
