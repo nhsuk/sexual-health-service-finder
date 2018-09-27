@@ -1,6 +1,6 @@
 {
   "name": "sexual-health-service-finder",
-  "version": "0.17.0",
+  "version": "0.18.0",
   "description": "Helping to connect people to sexual health services.",
   "main": "app.js",
   "scripts": {
@@ -90,7 +90,7 @@
     "eslint-plugin-json": "^1.2.0",
     "eslint-plugin-mocha": "^5.2.0",
     "eslint-watch": "^4.0.2",
-    "husky": "^0.14.2",
+    "husky": "^1.0.1",
     "istanbul": "^1.1.0-alpha.1",
     "mocha": "^5.0.0",
     "nock": "^9.0.14",
