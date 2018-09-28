@@ -1,6 +1,7 @@
-0.18.0 / 2018-10-03
+0.18.0 / 2018-10-04
 ===================
 - Update npm dependencies
+- Accessibility improvements
 
 0.17.0 / 2018-09-14
 ===================
