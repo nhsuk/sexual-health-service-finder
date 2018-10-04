@@ -7,3 +7,4 @@ require('./headerMobileSearchToggle');
 require('./headerSearchTypeahead');
 require('./openToggle');
 require('./radioSelect');
+require('./skiplinkFix');
