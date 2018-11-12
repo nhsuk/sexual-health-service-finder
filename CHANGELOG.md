@@ -1,6 +1,7 @@
 0.19.0 / 2018-11-TBD
 ===================
 - Update npm dependencies
+- Add `datalayer.js` for use by Adobe Analytics
 
 0.18.0 / 2018-10-09
 ===================

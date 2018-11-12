@@ -5,6 +5,7 @@ services:
   shsf-frontend:
     image: "nhsuk/sexual-health-service-finder:${DOCKER_IMAGE_TAG}"
     environment:
+      ADOBE_DATALAYER_URL: ${ADOBE_DATALAYER_URL}
       ADOBE_TRACKING_URL: ${ADOBE_TRACKING_URL}
       ES_HOST: ${ES_HOST}
       GOOGLE_ANALYTICS_TRACKING_ID: ${GOOGLE_ANALYTICS_TRACKING_ID}
