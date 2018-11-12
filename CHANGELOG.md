@@ -1,3 +1,7 @@
+0.19.0 / 2018-11-TBD
+===================
+- Update npm dependencies
+
 0.18.0 / 2018-10-09
 ===================
 - Update npm dependencies
