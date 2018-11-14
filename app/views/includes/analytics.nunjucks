@@ -45,7 +45,3 @@
    window.Webtrends = { multiTrack: function() {} };
  </script>
 {% endif %}
-
-{% if ADOBE_DATALAYER_URL %}
-  <script src="{{ ADOBE_DATALAYER_URL }}" async></script>
-{% endif %}

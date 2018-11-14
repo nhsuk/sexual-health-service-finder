@@ -2,7 +2,6 @@ const queryMapper = require('../lib/utils/queryMapper');
 const trim = require('../lib/utils/utils').trim;
 
 module.exports = config => (req, res, next) => {
-  res.locals.ADOBE_DATALAYER_URL = config.analytics.adobeDatalayerUrl;
   res.locals.ADOBE_TRACKING_URL = config.analytics.adobeTrackingUrl;
   res.locals.GOOGLE_ANALYTICS_TRACKING_ID = config.analytics.googleAnalyticsId;
   res.locals.WEBTRENDS_ANALYTICS_TRACKING_ID = config.analytics.webtrendsId;
