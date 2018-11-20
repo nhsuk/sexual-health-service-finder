@@ -1,3 +1,9 @@
+0.19.0 / 2018-11-20
+===================
+- Update npm dependencies
+- Create `digitalData` object for use by Adobe Analytics
+- Update CSP for compatibility with Adobe Analytics
+
 0.18.0 / 2018-10-09
 ===================
 - Update npm dependencies

@@ -1,3 +1,4 @@
+const digitalData = require('../lib/digitalData');
 const queryMapper = require('../lib/utils/queryMapper');
 const trim = require('../lib/utils/utils').trim;
 
@@ -11,6 +12,7 @@ module.exports = config => (req, res, next) => {
 
   res.locals.assetsUrl = req.app.locals.assetsUrl;
   res.locals.siteRoot = req.app.locals.siteRoot;
+  res.locals.digitalData = digitalData(req);
 
   res.locals.symptoms = req.query.symptoms;
   res.locals.age = req.query.age;
