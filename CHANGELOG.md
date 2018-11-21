@@ -1,8 +1,7 @@
-0.19.0 / 2018-11-20
+0.20.0 / TBC
 ===================
 - Update npm dependencies
-- Create `digitalData` object for use by Adobe Analytics
-- Update CSP for compatibility with Adobe Analytics
+- Upgrade to `node:10.13.0-alpine`
 
 0.19.0 / 2018-11-20
 ===================

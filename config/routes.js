@@ -1,13 +1,14 @@
 const router = require('express').Router();
+
 const getServices = require('../app/middleware/getServices');
 const locationValidator = require('../app/middleware/locationValidator');
 const notInEnglandHandler = require('../app/middleware/notInEnglandHandler');
 const postcodeLookup = require('../app/middleware/postcodeLookup');
 const prerender = require('../app/middleware/prerender');
 const renderer = require('../app/middleware/renderer');
-const selectionValidatorSymptoms = require('../app/middleware/selectionValidatorSymptoms');
 const selectionValidatorAge = require('../app/middleware/selectionValidatorAge');
 const selectionValidatorChoose = require('../app/middleware/selectionValidatorChoose');
+const selectionValidatorSymptoms = require('../app/middleware/selectionValidatorSymptoms');
 
 router.get(
   '/',

@@ -1,7 +1,6 @@
 const VError = require('verror').VError;
 
-const rp = require('request-promise-native');
-// const esClient = require('../lib/elasticsearch/client');
+const azureRequest = require('../lib/azuresearch/request');
 const esGetServiceHistogram = require('../lib/prometheus/histograms').esGetServices;
 const esQueryLabelName = require('../lib/constants').promEsQueryLabelName;
 const log = require('../lib/logger');
@@ -56,29 +55,17 @@ async function getServices(req, res, next) {
   };
 
   try {
-    const headers = {
-      'Content-Type': 'application/json',
-      'api-key': '163B9B17F1E81C792A77E84B76B4C3ED',
-    };
-    const body = JSON.stringify({
+    const query = {
       count: true,
       filter: 'OrganisationTypeID eq \'GSD\' and ServicesProvided/any(x: search.in(x, \'Chlamydia screening under 25s,Sexual health information and support\', \',\')) or ServiceCodesProvided/any(scp: search.in(scp, \'SRV0267,SRV0531\'))',
       orderby: 'geo.distance(Geocode, geography\'Point(-1 50)\')',
       search: '*',
       select: '*',
       top: 10,
-    });
-
-    const url = 'https://nhsuksearchprodne.search.windows.net/indexes/organisationlookup/docs/search?api-version=2017-11-11';
-    const options = {
-      body,
-      headers,
-      method: 'POST',
-      url,
     };
-    console.log(options);
-    const response = await rp(options);
-    // console.log(response);
+
+    // TODO: Pass the query into azureRequest
+    const response = await azureRequest(query);
     [res.locals.services, res.locals.resultsCount] = processResults(response, logResults);
     console.log('************************');
     console.log(res.locals.resultsCount);

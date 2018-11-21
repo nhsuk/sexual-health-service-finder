@@ -18,6 +18,7 @@ function assertSearchResponse(location, type, origin, done, assertions) {
     .query({ location, origin, type })
     .end((err, res) => {
       expect(err).to.equal(null);
+      console.log(res);
       iExpect.htmlWith200Status(res);
       assertions(err, res);
       done();
@@ -53,13 +54,8 @@ function assertFirstOpeningTimes(res) {
   assertTimes(firstTable, 7, 'Sunday', 'Closed');
 }
 
-describe('Pharmacy opening times', function test() {
-  // Setting this timeout as it is calling the real DB...
-  this.timeout(utils.maxWaitTimeMs);
-
-  before((done) => {
-    utils.waitForSiteReady(done);
-  });
+describe.only('Pharmacy opening times', function test() {
+  this.timeout(2000);
 
   const location = 'ls1';
   const type = constants.serviceTypes.kit;
