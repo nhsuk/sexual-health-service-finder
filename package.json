@@ -71,6 +71,7 @@
     "querystring": "^0.2.0",
     "request": "^2.86.0",
     "request-promise-native": "^1.0.5",
+    "require-environment-variables": "^1.2.0",
     "rewire": "^4.0.0",
     "sass-brunch": "^2.10.7",
     "sinon": "^6.0.0",

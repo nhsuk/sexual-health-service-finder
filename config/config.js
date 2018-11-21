@@ -19,7 +19,7 @@ module.exports = {
   azureSearch: {
     // TODO: Make sure there env vars are checked to exist
     index: process.env.AS_INDEX || 'organisationlookup-dev',
-    key: process.env.AS_KEY,
+    key: process.env.AS_API_KEY,
     serviceName: process.env.AS_SERVICE_NAME || 'nhsuksearchintne-dev',
     version: process.env.AS_VERSION || '2017-11-11',
   },
