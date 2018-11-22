@@ -7,7 +7,7 @@ async function request(query) {
     'api-key': asConfig.key,
   };
 
-  const url = `https://${asConfig.serviceName}.search.windows.net/indexes/${asConfig.index}/docs/search?api-version=${asConfig.apiVersion}`;
+  const url = `https://${asConfig.serviceName}.search.windows.net/indexes/${asConfig.index}/docs/search?api-version=${asConfig.version}`;
 
   const options = {
     body: JSON.stringify(query),
@@ -19,6 +19,4 @@ async function request(query) {
   return rp(options);
 }
 
-module.exports = {
-  request,
-};
+module.exports = request;

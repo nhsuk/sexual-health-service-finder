@@ -1,19 +1,19 @@
 const chai = require('chai');
-const formatAddress = require('../../../../app/lib/utils/formatAddress');
+const mapAddress = require('../../../../app/lib/mappers/mapAddress');
 
 const expect = chai.expect;
 
-describe('formatAddress', () => {
+describe('mapAddress', () => {
   it('should return undefined when empty address', () => {
     const address = {};
-    const output = formatAddress(address);
+    const output = mapAddress(address);
     expect(output).to.be.undefined;
   });
 
   it('should return undefined when address contains postcode but no addressLines', () => {
     const postcode = 'AB12 34CD';
     const address = { postcode };
-    const output = formatAddress(address);
+    const output = mapAddress(address);
     expect(output).to.equal(postcode);
   });
 
@@ -22,7 +22,7 @@ describe('formatAddress', () => {
     const line2 = 'line2';
     const address = { addressLines: [line1, line2] };
 
-    const output = formatAddress(address);
+    const output = mapAddress(address);
 
     expect(output).to.equal(`${line1}, ${line2}`);
   });
@@ -32,7 +32,7 @@ describe('formatAddress', () => {
       addressLines: ['Merrion Centre - 1st Floor', '50 Merrion Way', 'Leeds', 'West Yorkshire'],
       postcode: 'LS2 8NG',
     };
-    const output = formatAddress(address);
+    const output = mapAddress(address);
 
     expect(output).to.equal('Merrion Centre - 1st Floor, 50 Merrion Way, Leeds, West Yorkshire, LS2 8NG');
   });
@@ -44,7 +44,7 @@ describe('formatAddress', () => {
       addressLines: [null, '', undefined, line1, null, '', undefined],
       postcode,
     };
-    const output = formatAddress(address);
+    const output = mapAddress(address);
 
     expect(output).to.equal(`${line1}, ${postcode}`);
   });
