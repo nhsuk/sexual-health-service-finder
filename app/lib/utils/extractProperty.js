@@ -6,7 +6,6 @@ function extractProperty(opts, jsonString) {
   if (!jsonString) { return undefined; }
 
   let json;
-
   try {
     json = JSON.parse(jsonString);
     if (!json) { return undefined; }

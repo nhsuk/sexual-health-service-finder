@@ -3,7 +3,7 @@ const mapServiceDetails = require('../../../../app/lib/mappers/mapServiceDetails
 
 const expect = chai.expect;
 
-describe.only('mapServiceDetails', () => {
+describe('mapServiceDetails', () => {
   describe('happy path', () => {
     const serviceDetailsText = 'Some text describing the service details';
     const serviceDetails = [
@@ -45,4 +45,3 @@ describe.only('mapServiceDetails', () => {
     });
   });
 });
-

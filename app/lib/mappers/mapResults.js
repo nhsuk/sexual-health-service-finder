@@ -1,7 +1,7 @@
 const mapAddress = require('./mapAddress');
 const mapContacts = require('./mapContacts');
 const mapServiceDetails = require('./mapServiceDetails');
-// const formatOpeningTimes = require('./formatOpeningTimes');
+const mapOpeningTimes = require('./mapOpeningTimes');
 
 function mapResults(results) {
   return results && results.value ? results.value.map((result) => {
@@ -13,11 +13,7 @@ function mapResults(results) {
       service.contacts = mapContacts(result);
       service.name = result.OrganisationName;
       service.serviceDetails = mapServiceDetails(result);
-      // TODO: The opening times info comes from `OpeningTimes` if a pharmacy
-      // else it comes from the `GSD` JSON and needs to be extracted. This
-      // detail should be contained within the function
-      service.openingTimes = mapServiceDetails(result);
-      // service.openingTimes = formatOpeningTimes(result);
+      service.openingTimes = mapOpeningTimes(result);
     }
     return service;
   }) : [];

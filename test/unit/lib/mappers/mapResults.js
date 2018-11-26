@@ -4,6 +4,7 @@ const mapResults = require('../../../../app/lib/mappers/mapResults');
 
 const expect = chai.expect;
 
+// TODO: Make sure all mapping performed within the function is covered by the tests
 describe('mapResults', () => {
   describe('should handle missing data', () => {
     it('should return an empty array when the input has no value', () => {
