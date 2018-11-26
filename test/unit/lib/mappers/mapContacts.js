@@ -28,7 +28,7 @@ describe('formatContacts', () => {
     });
 
     it('should return the telephone number', () => {
-      expect(mappedContacts.telephone).to.equal(telephone);
+      expect(mappedContacts.telephoneNumber).to.equal(telephone);
     });
 
     it('should return the website address', () => {
@@ -37,26 +37,32 @@ describe('formatContacts', () => {
   });
 
   describe('no Contacts to map from', () => {
-    it('should not add a contacts property', () => {
+    it('should return undefined when there is no Contacts property', () => {
       const mappedContacts = mapContacts({});
 
-      expect(mappedContacts).to.not.have.property('contacts');
+      expect(mappedContacts).to.be.undefined;
+    });
+
+    it('should return undefined when Contacts is empty', () => {
+      const mappedContacts = mapContacts({ Contacts: '' });
+
+      expect(mappedContacts).to.be.undefined;
+    });
+
+    it('should return undefined when Contacts does not contain any known ContactTypes', () => {
+      const contactsWithNoKnownContactMethodType = [{ OrganisationContactMethodType: 'Unknown', OrganisationContactValue: 'should not return this' }];
+
+      const mappedContacts = mapContacts(JSON.stringify(contactsWithNoKnownContactMethodType));
+
+      expect(mappedContacts).to.be.undefined;
     });
   });
 
   describe('Contacts with no contact properties to map from', () => {
     const mappedContacts = mapContacts({ Contacts: JSON.stringify([]) });
 
-    it('should not add an email property when there is no email contact method', () => {
-      expect(mappedContacts).to.not.have.property('email');
-    });
-
-    it('should not add a telephone property when there is no telephone contact method', () => {
-      expect(mappedContacts).to.not.have.property('telephone');
-    });
-
-    it('should not add a website property when there is no website contact method', () => {
-      expect(mappedContacts).to.not.have.property('website');
+    it('should return undefined', () => {
+      expect(mappedContacts).to.be.undefined;
     });
   });
 

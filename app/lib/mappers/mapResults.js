@@ -1,4 +1,3 @@
-// TODO: Move the mappers into their folder
 const mapAddress = require('./mapAddress');
 const mapContacts = require('./mapContacts');
 const mapServiceDetails = require('./mapServiceDetails');
@@ -13,9 +12,12 @@ function mapResults(results) {
       service.address = mapAddress(result);
       service.contacts = mapContacts(result);
       service.name = result.OrganisationName;
-      // service.openingTimes = formatOpeningTimes(result);
       service.serviceDetails = mapServiceDetails(result);
+      // TODO: The opening times info comes from `OpeningTimes` if a pharmacy
+      // else it comes from the `GSD` JSON and needs to be extracted. This
+      // detail should be contained within the function
       service.openingTimes = mapServiceDetails(result);
+      // service.openingTimes = formatOpeningTimes(result);
     }
     return service;
   }) : [];
