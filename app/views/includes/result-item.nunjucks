@@ -57,7 +57,7 @@
     <div class="details__content" id="details-content-0">
       <div class="reading-width">
         <p class="results__serviceDetails">
-          {{ service.serviceDetails }}
+          {{ service.serviceDetails | escape | nl2br }}
         </p>
       </div>
     </div>
