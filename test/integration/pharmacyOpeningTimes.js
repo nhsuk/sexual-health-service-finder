@@ -5,7 +5,6 @@ const cheerio = require('cheerio');
 const app = require('../../server');
 const constants = require('../../app/lib/constants');
 const iExpect = require('../lib/expectations');
-const utils = require('../lib/testUtils');
 
 const expect = chai.expect;
 chai.use(chaiHttp);
@@ -54,7 +53,7 @@ function assertFirstOpeningTimes(res) {
   assertTimes(firstTable, 7, 'Sunday', 'Closed');
 }
 
-describe.only('Pharmacy opening times', function test() {
+describe('Pharmacy opening times', function test() {
   this.timeout(2000);
 
   const location = 'ls1';

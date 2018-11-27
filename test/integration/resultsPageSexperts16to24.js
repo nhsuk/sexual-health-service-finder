@@ -5,7 +5,6 @@ const cheerio = require('cheerio');
 const app = require('../../server');
 const constants = require('../../app/lib/constants');
 const iExpect = require('../lib/expectations');
-const utils = require('../lib/testUtils');
 
 const expect = chai.expect;
 
@@ -26,12 +25,7 @@ function assertSearchResponse(location, type, origin, done, assertions) {
 }
 
 describe('Results page for sexual health professionals for 16 to 24', function test() {
-  // Setting this timeout as it is calling the real DB...
-  this.timeout(utils.maxWaitTimeMs);
-
-  before((done) => {
-    utils.waitForSiteReady(done);
-  });
+  this.timeout(2000);
 
   const location = 'ls1';
   const type = constants.serviceTypes.professional;

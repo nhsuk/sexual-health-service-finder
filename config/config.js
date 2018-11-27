@@ -19,14 +19,8 @@ module.exports = {
   azureSearch: {
     index: process.env.AS_INDEX || 'organisationlookup-dev',
     key: process.env.AS_API_KEY,
+    resultsLimit: process.env.RESULTS_LIMIT || 30,
     serviceName: process.env.AS_SERVICE_NAME || 'nhsuksearchintne',
     version: process.env.AS_VERSION || '2017-11-11',
-  },
-  es: {
-    host: process.env.ES_HOST || 'es',
-    index: process.env.ES_INDEX || 'sexual-health-services',
-    port: process.env.ES_PORT || '9200',
-    resultsLimit: process.env.RESULTS_LIMIT || 30,
-    type: 'sexual-health-service',
   },
 };

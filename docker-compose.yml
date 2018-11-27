@@ -18,17 +18,12 @@ services:
   frontend:
     extends:
       service: base-app
-    links:
-      - sexual-health-service-finder-db:es
     ports:
       - 3000:3000
       - 9229:9229
     volumes:
       - node_modules:/code/node_modules
       - .:/code
-
-  sexual-health-service-finder-db:
-    image: "nhsuk/elasticsearch-updater-snapshot:${elasticsearch_updater_snapshot_docker_image_tag-20180411}"
 
 volumes:
   node_modules:
