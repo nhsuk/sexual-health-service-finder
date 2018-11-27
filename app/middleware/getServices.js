@@ -28,12 +28,12 @@ async function getServices(req, res, next) {
   const resultsLimit = res.locals.RESULTS_LIMIT;
   const postcodeLocationDetails = res.locals.postcodeLocationDetails;
 
-  const searchType = queryMapper.getEsQueryType(res.locals.type, res.locals.origin);
-  const query = queryBuilder.build(postcodeLocationDetails.location, searchType, resultsLimit);
+  const queryType = queryMapper.getQueryType(res.locals.type, res.locals.origin);
+  const query = queryBuilder(postcodeLocationDetails.location, queryType, resultsLimit);
 
   const endTimer = azureSearchGetServiceHistogram.startTimer();
   const timerLabel = {};
-  timerLabel[promQueryLabelName] = searchType;
+  timerLabel[promQueryLabelName] = queryType;
 
   const logResults = (resultCount) => {
     endTimer(timerLabel);
