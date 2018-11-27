@@ -17,7 +17,6 @@ function assertSearchResponse(location, type, origin, done, assertions) {
     .query({ location, origin, type })
     .end((err, res) => {
       expect(err).to.equal(null);
-      console.log(res);
       iExpect.htmlWith200Status(res);
       assertions(err, res);
       done();

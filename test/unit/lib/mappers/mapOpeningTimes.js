@@ -1,4 +1,6 @@
 const chai = require('chai');
+
+const formatTimeString = require('../../../../app/lib/utils/formatTimeString');
 const mapOpeningTimes = require('../../../../app/lib/mappers/mapOpeningTimes');
 
 const expect = chai.expect;
@@ -31,13 +33,13 @@ describe('mapOpeningTimes', () => {
       expect(openingTimes[0].day).to.equal(monday);
       expect(openingTimes[0].openingTimes).to.be.an('array');
       expect(openingTimes[0].openingTimes.length).to.equal(1);
-      expect(openingTimes[0].openingTimes[0].opens).to.equal(mondayOpens);
-      expect(openingTimes[0].openingTimes[0].closes).to.equal(mondayCloses);
+      expect(openingTimes[0].openingTimes[0].opens).to.equal(formatTimeString(mondayOpens));
+      expect(openingTimes[0].openingTimes[0].closes).to.equal(formatTimeString(mondayCloses));
       expect(openingTimes[1].day).to.equal(tuesday);
       expect(openingTimes[1].openingTimes).to.be.an('array');
       expect(openingTimes[1].openingTimes.length).to.equal(1);
-      expect(openingTimes[1].openingTimes[0].opens).to.equal(tuesdayOpens);
-      expect(openingTimes[1].openingTimes[0].closes).to.equal(tuesdayCloses);
+      expect(openingTimes[1].openingTimes[0].opens).to.equal(formatTimeString(tuesdayOpens));
+      expect(openingTimes[1].openingTimes[0].closes).to.equal(formatTimeString(tuesdayCloses));
       expect(openingTimes[2].day).to.equal('Wednesday');
       expect(openingTimes[2].openingTimes).to.be.an('array').and.empty;
       expect(openingTimes[3].day).to.equal('Thursday');
