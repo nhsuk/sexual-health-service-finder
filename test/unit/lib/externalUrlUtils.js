@@ -11,7 +11,7 @@ describe('externalUrlUtils', () => {
 
     it('should set \'saddr\' as first param and use the full address from the item for \'daddr\' and \'near\'', () => {
       const fullAddress = 'line1, AB12';
-      const inputList = [{ address: { fullAddress } }];
+      const inputList = [{ address: fullAddress }];
       const params = {
         daddr: fullAddress,
         near: fullAddress,

@@ -24,7 +24,7 @@ function assertSearchResponse(location, type, origin, done, assertions) {
     });
 }
 
-describe('Results page for kits in over 25 year olds', function test() {
+describe.skip('Results page for kits in over 25 year olds', function test() {
   this.timeout(2000);
 
   const location = 'ls1';

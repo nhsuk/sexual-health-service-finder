@@ -49,7 +49,7 @@ function assertSearchResponse(location, done, assertions) {
   done();
 }
 
-describe('Results page results', function test() {
+describe.skip('Results page results', function test() {
   this.timeout(2000);
 
   const location = 'ls1';

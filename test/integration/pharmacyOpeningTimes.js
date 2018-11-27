@@ -52,7 +52,7 @@ function assertFirstOpeningTimes(res) {
   assertTimes(firstTable, 7, 'Sunday', 'Closed');
 }
 
-describe('Pharmacy opening times', function test() {
+describe.skip('Pharmacy opening times', function test() {
   this.timeout(2000);
 
   const location = 'ls1';

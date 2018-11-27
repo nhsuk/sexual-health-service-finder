@@ -24,7 +24,7 @@ function assertSearchResponse(location, type, origin, done, assertions) {
     });
 }
 
-describe('Results page for sexual health professionals for over 25', function test() {
+describe.skip('Results page for sexual health professionals for over 25', function test() {
   this.timeout(2000);
 
   const location = 'ls1';

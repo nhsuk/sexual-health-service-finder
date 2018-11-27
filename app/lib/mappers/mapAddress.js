@@ -6,7 +6,11 @@ function mapAddress(service) {
   address.push(service.City);
   address.push(service.County);
   address.push(service.Postcode);
-  return address.filter(Boolean).join(', ');
+  const filteredAddress = address.filter(Boolean);
+  if (filteredAddress.length) {
+    return filteredAddress.join(', ');
+  }
+  return [];
 }
 
 module.exports = mapAddress;

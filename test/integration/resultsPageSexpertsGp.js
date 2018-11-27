@@ -41,7 +41,7 @@ function assertSearchResponse(location, done, assertions) {
   done();
 }
 
-describe('Results page for sexual health professionals (symptoms and under16)', function test() {
+describe.skip('Results page for sexual health professionals (symptoms and under16)', function test() {
   this.timeout(2000);
 
   const location = 'ls1';
