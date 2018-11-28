@@ -60,6 +60,7 @@
     "express": "^4.16.2",
     "express-prom-bundle": "^4.2.0",
     "fingerprint-brunch": "^2.0.5",
+    "google-libphonenumber": "^3.2.1",
     "helmet": "^3.11.0",
     "map-replace": "^1.0.2",
     "moment": "^2.22.0",
