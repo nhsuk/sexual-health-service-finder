@@ -31,31 +31,34 @@ function assertTableTitles(firstTable) {
   expect(header2).to.equal('Opening hours');
 }
 
-function assertTimes(firstTable, row, day, times) {
+function assertTimes(firstTable, row, day, firstSession, secondSession) {
   const firstRowCells = firstTable.children('tr').eq(row).children();
-  const cell1 = firstRowCells.eq(0).text();
-  const cell2 = firstRowCells.eq(1).text();
-  expect(cell1).to.equal(day);
-  expect(cell2).to.equal(times);
+  expect(firstRowCells.eq(0).text()).to.equal(day);
+  expect(firstRowCells.eq(1).text()).to.equal(firstSession);
+  if (secondSession) {
+    const secondSessionCell = firstTable.children('tr').eq(row + 1).children().eq(0);
+    expect(secondSessionCell.text()).to.equal(secondSession);
+  }
 }
 
 function assertFirstOpeningTimes(res) {
   const $ = cheerio.load(res.text);
   const firstTable = $('table.openingTimes tbody').eq(0);
+
   assertTableTitles(firstTable);
-  assertTimes(firstTable, 1, 'Monday', '9am to 6pm');
-  assertTimes(firstTable, 2, 'Tuesday', '9am to 6pm');
-  assertTimes(firstTable, 3, 'Wednesday', '9am to 6pm');
-  assertTimes(firstTable, 4, 'Thursday', '9am to 6pm');
-  assertTimes(firstTable, 5, 'Friday', '9am to 6pm');
-  assertTimes(firstTable, 6, 'Saturday', '9am to 1pm');
-  assertTimes(firstTable, 7, 'Sunday', 'Closed');
+  assertTimes(firstTable, 1, 'Monday', '8:30am to 1pm', '1:30pm to 6pm');
+  assertTimes(firstTable, 3, 'Tuesday', '8:30am to 1pm', '1:30pm to 6pm');
+  assertTimes(firstTable, 5, 'Wednesday', '8:30am to 1pm', '1:30pm to 6pm');
+  assertTimes(firstTable, 7, 'Thursday', '8:30am to 12:30pm');
+  assertTimes(firstTable, 8, 'Friday', '8:30am to 1pm', '1:30pm to 6pm');
+  assertTimes(firstTable, 10, 'Saturday', 'Closed');
+  assertTimes(firstTable, 11, 'Sunday', 'Closed');
 }
 
-describe.skip('Pharmacy opening times', function test() {
+describe('Pharmacy opening times', function test() {
   this.timeout(2000);
 
-  const location = 'ls1';
+  const location = 's2';
   const type = constants.serviceTypes.kit;
   const origin = constants.serviceChoices.over25;
 

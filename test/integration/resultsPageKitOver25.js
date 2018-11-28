@@ -4,6 +4,7 @@ const cheerio = require('cheerio');
 
 const app = require('../../server');
 const constants = require('../../app/lib/constants');
+const getTextOnlyFromElement = require('../lib/utils').getTextOnlyFromElement;
 const iExpect = require('../lib/expectations');
 
 const expect = chai.expect;
@@ -24,10 +25,10 @@ function assertSearchResponse(location, type, origin, done, assertions) {
     });
 }
 
-describe.skip('Results page for kits in over 25 year olds', function test() {
+describe('Results page for kits in over 25 year olds', function test() {
   this.timeout(2000);
 
-  const location = 'ls1';
+  const location = 'ls8';
   const type = constants.serviceTypes.kit;
   const origin = constants.serviceChoices.over25;
 
@@ -35,13 +36,13 @@ describe.skip('Results page for kits in over 25 year olds', function test() {
     it('should contain a header and other info related to the search', (done) => {
       assertSearchResponse(location, type, origin, done, (err, res) => {
         const $ = cheerio.load(res.text);
-        const resultsHeader = $('.local-header--title--question').text();
-        const resultsSubHeader = $('.results p.explanation').text();
-        const resultsOnwards = $('.results p.links').text();
+        const resultsHeader = getTextOnlyFromElement($('.nhsuk-page-heading'));
+        const resultsSubHeader = getTextOnlyFromElement($('.results p.explanation'));
+        const resultsOnwards = getTextOnlyFromElement($('.results p.links'));
 
-        expect(resultsHeader).to.contain('Places you can buy a test kit near \'LS1\'');
-        expect(resultsSubHeader).to.contain('You can buy a test kit from these places.');
-        expect(resultsOnwards).to.contain('Or: see where you can get tested by a sexual health professional.');
+        expect(resultsHeader).to.equal(`Places you can buy a test kit near '${location.toUpperCase()}'`);
+        expect(resultsSubHeader).to.equal('You can buy a test kit from these places.');
+        expect(resultsOnwards).to.equal('Or: see where you can get tested by a sexual health professional.');
       });
     });
   });
@@ -50,28 +51,23 @@ describe.skip('Results page for kits in over 25 year olds', function test() {
     it('should have distance, name, an address and phone number', (done) => {
       assertSearchResponse(location, type, origin, done, (err, res) => {
         const $ = cheerio.load(res.text);
-        const searchResultsDistance = $('.results__address.results__address-distance').first();
-        const searchResultsName = $('.results__name').first();
-        const searchResultsAddress = $('.results__address.results__address-lines').first();
-        const searchResultsPhone = $('.results__address.results__telephone a').first();
-        const searchResultsMapLink = $('.results__item__link a').first();
-        const searchResultsOpeningTimes = $('.results__item__opening-times a').first();
-        const searchResultsService = $('.results__item__service-details a').first();
+        // const distance =
+        // getTextOnlyFromElement($('.results__address.results__address-distance'));
+        const name = getTextOnlyFromElement($('.results__name').first());
+        const address = getTextOnlyFromElement($('.results__address.results__address-lines').first());
+        const telephone = getTextOnlyFromElement($('.results__address.results__telephone a').first());
+        const mapLink = getTextOnlyFromElement($('.results__item__link a').first());
+        const openingTimes = getTextOnlyFromElement($('.results__item__opening-times a').first());
+        const serviceInfo = getTextOnlyFromElement($('.results__item__service-details a').first());
 
-        expect(searchResultsDistance).to.not.equal(undefined);
-        expect(searchResultsName).to.not.equal(undefined);
-        expect(searchResultsAddress).to.not.equal(undefined);
-        expect(searchResultsPhone).to.not.equal(undefined);
-        expect(searchResultsOpeningTimes.text()).to.contain('See opening times');
-        expect(searchResultsService).to.not.equal(undefined);
-        const name = searchResultsName.text().trim().replace('\n', '');
-        const address = searchResultsAddress.text().trim().replace('\n', '');
-        expect(name).to.contain('Ma Manning (Pharmacy) Ltd');
-        expect(address).to.contain('97 Lidgett Lane');
-        const mapLinkText = $(searchResultsMapLink).text().replace('\n', '');
-        expect(mapLinkText).to.contain(`See map and directions for ${name} at ${address}`);
-        expect(searchResultsDistance.text()).to.contain('3 miles away');
-        expect(searchResultsPhone.text()).to.contain('0113 266 1786');
+        expect(openingTimes).to.equal('See opening times');
+        expect(serviceInfo).to.equal('');
+        expect(name).to.equal('Ma Manning (Pharmacy) Ltd');
+        expect(address).to.equal('97 Lidgett Lane, Leeds, Leeds, West Yorkshire, LS8 1QR');
+        expect(mapLink).to.equal(`See map and directions for ${name} at ${address}`);
+        // TODO: Add back when function implemented
+        // expect(distance.text()).to.equal('3 miles away');
+        expect(telephone).to.equal('0113 266 1786');
       });
     });
   });

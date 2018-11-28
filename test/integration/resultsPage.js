@@ -4,6 +4,7 @@ const cheerio = require('cheerio');
 
 const app = require('../../server');
 const constants = require('../../app/lib/constants');
+const getTextOnlyFromElement = require('../lib/utils').getTextOnlyFromElement;
 const iExpect = require('../lib/expectations');
 
 const expect = chai.expect;
@@ -49,7 +50,7 @@ function assertSearchResponse(location, done, assertions) {
   done();
 }
 
-describe.skip('Results page results', function test() {
+describe('Results page results', function test() {
   this.timeout(2000);
 
   const location = 'ls1';
@@ -73,7 +74,8 @@ describe.skip('Results page results', function test() {
     it('should have distance, a name, address and telephone number, a map link, See opening times toggle and See service information toggle', (done) => {
       assertSearchResponse(location, done, (err, res) => {
         const $ = cheerio.load(res.text);
-        const searchResultsDistance = $('.results__address.results__address-distance');
+        // TODO: Add back when function in place
+        // const searchResultsDistance = $('.results__address.results__address-distance');
         const searchResultsName = $('.results__name');
         const searchResultsAddress = $('.results__address.results__address-lines');
         const searchResultsPhone = $('.results__address.results__telephone a');
@@ -81,21 +83,17 @@ describe.skip('Results page results', function test() {
         const searchResultsOpeningTimes = $('.results__item__opening-times a');
         const searchResultsService = $('.results__item__service-details a');
 
-        expect(searchResultsDistance).to.not.equal(undefined);
-        expect(searchResultsName).to.not.equal(undefined);
-        expect(searchResultsAddress).to.not.equal(undefined);
-        expect(searchResultsPhone).to.not.equal(undefined);
-        expect(searchResultsOpeningTimes.text()).to.contain('See opening times'.repeat(30));
-        expect(searchResultsService.text()).to.contain('See service information'.repeat(30));
+        expect(searchResultsOpeningTimes.text()).to.equal('See opening times'.repeat(30));
+        expect(searchResultsService.text()).to.equal('See service information'.repeat(30));
 
         searchResultsMapLink.toArray().forEach((result, index) => {
-          const name = $(searchResultsName.toArray()[index]).text().trim().replace('\n', '');
-          const address = $(searchResultsAddress.toArray()[index]).text().trim().replace('\n', '');
+          const name = getTextOnlyFromElement($('.results__name').eq(index));
+          const address = getTextOnlyFromElement($('.results__address.results__address-lines').eq(index));
           const mapLinkText = $(result).text().replace('\n', '');
-          expect(mapLinkText).to.contain(`See map and directions for ${name} at ${address}`);
+          expect(mapLinkText).to.equal(`See map and directions for ${name} at ${address}`);
         });
 
-        expect(searchResultsDistance).to.have.lengthOf(30);
+        // expect(searchResultsDistance).to.have.lengthOf(30);
         expect(searchResultsName).to.have.lengthOf(30);
         expect(searchResultsAddress).to.have.lengthOf(30);
         expect(searchResultsPhone).to.have.lengthOf(30);
