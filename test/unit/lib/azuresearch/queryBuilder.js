@@ -35,7 +35,7 @@ describe('queryBuilder', () => {
 
     expect(output).to.be.an('object');
     expect(output).to.have.property('count').and.equal(true);
-    expect(output).to.have.property('filter').and.equal('(ServiceCodesProvided/any(g: g eq \'SRV0267\')) or (ServicesProvided/any(f: f eq \'Sexual health information and support\') and VenueType eq \'Community\') or (ServicesProvided/any(f: f eq \'Chlamydia screening under 25s\') and (VenueType eq \'Clinic\' or VenueType eq \'Community\')) and not search.in(OrganisationName, \'Marie Stopes,Young People Friendly Practice,BPAS\', \',\')');
+    expect(output).to.have.property('filter').and.equal('(ServiceCodesProvided/any(g: g eq \'SRV0267\')) or (ServicesProvided/any(f: f eq \'Sexual health information and support\') and VenueType eq \'Community\') or (ServicesProvided/any(f: f eq \'Chlamydia screening under 25s\') and search.in(VenueType, \'Clinic,Community\')) and not (search.ismatch(\'Marie Stopes\', \'OrganisationName\', \'simple\', \'all\') or search.ismatch(\'Young People Friendly Practice\', \'OrganisationName\', \'simple\', \'all\') or search.ismatch(\'BPAS\', \'OrganisationName\', \'simple\', \'all\'))');
     expect(output).to.have.property('orderby').and.equal(`geo.distance(Geocode, geography'POINT(${location.lon} ${location.lat})')`);
     expect(output).to.have.property('top').and.equal(size);
   });
@@ -52,7 +52,7 @@ describe('queryBuilder', () => {
 
     expect(output).to.be.an('object');
     expect(output).to.have.property('count').and.equal(true);
-    expect(output).to.have.property('filter').and.equal('(ServiceCodesProvided/any(g: g eq \'SRV0267\')) or (ServicesProvided/any(f: f eq \'Sexual health information and support\') and VenueType eq \'Community\') or (ServicesProvided/any(f: f eq \'Chlamydia screening under 25s\') and (VenueType eq \'Clinic\' or VenueType eq \'Community\')) and not search.in(OrganisationName, \'Marie Stopes,Young People Friendly Practice,BPAS\', \',\')');
+    expect(output).to.have.property('filter').and.equal('ServicesProvided/any(s: s eq \'Sexual health information and support\') and VenueType eq \'Clinic\' and not (search.ismatch(\'Marie Stopes\', \'OrganisationName\', \'simple\', \'all\') or search.ismatch(\'Young People Friendly Practice\', \'OrganisationName\', \'simple\', \'all\') or search.ismatch(\'BPAS\', \'OrganisationName\', \'simple\', \'all\'))');
     expect(output).to.have.property('orderby').and.equal(`geo.distance(Geocode, geography'POINT(${location.lon} ${location.lat})')`);
     expect(output).to.have.property('top').and.equal(size);
   });
