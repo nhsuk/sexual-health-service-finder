@@ -3,10 +3,15 @@ const chaiHttp = require('chai-http');
 const cheerio = require('cheerio');
 
 const app = require('../../server');
+const asConfig = require('../../config/config').azureSearch;
 const constants = require('../../app/lib/constants');
 const iExpect = require('../lib/expectations');
+const nockRequests = require('../lib/nockRequests');
+const queryBuilder = require('../../app/lib/azuresearch/queryBuilder');
+const getQueryType = require('../../app/lib/utils/queryMapper').getQueryType;
 
 const expect = chai.expect;
+
 chai.use(chaiHttp);
 
 const resultsRoute = `${constants.siteRoot}/results/`;
@@ -43,14 +48,22 @@ function assertFirstOpeningTimes(res) {
   assertTimes(firstTable, 11, 'Sunday', 'Closed');
 }
 
-describe('Pharmacy opening times', function test() {
-  this.timeout(2000);
-
+describe('Pharmacy opening times', () => {
   const location = 's2';
   const type = constants.serviceTypes.kit;
   const origin = constants.serviceChoices.over25;
 
   it('should display daily opening times for a pharmacy', async () => {
+    const path = `/indexes/${asConfig.index}/docs/search`;
+    const latLon = { lat: 53.3695577231271, lon: -1.44810761237785 };
+    const queryType = getQueryType(type, origin);
+    const query = queryBuilder(latLon, queryType, 30);
+    const requestBody = JSON.stringify(query);
+    const responsePath = `${location}-results.json`;
+
+    nockRequests.withResponseBody(path, requestBody, 200, responsePath);
+    nockRequests.postcodesIO(`/outcodes/${location}`, 200, `outcodeResponse_${location}.json`);
+
     const res = await chai.request(app)
       .get(resultsRoute)
       .query({ location, origin, type });

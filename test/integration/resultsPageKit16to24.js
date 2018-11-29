@@ -3,9 +3,13 @@ const chaiHttp = require('chai-http');
 const cheerio = require('cheerio');
 
 const app = require('../../server');
+const asConfig = require('../../config/config').azureSearch;
 const constants = require('../../app/lib/constants');
 const getTextOnlyFromElement = require('../lib/utils').getTextOnlyFromElement;
 const iExpect = require('../lib/expectations');
+const nockRequests = require('../lib/nockRequests');
+const queryBuilder = require('../../app/lib/azuresearch/queryBuilder');
+const getQueryType = require('../../app/lib/utils/queryMapper').getQueryType;
 
 const expect = chai.expect;
 
@@ -13,15 +17,23 @@ chai.use(chaiHttp);
 
 const resultsRoute = `${constants.siteRoot}/results/`;
 
-describe('Results page for kits for 16 to 24 year olds', function test() {
-  this.timeout(2000);
-
+describe('Results page for kits for 16 to 24 year olds', () => {
   const location = 'ls1';
   const type = constants.serviceTypes.kit;
   const origin = constants.serviceChoices['16to24'];
   let res;
 
   before('make request', async () => {
+    const path = `/indexes/${asConfig.index}/docs/search`;
+    const latLon = { lat: 53.7974737203539, lon: -1.55262247079646 };
+    const queryType = getQueryType(type, origin);
+    const query = queryBuilder(latLon, queryType, 30);
+    const requestBody = JSON.stringify(query);
+    const responsePath = `type-${type}-origin-${origin}-results.json`;
+
+    nockRequests.withResponseBody(path, requestBody, 200, responsePath);
+    nockRequests.postcodesIO(`/outcodes/${location}`, 200, 'outcodeResponse_ls1.json');
+
     res = await chai.request(app)
       .get(resultsRoute)
       .query({ location, origin, type });

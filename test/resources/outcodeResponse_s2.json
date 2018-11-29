@@ -1,0 +1,28 @@
+{
+  "status": 200,
+  "result": {
+    "outcode": "S2",
+    "longitude": -1.44810761237785,
+    "latitude": 53.3695577231271,
+    "northings": 385996,
+    "eastings": 436818,
+    "admin_district": [
+      "Sheffield"
+    ],
+    "parish": [
+      "Sheffield, unparished area"
+    ],
+    "admin_county": [],
+    "admin_ward": [
+      "Gleadless Valley",
+      "City",
+      "Park and Arbourthorne",
+      "Nether Edge and Sharrow",
+      "Manor Castle",
+      "Darnall"
+    ],
+    "country": [
+      "England"
+    ]
+  }
+}

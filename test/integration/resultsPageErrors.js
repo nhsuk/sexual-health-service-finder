@@ -3,6 +3,7 @@ const cheerio = require('cheerio');
 
 const app = require('../../server');
 const constants = require('../../app/lib/constants');
+const nockRequests = require('../lib/nockRequests');
 const messages = require('../../app/lib/messages');
 
 const expect = chai.expect;
@@ -33,8 +34,10 @@ describe('Results page errors', () => {
   });
 
   it('should return a descriptive message when location is invalid', async () => {
-    const location = 'LS1 234';
+    const location = 'LS1234';
     const message = messages.invalidPostcodeMessage(location);
+
+    nockRequests.postcodesIO(`/postcodes/${location}`, 404, 'postcodesio-404.json');
 
     const res = await chai.request(app)
       .get(results)
@@ -51,6 +54,8 @@ describe('Results page errors', () => {
     const location = 'EH1';
     const message = 'This postcode is not in England. Get help to find a chlamydia test in find a chlamydia test in '
       + 'Scotland, find a chlamydia test in Wales or find a chlamydia test in Northern Ireland.';
+
+    nockRequests.postcodesIO(`/outcodes/${location}`, 200, 'outcodeResponse_EH1.json');
 
     const res = await chai.request(app)
       .get(results)

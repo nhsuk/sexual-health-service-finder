@@ -13,9 +13,7 @@ chai.use(chaiHttp);
 
 const locationRoute = `${constants.siteRoot}/location/`;
 
-describe('Location page for ordering kits online for 16 to 24 year olds', function test() {
-  this.timeout(2000);
-
+describe('Location page for ordering kits online for 16 to 24 year olds', () => {
   const type = constants.serviceTypes.online;
   const origin = constants.serviceChoices['16to24'];
   let res;

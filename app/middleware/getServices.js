@@ -46,7 +46,6 @@ async function getServices(req, res, next) {
   };
 
   try {
-    // TODO: Pass the query into azureRequest
     const response = await azureRequest(query);
     [res.locals.services, res.locals.resultsCount] = processResults(response, logResults);
     next();
