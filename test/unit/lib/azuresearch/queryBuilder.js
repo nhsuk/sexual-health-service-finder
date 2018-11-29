@@ -1,4 +1,5 @@
 const chai = require('chai');
+const VError = require('verror').VError;
 
 const constants = require('../../../../app/lib/constants');
 const queryBuilder = require('../../../../app/lib/azuresearch/queryBuilder');
@@ -55,5 +56,12 @@ describe('queryBuilder', () => {
     expect(output).to.have.property('filter').and.equal('ServicesProvided/any(s: s eq \'Sexual health information and support\') and VenueType eq \'Clinic\' and not (search.ismatch(\'Marie Stopes\', \'OrganisationName\', \'simple\', \'all\') or search.ismatch(\'Young People Friendly Practice\', \'OrganisationName\', \'simple\', \'all\') or search.ismatch(\'BPAS\', \'OrganisationName\', \'simple\', \'all\'))');
     expect(output).to.have.property('orderby').and.equal(`geo.distance(Geocode, geography'POINT(${location.lon} ${location.lat})')`);
     expect(output).to.have.property('top').and.equal(size);
+  });
+
+  describe('unknown type', () => {
+    it('should throw VError', () => {
+      const unknownType = 'unknown';
+      expect(() => queryBuilder({}, unknownType, 10)).to.throw(VError, `Unknown queryType: ${unknownType}`);
+    });
   });
 });
