@@ -23,6 +23,7 @@ function build(location, queryType, size) {
     count: true,
     filter,
     orderby: `geo.distance(Geocode, geography'POINT(${location.lon} ${location.lat})')`,
+    select: 'OrganisationName, Address1, Address2, Address3, City, County, Postcode, Contacts, Metrics, GSD, OpeningTimes',
     top: size,
   };
 }

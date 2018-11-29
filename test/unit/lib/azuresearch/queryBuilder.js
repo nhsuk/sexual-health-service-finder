@@ -21,6 +21,7 @@ describe('queryBuilder', () => {
     expect(output).to.have.property('count').and.equal(true);
     expect(output).to.have.property('filter').and.equal('ServiceCodesProvided/any(s: s eq \'SRV0531\')');
     expect(output).to.have.property('orderby').and.equal(`geo.distance(Geocode, geography'POINT(${location.lon} ${location.lat})')`);
+    expect(output).to.have.property('select').and.equal('OrganisationName, Address1, Address2, Address3, City, County, Postcode, Contacts, Metrics, GSD, OpeningTimes');
     expect(output).to.have.property('top').and.equal(size);
   });
 
@@ -38,6 +39,7 @@ describe('queryBuilder', () => {
     expect(output).to.have.property('count').and.equal(true);
     expect(output).to.have.property('filter').and.equal('(ServiceCodesProvided/any(g: g eq \'SRV0267\')) or (ServicesProvided/any(f: f eq \'Sexual health information and support\') and VenueType eq \'Community\') or (ServicesProvided/any(f: f eq \'Chlamydia screening under 25s\') and search.in(VenueType, \'Clinic,Community\')) and not (search.ismatch(\'Marie Stopes\', \'OrganisationName\', \'simple\', \'all\') or search.ismatch(\'Young People Friendly Practice\', \'OrganisationName\', \'simple\', \'all\') or search.ismatch(\'BPAS\', \'OrganisationName\', \'simple\', \'all\'))');
     expect(output).to.have.property('orderby').and.equal(`geo.distance(Geocode, geography'POINT(${location.lon} ${location.lat})')`);
+    expect(output).to.have.property('select').and.equal('OrganisationName, Address1, Address2, Address3, City, County, Postcode, Contacts, Metrics, GSD, OpeningTimes');
     expect(output).to.have.property('top').and.equal(size);
   });
 
@@ -55,6 +57,7 @@ describe('queryBuilder', () => {
     expect(output).to.have.property('count').and.equal(true);
     expect(output).to.have.property('filter').and.equal('ServicesProvided/any(s: s eq \'Sexual health information and support\') and VenueType eq \'Clinic\' and not (search.ismatch(\'Marie Stopes\', \'OrganisationName\', \'simple\', \'all\') or search.ismatch(\'Young People Friendly Practice\', \'OrganisationName\', \'simple\', \'all\') or search.ismatch(\'BPAS\', \'OrganisationName\', \'simple\', \'all\'))');
     expect(output).to.have.property('orderby').and.equal(`geo.distance(Geocode, geography'POINT(${location.lon} ${location.lat})')`);
+    expect(output).to.have.property('select').and.equal('OrganisationName, Address1, Address2, Address3, City, County, Postcode, Contacts, Metrics, GSD, OpeningTimes');
     expect(output).to.have.property('top').and.equal(size);
   });
 
