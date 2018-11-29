@@ -11,18 +11,6 @@ chai.use(chaiHttp);
 
 const resultsRoute = `${constants.siteRoot}/results/`;
 
-function assertSearchResponse(location, type, origin, done, assertions) {
-  chai.request(app)
-    .get(resultsRoute)
-    .query({ location, origin, type })
-    .end((err, res) => {
-      expect(err).to.equal(null);
-      iExpect.htmlWith200Status(res);
-      assertions(err, res);
-      done();
-    });
-}
-
 function assertTableTitles(firstTable) {
   const firstRowCells = firstTable.children('tr').eq('0').children();
   const header1 = firstRowCells.eq(0).text();
@@ -62,9 +50,12 @@ describe('Pharmacy opening times', function test() {
   const type = constants.serviceTypes.kit;
   const origin = constants.serviceChoices.over25;
 
-  it('should display daily opening times for a pharmacy', (done) => {
-    assertSearchResponse(location, type, origin, done, (err, res) => {
-      assertFirstOpeningTimes(res);
-    });
+  it('should display daily opening times for a pharmacy', async () => {
+    const res = await chai.request(app)
+      .get(resultsRoute)
+      .query({ location, origin, type });
+
+    iExpect.htmlWith200Status(res);
+    assertFirstOpeningTimes(res);
   });
 });

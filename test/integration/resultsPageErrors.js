@@ -16,46 +16,50 @@ function expectErrorMessage(res, message) {
   expect(error).to.contain(message);
 }
 
-function makeSearchRequestAndCheckExpectations(location, assertions) {
-  chai.request(app)
-    .get(results)
-    .query({
-      location,
-      origin: constants.serviceChoices.symptoms,
-      type: constants.serviceTypes.professional,
-    })
-    .end(assertions);
-}
-
 describe('Results page errors', () => {
-  it('should return a descriptive message when location is blank', (done) => {
+  it('should return a descriptive message when location is blank', async () => {
     const location = '';
     const message = messages.emptyPostcodeMessage();
 
-    makeSearchRequestAndCheckExpectations(location, (err, res) => {
-      expectErrorMessage(res, message);
-      done();
-    });
+    const res = await chai.request(app)
+      .get(results)
+      .query({
+        location,
+        origin: constants.serviceChoices.symptoms,
+        type: constants.serviceTypes.professional,
+      });
+
+    expectErrorMessage(res, message);
   });
 
-  it('should return a descriptive message when location is invalid', (done) => {
+  it('should return a descriptive message when location is invalid', async () => {
     const location = 'LS1 234';
     const message = messages.invalidPostcodeMessage(location);
 
-    makeSearchRequestAndCheckExpectations(location, (err, res) => {
-      expectErrorMessage(res, message);
-      done();
-    });
+    const res = await chai.request(app)
+      .get(results)
+      .query({
+        location,
+        origin: constants.serviceChoices.symptoms,
+        type: constants.serviceTypes.professional,
+      });
+
+    expectErrorMessage(res, message);
   });
 
-  it('should return a descriptive message for out of England locations', (done) => {
+  it('should return a descriptive message for out of England locations', async () => {
     const location = 'EH1';
     const message = 'This postcode is not in England. Get help to find a chlamydia test in find a chlamydia test in '
       + 'Scotland, find a chlamydia test in Wales or find a chlamydia test in Northern Ireland.';
 
-    makeSearchRequestAndCheckExpectations(location, (err, res) => {
-      expectErrorMessage(res, message);
-      done();
-    });
+    const res = await chai.request(app)
+      .get(results)
+      .query({
+        location,
+        origin: constants.serviceChoices.symptoms,
+        type: constants.serviceTypes.professional,
+      });
+
+    expectErrorMessage(res, message);
   });
 });
