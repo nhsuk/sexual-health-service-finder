@@ -1,4 +1,4 @@
-const digitalData = require('../lib/digitalData');
+const digitalData = require('../lib/displayUtils/digitalData');
 const queryMapper = require('../lib/utils/queryMapper');
 const trim = require('../lib/utils/utils').trim;
 

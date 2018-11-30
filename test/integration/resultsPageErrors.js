@@ -4,7 +4,7 @@ const cheerio = require('cheerio');
 const app = require('../../server');
 const constants = require('../../app/lib/constants');
 const nockRequests = require('../lib/nockRequests');
-const messages = require('../../app/lib/messages');
+const messages = require('../../app/lib/displayUtils/messages');
 
 const expect = chai.expect;
 

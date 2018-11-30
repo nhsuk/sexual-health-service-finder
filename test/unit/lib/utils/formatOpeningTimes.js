@@ -1,6 +1,6 @@
 /* eslint-disable sort-keys */
 const expect = require('chai').expect;
-const formatOpeningTimes = require('../../../../app/lib/utils/formatOpeningTimes');
+const formatOpeningTimes = require('../../../../app/lib/formatters/formatOpeningTimes');
 
 function assertDayClosed(result, day) {
   expect(result.day).to.equal(day);

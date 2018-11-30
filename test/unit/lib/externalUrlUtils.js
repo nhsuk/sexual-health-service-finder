@@ -1,7 +1,7 @@
 const qs = require('querystring');
 const chai = require('chai');
 
-const urlUtils = require('../../../app/lib/externalUrlUtils');
+const urlUtils = require('../../../app/lib/displayUtils/externalUrlUtils');
 
 const expect = chai.expect;
 

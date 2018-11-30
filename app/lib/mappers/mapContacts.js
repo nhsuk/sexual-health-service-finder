@@ -1,5 +1,5 @@
 const extractProperty = require('../utils/extractProperty');
-const phoneNumberParser = require('../phoneNumberParser');
+const phoneNumberParser = require('../displayUtils/phoneNumberParser');
 
 function extractContact(type, data) {
   const opts = {
@@ -19,7 +19,6 @@ function mapContacts(service) {
 
   if (!data) { return undefined; }
 
-  // TODO: Pull these keys out into a shared module
   const types = [
     { newKey: 'email', targetKey: 'Email' },
     { newKey: 'telephoneNumber', targetKey: 'Telephone' },

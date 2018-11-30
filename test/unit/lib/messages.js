@@ -1,5 +1,5 @@
 const chai = require('chai');
-const messages = require('../../../app/lib/messages');
+const messages = require('../../../app/lib/displayUtils/messages');
 
 const expect = chai.expect;
 

@@ -1,4 +1,4 @@
-const urlUtils = require('../lib/externalUrlUtils');
+const urlUtils = require('../lib/displayUtils/externalUrlUtils');
 
 function results(req, res, next) {
   const locationDetails = res.locals.postcodeLocationDetails;

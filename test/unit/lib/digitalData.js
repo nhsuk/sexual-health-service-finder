@@ -1,7 +1,7 @@
 const chai = require('chai');
 
 const siteRoot = require('../../../app/lib/constants').siteRoot;
-const digitalData = require('../../../app/lib/digitalData');
+const digitalData = require('../../../app/lib/displayUtils/digitalData');
 
 const expect = chai.expect;
 

@@ -1,5 +1,5 @@
 const extractProperty = require('../utils/extractProperty');
-const formatOpeningTimes = require('../utils/formatOpeningTimes');
+const formatOpeningTimes = require('../formatters/formatOpeningTimes');
 
 function mapOpeningTimes(service) {
   const openingTimes = service.OpeningTimes;

@@ -1,6 +1,6 @@
 const chai = require('chai');
 
-const formatTimeString = require('../../../../app/lib/utils/formatTimeString');
+const formatTimeString = require('../../../../app/lib/formatters/formatTimeString');
 const mapOpeningTimes = require('../../../../app/lib/mappers/mapOpeningTimes');
 
 const expect = chai.expect;

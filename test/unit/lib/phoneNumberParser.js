@@ -1,6 +1,6 @@
 const chai = require('chai');
 
-const phoneNumberParser = require('../../../app/lib/phoneNumberParser');
+const phoneNumberParser = require('../../../app/lib/displayUtils/phoneNumberParser');
 
 const expect = chai.expect;
 

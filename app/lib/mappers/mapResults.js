@@ -12,8 +12,8 @@ function mapResults(results) {
       service.address = mapAddress(result);
       service.contacts = mapContacts(result);
       service.name = result.OrganisationName;
-      service.serviceDetails = mapServiceDetails(result);
       service.openingTimes = mapOpeningTimes(result);
+      service.serviceDetails = mapServiceDetails(result);
     }
     return service;
   }) : [];

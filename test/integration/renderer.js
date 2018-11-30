@@ -1,7 +1,7 @@
 const chai = require('chai');
 
 const constants = require('../../app/lib/constants');
-const messages = require('../../app/lib/messages');
+const messages = require('../../app/lib/displayUtils/messages');
 const renderer = require('../../app/middleware/renderer');
 const spyUtils = require('../lib/spy-utils');
 
