@@ -29,7 +29,7 @@ describe('Results page for sexual health professionals for 16 to 24', () => {
     const queryType = getQueryType(type, origin);
     const query = queryBuilder(latLon, queryType, 30);
     const requestBody = JSON.stringify(query);
-    const responsePath = `type-${type}-origin-${origin}-results.json`;
+    const responsePath = `${location}-sexpert-results.json`;
 
     nockRequests.withResponseBody(path, requestBody, 200, responsePath);
     nockRequests.postcodesIO(`/outcodes/${location}`, 200, 'outcodeResponse_ls1.json');

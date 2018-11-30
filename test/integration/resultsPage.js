@@ -52,7 +52,7 @@ describe('Results page results', () => {
       const queryType = getQueryType(type, origin);
       const query = queryBuilder(searchOrigin, queryType, 30);
       const requestBody = JSON.stringify(query);
-      const responsePath = `type-${type}-origin-${origin}-results.json`;
+      const responsePath = `${location}-sexpert-results.json`;
 
       nockRequests.withResponseBody(path, requestBody, 200, responsePath);
       nockRequests.postcodesIO(`/outcodes/${location}`, 200, 'outcodeResponse_ls1.json');
