@@ -55,7 +55,7 @@ describe('Pharmacy opening times', () => {
 
   it('should display daily opening times for a pharmacy', async () => {
     const path = `/indexes/${asConfig.index}/docs/search`;
-    const latLon = { lat: 53.3695577231271, lon: -1.44810761237785 };
+    const latLon = { location: { lat: 53.3695577231271, lon: -1.44810761237785 } };
     const queryType = getQueryType(type, origin);
     const query = queryBuilder(latLon, queryType, 30);
     const requestBody = JSON.stringify(query);

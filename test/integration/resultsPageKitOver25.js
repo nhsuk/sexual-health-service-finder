@@ -25,7 +25,7 @@ describe('Results page for kits in over 25 year olds', () => {
 
   before('make request', async () => {
     const path = `/indexes/${asConfig.index}/docs/search`;
-    const latLon = { lat: 53.7974737203539, lon: -1.55262247079646 };
+    const latLon = { location: { lat: 53.7974737203539, lon: -1.55262247079646 } };
     const queryType = getQueryType(type, origin);
     const query = queryBuilder(latLon, queryType, 30);
     const requestBody = JSON.stringify(query);
@@ -57,8 +57,7 @@ describe('Results page for kits in over 25 year olds', () => {
   describe('First service', () => {
     it('should have distance, name, an address and phone number', () => {
       const $ = cheerio.load(res.text);
-      // const distance =
-      // getTextOnlyFromElement($('.results__address.results__address-distance'));
+      const distance = getTextOnlyFromElement($('.results__address.results__address-distance').first());
       const name = getTextOnlyFromElement($('.results__name').first());
       const address = getTextOnlyFromElement($('.results__address.results__address-lines').first());
       const telephone = getTextOnlyFromElement($('.results__address.results__telephone a').first());
@@ -71,8 +70,7 @@ describe('Results page for kits in over 25 year olds', () => {
       expect(name).to.equal('Ma Manning (Pharmacy) Ltd');
       expect(address).to.equal('97 Lidgett Lane, Leeds, Leeds, West Yorkshire, LS8 1QR');
       expect(mapLink).to.equal(`See map and directions for ${name} at ${address}`);
-      // TODO: Add back when function implemented
-      // expect(distance.text()).to.equal('3 miles away');
+      expect(distance).to.equal(`${name} is 3 miles away`);
       expect(telephone).to.equal('0113 266 1786');
     });
   });

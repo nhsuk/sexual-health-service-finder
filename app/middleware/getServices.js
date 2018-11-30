@@ -16,20 +16,20 @@ function handleError(error, next) {
   next(newError);
 }
 
-function processResults(response, logResults) {
+function processResults(response, searchOrigin, logResults) {
   const results = JSON.parse(response);
   const resultsCount = results['@odata.count'];
   logResults(resultsCount);
-  return [mapResults(results), resultsCount];
+  return [mapResults(results, searchOrigin), resultsCount];
 }
 
 async function getServices(req, res, next) {
   const location = res.locals.location;
   const resultsLimit = res.locals.RESULTS_LIMIT;
-  const postcodeLocationDetails = res.locals.postcodeLocationDetails;
+  const searchOrigin = res.locals.postcodeLocationDetails;
 
   const queryType = queryMapper.getQueryType(res.locals.type, res.locals.origin);
-  const query = queryBuilder(postcodeLocationDetails.location, queryType, resultsLimit);
+  const query = queryBuilder(searchOrigin, queryType, resultsLimit);
 
   const endTimer = azureSearchGetServiceHistogram.startTimer();
   const timerLabel = {};
@@ -39,15 +39,17 @@ async function getServices(req, res, next) {
     endTimer(timerLabel);
     log.info({
       location,
-      postcodeLocationDetails,
       query,
       resultCount,
+      searchOrigin,
     }, 'getServices Azure Search query and params');
   };
 
   try {
     const response = await azureRequest(query);
-    [res.locals.services, res.locals.resultsCount] = processResults(response, logResults);
+    [res.locals.services, res.locals.resultsCount] = processResults(
+      response, searchOrigin, logResults
+    );
     next();
   } catch (error) {
     handleError(error, next);

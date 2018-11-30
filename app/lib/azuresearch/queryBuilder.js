@@ -2,7 +2,7 @@ const VError = require('verror').VError;
 
 const queryTypes = require('../constants').queryTypes;
 
-function build(location, queryType, size) {
+function build(searchOrigin, queryType, size) {
   let filter;
 
   switch (queryType) {
@@ -22,8 +22,8 @@ function build(location, queryType, size) {
   return {
     count: true,
     filter,
-    orderby: `geo.distance(Geocode, geography'POINT(${location.lon} ${location.lat})')`,
-    select: 'OrganisationName, Address1, Address2, Address3, City, County, Postcode, Contacts, Metrics, GSD, OpeningTimes',
+    orderby: `geo.distance(Geocode, geography'POINT(${searchOrigin.location.lon} ${searchOrigin.location.lat})')`,
+    select: 'OrganisationName, Address1, Address2, Address3, City, County, Postcode, Geocode, Contacts, Metrics, GSD, OpeningTimes',
     top: size,
   };
 }
