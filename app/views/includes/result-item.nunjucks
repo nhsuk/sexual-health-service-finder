@@ -1,8 +1,6 @@
-{% set distance = service.distance | float | round(1) %}
-
-{% if service.distance %}
+{% if service.distanceMessage %}
   <p class="results__address results__address-distance">
-    <span class="sr-only">{{ service.name }} is </span>{{ distance }} miles away
+    <span class="sr-only">{{ service.name }} is </span>{{ service.distanceMessage }}
   </p>
 {% endif %}
 

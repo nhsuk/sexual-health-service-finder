@@ -44,11 +44,11 @@ describe('mapResults', () => {
     const serviceDetailsText = 'some information about the service';
     const telephoneNumber = '0800 123456';
     const contacts = [{ OrganisationContactMethodType: 'Telephone', OrganisationContactValue: telephoneNumber }];
+    const geocode = { coordinates: [-1, 54] };
     const gsd = [{ ElementText: serviceDetailsText, ElementTitle: 'Service details' }];
     const sundayOpeningHours = '10:30-16:00';
     const [sundayOpens, sundayCloses] = sundayOpeningHours.split('-');
     const openingTimes = [{ Times: sundayOpeningHours, WeekDay: 'Sunday' }];
-    // const distance = 1.23;
     const rawService = {
       Address1: 'Address1',
       Address2: 'Address2',
@@ -57,24 +57,25 @@ describe('mapResults', () => {
       Contacts: JSON.stringify(contacts),
       County: 'County',
       GSD: JSON.stringify(gsd),
+      Geocode: geocode,
       OpeningTimes: JSON.stringify(openingTimes),
       OrganisationName: orgName,
       Postcode: 'Postcode',
     };
 
     before('run test', () => {
+      const searchOrigin = { location: { lat: -2.1, lon: 52.1 } };
       const input = { value: [rawService] };
-      output = mapResults(input);
+      output = mapResults(input, searchOrigin);
 
       expect(output).to.be.an('array');
       expect(output.length).to.equal(1);
       result = output[0];
     });
 
-    // TODO: This needs to be calculated
-    // it('should set \'distance\' as the first value from sort', () => {
-    //   expect(result.distance).to.equal(distance);
-    // });
+    it('should set \'distanceMessage\'', () => {
+      expect(result.distanceMessage).to.equal('4917.8 miles away');
+    });
 
     it('should set \'address\' based on the Address property', () => {
       expect(result.address).to.be.a('string');

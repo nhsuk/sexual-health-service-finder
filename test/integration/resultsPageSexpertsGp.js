@@ -39,11 +39,11 @@ describe('Results page for sexual health professionals (symptoms and under16)', 
       const origin = queryParams.origin;
       const type = queryParams.type;
       const path = `/indexes/${asConfig.index}/docs/search`;
-      const latLon = { lat: 53.7974737203539, lon: -1.55262247079646 };
+      const latLon = { location: { lat: 53.7974737203539, lon: -1.55262247079646 } };
       const queryType = getQueryType(type, origin);
       const query = queryBuilder(latLon, queryType, 30);
       const requestBody = JSON.stringify(query);
-      const responsePath = `type-${type}-origin-${origin}-results.json`;
+      const responsePath = `${location}-sexpert-results.json`;
 
       nockRequests.withResponseBody(path, requestBody, 200, responsePath);
       nockRequests.postcodesIO(`/outcodes/${location}`, 200, 'outcodeResponse_ls1.json');
@@ -85,14 +85,12 @@ describe('Results page for sexual health professionals (symptoms and under16)', 
   describe('First service', () => {
     it('should have distance, name, an address and phone number', () => {
       const $ = cheerio.load(res.text);
-      // TODO: Add back when function in place
-      // const searchResultsDistance =
-      // getTextOnlyFromElement($('.results__address.results__address-distance').first());
+      const searchResultsDistance = getTextOnlyFromElement($('.results__address.results__address-distance').first());
       const searchResultsName = getTextOnlyFromElement($('.results__name').first());
       const searchResultsAddress = getTextOnlyFromElement($('.results__address.results__address-lines').first());
       const searchResultsPhone = getTextOnlyFromElement($('.results__address.results__telephone a').first());
 
-      // expect(searchResultsDistance).to.equal('0.5 miles away');
+      expect(searchResultsDistance).to.equal(`${searchResultsName} is 0.5 miles away`);
       expect(searchResultsName).to.equal('Leeds Sexual Health @ The Merrion Centre');
       expect(searchResultsAddress).to.equal('Merrion Centre - 1st Floor, 50 Merrion Way, Leeds, West Yorkshire, LS2 8NG');
       expect(searchResultsPhone).to.equal('0113 392 0333');

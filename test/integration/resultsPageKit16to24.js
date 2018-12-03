@@ -25,7 +25,7 @@ describe('Results page for kits for 16 to 24 year olds', () => {
 
   before('make request', async () => {
     const path = `/indexes/${asConfig.index}/docs/search`;
-    const latLon = { lat: 53.7974737203539, lon: -1.55262247079646 };
+    const latLon = { location: { lat: 53.7974737203539, lon: -1.55262247079646 } };
     const queryType = getQueryType(type, origin);
     const query = queryBuilder(latLon, queryType, 30);
     const requestBody = JSON.stringify(query);
@@ -59,8 +59,7 @@ describe('Results page for kits for 16 to 24 year olds', () => {
   describe('First service', () => {
     it('should have distance, name, an address, phone number, a map link, See opening times toggle and See service information toggle', () => {
       const $ = cheerio.load(res.text);
-      // const distance =
-      // getTextOnlyFromElement($('.results__address.results__address-distance').first().text());
+      const distance = getTextOnlyFromElement($('.results__address.results__address-distance').first());
       const name = getTextOnlyFromElement($('.results__name').first());
       const address = getTextOnlyFromElement($('.results__address.results__address-lines').first());
       const phone = getTextOnlyFromElement($('.results__address.results__telephone a').first());
@@ -74,8 +73,7 @@ describe('Results page for kits for 16 to 24 year olds', () => {
       expect(name).to.equal('MESMAC - Leeds');
       expect(address).to.equal('22/23 Blayds Yard, Leeds, West Yorkshire, LS1 4AD');
       expect(mapLink).to.equal(`See map and directions for ${name} at ${address}`);
-      // TODO: Implement distance away function and add test back
-      // expect(distance).to.equal('0.4 miles away');
+      expect(distance).to.equal(`${name} is 0.4 miles away`);
     });
   });
 

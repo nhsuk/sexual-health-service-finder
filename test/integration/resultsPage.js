@@ -48,11 +48,11 @@ describe('Results page results', () => {
 
     before(`make request for type:${type} and origin:${origin}`, async () => {
       const path = `/indexes/${asConfig.index}/docs/search`;
-      const latLon = { lat: 53.7974737203539, lon: -1.55262247079646 };
+      const searchOrigin = { location: { lat: 53.7974737203539, lon: -1.55262247079646 } };
       const queryType = getQueryType(type, origin);
-      const query = queryBuilder(latLon, queryType, 30);
+      const query = queryBuilder(searchOrigin, queryType, 30);
       const requestBody = JSON.stringify(query);
-      const responsePath = `type-${type}-origin-${origin}-results.json`;
+      const responsePath = `${location}-sexpert-results.json`;
 
       nockRequests.withResponseBody(path, requestBody, 200, responsePath);
       nockRequests.postcodesIO(`/outcodes/${location}`, 200, 'outcodeResponse_ls1.json');
@@ -75,8 +75,7 @@ describe('Results page results', () => {
   describe('Each service', () => {
     it('should have distance, a name, address and telephone number, a map link, See opening times toggle and See service information toggle', () => {
       const $ = cheerio.load(res.text);
-      // TODO: Add back when function in place
-      // const searchResultsDistance = $('.results__address.results__address-distance');
+      const searchResultsDistance = $('.results__address.results__address-distance');
       const searchResultsName = $('.results__name');
       const searchResultsAddress = $('.results__address.results__address-lines');
       const searchResultsPhone = $('.results__address.results__telephone a');
@@ -94,7 +93,7 @@ describe('Results page results', () => {
         expect(mapLinkText).to.equal(`See map and directions for ${name} at ${address}`);
       });
 
-      // expect(searchResultsDistance).to.have.lengthOf(30);
+      expect(searchResultsDistance).to.have.lengthOf(30);
       expect(searchResultsName).to.have.lengthOf(30);
       expect(searchResultsAddress).to.have.lengthOf(30);
       expect(searchResultsPhone).to.have.lengthOf(30);
