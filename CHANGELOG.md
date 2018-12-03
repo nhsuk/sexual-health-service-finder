@@ -1,7 +1,8 @@
 0.20.0 / TBC
 ===================
 - Update npm dependencies
-- Upgrade to `node:10.13.0-alpine`
+- Upgrade to `node:10.14.0-alpine` for latest security and bug patches
+- Use Azure Search rather than Elasticsearch
 
 0.19.0 / 2018-11-20
 ===================
