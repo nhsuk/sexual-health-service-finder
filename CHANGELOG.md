@@ -3,6 +3,7 @@
 - Update npm dependencies
 - Upgrade to `node:10.14.0-alpine` for latest security and bug patches
 - Use Azure Search rather than Elasticsearch
+- Enable debugger for development
 
 0.19.0 / 2018-11-20
 ===================
