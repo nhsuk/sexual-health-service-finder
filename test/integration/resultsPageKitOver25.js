@@ -21,7 +21,7 @@ describe('Results page for kits in over 25 year olds', () => {
   const location = 'ls8';
   const type = constants.serviceTypes.kit;
   const origin = constants.serviceChoices.over25;
-  let res;
+  let $;
 
   before('make request', async () => {
     const path = `/indexes/${asConfig.index}/docs/search`;
@@ -34,16 +34,16 @@ describe('Results page for kits in over 25 year olds', () => {
     nockRequests.withResponseBody(path, requestBody, 200, responsePath);
     nockRequests.postcodesIO(`/outcodes/${location}`, 200, 'outcodeResponse_ls1.json');
 
-    res = await chai.request(app)
+    const res = await chai.request(app)
       .get(resultsRoute)
       .query({ location, origin, type });
 
     iExpect.htmlWith200Status(res);
+    $ = cheerio.load(res.text);
   });
 
   describe('layout', () => {
     it('should contain a header and other info related to the search', () => {
-      const $ = cheerio.load(res.text);
       const resultsHeader = getTextOnlyFromElement($('.nhsuk-page-heading'));
       const resultsSubHeader = getTextOnlyFromElement($('.results p.explanation'));
       const resultsOnwards = getTextOnlyFromElement($('.results p.links'));
@@ -56,7 +56,6 @@ describe('Results page for kits in over 25 year olds', () => {
 
   describe('First service', () => {
     it('should have distance, name, an address and phone number', () => {
-      const $ = cheerio.load(res.text);
       const distance = getTextOnlyFromElement($('.results__address.results__address-distance').first());
       const name = getTextOnlyFromElement($('.results__name').first());
       const address = getTextOnlyFromElement($('.results__address.results__address-lines').first());
@@ -77,7 +76,6 @@ describe('Results page for kits in over 25 year olds', () => {
 
   describe('matching results found', () => {
     it('should have 30 results', () => {
-      const $ = cheerio.load(res.text);
       const searchResults = $('.results__item--nearby');
 
       expect(searchResults.length).to.equal(30);

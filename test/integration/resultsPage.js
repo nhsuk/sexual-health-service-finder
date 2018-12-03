@@ -40,7 +40,7 @@ function setTypeAndOriginPairs() {
 
 describe('Results page results', () => {
   const location = 'ls1';
-  let res;
+  let $;
 
   setTypeAndOriginPairs().forEach((queryParams) => {
     const origin = queryParams.origin;
@@ -57,24 +57,23 @@ describe('Results page results', () => {
       nockRequests.withResponseBody(path, requestBody, 200, responsePath);
       nockRequests.postcodesIO(`/outcodes/${location}`, 200, 'outcodeResponse_ls1.json');
 
-      res = await chai.request(app)
+      const res = await chai.request(app)
         .get(resultsRoute)
         .query({ location, origin, type });
 
       iExpect.htmlWith200Status(res);
+      $ = cheerio.load(res.text);
     });
   });
 
   describe('layout', () => {
     it('should not be indexed', () => {
-      const $ = cheerio.load(res.text);
       expect($('meta[name=robots]').attr('content')).to.equal('noindex');
     });
   });
 
   describe('Each service', () => {
     it('should have distance, a name, address and telephone number, a map link, See opening times toggle and See service information toggle', () => {
-      const $ = cheerio.load(res.text);
       const searchResultsDistance = $('.results__address.results__address-distance');
       const searchResultsName = $('.results__name');
       const searchResultsAddress = $('.results__address.results__address-lines');
@@ -103,7 +102,6 @@ describe('Results page results', () => {
 
   describe('matching results found', () => {
     it('should have 30 results', () => {
-      const $ = cheerio.load(res.text);
       const searchResults = $('.results__item--nearby');
 
       expect(searchResults.length).to.equal(30);
