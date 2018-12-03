@@ -2,9 +2,6 @@ const constants = require('../constants');
 const utils = require('./utils');
 
 function getQueryType(type, origin) {
-  if (type === constants.serviceTypes.professional) {
-    return constants.queryTypes.sexperts;
-  }
   if (type === constants.serviceTypes.kit) {
     if (origin === constants.serviceChoices['16to24']) {
       return constants.queryTypes.kits16to24;

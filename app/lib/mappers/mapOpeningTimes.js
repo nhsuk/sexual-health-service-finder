@@ -1,15 +1,7 @@
 const extractProperty = require('../utils/extractProperty');
 const formatOpeningTimes = require('../formatters/formatOpeningTimes');
 
-function mapOpeningTimes(service) {
-  const openingTimes = service.OpeningTimes;
-
-  if (openingTimes) {
-    return {
-      formatted: formatOpeningTimes(openingTimes),
-    };
-  }
-
+function getOpeningTimesDescription(service) {
   const data = service.GSD;
 
   if (!data) { return undefined; }
@@ -21,10 +13,22 @@ function mapOpeningTimes(service) {
   };
 
   const description = extractProperty(opts, data);
-  if (description) {
-    return { description };
-  }
-  return undefined;
+
+  return description
+    ? { description }
+    : undefined;
+}
+
+function getStructuredOpeningTimes(openingTimes) {
+  return { formatted: formatOpeningTimes(openingTimes) };
+}
+
+function mapOpeningTimes(service) {
+  const openingTimes = service.OpeningTimes;
+
+  return openingTimes
+    ? getStructuredOpeningTimes(openingTimes)
+    : getOpeningTimesDescription(service);
 }
 
 module.exports = mapOpeningTimes;

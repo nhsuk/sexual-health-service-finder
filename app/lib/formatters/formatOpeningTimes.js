@@ -29,7 +29,7 @@ function formatOpeningTimes(openingTimesString) {
     return undefined;
   }
 
-  const openingTimes = daysOfWeekOrderedForUi.map((dayOfWeek) => {
+  return daysOfWeekOrderedForUi.map((dayOfWeek) => {
     const dayOpeningTimes = json
       .filter(openingTime => openingTime.WeekDay === dayOfWeek)
       .map(mapOpeningTimes);
@@ -39,8 +39,6 @@ function formatOpeningTimes(openingTimesString) {
       openingTimes: dayOpeningTimes,
     };
   });
-
-  return openingTimes;
 }
 
 module.exports = formatOpeningTimes;

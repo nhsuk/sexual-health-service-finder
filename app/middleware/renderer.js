@@ -1,5 +1,5 @@
-const log = require('../lib/logger');
 const constants = require('../lib/constants');
+const log = require('../lib/logger');
 const messages = require('../lib/displayUtils/messages');
 
 function startPage(req, res) {

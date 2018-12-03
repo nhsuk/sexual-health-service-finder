@@ -5,11 +5,11 @@ const cheerio = require('cheerio');
 const app = require('../../server');
 const asConfig = require('../../config/config').azureSearch;
 const constants = require('../../app/lib/constants');
+const getQueryType = require('../../app/lib/utils/queryMapper').getQueryType;
 const getTextOnlyFromElement = require('../lib/utils').getTextOnlyFromElement;
 const iExpect = require('../lib/expectations');
 const nockRequests = require('../lib/nockRequests');
 const queryBuilder = require('../../app/lib/azuresearch/queryBuilder');
-const getQueryType = require('../../app/lib/utils/queryMapper').getQueryType;
 
 const expect = chai.expect;
 

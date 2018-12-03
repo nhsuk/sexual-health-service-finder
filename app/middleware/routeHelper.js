@@ -1,6 +1,6 @@
-const renderer = require('./renderer');
 const constants = require('../lib/constants');
 const messages = require('../lib/displayUtils/messages');
+const renderer = require('./renderer');
 
 function renderSymptomsWithError(req, res) {
   res.locals.errorMessage = messages.mandatorySelectionMessage();

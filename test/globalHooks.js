@@ -1,5 +1,5 @@
-const nock = require('nock');
 const chai = require('chai');
+const nock = require('nock');
 
 const log = require('../app/lib/logger');
 
@@ -11,7 +11,6 @@ after('Check all nocks have been called. This is due to incorrectly \'nocked\' r
     expect(nock.pendingMocks().length).to.equal(0);
     expect(nock.isDone()).to.equal(true);
   } finally {
-    // Ensure this runs even when the above expects fail
     nock.cleanAll();
   }
 });
