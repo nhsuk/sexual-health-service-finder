@@ -4,6 +4,7 @@
 - Upgrade to `node:10.14.0-alpine` for latest security and bug patches
 - Use Azure Search rather than Elasticsearch
 - Enable debugger for development
+- Calculate distance between origin and result items
 
 0.19.0 / 2018-11-20
 ===================

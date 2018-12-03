@@ -1,6 +1,6 @@
 const radiusOfEarthInMiles = 3960;
 
-function degreesToRadians(degrees) {
+function convertDegreesToRadians(degrees) {
   return degrees * Math.PI / 180;
 }
 
@@ -10,11 +10,11 @@ function calculateDistance(origin, destination) {
   const destLat = destination.lat;
   const destLon = destination.lon;
 
-  const dLat = degreesToRadians(destLat - originLat);
-  const dLon = degreesToRadians(destLon - originLon);
+  const dLat = convertDegreesToRadians(destLat - originLat);
+  const dLon = convertDegreesToRadians(destLon - originLon);
 
   const a = Math.sin(dLat / 2) * Math.sin(dLat / 2)
-    + Math.cos(degreesToRadians(originLat)) * Math.cos(degreesToRadians(destLat))
+    + Math.cos(convertDegreesToRadians(originLat)) * Math.cos(convertDegreesToRadians(destLat))
     * Math.sin(dLon / 2) * Math.sin(dLon / 2);
   const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
   return radiusOfEarthInMiles * c;

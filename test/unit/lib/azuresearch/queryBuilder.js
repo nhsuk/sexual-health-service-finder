@@ -8,12 +8,7 @@ const expect = chai.expect;
 
 describe('queryBuilder', () => {
   it('should return kitsOver25 query when the query type is kitsOver25', () => {
-    const searchOrigin = {
-      location: {
-        lat: 54.12,
-        lon: -1.55,
-      },
-    };
+    const searchOrigin = { location: { lat: 54.12, lon: -1.55 } };
     const searchType = constants.queryTypes.kitsOver25;
     const size = 10;
 
@@ -28,12 +23,7 @@ describe('queryBuilder', () => {
   });
 
   it('should return kits16to24 query when the query type is kits16to24', () => {
-    const searchOrigin = {
-      location: {
-        lat: 12.34,
-        lon: -5.67,
-      },
-    };
+    const searchOrigin = { location: { lat: 12.34, lon: -5.67 } };
     const searchType = constants.queryTypes.kits16to24;
     const size = 100;
 
@@ -48,12 +38,7 @@ describe('queryBuilder', () => {
   });
 
   it('should return sexperts query when the query type is sexperts', () => {
-    const searchOrigin = {
-      location: {
-        lat: 12.34,
-        lon: -5.67,
-      },
-    };
+    const searchOrigin = { location: { lat: 12.34, lon: -5.67 } };
     const searchType = constants.queryTypes.sexperts;
     const size = 100;
 
