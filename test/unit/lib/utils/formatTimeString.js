@@ -1,5 +1,5 @@
 const expect = require('chai').expect;
-const formatTimeString = require('../../../../app/lib/utils/formatTimeString');
+const formatTimeString = require('../../../../app/lib/formatters/formatTimeString');
 
 describe('formatTimeString', () => {
   describe('24 hour to 12 hour', () => {

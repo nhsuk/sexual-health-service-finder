@@ -3,26 +3,18 @@ const chaiHttp = require('chai-http');
 const cheerio = require('cheerio');
 
 const app = require('../../server');
+const asConfig = require('../../config/config').azureSearch;
 const constants = require('../../app/lib/constants');
+const getQueryType = require('../../app/lib/utils/queryMapper').getQueryType;
 const iExpect = require('../lib/expectations');
-const utils = require('../lib/testUtils');
+const nockRequests = require('../lib/nockRequests');
+const queryBuilder = require('../../app/lib/azuresearch/queryBuilder');
 
 const expect = chai.expect;
+
 chai.use(chaiHttp);
 
 const resultsRoute = `${constants.siteRoot}/results/`;
-
-function assertSearchResponse(location, type, origin, done, assertions) {
-  chai.request(app)
-    .get(resultsRoute)
-    .query({ location, origin, type })
-    .end((err, res) => {
-      expect(err).to.equal(null);
-      iExpect.htmlWith200Status(res);
-      assertions(err, res);
-      done();
-    });
-}
 
 function assertTableTitles(firstTable) {
   const firstRowCells = firstTable.children('tr').eq('0').children();
@@ -32,42 +24,51 @@ function assertTableTitles(firstTable) {
   expect(header2).to.equal('Opening hours');
 }
 
-function assertTimes(firstTable, row, day, times) {
+function assertTimes(firstTable, row, day, firstSession, secondSession) {
   const firstRowCells = firstTable.children('tr').eq(row).children();
-  const cell1 = firstRowCells.eq(0).text();
-  const cell2 = firstRowCells.eq(1).text();
-  expect(cell1).to.equal(day);
-  expect(cell2).to.equal(times);
+  expect(firstRowCells.eq(0).text()).to.equal(day);
+  expect(firstRowCells.eq(1).text()).to.equal(firstSession);
+  if (secondSession) {
+    const secondSessionCell = firstTable.children('tr').eq(row + 1).children().eq(0);
+    expect(secondSessionCell.text()).to.equal(secondSession);
+  }
 }
 
 function assertFirstOpeningTimes(res) {
   const $ = cheerio.load(res.text);
   const firstTable = $('table.openingTimes tbody').eq(0);
+
   assertTableTitles(firstTable);
-  assertTimes(firstTable, 1, 'Monday', '9am to 6pm');
-  assertTimes(firstTable, 2, 'Tuesday', '9am to 6pm');
-  assertTimes(firstTable, 3, 'Wednesday', '9am to 6pm');
-  assertTimes(firstTable, 4, 'Thursday', '9am to 6pm');
-  assertTimes(firstTable, 5, 'Friday', '9am to 6pm');
-  assertTimes(firstTable, 6, 'Saturday', '9am to 1pm');
-  assertTimes(firstTable, 7, 'Sunday', 'Closed');
+  assertTimes(firstTable, 1, 'Monday', '8:30am to 1pm', '1:30pm to 6pm');
+  assertTimes(firstTable, 3, 'Tuesday', '8:30am to 1pm', '1:30pm to 6pm');
+  assertTimes(firstTable, 5, 'Wednesday', '8:30am to 1pm', '1:30pm to 6pm');
+  assertTimes(firstTable, 7, 'Thursday', '8:30am to 12:30pm');
+  assertTimes(firstTable, 8, 'Friday', '8:30am to 1pm', '1:30pm to 6pm');
+  assertTimes(firstTable, 10, 'Saturday', 'Closed');
+  assertTimes(firstTable, 11, 'Sunday', 'Closed');
 }
 
-describe('Pharmacy opening times', function test() {
-  // Setting this timeout as it is calling the real DB...
-  this.timeout(utils.maxWaitTimeMs);
-
-  before((done) => {
-    utils.waitForSiteReady(done);
-  });
-
-  const location = 'ls1';
+describe('Pharmacy opening times', () => {
+  const location = 's2';
   const type = constants.serviceTypes.kit;
   const origin = constants.serviceChoices.over25;
 
-  it('should display daily opening times for a pharmacy', (done) => {
-    assertSearchResponse(location, type, origin, done, (err, res) => {
-      assertFirstOpeningTimes(res);
-    });
+  it('should display daily opening times for a pharmacy', async () => {
+    const path = `/indexes/${asConfig.index}/docs/search`;
+    const latLon = { location: { lat: 53.3695577231271, lon: -1.44810761237785 } };
+    const queryType = getQueryType(type, origin);
+    const query = queryBuilder(latLon, queryType, 30);
+    const requestBody = JSON.stringify(query);
+    const responsePath = `${location}-results.json`;
+
+    nockRequests.withResponseBody(path, requestBody, 200, responsePath);
+    nockRequests.postcodesIO(`/outcodes/${location}`, 200, `outcodeResponse_${location}.json`);
+
+    const res = await chai.request(app)
+      .get(resultsRoute)
+      .query({ location, origin, type });
+
+    iExpect.htmlWith200Status(res);
+    assertFirstOpeningTimes(res);
   });
 });

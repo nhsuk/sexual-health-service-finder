@@ -1,8 +1,6 @@
-{% set distance = service.distance | float | round(1) %}
-
-{% if service.distance %}
+{% if service.distanceMessage %}
   <p class="results__address results__address-distance">
-    <span class="sr-only">{{ service.name }} is </span>{{ distance }} miles away
+    <span class="sr-only">{{ service.name }} is </span>{{ service.distanceMessage }}
   </p>
 {% endif %}
 
@@ -12,7 +10,7 @@
 
 {% if service.address %}
   <p class="results__address results__address-lines">
-    {% if service.address.fullAddress %} {{ service.address.fullAddress }} {% endif %}
+    {{ service.address }}
   </p>
 {% endif %}
 
@@ -27,7 +25,7 @@
 
 {% if service.address %}
   <p class="results__item__link">
-    <a class="maplink" href="{{service.mapUrl}}" class="maps_tracking">See map and directions<span class="sr-only"> for {{ service.name }} at {{ service.address.fullAddress }}</span></a>
+    <a class="maplink" href="{{service.mapUrl}}" class="maps_tracking">See map and directions<span class="sr-only"> for {{ service.name }} at {{ service.address }}</span></a>
   </p>
 {% endif %}
 
@@ -57,7 +55,7 @@
     <div class="details__content" id="details-content-0">
       <div class="reading-width">
         <p class="results__serviceDetails">
-          {{ service.serviceDetails }}
+          {{ service.serviceDetails | escape | nl2br }}
         </p>
       </div>
     </div>

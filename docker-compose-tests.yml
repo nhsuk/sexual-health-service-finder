@@ -7,8 +7,6 @@ services:
       file: docker-compose.yml
       service: base-app
     command: yarn run test-watch
-    links:
-      - sexual-health-service-finder-db:es
     volumes:
       - sh-test-node_modules:/code/node_modules
       - .:/code
@@ -27,8 +25,6 @@ services:
       file: docker-compose.yml
       service: base-app
     command: yarn run test-integration-watch
-    links:
-      - sexual-health-service-finder-db:es
     volumes:
       - sh-test-integration-node_modules:/code/node_modules
       - .:/code
@@ -39,20 +35,15 @@ services:
       service: base-app
     command: yarn run test-ci
     user: root
-    links:
-      - sexual-health-service-finder-db:es
     volumes:
       - sh-test-ci-node_modules:/code/node_modules
     environment:
+      AS_API_KEY: ${AS_API_KEY}
       COVERALLS_REPO_TOKEN: ${COVERALLS_REPO_TOKEN}
       TRAVIS: ${TRAVIS}
       TRAVIS_BRANCH: ${TRAVIS_BRANCH}
       TRAVIS_COMMIT: ${TRAVIS_COMMIT}
       TRAVIS_JOB_ID: ${TRAVIS_JOB_ID}
-
-
-  sexual-health-service-finder-db:
-    image: "nhsuk/elasticsearch-updater-snapshot:${elasticsearch_updater_snapshot_docker_image_tag-20180411}"
 
 volumes:
   sh-test-node_modules:

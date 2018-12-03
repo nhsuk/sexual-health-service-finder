@@ -1,19 +1,16 @@
 const constants = require('../constants');
 const utils = require('./utils');
 
-function getEsQueryType(type, origin) {
-  if (type === constants.serviceTypes.professional) {
-    return constants.searchTypes.sexperts;
-  }
+function getQueryType(type, origin) {
   if (type === constants.serviceTypes.kit) {
     if (origin === constants.serviceChoices['16to24']) {
-      return constants.searchTypes.kits16to24;
+      return constants.queryTypes.kits16to24;
     }
     if (origin === constants.serviceChoices.over25) {
-      return constants.searchTypes.kitsOver25;
+      return constants.queryTypes.kitsOver25;
     }
   }
-  return constants.searchTypes.sexperts;
+  return constants.queryTypes.sexperts;
 }
 
 function getLocationInfo(query) {
@@ -178,8 +175,8 @@ function mapServiceChoice(query) {
 }
 
 module.exports = {
-  getEsQueryType,
   getLocationInfo,
+  getQueryType,
   getResultsInfo,
   mapServiceChoice,
   mapServiceType,

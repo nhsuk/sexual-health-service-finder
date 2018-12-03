@@ -1,61 +1,55 @@
 const VError = require('verror').VError;
 
-const esClient = require('../lib/elasticsearch/client');
-const esGetServiceHistogram = require('../lib/prometheus/histograms').esGetServices;
-const esQueryLabelName = require('../lib/constants').promEsQueryLabelName;
+const azureRequest = require('../lib/azuresearch/request');
+const azureSearchGetServiceHistogram = require('../lib/prometheus/histograms').azureSearchGetServices;
+const promQueryLabelName = require('../lib/constants').promQueryLabelName;
 const log = require('../lib/logger');
-const mapResults = require('../lib/utils/mapResults');
-const queryBuilder = require('../lib/elasticsearch/queryBuilder');
+const mapResults = require('../lib/mappers/mapResults');
+const queryBuilder = require('../lib/azuresearch/queryBuilder');
 const queryMapper = require('../lib/utils/queryMapper');
 
 function handleError(error, next) {
-  const errMsg = 'Error with ES';
+  const errMsg = 'Error making request to Azure Search';
   const newError = new VError(error.stack, errMsg);
 
   log.error({ err: newError }, errMsg);
   next(newError);
 }
 
-function getEsQuery(postcodeLocationDetails, searchType, size) {
-  return {
-    label: searchType,
-    query: queryBuilder.build(postcodeLocationDetails.location, searchType, size),
-  };
-}
-
-function processResults(hits, logResults) {
-  const resultsCount = hits.total;
+function processResults(response, searchOrigin, logResults) {
+  const results = JSON.parse(response);
+  const resultsCount = results['@odata.count'];
   logResults(resultsCount);
-  return [mapResults(hits), resultsCount];
+  return [mapResults(results, searchOrigin), resultsCount];
 }
 
 async function getServices(req, res, next) {
   const location = res.locals.location;
   const resultsLimit = res.locals.RESULTS_LIMIT;
-  const postcodeLocationDetails = res.locals.postcodeLocationDetails;
-  const searchType = queryMapper.getEsQueryType(res.locals.type, res.locals.origin);
-  const esQuery = getEsQuery(
-    postcodeLocationDetails,
-    searchType,
-    resultsLimit
-  );
+  const searchOrigin = res.locals.postcodeLocationDetails;
 
-  const endTimer = esGetServiceHistogram.startTimer();
+  const queryType = queryMapper.getQueryType(res.locals.type, res.locals.origin);
+  const query = queryBuilder(searchOrigin, queryType, resultsLimit);
+
+  const endTimer = azureSearchGetServiceHistogram.startTimer();
   const timerLabel = {};
-  timerLabel[esQueryLabelName] = esQuery.label;
+  timerLabel[promQueryLabelName] = queryType;
+
   const logResults = (resultCount) => {
     endTimer(timerLabel);
     log.info({
-      esQuery,
       location,
-      postcodeLocationDetails,
+      query,
       resultCount,
-    }, 'getServices ES query and params');
+      searchOrigin,
+    }, 'getServices Azure Search query and params');
   };
 
   try {
-    const esResults = await esClient.client.search(esQuery.query);
-    [res.locals.services, res.locals.resultsCount] = processResults(esResults.hits, logResults);
+    const response = await azureRequest(query);
+    [res.locals.services, res.locals.resultsCount] = processResults(
+      response, searchOrigin, logResults
+    );
     next();
   } catch (error) {
     handleError(error, next);

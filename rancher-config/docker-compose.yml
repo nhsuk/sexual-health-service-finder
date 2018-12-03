@@ -6,7 +6,10 @@ services:
     image: "nhsuk/sexual-health-service-finder:${DOCKER_IMAGE_TAG}"
     environment:
       ADOBE_TRACKING_URL: ${ADOBE_TRACKING_URL}
-      ES_HOST: ${ES_HOST}
+      AS_API_KEY: ${AS_API_KEY}
+      AS_INDEX: ${AS_INDEX}
+      AS_SERVICE_NAME: ${AS_SERVICE_NAME}
+      AS_VERSION: ${AS_VERSION}
       GOOGLE_ANALYTICS_TRACKING_ID: ${GOOGLE_ANALYTICS_TRACKING_ID}
       HOTJAR_ANALYTICS_TRACKING_ID: ${HOTJAR_ANALYTICS_TRACKING_ID}
       NODE_ENV: production

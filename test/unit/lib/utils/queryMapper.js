@@ -7,33 +7,33 @@ const expect = chai.expect;
 const resultsRoute = `${constants.siteRoot}/results`;
 
 describe('queryMapper', () => {
-  describe('getEsQueryType', () => {
+  describe('getQueryType', () => {
     it('should return default sexperts when empty type and origin query types', () => {
       const origin = {};
       const type = {};
-      const output = queryMapper.getEsQueryType(type, origin);
-      expect(output).to.equal(constants.searchTypes.sexperts);
+      const output = queryMapper.getQueryType(type, origin);
+      expect(output).to.equal(constants.queryTypes.sexperts);
     });
 
     it('should return a sexual professionals type when the type and origin query is related to professionals and origin is any', () => {
       const origin = constants.serviceChoices.symptoms;
       const type = constants.serviceTypes.professional;
-      const output = queryMapper.getEsQueryType(type, origin);
-      expect(output).to.equal(constants.searchTypes.sexperts);
+      const output = queryMapper.getQueryType(type, origin);
+      expect(output).to.equal(constants.queryTypes.sexperts);
     });
 
     it('should return a free kit type when the type and origin query is related to kit and age between 16 and 24', () => {
       const origin = constants.serviceChoices['16to24'];
       const type = constants.serviceTypes.kit;
-      const output = queryMapper.getEsQueryType(type, origin);
-      expect(output).to.equal(constants.searchTypes.kits16to24);
+      const output = queryMapper.getQueryType(type, origin);
+      expect(output).to.equal(constants.queryTypes.kits16to24);
     });
 
     it('should return a paid for kit type when the type and origin query is related to kit and age is over 25', () => {
       const origin = constants.serviceChoices.over25;
       const type = constants.serviceTypes.kit;
-      const output = queryMapper.getEsQueryType(type, origin);
-      expect(output).to.equal(constants.searchTypes.kitsOver25);
+      const output = queryMapper.getQueryType(type, origin);
+      expect(output).to.equal(constants.queryTypes.kitsOver25);
     });
   });
 

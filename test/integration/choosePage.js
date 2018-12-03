@@ -40,7 +40,7 @@ describe('Choose page', () => {
     it('page options should be related to being under 25 (free), if age question is answered 16-24', async () => {
       const $ = cheerio.load(res.text);
 
-      expect($($('.multiple-choice .multiple--choice-option')[0]).text()).to.equal('Collect a free test kit near you');
+      expect($('.multiple-choice .multiple--choice-option').eq(0).text()).to.equal('Collect a free test kit near you');
     });
   });
 
@@ -66,7 +66,7 @@ describe('Choose page', () => {
     it('page options should be related to being over 25 (paid), if age question is answered 25 or older', async () => {
       const $ = cheerio.load(res.text);
 
-      expect($($('.multiple-choice .multiple--choice-option')[0]).text()).to.equal('See a sexual health professional near you');
+      expect($('.multiple-choice .multiple--choice-option').eq(0).text()).to.equal('See a sexual health professional near you');
     });
   });
 

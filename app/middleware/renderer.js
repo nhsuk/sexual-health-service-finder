@@ -1,6 +1,6 @@
-const log = require('../lib/logger');
 const constants = require('../lib/constants');
-const messages = require('../lib/messages');
+const log = require('../lib/logger');
+const messages = require('../lib/displayUtils/messages');
 
 function startPage(req, res) {
   res.locals.analyticsPageTitle = 'Start';

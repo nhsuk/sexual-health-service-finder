@@ -3,8 +3,8 @@ const qs = require('querystring');
 function addMapUrl(saddr, inputList) {
   return inputList.map((item) => {
     const params = {
-      daddr: item.address.fullAddress,
-      near: item.address.fullAddress,
+      daddr: item.address,
+      near: item.address,
       saddr,
     };
 

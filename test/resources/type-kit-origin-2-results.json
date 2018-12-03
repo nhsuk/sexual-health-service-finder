@@ -1,0 +1,816 @@
+{
+  "@odata.context": "https://nhsuksearchintne.search.windows.net/indexes('organisationlookup-dev')/$metadata#docs(OrganisationName,Address1,Address2,Address3,City,County,Postcode,Geocode,Contacts,Metrics,GSD,OpeningTimes)",
+  "@odata.count": 3271,
+  "value": [
+    {
+      "@search.score": 1,
+      "OrganisationName": "MESMAC - Leeds",
+      "Address1": "22/23 Blayds Yard",
+      "Address2": "Leeds",
+      "Address3": "West Yorkshire",
+      "City": null,
+      "County": null,
+      "Postcode": "LS1 4AD",
+      "Geocode": {
+        "type": "Point",
+        "coordinates": [
+          -1.54301,
+          53.7946
+        ],
+        "crs": {
+          "type": "name",
+          "properties": {
+            "name": "EPSG:4326"
+          }
+        }
+      },
+      "Contacts": "[{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Telephone\",\"OrganisationContactValue\":\"0113 244 4209\"},{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Email\",\"OrganisationContactValue\":\"leeds@mesmac.co.uk\"},{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Website\",\"OrganisationContactValue\":\"www.mesmac.co.uk\"}]",
+      "Metrics": null,
+      "GSD": "[{\"ElementTitle\":\"Service details\",\"ElementText\":\"MESMAC is one of the oldest and largest sexual health organisations in the country. We offer services to various communities including men who have sex with men, BME people, people misusing drugs, sex workers and LGBT young people and adults. Free condoms and lube, one-to-one counselling, sexual health advice, groups. Young people welcome.\"},{\"ElementTitle\":\"Opening times\",\"ElementText\":\"Free drop in service aimed at gay, bi and men who have sex with men, offering rapid HIV tests, chlamydia, gonorrhoea, hepatitis and syphilis screening and Hepatitis B vaccinations. Call or check the website for up to date drop in times.\"},{\"ElementTitle\":\"Venue Type\",\"ElementText\":\"Community\"}]",
+      "OpeningTimes": null
+    },
+    {
+      "@search.score": 1,
+      "OrganisationName": "Leeds Sexual Health @ The Merrion Centre",
+      "Address1": "Merrion Centre - 1st Floor",
+      "Address2": "50 Merrion Way",
+      "Address3": "Leeds",
+      "City": "West Yorkshire",
+      "County": null,
+      "Postcode": "LS2 8NG",
+      "Geocode": {
+        "type": "Point",
+        "coordinates": [
+          -1.54409,
+          53.8017
+        ],
+        "crs": {
+          "type": "name",
+          "properties": {
+            "name": "EPSG:4326"
+          }
+        }
+      },
+      "Contacts": "[{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Telephone\",\"OrganisationContactValue\":\"0113 392 0333\"},{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Website\",\"OrganisationContactValue\":\"www.leedssexualhealth.com\"}]",
+      "Metrics": null,
+      "GSD": "[{\"ElementTitle\":\"Service details\",\"ElementText\":\"Leeds Sexual Health Service provide free, confidential services to all age groups (13+) either through booked appointments or drop in clinics.\\nServices available include:\\n• Contraception   \\n• Emergency Contraception\\n• Pregnancy Testing\\n• STI Testing & Treatment\\n• HIV Testing & PePSE (HIV treatment)\\n• C-Card Pick Up (free condoms for under 25s)\\n• Support and Advice\"},{\"ElementTitle\":\"Opening times\",\"ElementText\":\"Please visit www.leedssexualhealth.com for up to date information on clinic times.\\n                                                                                                                                                                 Call 0113 392 0333 to book an appointment or visit www.leedssexualhealth.com to book online.\\n\"},{\"ElementTitle\":\"Venue Type\",\"ElementText\":\"Clinic\"}]",
+      "OpeningTimes": null
+    },
+    {
+      "@search.score": 1,
+      "OrganisationName": "Leeds Sexual Health Spoke Site @ Burmantofts Health Centre",
+      "Address1": "Cromwell Mount",
+      "Address2": "Leeds",
+      "Address3": "West Yorkshire",
+      "City": null,
+      "County": null,
+      "Postcode": "LS9 7ST",
+      "Geocode": {
+        "type": "Point",
+        "coordinates": [
+          -1.52709,
+          53.8023
+        ],
+        "crs": {
+          "type": "name",
+          "properties": {
+            "name": "EPSG:4326"
+          }
+        }
+      },
+      "Contacts": "[{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Telephone\",\"OrganisationContactValue\":\"0113 392 0333\"},{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Website\",\"OrganisationContactValue\":\"www.leedssexualhealth.com\"}]",
+      "Metrics": null,
+      "GSD": "[{\"ElementTitle\":\"Service details\",\"ElementText\":\"Leeds Sexual Health Service provide free, confidential services to all age groups (13+) either through booked appointments or drop in clinics.\\nServices available include:\\n• Contraception   \\n• Emergency Contraception\\n• Pregnancy Testing\\n• STI Testing & Treatment\\n• HIV Testing & PePSE (HIV treatment)\\n• C-Card Pick Up (free condoms for under 25s)\\n• Support and Advice\"},{\"ElementTitle\":\"Opening times\",\"ElementText\":\"Please visit www.leedssexualhealth.com for up to date information on clinic times.\\n                                                                                                                                                                 Call 0113 392 0333 to book an appointment or visit www.leedssexualhealth.com to book online.\\n\"},{\"ElementTitle\":\"Venue Type\",\"ElementText\":\"Clinic\"}]",
+      "OpeningTimes": null
+    },
+    {
+      "@search.score": 1,
+      "OrganisationName": "Well Leeds - Lincoln Green Road",
+      "Address1": "84/86 Lincoln Green Road",
+      "Address2": "Leeds",
+      "Address3": null,
+      "City": "West Yorkshire",
+      "County": "",
+      "Postcode": "LS9 7SU",
+      "Geocode": {
+        "type": "Point",
+        "coordinates": [
+          -1.52614,
+          53.8021
+        ],
+        "crs": {
+          "type": "name",
+          "properties": {
+            "name": "EPSG:4326"
+          }
+        }
+      },
+      "Contacts": "[{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Telephone\",\"OrganisationContactValue\":\"0113 248 2400\"},{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Email\",\"OrganisationContactValue\":\"nhspharmacy.leeds.wellpharmacyfna71@nhs.net\"},{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Website\",\"OrganisationContactValue\":\"http:\\/\\/www.well.co.uk\"}]",
+      "Metrics": null,
+      "GSD": null,
+      "OpeningTimes": "[{\"WeekDay\":\"Sunday\",\"Times\":\"10:00-13:00\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Monday\",\"Times\":\"09:00-18:00\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Tuesday\",\"Times\":\"09:00-18:00\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Wednesday\",\"Times\":\"09:00-18:00\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Thursday\",\"Times\":\"09:00-18:00\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Friday\",\"Times\":\"09:00-18:00\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Saturday\",\"Times\":\"09:00-14:00\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"\",\"Times\":\"\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"Dec 25 2018\",\"IsOpen\":false},{\"WeekDay\":\"\",\"Times\":\"\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"Dec 26 2018\",\"IsOpen\":false},{\"WeekDay\":\"\",\"Times\":\"\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"Jan  1 2019\",\"IsOpen\":false}]"
+    },
+    {
+      "@search.score": 1,
+      "OrganisationName": "NHS Walk In Centre - Shakespeare Medical Centre",
+      "Address1": "Burmatofts Health Centre",
+      "Address2": "Cromwell Mount",
+      "Address3": "Leeds",
+      "City": "West Yorkshire",
+      "County": null,
+      "Postcode": "LS9 7TA",
+      "Geocode": {
+        "type": "Point",
+        "coordinates": [
+          -1.52518,
+          53.8021
+        ],
+        "crs": {
+          "type": "name",
+          "properties": {
+            "name": "EPSG:4326"
+          }
+        }
+      },
+      "Contacts": "[{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Telephone\",\"OrganisationContactValue\":\"0113 295 1132\"}]",
+      "Metrics": null,
+      "GSD": "[{\"ElementTitle\":\"Service details\",\"ElementText\":\"NHS Walk in centre for all ages. Services include access to emergency contraception.\"},{\"ElementTitle\":\"Opening times\",\"ElementText\":\"Monday to Sunday 8am - 8pm. (Open 365 days a year)\"},{\"ElementTitle\":\"Venue Type\",\"ElementText\":\"Community\"}]",
+      "OpeningTimes": null
+    },
+    {
+      "@search.score": 1,
+      "OrganisationName": "Star Pharmacy",
+      "Address1": "136 Cardigan Road",
+      "Address2": "Leeds",
+      "Address3": "West Yorkshire",
+      "City": "Leeds",
+      "County": "West Yorkshire",
+      "Postcode": "LS6 1LU",
+      "Geocode": {
+        "type": "Point",
+        "coordinates": [
+          -1.57622,
+          53.8119
+        ],
+        "crs": {
+          "type": "name",
+          "properties": {
+            "name": "EPSG:4326"
+          }
+        }
+      },
+      "Contacts": "[{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Telephone\",\"OrganisationContactValue\":\"0113 2783976\"},{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Email\",\"OrganisationContactValue\":\"starpharmacyleeds@gmail.com\"},{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Website\",\"OrganisationContactValue\":\"http:\\/\\/www.starpharmacy.org\"},{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Fax\",\"OrganisationContactValue\":\"0113 274 0522\"}]",
+      "Metrics": null,
+      "GSD": null,
+      "OpeningTimes": "[{\"WeekDay\":\"Sunday\",\"Times\":\"10:30-16:30\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Monday\",\"Times\":\"09:00-20:00\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Tuesday\",\"Times\":\"09:00-20:00\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Wednesday\",\"Times\":\"09:00-20:00\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Thursday\",\"Times\":\"09:00-20:00\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Friday\",\"Times\":\"09:00-20:00\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Saturday\",\"Times\":\"10:30-16:30\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"\",\"Times\":\"10:00-16:00\",\"OpeningTimeType\":\"Additional\",\"AdditionalOpeningDate\":\"Dec 25 2018\",\"IsOpen\":true},{\"WeekDay\":\"\",\"Times\":\"10:00-16:00\",\"OpeningTimeType\":\"Additional\",\"AdditionalOpeningDate\":\"Dec 26 2018\",\"IsOpen\":true}]"
+    },
+    {
+      "@search.score": 1,
+      "OrganisationName": "Boots",
+      "Address1": "1 MOOR ROAD",
+      "Address2": "HUNSLETT CARR",
+      "Address3": null,
+      "City": "Leeds",
+      "County": "West Yorkshire",
+      "Postcode": "LS10 2JJ",
+      "Geocode": {
+        "type": "Point",
+        "coordinates": [
+          -1.53458,
+          53.7721
+        ],
+        "crs": {
+          "type": "name",
+          "properties": {
+            "name": "EPSG:4326"
+          }
+        }
+      },
+      "Contacts": "[{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Telephone\",\"OrganisationContactValue\":\"01132716460\"}]",
+      "Metrics": null,
+      "GSD": null,
+      "OpeningTimes": "[{\"WeekDay\":\"Monday\",\"Times\":\"08:30-19:00\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Tuesday\",\"Times\":\"08:30-18:00\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Wednesday\",\"Times\":\"08:30-18:00\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Thursday\",\"Times\":\"08:30-18:00\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Friday\",\"Times\":\"08:30-18:00\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Saturday\",\"Times\":\"09:00-13:00\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"\",\"Times\":\"\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"Dec 25 2018\",\"IsOpen\":false},{\"WeekDay\":\"\",\"Times\":\"\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"Dec 26 2018\",\"IsOpen\":false},{\"WeekDay\":\"\",\"Times\":\"\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"Jan  1 2019\",\"IsOpen\":false}]"
+    },
+    {
+      "@search.score": 1,
+      "OrganisationName": "Sky Pharmacy",
+      "Address1": "35 Harehills Road",
+      "Address2": "",
+      "Address3": "",
+      "City": "Leeds",
+      "County": "",
+      "Postcode": "LS8 5HR",
+      "Geocode": {
+        "type": "Point",
+        "coordinates": [
+          -1.51696,
+          53.8159
+        ],
+        "crs": {
+          "type": "name",
+          "properties": {
+            "name": "EPSG:4326"
+          }
+        }
+      },
+      "Contacts": "[{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Telephone\",\"OrganisationContactValue\":\"0113 2484107        \"}]",
+      "Metrics": null,
+      "GSD": null,
+      "OpeningTimes": "[{\"WeekDay\":\"Sunday\",\"Times\":\"12:00-18:00\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Monday\",\"Times\":\"10:00-20:00\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Tuesday\",\"Times\":\"10:00-20:00\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Wednesday\",\"Times\":\"10:00-20:00\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Thursday\",\"Times\":\"10:00-20:00\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Friday\",\"Times\":\"10:00-20:00\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Saturday\",\"Times\":\"10:00-18:00\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true}]"
+    },
+    {
+      "@search.score": 1,
+      "OrganisationName": "Roundhay Pharmacy",
+      "Address1": null,
+      "Address2": "211 Roundhay Road",
+      "Address3": null,
+      "City": "LEEDS",
+      "County": "West Yorkshire",
+      "Postcode": "LS8 4HS",
+      "Geocode": {
+        "type": "Point",
+        "coordinates": [
+          -1.51731,
+          53.817
+        ],
+        "crs": {
+          "type": "name",
+          "properties": {
+            "name": "EPSG:4326"
+          }
+        }
+      },
+      "Contacts": "[{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Telephone\",\"OrganisationContactValue\":\"0113 2490557\"},{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Fax\",\"OrganisationContactValue\":\"0113 2490557\"}]",
+      "Metrics": null,
+      "GSD": null,
+      "OpeningTimes": "[{\"WeekDay\":\"Monday\",\"Times\":\"09:00-18:00\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Tuesday\",\"Times\":\"09:00-18:00\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Wednesday\",\"Times\":\"09:00-18:00\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Thursday\",\"Times\":\"09:00-18:00\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Friday\",\"Times\":\"09:00-18:00\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Saturday\",\"Times\":\"09:00-13:00\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"\",\"Times\":\"\",\"OpeningTimeType\":\"Additional\",\"AdditionalOpeningDate\":\"Dec 25 2018\",\"IsOpen\":false},{\"WeekDay\":\"\",\"Times\":\"\",\"OpeningTimeType\":\"Additional\",\"AdditionalOpeningDate\":\"Dec 26 2018\",\"IsOpen\":false},{\"WeekDay\":\"\",\"Times\":\"\",\"OpeningTimeType\":\"Additional\",\"AdditionalOpeningDate\":\"Jan  1 2019\",\"IsOpen\":false},{\"WeekDay\":\"\",\"Times\":\"\",\"OpeningTimeType\":\"Additional\",\"AdditionalOpeningDate\":\"Apr 19 2019\",\"IsOpen\":false},{\"WeekDay\":\"\",\"Times\":\"\",\"OpeningTimeType\":\"Additional\",\"AdditionalOpeningDate\":\"Apr 22 2019\",\"IsOpen\":false}]"
+    },
+    {
+      "@search.score": 1,
+      "OrganisationName": "East Leeds Pharmacy",
+      "Address1": "EAST LEEDS LATE NIGHT PHARMACY",
+      "Address2": "80 osmondthorpe lane",
+      "Address3": null,
+      "City": "Leeds",
+      "County": "West Yorkshire",
+      "Postcode": "LS9 9EF",
+      "Geocode": {
+        "type": "Point",
+        "coordinates": [
+          -1.49784,
+          53.8002
+        ],
+        "crs": {
+          "type": "name",
+          "properties": {
+            "name": "EPSG:4326"
+          }
+        }
+      },
+      "Contacts": "[{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Telephone\",\"OrganisationContactValue\":\"0113 249 4623\"},{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Fax\",\"OrganisationContactValue\":\"0113 249 4623\"}]",
+      "Metrics": null,
+      "GSD": null,
+      "OpeningTimes": "[{\"WeekDay\":\"Sunday\",\"Times\":\"08:00-18:00\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Monday\",\"Times\":\"07:30-22:30\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Tuesday\",\"Times\":\"07:30-22:30\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Wednesday\",\"Times\":\"07:30-22:30\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Thursday\",\"Times\":\"07:30-22:30\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Friday\",\"Times\":\"07:30-22:30\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Saturday\",\"Times\":\"07:30-22:30\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true}]"
+    },
+    {
+      "@search.score": 1,
+      "OrganisationName": "LloydsPharmacy",
+      "Address1": "531 Tong Road",
+      "Address2": "Farnley",
+      "Address3": "Leeds",
+      "City": "",
+      "County": "",
+      "Postcode": "LS12 5AT",
+      "Geocode": {
+        "type": "Point",
+        "coordinates": [
+          -1.62023,
+          53.7919
+        ],
+        "crs": {
+          "type": "name",
+          "properties": {
+            "name": "EPSG:4326"
+          }
+        }
+      },
+      "Contacts": "[{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Telephone\",\"OrganisationContactValue\":\"01132 637023\"},{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Email\",\"OrganisationContactValue\":\"lp0263@lloydspharmacy.co.uk\"},{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Website\",\"OrganisationContactValue\":\"http:\\/\\/www.lloydspharmacy.com\"}]",
+      "Metrics": null,
+      "GSD": null,
+      "OpeningTimes": "[{\"WeekDay\":\"Monday\",\"Times\":\"08:30-18:30\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Tuesday\",\"Times\":\"08:30-18:30\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Wednesday\",\"Times\":\"08:30-18:30\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Thursday\",\"Times\":\"08:30-18:30\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Friday\",\"Times\":\"08:30-18:30\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Saturday\",\"Times\":\"09:00-17:00\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"\",\"Times\":\"\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"Dec 25 2018\",\"IsOpen\":false},{\"WeekDay\":\"\",\"Times\":\"\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"Dec 26 2018\",\"IsOpen\":false},{\"WeekDay\":\"\",\"Times\":\"\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"Jan  1 2019\",\"IsOpen\":false}]"
+    },
+    {
+      "@search.score": 1,
+      "OrganisationName": "Ma Manning (Pharmacy) Ltd",
+      "Address1": "97 Lidgett Lane",
+      "Address2": "Leeds",
+      "Address3": null,
+      "City": "Leeds",
+      "County": "West Yorkshire",
+      "Postcode": "LS8 1QR",
+      "Geocode": {
+        "type": "Point",
+        "coordinates": [
+          -1.52138,
+          53.836
+        ],
+        "crs": {
+          "type": "name",
+          "properties": {
+            "name": "EPSG:4326"
+          }
+        }
+      },
+      "Contacts": "[{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Telephone\",\"OrganisationContactValue\":\"0113 2661786\"},{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Email\",\"OrganisationContactValue\":\"mmanningpharmacy@gmail.com\"},{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Fax\",\"OrganisationContactValue\":\"0113 2688674\"}]",
+      "Metrics": null,
+      "GSD": null,
+      "OpeningTimes": "[{\"WeekDay\":\"Monday\",\"Times\":\"09:00-18:00\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Tuesday\",\"Times\":\"09:00-18:00\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Wednesday\",\"Times\":\"09:00-18:00\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Thursday\",\"Times\":\"09:00-18:00\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Friday\",\"Times\":\"09:00-18:00\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Saturday\",\"Times\":\"09:00-13:00\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"\",\"Times\":\"\",\"OpeningTimeType\":\"Additional\",\"AdditionalOpeningDate\":\"Dec 25 2018\",\"IsOpen\":false},{\"WeekDay\":\"\",\"Times\":\"\",\"OpeningTimeType\":\"Additional\",\"AdditionalOpeningDate\":\"Dec 26 2018\",\"IsOpen\":false},{\"WeekDay\":\"\",\"Times\":\"\",\"OpeningTimeType\":\"Additional\",\"AdditionalOpeningDate\":\"Jan  1 2019\",\"IsOpen\":false},{\"WeekDay\":\"\",\"Times\":\"\",\"OpeningTimeType\":\"Additional\",\"AdditionalOpeningDate\":\"Apr 19 2019\",\"IsOpen\":false},{\"WeekDay\":\"\",\"Times\":\"\",\"OpeningTimeType\":\"Additional\",\"AdditionalOpeningDate\":\"Apr 22 2019\",\"IsOpen\":false},{\"WeekDay\":\"\",\"Times\":\"\",\"OpeningTimeType\":\"Additional\",\"AdditionalOpeningDate\":\"May  6 2019\",\"IsOpen\":false},{\"WeekDay\":\"\",\"Times\":\"\",\"OpeningTimeType\":\"Additional\",\"AdditionalOpeningDate\":\"May 27 2019\",\"IsOpen\":false},{\"WeekDay\":\"\",\"Times\":\"\",\"OpeningTimeType\":\"Additional\",\"AdditionalOpeningDate\":\"Aug 26 2019\",\"IsOpen\":false},{\"WeekDay\":\"\",\"Times\":\"\",\"OpeningTimeType\":\"Additional\",\"AdditionalOpeningDate\":\"Dec 25 2019\",\"IsOpen\":false},{\"WeekDay\":\"\",\"Times\":\"\",\"OpeningTimeType\":\"Additional\",\"AdditionalOpeningDate\":\"Dec 26 2019\",\"IsOpen\":false}]"
+    },
+    {
+      "@search.score": 1,
+      "OrganisationName": "Ireland Wood Pharmacy",
+      "Address1": "Iveson Approach",
+      "Address2": "Tinshill",
+      "Address3": null,
+      "City": "Leeds",
+      "County": "Yorkshire",
+      "Postcode": "LS16 6FR",
+      "Geocode": {
+        "type": "Point",
+        "coordinates": [
+          -1.60383,
+          53.847
+        ],
+        "crs": {
+          "type": "name",
+          "properties": {
+            "name": "EPSG:4326"
+          }
+        }
+      },
+      "Contacts": "[{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Telephone\",\"OrganisationContactValue\":\"01132857005\"},{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Email\",\"OrganisationContactValue\":\"branch.336@mycohens.net\"},{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Website\",\"OrganisationContactValue\":\"https:\\/\\/www.cohenschemist.co.uk\\/\"}]",
+      "Metrics": null,
+      "GSD": null,
+      "OpeningTimes": "[{\"WeekDay\":\"Sunday\",\"Times\":\"10:00-13:00\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Sunday\",\"Times\":\"13:00-18:00\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Sunday\",\"Times\":\"18:00-22:00\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Monday\",\"Times\":\"08:00-13:00\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Monday\",\"Times\":\"13:00-18:00\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Monday\",\"Times\":\"18:00-23:00\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Tuesday\",\"Times\":\"08:00-13:00\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Tuesday\",\"Times\":\"13:00-18:00\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Tuesday\",\"Times\":\"18:00-23:00\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Wednesday\",\"Times\":\"08:00-13:00\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Wednesday\",\"Times\":\"13:00-18:00\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Wednesday\",\"Times\":\"18:00-23:00\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Thursday\",\"Times\":\"08:00-13:00\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Thursday\",\"Times\":\"13:00-18:00\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Thursday\",\"Times\":\"18:00-23:00\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Friday\",\"Times\":\"08:00-13:00\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Friday\",\"Times\":\"13:00-18:00\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Friday\",\"Times\":\"18:00-23:00\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Saturday\",\"Times\":\"09:00-13:00\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Saturday\",\"Times\":\"13:00-18:00\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Saturday\",\"Times\":\"18:00-22:00\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"\",\"Times\":\"\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"Dec 25 2018\",\"IsOpen\":false},{\"WeekDay\":\"\",\"Times\":\"\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"Dec 26 2018\",\"IsOpen\":false},{\"WeekDay\":\"\",\"Times\":\"\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"Jan  1 2019\",\"IsOpen\":false},{\"WeekDay\":\"\",\"Times\":\"\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"Apr 19 2019\",\"IsOpen\":false},{\"WeekDay\":\"\",\"Times\":\"\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"Apr 22 2019\",\"IsOpen\":false},{\"WeekDay\":\"\",\"Times\":\"\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"May  6 2019\",\"IsOpen\":false},{\"WeekDay\":\"\",\"Times\":\"\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"May 27 2019\",\"IsOpen\":false},{\"WeekDay\":\"\",\"Times\":\"\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"Aug 26 2019\",\"IsOpen\":false}]"
+    },
+    {
+      "@search.score": 1,
+      "OrganisationName": "Well Bramley - Broad Lane",
+      "Address1": "540 Broad Lane",
+      "Address2": "Stanningley",
+      "Address3": null,
+      "City": "Pudsey",
+      "County": "",
+      "Postcode": "LS28 6PA",
+      "Geocode": {
+        "type": "Point",
+        "coordinates": [
+          -1.64925,
+          53.8105
+        ],
+        "crs": {
+          "type": "name",
+          "properties": {
+            "name": "EPSG:4326"
+          }
+        }
+      },
+      "Contacts": "[{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Telephone\",\"OrganisationContactValue\":\"0113 256 5624\"},{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Email\",\"OrganisationContactValue\":\"nhspharmacy.stanningley.wellpharmacyfa545@nhs.net\"},{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Website\",\"OrganisationContactValue\":\"http:\\/\\/www.well.co.uk\"}]",
+      "Metrics": null,
+      "GSD": null,
+      "OpeningTimes": "[{\"WeekDay\":\"Monday\",\"Times\":\"09:00-18:00\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Tuesday\",\"Times\":\"09:00-18:00\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Wednesday\",\"Times\":\"09:00-18:00\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Thursday\",\"Times\":\"09:00-18:00\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Friday\",\"Times\":\"09:00-18:00\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"\",\"Times\":\"\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"Dec 25 2018\",\"IsOpen\":false},{\"WeekDay\":\"\",\"Times\":\"\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"Dec 26 2018\",\"IsOpen\":false},{\"WeekDay\":\"\",\"Times\":\"\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"Jan  1 2019\",\"IsOpen\":false}]"
+    },
+    {
+      "@search.score": 1,
+      "OrganisationName": "Well Leeds - Swinnow Road",
+      "Address1": "190 Swinnow Road",
+      "Address2": "Pudsey",
+      "Address3": null,
+      "City": "",
+      "County": "",
+      "Postcode": "LS28 9AR",
+      "Geocode": {
+        "type": "Point",
+        "coordinates": [
+          -1.65323,
+          53.7988
+        ],
+        "crs": {
+          "type": "name",
+          "properties": {
+            "name": "EPSG:4326"
+          }
+        }
+      },
+      "Contacts": "[{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Telephone\",\"OrganisationContactValue\":\"0113 257 6881\"},{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Email\",\"OrganisationContactValue\":\"nhspharmacy.pudsey.wellpharmacyfyl11@nhs.net\"},{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Website\",\"OrganisationContactValue\":\"http:\\/\\/www.well.co.uk\"}]",
+      "Metrics": null,
+      "GSD": null,
+      "OpeningTimes": "[{\"WeekDay\":\"Monday\",\"Times\":\"08:30-18:00\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Tuesday\",\"Times\":\"08:30-18:00\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Wednesday\",\"Times\":\"08:30-18:00\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Thursday\",\"Times\":\"08:30-18:00\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Friday\",\"Times\":\"08:30-18:00\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Saturday\",\"Times\":\"09:00-13:00\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"\",\"Times\":\"\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"Dec 25 2018\",\"IsOpen\":false},{\"WeekDay\":\"\",\"Times\":\"\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"Dec 26 2018\",\"IsOpen\":false},{\"WeekDay\":\"\",\"Times\":\"\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"Jan  1 2019\",\"IsOpen\":false}]"
+    },
+    {
+      "@search.score": 1,
+      "OrganisationName": "Knights Oakwood Pharmacy",
+      "Address1": "The Old Salvation Hall",
+      "Address2": "74 Blackburn Road",
+      "Address3": "Birstall",
+      "City": "West Yorkshire",
+      "County": "",
+      "Postcode": "WF17 9PL",
+      "Geocode": {
+        "type": "Point",
+        "coordinates": [
+          -1.6647,
+          53.7313
+        ],
+        "crs": {
+          "type": "name",
+          "properties": {
+            "name": "EPSG:4326"
+          }
+        }
+      },
+      "Contacts": "[{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Telephone\",\"OrganisationContactValue\":\"01924 474244\"},{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Website\",\"OrganisationContactValue\":\"http:\\/\\/www.knightspharmacy.co.uk\\/\"},{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Fax\",\"OrganisationContactValue\":\"01924 477396\"}]",
+      "Metrics": null,
+      "GSD": null,
+      "OpeningTimes": "[{\"WeekDay\":\"Monday\",\"Times\":\"08:00-18:30\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Tuesday\",\"Times\":\"08:00-18:30\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Wednesday\",\"Times\":\"08:00-18:30\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Thursday\",\"Times\":\"08:00-18:30\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Friday\",\"Times\":\"08:00-18:30\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Saturday\",\"Times\":\"09:00-12:00\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"\",\"Times\":\"\",\"OpeningTimeType\":\"Additional\",\"AdditionalOpeningDate\":\"Dec 25 2018\",\"IsOpen\":false},{\"WeekDay\":\"\",\"Times\":\"\",\"OpeningTimeType\":\"Additional\",\"AdditionalOpeningDate\":\"Dec 26 2018\",\"IsOpen\":false},{\"WeekDay\":\"\",\"Times\":\"\",\"OpeningTimeType\":\"Additional\",\"AdditionalOpeningDate\":\"Jan  1 2019\",\"IsOpen\":false}]"
+    },
+    {
+      "@search.score": 1,
+      "OrganisationName": "Mileusnic Chemist",
+      "Address1": "131-133 Upper Commercial St",
+      "Address2": "Batley",
+      "Address3": null,
+      "City": "West Yorkshire",
+      "County": "Yorkshire(West Riding)",
+      "Postcode": "WF17 5DH",
+      "Geocode": {
+        "type": "Point",
+        "coordinates": [
+          -1.6362,
+          53.7147
+        ],
+        "crs": {
+          "type": "name",
+          "properties": {
+            "name": "EPSG:4326"
+          }
+        }
+      },
+      "Contacts": "[{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Telephone\",\"OrganisationContactValue\":\"01924 441434\"},{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Email\",\"OrganisationContactValue\":\"mileusnicchemist@yahoo.co.uk\"}]",
+      "Metrics": null,
+      "GSD": null,
+      "OpeningTimes": "[{\"WeekDay\":\"Monday\",\"Times\":\"08:45-18:00\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Tuesday\",\"Times\":\"08:45-18:00\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Wednesday\",\"Times\":\"08:45-18:00\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Thursday\",\"Times\":\"08:45-18:00\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Friday\",\"Times\":\"08:45-18:00\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Saturday\",\"Times\":\"09:00-12:30\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"\",\"Times\":\"\",\"OpeningTimeType\":\"Additional\",\"AdditionalOpeningDate\":\"Dec 25 2018\",\"IsOpen\":false},{\"WeekDay\":\"\",\"Times\":\"\",\"OpeningTimeType\":\"Additional\",\"AdditionalOpeningDate\":\"Dec 26 2018\",\"IsOpen\":false},{\"WeekDay\":\"\",\"Times\":\"\",\"OpeningTimeType\":\"Additional\",\"AdditionalOpeningDate\":\"Jan  1 2019\",\"IsOpen\":false}]"
+    },
+    {
+      "@search.score": 1,
+      "OrganisationName": "Batley Pharmacy",
+      "Address1": null,
+      "Address2": "157 Upper Commercial St",
+      "Address3": null,
+      "City": "Batley",
+      "County": "",
+      "Postcode": "WF17 5DH",
+      "Geocode": {
+        "type": "Point",
+        "coordinates": [
+          -1.63662,
+          53.7147
+        ],
+        "crs": {
+          "type": "name",
+          "properties": {
+            "name": "EPSG:4326"
+          }
+        }
+      },
+      "Contacts": "[{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Telephone\",\"OrganisationContactValue\":\"01924 442845\"},{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Email\",\"OrganisationContactValue\":\"batley.pharmacy@nhs.net\"},{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Website\",\"OrganisationContactValue\":\"http:\\/\\/www.batleypharmacy.co.uk\\/\"},{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Fax\",\"OrganisationContactValue\":\"01924 442543\"}]",
+      "Metrics": null,
+      "GSD": null,
+      "OpeningTimes": "[{\"WeekDay\":\"Sunday\",\"Times\":\"08:00-22:30\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Monday\",\"Times\":\"08:00-22:30\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Tuesday\",\"Times\":\"08:00-22:30\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Wednesday\",\"Times\":\"08:00-22:30\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Thursday\",\"Times\":\"08:00-22:30\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Friday\",\"Times\":\"08:00-22:30\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Saturday\",\"Times\":\"08:00-22:30\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"\",\"Times\":\"10:00-22:00\",\"OpeningTimeType\":\"Additional\",\"AdditionalOpeningDate\":\"Dec 25 2018\",\"IsOpen\":true},{\"WeekDay\":\"\",\"Times\":\"10:00-22:00\",\"OpeningTimeType\":\"Additional\",\"AdditionalOpeningDate\":\"Dec 26 2018\",\"IsOpen\":true},{\"WeekDay\":\"\",\"Times\":\"10:00-22:00\",\"OpeningTimeType\":\"Additional\",\"AdditionalOpeningDate\":\"Jan  1 2019\",\"IsOpen\":true}]"
+    },
+    {
+      "@search.score": 1,
+      "OrganisationName": "Cohens Chemist",
+      "Address1": "24/26 Main Street",
+      "Address2": "Garforth",
+      "Address3": null,
+      "City": "Leeds",
+      "County": "Yorkshire",
+      "Postcode": "LS25 1AA",
+      "Geocode": {
+        "type": "Point",
+        "coordinates": [
+          -1.38798,
+          53.7949
+        ],
+        "crs": {
+          "type": "name",
+          "properties": {
+            "name": "EPSG:4326"
+          }
+        }
+      },
+      "Contacts": "[{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Telephone\",\"OrganisationContactValue\":\"01132862107\"},{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Email\",\"OrganisationContactValue\":\"branch.537@mycohens.net\"},{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Website\",\"OrganisationContactValue\":\"https:\\/\\/www.cohenschemist.co.uk\\/\"},{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Fax\",\"OrganisationContactValue\":\"01132867201\"}]",
+      "Metrics": null,
+      "GSD": null,
+      "OpeningTimes": "[{\"WeekDay\":\"Monday\",\"Times\":\"08:00-13:00\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Monday\",\"Times\":\"13:00-18:00\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Tuesday\",\"Times\":\"08:00-13:00\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Tuesday\",\"Times\":\"13:00-18:00\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Wednesday\",\"Times\":\"08:00-13:00\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Wednesday\",\"Times\":\"13:00-18:00\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Thursday\",\"Times\":\"08:00-13:00\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Thursday\",\"Times\":\"13:00-18:00\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Friday\",\"Times\":\"08:00-13:00\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Friday\",\"Times\":\"13:00-18:00\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Saturday\",\"Times\":\"09:00-13:00\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Saturday\",\"Times\":\"13:00-17:00\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"\",\"Times\":\"\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"Dec 25 2018\",\"IsOpen\":false},{\"WeekDay\":\"\",\"Times\":\"\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"Dec 26 2018\",\"IsOpen\":false},{\"WeekDay\":\"\",\"Times\":\"\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"Jan  1 2019\",\"IsOpen\":false},{\"WeekDay\":\"\",\"Times\":\"\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"Apr 19 2019\",\"IsOpen\":false},{\"WeekDay\":\"\",\"Times\":\"\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"Apr 22 2019\",\"IsOpen\":false},{\"WeekDay\":\"\",\"Times\":\"\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"May  6 2019\",\"IsOpen\":false},{\"WeekDay\":\"\",\"Times\":\"\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"May 27 2019\",\"IsOpen\":false},{\"WeekDay\":\"\",\"Times\":\"\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"Aug 26 2019\",\"IsOpen\":false}]"
+    },
+    {
+      "@search.score": 1,
+      "OrganisationName": "Step 2 Young People's Health Project",
+      "Address1": "102 Tong Street",
+      "Address2": "Bradford",
+      "Address3": "West Yorkshire",
+      "City": null,
+      "County": null,
+      "Postcode": "BD4 6HD",
+      "Geocode": {
+        "type": "Point",
+        "coordinates": [
+          -1.72145,
+          53.7712
+        ],
+        "crs": {
+          "type": "name",
+          "properties": {
+            "name": "EPSG:4326"
+          }
+        }
+      },
+      "Contacts": "[{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Telephone\",\"OrganisationContactValue\":\"01274 683 118\"},{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Email\",\"OrganisationContactValue\":\"info@step2.org.uk\"},{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Website\",\"OrganisationContactValue\":\"www.step2.org.uk\"},{\"OrganisationContactType\":\"Alternative\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Telephone\",\"OrganisationContactValue\":\"07985 127 097 - SMS\"}]",
+      "Metrics": null,
+      "GSD": "[{\"ElementTitle\":\"Service details\",\"ElementText\":\"Step 2 exists to support children and young people in matters of health, particularly sexual and emotional health. \\n\\nSexual Health Services:\\n• Prevention work\\n• Outreach work\\n• Group work around safe relationships\\n• Relationships and Sex Education \\n\\nCounselling Service:\\n• Working with young people\\n• Working with young people and their families\\n\"},{\"ElementTitle\":\"General notes\",\"ElementText\":\"For Sexual Health Advice or to get an appointment to be seen regarding any concerns, please contact 030 3330 9500\"},{\"ElementTitle\":\"Opening times\",\"ElementText\":\"Call 01274 683 118 or drop-in. Step 2 also offers counselling for young people aged 10-19yrs at our community base on weekday evenings between 4pm -8pm\\n\"},{\"ElementTitle\":\"Venue Type\",\"ElementText\":\"Community\"}]",
+      "OpeningTimes": null
+    },
+    {
+      "@search.score": 1,
+      "OrganisationName": "Sexual Health Service - Bowling",
+      "Address1": "Bowling Hall Medical Practice",
+      "Address2": "Rooley Lane",
+      "Address3": "West Bowling",
+      "City": "Bradford",
+      "County": "West Yorkshire",
+      "Postcode": "BD4 7SS",
+      "Geocode": {
+        "type": "Point",
+        "coordinates": [
+          -1.73088,
+          53.7728
+        ],
+        "crs": {
+          "type": "name",
+          "properties": {
+            "name": "EPSG:4326"
+          }
+        }
+      },
+      "Contacts": "[{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Telephone\",\"OrganisationContactValue\":\"030 3330 9500\"},{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Website\",\"OrganisationContactValue\":\"www.locala.org.uk\\/your-healthcare\\/sexual-health\\/bradford-sexual-health\\/\"}]",
+      "Metrics": null,
+      "GSD": "[{\"ElementTitle\":\"Service details\",\"ElementText\":\"Locala offers a free and confidential contraception and sexual health service in clinics across Bradford. \\n\\nLocala Sexual Health Centres offer:\\n• A full range of contraception including implants, IUD's, condoms and emergency contraception\\n• Testing and treatment for sexually transmitted infections\\n• Help and advice for unplanned pregnancy\\n• Chlamydia screening\\n\"},{\"ElementTitle\":\"Opening times\",\"ElementText\":\"When the service is overwhelmed with demand we may close earlier than the times listed below. Please check website or call 030 3330 9500 before starting your journey.\\n\\nDrop-in:\\nThursday 1.30pm - 5pm\\n\\nAppointments:\\nThursday 9.30am - 12pm\\n\"},{\"ElementTitle\":\"Venue Type\",\"ElementText\":\"Clinic\"}]",
+      "OpeningTimes": null
+    },
+    {
+      "@search.score": 1,
+      "OrganisationName": "Rowlands Pharmacy",
+      "Address1": null,
+      "Address2": "Enterprise Way",
+      "Address3": "Five Lane ends",
+      "City": "Bradford",
+      "County": "",
+      "Postcode": "BD10 8EW",
+      "Geocode": {
+        "type": "Point",
+        "coordinates": [
+          -1.73139,
+          53.8259
+        ],
+        "crs": {
+          "type": "name",
+          "properties": {
+            "name": "EPSG:4326"
+          }
+        }
+      },
+      "Contacts": "[{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Telephone\",\"OrganisationContactValue\":\"01274 613354        \"},{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Website\",\"OrganisationContactValue\":\"http:\\/\\/www.rowlandspharmacy.co.uk\"},{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Fax\",\"OrganisationContactValue\":\"01274 613367\"}]",
+      "Metrics": null,
+      "GSD": null,
+      "OpeningTimes": "[{\"WeekDay\":\"Sunday\",\"Times\":\"10:00-16:00\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Monday\",\"Times\":\"09:00-20:00\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Tuesday\",\"Times\":\"09:00-20:00\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Wednesday\",\"Times\":\"09:00-20:00\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Thursday\",\"Times\":\"09:00-20:00\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Friday\",\"Times\":\"09:00-20:00\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Saturday\",\"Times\":\"09:00-20:00\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"\",\"Times\":\"\",\"OpeningTimeType\":\"Additional\",\"AdditionalOpeningDate\":\"Dec 25 2018\",\"IsOpen\":false},{\"WeekDay\":\"\",\"Times\":\"\",\"OpeningTimeType\":\"Additional\",\"AdditionalOpeningDate\":\"Dec 26 2018\",\"IsOpen\":false},{\"WeekDay\":\"\",\"Times\":\"\",\"OpeningTimeType\":\"Additional\",\"AdditionalOpeningDate\":\"Jan  1 2019\",\"IsOpen\":false},{\"WeekDay\":\"\",\"Times\":\"09:00-18:00\",\"OpeningTimeType\":\"Additional\",\"AdditionalOpeningDate\":\"Dec 24 2018\",\"IsOpen\":true},{\"WeekDay\":\"\",\"Times\":\"09:00-18:00\",\"OpeningTimeType\":\"Additional\",\"AdditionalOpeningDate\":\"Dec 31 2018\",\"IsOpen\":true}]"
+    },
+    {
+      "@search.score": 1,
+      "OrganisationName": "Dewsbury Walk-in Centre",
+      "Address1": "Accident And Emergency",
+      "Address2": "Dewsbury District Hospital",
+      "Address3": "Halifax Road",
+      "City": "Dewsbury",
+      "County": "West Yorkshire",
+      "Postcode": "WF13 4HS",
+      "Geocode": {
+        "type": "Point",
+        "coordinates": [
+          -1.65186,
+          53.7023
+        ],
+        "crs": {
+          "type": "name",
+          "properties": {
+            "name": "EPSG:4326"
+          }
+        }
+      },
+      "Contacts": "[{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Telephone\",\"OrganisationContactValue\":\"01924 542 695\"},{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Website\",\"OrganisationContactValue\":\"www.northkirkleesccg.nhs.uk\"}]",
+      "Metrics": null,
+      "GSD": "[{\"ElementTitle\":\"Service details\",\"ElementText\":\"Emergency Hormonal Contraception and chlamydia testing (for under 25s) available.\"},{\"ElementTitle\":\"Opening times\",\"ElementText\":\"Monday to Friday 9am – 8pm\\nSaturdays, Sundays and bank holidays 10am – 6pm\\n\\n\"},{\"ElementTitle\":\"Venue Type\",\"ElementText\":\"Clinic\"}]",
+      "OpeningTimes": null
+    },
+    {
+      "@search.score": 1,
+      "OrganisationName": "MESMAC - Bradford",
+      "Address1": "28 Chapel Street",
+      "Address2": "Little Germany",
+      "Address3": "Bradford",
+      "City": "West Yorkshire",
+      "County": null,
+      "Postcode": "BD1 5DN",
+      "Geocode": {
+        "type": "Point",
+        "coordinates": [
+          -1.74531,
+          53.794
+        ],
+        "crs": {
+          "type": "name",
+          "properties": {
+            "name": "EPSG:4326"
+          }
+        }
+      },
+      "Contacts": "[{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Telephone\",\"OrganisationContactValue\":\"01274 395 815\"},{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Email\",\"OrganisationContactValue\":\"bradford@mesmac.co.uk\"},{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Website\",\"OrganisationContactValue\":\"www.mesmac.co.uk\"}]",
+      "Metrics": null,
+      "GSD": "[{\"ElementTitle\":\"Service details\",\"ElementText\":\"MESMAC is one of the oldest and largest sexual health organisations in the country. We offer services to various communities including men who have sex with men, BME people, people misusing drugs, sex workers and LGBT young people and adults. Free condoms and lube, one-to-one counselling, sexual health advice, groups. Young people welcome.\"},{\"ElementTitle\":\"Opening times\",\"ElementText\":\"Monday to Friday 9am - 5.30pm\"},{\"ElementTitle\":\"Venue Type\",\"ElementText\":\"Community\"}]",
+      "OpeningTimes": null
+    },
+    {
+      "@search.score": 1,
+      "OrganisationName": "Sexual Health - Farfield",
+      "Address1": "St Andrews Surgery",
+      "Address2": "West Lane",
+      "Address3": "Keighley",
+      "City": "Bradford",
+      "County": "West Yorkshire",
+      "Postcode": "BD1 3LS",
+      "Geocode": {
+        "type": "Point",
+        "coordinates": [
+          -1.75347,
+          53.7957
+        ],
+        "crs": {
+          "type": "name",
+          "properties": {
+            "name": "EPSG:4326"
+          }
+        }
+      },
+      "Contacts": "[{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Telephone\",\"OrganisationContactValue\":\"030 3330 9500\"},{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Website\",\"OrganisationContactValue\":\"www.locala.org.uk\\/your-healthcare\\/sexual-health\\/bradford-sexual-health\\/\"}]",
+      "Metrics": null,
+      "GSD": "[{\"ElementTitle\":\"Service details\",\"ElementText\":\"Locala offers a free and confidential contraception and sexual health service in clinics across Bradford. \\n\\nLocala Sexual Health Centres offer:\\n• A full range of contraception including implants, IUD's, condoms and emergency contraception\\n• Testing and treatment for sexually transmitted infections\\n• Help and advice for unplanned pregnancy\\n• Chlamydia screening\\n\"},{\"ElementTitle\":\"Opening times\",\"ElementText\":\"When the service is overwhelmed with demand we may close earlier than the times listed below. Please check website or call 030 3330 9500 before starting your journey.\\n\\nDrop-in:\\nThursdays 6pm - 8pm\\n\\nAppointments:\\nTuesday 3pm - 6.30pm\\n\"},{\"ElementTitle\":\"Venue Type\",\"ElementText\":\"Clinic\"}]",
+      "OpeningTimes": null
+    },
+    {
+      "@search.score": 1,
+      "OrganisationName": "MESMAC - Wakefield",
+      "Address1": "12 Cheapside",
+      "Address2": "Wakefield",
+      "Address3": "West Yorkshire",
+      "City": null,
+      "County": null,
+      "Postcode": "WF1 2SD",
+      "Geocode": {
+        "type": "Point",
+        "coordinates": [
+          -1.50171,
+          53.6826
+        ],
+        "crs": {
+          "type": "name",
+          "properties": {
+            "name": "EPSG:4326"
+          }
+        }
+      },
+      "Contacts": "[{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Telephone\",\"OrganisationContactValue\":\"01924 211 116\"},{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Email\",\"OrganisationContactValue\":\"wakefield@mesmac.co.uk\"},{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Website\",\"OrganisationContactValue\":\"www.mesmac.co.uk\\/WAKEFIELD\"}]",
+      "Metrics": null,
+      "GSD": "[{\"ElementTitle\":\"Service details\",\"ElementText\":\"\\\"Provides HIV prevention and support including: •Free, rapid and confidential HIV testing \\n•Condoms and lubricant\\n•Counselling \\n•Information and resources\\n•Outreach to the commercial gay scene, cruising areas and public toilets\\n•Support for individuals and community groups\\n•Training\"},{\"ElementTitle\":\"Opening times\",\"ElementText\":\"For drop in session times and to make an appointment, please visit the website.\\n\"},{\"ElementTitle\":\"Venue Type\",\"ElementText\":\"Community\"}]",
+      "OpeningTimes": null
+    },
+    {
+      "@search.score": 1,
+      "OrganisationName": "Kirklees Pharmacy",
+      "Address1": "St Johns House",
+      "Address2": "Cross Church Street",
+      "Address3": "Cleckheaton",
+      "City": "Cleckheaton",
+      "County": "",
+      "Postcode": "BD19 3RQ",
+      "Geocode": {
+        "type": "Point",
+        "coordinates": [
+          -1.71061,
+          53.7241
+        ],
+        "crs": {
+          "type": "name",
+          "properties": {
+            "name": "EPSG:4326"
+          }
+        }
+      },
+      "Contacts": "[{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Telephone\",\"OrganisationContactValue\":\"01274 879579\"},{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Email\",\"OrganisationContactValue\":\"kirklees.pharmacy@nhs.net\"},{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Fax\",\"OrganisationContactValue\":\"01274 879519\"}]",
+      "Metrics": null,
+      "GSD": null,
+      "OpeningTimes": "[{\"WeekDay\":\"Sunday\",\"Times\":\"08:00-21:00\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Monday\",\"Times\":\"08:00-22:30\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Tuesday\",\"Times\":\"08:00-22:30\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Wednesday\",\"Times\":\"08:00-22:30\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Thursday\",\"Times\":\"08:00-22:30\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Friday\",\"Times\":\"08:00-22:30\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Saturday\",\"Times\":\"08:00-22:30\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"\",\"Times\":\"\",\"OpeningTimeType\":\"Additional\",\"AdditionalOpeningDate\":\"Dec 25 2018\",\"IsOpen\":false},{\"WeekDay\":\"\",\"Times\":\"\",\"OpeningTimeType\":\"Additional\",\"AdditionalOpeningDate\":\"Dec 26 2018\",\"IsOpen\":false},{\"WeekDay\":\"\",\"Times\":\"\",\"OpeningTimeType\":\"Additional\",\"AdditionalOpeningDate\":\"Jan  1 2019\",\"IsOpen\":false}]"
+    },
+    {
+      "@search.score": 1,
+      "OrganisationName": "Woodroyd Pharmacy",
+      "Address1": "Woodroyd Centre",
+      "Address2": "Woodroyd Road",
+      "Address3": "Bradford",
+      "City": "BRADFORD",
+      "County": "Yorkshire(West Riding)",
+      "Postcode": "BD5 8EL",
+      "Geocode": {
+        "type": "Point",
+        "coordinates": [
+          -1.75386,
+          53.7752
+        ],
+        "crs": {
+          "type": "name",
+          "properties": {
+            "name": "EPSG:4326"
+          }
+        }
+      },
+      "Contacts": "[{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Telephone\",\"OrganisationContactValue\":\"01274 225005\"},{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Website\",\"OrganisationContactValue\":\"http:\\/\\/www.woodroydpharmacy.co.uk\\/\"},{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Fax\",\"OrganisationContactValue\":\"01274 225001\"}]",
+      "Metrics": null,
+      "GSD": null,
+      "OpeningTimes": "[{\"WeekDay\":\"Monday\",\"Times\":\"08:30-18:15\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Tuesday\",\"Times\":\"08:30-18:15\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Wednesday\",\"Times\":\"08:30-18:15\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Thursday\",\"Times\":\"08:30-18:15\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Friday\",\"Times\":\"08:30-18:15\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"Saturday\",\"Times\":\"09:00-12:30\",\"OpeningTimeType\":\"General\",\"AdditionalOpeningDate\":\"\",\"IsOpen\":true},{\"WeekDay\":\"\",\"Times\":\"\",\"OpeningTimeType\":\"Additional\",\"AdditionalOpeningDate\":\"Dec 25 2018\",\"IsOpen\":false},{\"WeekDay\":\"\",\"Times\":\"\",\"OpeningTimeType\":\"Additional\",\"AdditionalOpeningDate\":\"Dec 26 2018\",\"IsOpen\":false},{\"WeekDay\":\"\",\"Times\":\"\",\"OpeningTimeType\":\"Additional\",\"AdditionalOpeningDate\":\"Jan  1 2019\",\"IsOpen\":false}]"
+    },
+    {
+      "@search.score": 1,
+      "OrganisationName": "Well Women Centre",
+      "Address1": "24 Trinity Church Gate",
+      "Address2": "Wakefield",
+      "Address3": "West Yorkshire",
+      "City": null,
+      "County": null,
+      "Postcode": "WF1 1TX",
+      "Geocode": {
+        "type": "Point",
+        "coordinates": [
+          -1.49403,
+          53.6808
+        ],
+        "crs": {
+          "type": "name",
+          "properties": {
+            "name": "EPSG:4326"
+          }
+        }
+      },
+      "Contacts": "[{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Telephone\",\"OrganisationContactValue\":\"01924 211 114\"},{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Website\",\"OrganisationContactValue\":\"www.wellwomenwakefield.org.uk\"}]",
+      "Metrics": null,
+      "GSD": "[{\"ElementTitle\":\"Service details\",\"ElementText\":\"Free services for women by women. Offers counselling for unplanned pregnancy and childhood sexual abuse. Complementary therapies and support groups available.\\n\\n\"},{\"ElementTitle\":\"Opening times\",\"ElementText\":\"Please call for opening times.\\n\"},{\"ElementTitle\":\"Venue Type\",\"ElementText\":\"Community\"}]",
+      "OpeningTimes": null
+    },
+    {
+      "@search.score": 1,
+      "OrganisationName": "Sexual Health - Windhill Green",
+      "Address1": "2 Thackley Old Road",
+      "Address2": "Shipley",
+      "Address3": "Bradford",
+      "City": "West Yorkshire",
+      "County": null,
+      "Postcode": "BD18 1QB",
+      "Geocode": {
+        "type": "Point",
+        "coordinates": [
+          -1.76472,
+          53.8354
+        ],
+        "crs": {
+          "type": "name",
+          "properties": {
+            "name": "EPSG:4326"
+          }
+        }
+      },
+      "Contacts": "[{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Telephone\",\"OrganisationContactValue\":\"030 3330 9500\"},{\"OrganisationContactType\":\"Primary\",\"OrganisationContactAvailabilityType\":\"Office hours\",\"OrganisationContactMethodType\":\"Website\",\"OrganisationContactValue\":\"www.locala.org.uk\\/your-healthcare\\/sexual-health\\/bradford-sexual-health\\/\"}]",
+      "Metrics": null,
+      "GSD": "[{\"ElementTitle\":\"Service details\",\"ElementText\":\"Locala offers a free and confidential contraception and sexual health service in clinics across Bradford. \\n\\nLocala Sexual Health Centres offer:\\n• A full range of contraception including implants, IUD's, condoms and emergency contraception\\n• Testing and treatment for sexually transmitted infections\\n• Help and advice for unplanned pregnancy\\n• Chlamydia screening\\n\\n\"},{\"ElementTitle\":\"Opening times\",\"ElementText\":\"When the service is overwhelmed with demand we may close earlier than the times listed below. Please check website or call 030 3330 9500 before starting your journey.\\n\\nDrop-in:\\nWednesday 5pm - 7.30pm\\n\\nAppointments:\\nMonday 10am - 12pm\\nTuesday 9am - 12.30pm\\n\"},{\"ElementTitle\":\"Venue Type\",\"ElementText\":\"Clinic\"}]",
+      "OpeningTimes": null
+    }
+  ]
+}

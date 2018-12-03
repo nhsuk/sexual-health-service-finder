@@ -4,7 +4,7 @@ Date: 2018-03-20
 
 ## Status
 
-Accepted
+Superceded by [4. Use Azure Search](0004-use-azure-search.md)
 
 ## Context
 
