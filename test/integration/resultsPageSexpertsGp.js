@@ -32,7 +32,7 @@ function setTypeAndOriginPairs() {
 
 describe('Results page for sexual health professionals (symptoms and under16)', () => {
   const location = 'ls1';
-  let res;
+  let $;
 
   setTypeAndOriginPairs().forEach((queryParams) => {
     before('make request', async () => {
@@ -47,16 +47,16 @@ describe('Results page for sexual health professionals (symptoms and under16)', 
 
       nockRequests.withResponseBody(path, requestBody, 200, responsePath);
       nockRequests.postcodesIO(`/outcodes/${location}`, 200, 'outcodeResponse_ls1.json');
-      res = await chai.request(app)
+      const res = await chai.request(app)
         .get(resultsRoute)
         .query({ location, origin, type });
       iExpect.htmlWith200Status(res);
+      $ = cheerio.load(res.text);
     });
   });
 
   describe('layout', () => {
     it('should contain a header and other info related to the search', () => {
-      const $ = cheerio.load(res.text);
       const resultsHeader = getTextOnlyFromElement($('.nhsuk-page-heading'));
       const resultsSubHeader = getTextOnlyFromElement($('.results p.explanation'));
       const resultsOnwards = getTextOnlyFromElement($('.results p.links'));
@@ -74,7 +74,6 @@ describe('Results page for sexual health professionals (symptoms and under16)', 
   describe('matching sexual health professionals found', () => {
     describe('multiple matches', () => {
       it('should have more than one result', () => {
-        const $ = cheerio.load(res.text);
         const searchResults = $('.results__item--nearby');
 
         expect(searchResults.length).to.equal(30);
@@ -84,7 +83,6 @@ describe('Results page for sexual health professionals (symptoms and under16)', 
 
   describe('First service', () => {
     it('should have distance, name, an address and phone number', () => {
-      const $ = cheerio.load(res.text);
       const searchResultsDistance = getTextOnlyFromElement($('.results__address.results__address-distance').first());
       const searchResultsName = getTextOnlyFromElement($('.results__name').first());
       const searchResultsAddress = getTextOnlyFromElement($('.results__address.results__address-lines').first());

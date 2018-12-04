@@ -19,6 +19,8 @@ describe('Location page for ordering kits online for 16 to 24 year olds', () => 
   let res;
 
   before('make request', async () => {
+    // Add timeout as request is to external website
+    this.timeout = 5000;
     res = await chai.request(app)
       .get(locationRoute)
       .query({ origin, type });

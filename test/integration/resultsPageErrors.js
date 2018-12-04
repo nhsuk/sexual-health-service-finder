@@ -3,6 +3,7 @@ const cheerio = require('cheerio');
 
 const app = require('../../server');
 const constants = require('../../app/lib/constants');
+const getTextOnlyFromElement = require('../lib/utils').getTextOnlyFromElement;
 const nockRequests = require('../lib/nockRequests');
 const messages = require('../../app/lib/displayUtils/messages');
 
@@ -12,9 +13,9 @@ const results = `${constants.siteRoot}/results`;
 
 function expectErrorMessage(res, message) {
   const $ = cheerio.load(res.text);
-  const error = $('.error-summary-heading').text();
+  const error = getTextOnlyFromElement($('.error-summary-heading'));
 
-  expect(error).to.contain(message);
+  expect(error).to.equal(message);
 }
 
 describe('Results page errors', () => {

@@ -24,11 +24,4 @@ describe('messages', () => {
       expect(message).to.contain('We can\'t find the postcode \'LS1 123\'. Check the postcode is correct and try again.');
     });
   });
-
-  describe('technical error message', () => {
-    it('should have an error message for technical errors', () => {
-      const message = messages.technicalProblems();
-      expect(message).to.contain('Sorry, we are experiencing technical problems.');
-    });
-  });
 });

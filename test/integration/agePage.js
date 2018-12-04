@@ -63,22 +63,21 @@ describe('Age page', () => {
   });
 
   describe('return to Choices services', () => {
-    it('the breadcrumb should have a link back to the Choices \'Services near you\'', async () => {
+    let $;
+
+    before('make request', async () => {
       const res = await chai.request(server).get(ageRoute);
 
-      const $ = cheerio.load(res.text);
-
-      expect($($('.nhsuk-c-breadcrumb__item a')[1]).attr('href'))
-        .to.equal('https://www.nhs.uk/service-search');
+      iExpect.htmlWith200Status(res);
+      $ = cheerio.load(res.text);
     });
 
-    it('the page should have a link back to the Choices service search', async () => {
-      const res = await chai.request(server).get(ageRoute);
+    it('the breadcrumb should have a link back to the Choices \'Services near you\'', () => {
+      expect($($('.nhsuk-c-breadcrumb__item a')[1]).attr('href')).to.equal('https://www.nhs.uk/service-search');
+    });
 
-      const $ = cheerio.load(res.text);
-
-      expect($('.back-to-choices').attr('href'))
-        .to.equal('https://www.nhs.uk/service-search');
+    it('the page should have a link back to the Choices service search', () => {
+      expect($('.back-to-choices').attr('href')).to.equal('https://www.nhs.uk/service-search');
     });
   });
 });

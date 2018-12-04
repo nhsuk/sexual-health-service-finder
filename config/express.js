@@ -2,13 +2,13 @@ const bodyParser = require('body-parser');
 const compression = require('compression');
 const cookieParser = require('cookie-parser');
 const express = require('express');
-const nunjucks = require('nunjucks');
 
 const constants = require('../app/lib/constants');
 const errorCounter = require('../app/lib/prometheus/counters').errorPageViews;
-const locals = require('../app/middleware/locals');
 const helmet = require('./helmet');
+const locals = require('../app/middleware/locals');
 const log = require('../app/lib/logger');
+const nunjucks = require('./nunjucks');
 const promBundle = require('../app/lib/prometheus/bundle').middleware;
 const router = require('./routes');
 
@@ -20,15 +20,7 @@ module.exports = (app, config) => {
   // start collecting default metrics
   promBundle.promClient.collectDefaultMetrics();
 
-  app.set('views', `${config.app.root}/app/views`);
-  app.set('view engine', 'nunjucks');
-  const nunjucksEnvironment = nunjucks.configure(`${config.app.root}/app/views`, {
-    autoescape: true,
-    express: app,
-    watch: true,
-  });
-  log.debug({ config: { nunjucksEnvironment } }, 'nunjucks environment configuration');
-
+  nunjucks(app, config);
   helmet(app);
 
   app.use(locals(config));
