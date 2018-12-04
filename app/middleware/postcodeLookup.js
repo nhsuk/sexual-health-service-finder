@@ -1,14 +1,12 @@
 const PostcodesIOClient = require('postcodesio-client');
+
 const errorCounter = require('../lib/prometheus/counters').errorPageViews;
 const log = require('../lib/logger');
 const postcodesIORequestHistogram = require('../lib/prometheus/histograms').postcodesIORequest;
 const validationCounter = require('../lib/prometheus/counters').validationLocationErrors;
 
-// rewire (a framework for mocking) doesn't support const
-// eslint-disable-next-line no-var
-var PostcodesIO = new PostcodesIOClient();
-// eslint-disable-next-line no-var
-var renderer = require('./renderer');
+const PostcodesIO = new PostcodesIOClient();
+const renderer = require('./renderer');
 
 function toArray(countries) {
   return Array.isArray(countries) ? countries : [countries];
