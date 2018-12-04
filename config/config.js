@@ -17,10 +17,11 @@ module.exports = {
     root: rootPath,
   },
   azureSearch: {
-    index: process.env.AS_INDEX || 'organisationlookup-dev',
-    key: process.env.AS_API_KEY,
     resultsLimit: process.env.RESULTS_LIMIT || 30,
-    serviceName: process.env.AS_SERVICE_NAME || 'nhsuksearchintne',
-    version: process.env.AS_VERSION || '2017-11-11',
+  },
+  search: {
+    apiKey: process.env.SEARCH_API_KEY,
+    host: process.env.SEARCH_API_HOST || 'nhsapiint.azure-api.net',
+    version: process.env.SEARCH_API_VERSION || '1',
   },
 };

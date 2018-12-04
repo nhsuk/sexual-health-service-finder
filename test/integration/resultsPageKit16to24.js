@@ -3,13 +3,12 @@ const chaiHttp = require('chai-http');
 const cheerio = require('cheerio');
 
 const app = require('../../server');
-const asConfig = require('../../config/config').azureSearch;
 const constants = require('../../app/lib/constants');
 const getQueryType = require('../../app/lib/utils/queryMapper').getQueryType;
 const getTextOnlyFromElement = require('../lib/utils').getTextOnlyFromElement;
 const iExpect = require('../lib/expectations');
 const nockRequests = require('../lib/nockRequests');
-const queryBuilder = require('../../app/lib/azuresearch/queryBuilder');
+const queryBuilder = require('../../app/lib/search/queryBuilder');
 
 const expect = chai.expect;
 
@@ -24,7 +23,7 @@ describe('Results page for kits for 16 to 24 year olds', () => {
   let $;
 
   before('make request', async () => {
-    const path = `/indexes/${asConfig.index}/docs/search`;
+    const path = '/service-search/search';
     const latLon = { location: { lat: 53.7974737203539, lon: -1.55262247079646 } };
     const queryType = getQueryType(type, origin);
     const query = queryBuilder(latLon, queryType, 30);

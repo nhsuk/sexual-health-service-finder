@@ -3,12 +3,11 @@ const chaiHttp = require('chai-http');
 const cheerio = require('cheerio');
 
 const app = require('../../server');
-const asConfig = require('../../config/config').azureSearch;
 const constants = require('../../app/lib/constants');
 const getQueryType = require('../../app/lib/utils/queryMapper').getQueryType;
 const iExpect = require('../lib/expectations');
 const nockRequests = require('../lib/nockRequests');
-const queryBuilder = require('../../app/lib/azuresearch/queryBuilder');
+const queryBuilder = require('../../app/lib/search/queryBuilder');
 
 const expect = chai.expect;
 
@@ -54,7 +53,7 @@ describe('Pharmacy opening times', () => {
   const origin = constants.serviceChoices.over25;
 
   it('should display daily opening times for a pharmacy', async () => {
-    const path = `/indexes/${asConfig.index}/docs/search`;
+    const path = '/service-search/search';
     const latLon = { location: { lat: 53.3695577231271, lon: -1.44810761237785 } };
     const queryType = getQueryType(type, origin);
     const query = queryBuilder(latLon, queryType, 30);

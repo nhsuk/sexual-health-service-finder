@@ -1,11 +1,11 @@
 const VError = require('verror').VError;
 
-const azureRequest = require('../lib/azuresearch/request');
-const azureSearchGetServiceHistogram = require('../lib/prometheus/histograms').azureSearchGetServices;
+const azureRequest = require('../lib/search/request');
+const searchServicesHistogram = require('../lib/prometheus/histograms').searchGetServices;
 const promQueryLabelName = require('../lib/constants').promQueryLabelName;
 const log = require('../lib/logger');
 const mapResults = require('../lib/mappers/mapResults');
-const queryBuilder = require('../lib/azuresearch/queryBuilder');
+const queryBuilder = require('../lib/search/queryBuilder');
 const queryMapper = require('../lib/utils/queryMapper');
 
 function handleError(error, next) {
@@ -31,7 +31,7 @@ async function getServices(req, res, next) {
   const queryType = queryMapper.getQueryType(res.locals.type, res.locals.origin);
   const query = queryBuilder(searchOrigin, queryType, resultsLimit);
 
-  const endTimer = azureSearchGetServiceHistogram.startTimer();
+  const endTimer = searchServicesHistogram.startTimer();
   const timerLabel = {};
   timerLabel[promQueryLabelName] = queryType;
 
