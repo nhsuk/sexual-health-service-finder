@@ -37,7 +37,8 @@
       <div class="reading-width">
         {% if service.openingTimes.description %}
           <p class="results__openingTimes">
-            {{ service.openingTimes.description }}
+            {# Replace '\n' with '<br />' to maintain original formatting #}
+            {{ service.openingTimes.description | escape | nl2br }}
           </p>
         {% endif %}
         {% if service.openingTimes.formatted %}
@@ -55,7 +56,7 @@
     <div class="details__content" id="details-content-0">
       <div class="reading-width">
         <p class="results__serviceDetails">
-        <!-- Replace '\n' with '<br />' to maintain original formatting -->
+          {# Replace '\n' with '<br />' to maintain original formatting #}
           {{ service.serviceDetails | escape | nl2br }}
         </p>
       </div>
