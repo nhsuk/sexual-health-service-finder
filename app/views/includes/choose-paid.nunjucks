@@ -5,7 +5,7 @@
     <label class="multiple-choice--radio" aria-hidden="true" for="1">
       <span class="multiple--choice-option">See a sexual health professional near you</span>
     </label>
-    {% include "partials/about-sexperts.nunjucks" %}
+    {% include "includes/about-sexperts.nunjucks" %}
   </div>
   <div class="multiple-choice multiple-choice--description">
     <label class="sr-only" for="2">Buy a test kit near you</label>

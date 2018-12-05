@@ -1,14 +1,14 @@
 const nock = require('nock');
 
-const asConfig = require('../../config/config').azureSearch;
-const headers = require('../../app/lib/azuresearch/headers');
+const search = require('../../config/config').search;
+const headers = require('../../app/lib/search/headers');
 
-const host = `https://${asConfig.serviceName}.search.windows.net`;
+const searchHost = `https://${search.host}`;
 
 function createNock(path, body) {
-  return nock(host, { encodedQueryParams: true, reqheaders: headers })
+  return nock(searchHost, { encodedQueryParams: true, reqheaders: headers })
     .post(path, body)
-    .query({ 'api-version': asConfig.version });
+    .query({ 'api-version': search.version });
 }
 
 function postcodesIO(path, statusCode, responsePath) {
