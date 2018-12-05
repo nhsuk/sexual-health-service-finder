@@ -15,9 +15,9 @@
       <p><span class="recommend__cross"></span>not getting a chlamydia home test kit</p>
 
       {% if under16 %}
-        {% include "partials/recommend-under16.nunjucks" %}
+        {% include "includes/recommend-under16.nunjucks" %}
       {% else %}
-        {% include "partials/recommend-symptoms.nunjucks" %}
+        {% include "includes/recommend-symptoms.nunjucks" %}
       {% endif %}
 
       <p>

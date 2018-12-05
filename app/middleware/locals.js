@@ -8,8 +8,6 @@ module.exports = config => (req, res, next) => {
   res.locals.WEBTRENDS_ANALYTICS_TRACKING_ID = config.analytics.webtrendsId;
   res.locals.HOTJAR_ANALYTICS_TRACKING_ID = config.analytics.hotjarId;
 
-  res.locals.RESULTS_LIMIT = config.azureSearch.resultsLimit;
-
   res.locals.assetsUrl = req.app.locals.assetsUrl;
   res.locals.siteRoot = req.app.locals.siteRoot;
   res.locals.digitalData = digitalData(req);
