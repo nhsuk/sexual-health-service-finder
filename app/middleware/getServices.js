@@ -1,6 +1,7 @@
 const VError = require('verror').VError;
 
-const azureRequest = require('../lib/search/request');
+const searchRequest = require('../lib/search/request');
+const maxNumberOfResults = require('../../config/config').search.maxNumberOfResults;
 const searchServicesHistogram = require('../lib/prometheus/histograms').searchGetServices;
 const promQueryLabelName = require('../lib/constants').promQueryLabelName;
 const log = require('../lib/logger');
@@ -9,7 +10,7 @@ const queryBuilder = require('../lib/search/queryBuilder');
 const queryMapper = require('../lib/utils/queryMapper');
 
 function handleError(error, next) {
-  const errMsg = 'Error making request to Azure Search';
+  const errMsg = 'Error making request to Search API';
   const newError = new VError(error.stack, errMsg);
 
   log.error({ err: newError }, errMsg);
@@ -25,11 +26,10 @@ function processResults(response, searchOrigin, logResults) {
 
 async function getServices(req, res, next) {
   const location = res.locals.location;
-  const resultsLimit = res.locals.RESULTS_LIMIT;
   const searchOrigin = res.locals.postcodeLocationDetails;
 
   const queryType = queryMapper.getQueryType(res.locals.type, res.locals.origin);
-  const query = queryBuilder(searchOrigin, queryType, resultsLimit);
+  const query = queryBuilder(searchOrigin, queryType, maxNumberOfResults);
 
   const endTimer = searchServicesHistogram.startTimer();
   const timerLabel = {};
@@ -42,11 +42,11 @@ async function getServices(req, res, next) {
       query,
       resultCount,
       searchOrigin,
-    }, 'getServices Azure Search query and params');
+    }, 'getServices from Search API - query and params');
   };
 
   try {
-    const response = await azureRequest(query);
+    const response = await searchRequest(query);
     [res.locals.services, res.locals.resultsCount] = processResults(
       response, searchOrigin, logResults
     );

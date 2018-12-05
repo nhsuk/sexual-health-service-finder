@@ -16,12 +16,10 @@ module.exports = {
     port: process.env.PORT || 3000,
     root: rootPath,
   },
-  azureSearch: {
-    resultsLimit: process.env.RESULTS_LIMIT || 30,
-  },
   search: {
     apiKey: process.env.SEARCH_API_KEY,
     host: process.env.SEARCH_API_HOST || 'nhsapiint.azure-api.net',
+    maxNumberOfResults: 30,
     version: process.env.SEARCH_API_VERSION || '1',
   },
 };

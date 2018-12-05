@@ -57,9 +57,9 @@ environment.
 | `LOG_LEVEL`                        | Numeric [log level](https://github.com/trentm/node-bunyan#levels)                                                                                          | Depends on `NODE_ENV`     | No         |
 | `NODE_ENV`                         | Node environment                                                                                                                                           | development               | Yes        |
 | `PORT`                             | Server port                                                                                                                                                | 3000                      | Yes        |
-| `SEARCH_API_KEY`                   | `api-key` for the [Azure Search Service](https://docs.microsoft.com/en-us/rest/api/searchservice/#calling-the-apis)                                        |                           | Yes        |
-| `SEARCH_API_HOST`                      | Name of the [Azure Search Service](https://docs.microsoft.com/en-us/rest/api/searchservice/#calling-the-apis)                                              | nhsuksearchintne-dev      | Yes        |
-| `SEARCH_API_VERSION`                   | Version of the [Azure Search Service](https://docs.microsoft.com/en-us/rest/api/searchservice/#calling-the-apis)                                           | 2017-11-11                | Yes        |
+| `SEARCH_API_HOST`                  | Host name for the [NHS Developer API](https://developer.api.nhs.uk/)                                                                                       | nhsapiint.azure-api.net   | Yes        |
+| `SEARCH_API_KEY`                   | `subscription-key` for the [NHS Developer API](https://developer.api.nhs.uk/)                                                                              |                           | Yes        |
+| `SEARCH_API_VERSION`               | Version of the [NHS Developer API](https://developer.api.nhs.uk/)                                                                                          | 1                         | Yes        |
 | `WEBTRENDS_ANALYTICS_TRACKING_ID`  | [Webtrends](https://www.webtrends.com/) tracking id                                                                                                        |                           | No         |
 
 ## FAQ

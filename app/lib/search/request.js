@@ -8,7 +8,6 @@ async function request(query) {
     body: JSON.stringify(query),
     headers,
     method: 'POST',
-    // url: `https://${asConfig.serviceName}.search.windows.net/indexes/${asConfig.index}/docs/search?api-version=${asConfig.version}`,
     url: `https://${search.host}/service-search/search?api-version=${search.version}`,
   });
 }
