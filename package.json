@@ -65,7 +65,7 @@
     "map-replace": "^1.0.2",
     "moment": "^2.22.0",
     "nhsuk-bunyan-logger": "^1.7.0",
-    "node-sass": "^4.9.2",
+    "node-sass": "^4.10.0",
     "nunjucks": "^3.1.4",
     "postcodesio-client": "^0.3.3",
     "querystring": "^0.2.0",
