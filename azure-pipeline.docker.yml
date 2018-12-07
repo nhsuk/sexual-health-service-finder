@@ -7,11 +7,33 @@ pool:
   vmImage: 'Ubuntu 16.04'
 
 variables:
-  imageName: 'nhsuk/sexual-health-service-finder:$(build.buildId)'
-
+  docker_image_name: 'nhsuk/sexual-health-service-finder'
+ 
 steps:
-- script: docker build -f Dockerfile -t $(imageName) .
-  displayName: 'docker build'
+- task: Docker@1
+  displayName: 'Build an image'
+  inputs:
+    containerregistrytype: 'Container Registry'
 
+    dockerRegistryEndpoint: 'sexual-health'
 
+    dockerFile: Dockerfile
 
+    imageName: '$(docker_image_name):$(Build.BuildNumber)'
+
+    includeSourceTags: true
+
+    includeLatestTag: true
+
+- task: Docker@2
+  displayName: 'Push an image'
+  inputs:
+    containerregistrytype: 'Container Registry'
+
+    dockerRegistryEndpoint: 'sexual-health'
+
+    command: 'Push an image'
+
+    imageName: '$(docker_image_name):$(Build.BuildNumber)'
+
+    includeSourceTags: true
