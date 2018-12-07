@@ -68,6 +68,8 @@ environment.
   * If set, `LOG_LEVEL` must be a number and one of the defined [log levels](https://github.com/trentm/node-bunyan#levels)
   * Check for messages in the logs
 
+* why does a deployment break traefik
+
 ## Architecture Decision Records
 
 This repo uses
