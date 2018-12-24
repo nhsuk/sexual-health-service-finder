@@ -58,7 +58,7 @@
     "compression": "^1.7.1",
     "cookie-parser": "^1.4.3",
     "express": "^4.16.2",
-    "express-prom-bundle": "^4.2.0",
+    "express-prom-bundle": "^5.0.0",
     "fingerprint-brunch": "^2.0.5",
     "google-libphonenumber": "^3.2.1",
     "helmet": "^3.11.0",
