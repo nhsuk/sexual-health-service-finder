@@ -33,3 +33,5 @@ services:
         splunk-url: ${SPLUNK_HEC_URL}
         splunk-verify-connection: "false"
         tag: "{{`{{.ImageName}} {{.Name}} {{.FullID}}`}}"
+        
+ # RANDOM COMMENT
