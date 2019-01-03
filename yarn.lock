@@ -5738,11 +5738,6 @@ require-directory@^2.1.1:
   resolved "https://registry.yarnpkg.com/require-directory/-/require-directory-2.1.1.tgz#8c64ad5fd30dab1c976e2344ffe7f792a6a6df42"
   integrity sha1-jGStX9MNqxyXbiNE/+f3kqam30I=
 
-require-environment-variables@^1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/require-environment-variables/-/require-environment-variables-1.2.0.tgz#535f9e9f7faba04e007b79ce77937b2cc8d47dc6"
-  integrity sha512-bh40t3apeg3RYpcee5UKH+U5K411+V4ZkekRlI+z3EcMuyej6YdnIuRt0PhIBeyuRCslRd/W3dLaPipLCKqZRA==
-
 require-main-filename@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/require-main-filename/-/require-main-filename-1.0.1.tgz#97f717b69d48784f5f526a6c5aa8ffdda055a4d1"
