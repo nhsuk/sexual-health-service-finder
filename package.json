@@ -69,7 +69,6 @@
     "nunjucks": "^3.1.4",
     "prom-client": "^11.2.1",
     "querystring": "^0.2.0",
-    "request": "^2.86.0",
     "request-promise-native": "^1.0.5",
     "require-environment-variables": "^1.2.0",
     "sass-brunch": "^2.10.7",
