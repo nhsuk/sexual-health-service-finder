@@ -1,13 +1,13 @@
 const VError = require('verror').VError;
 
-const searchRequest = require('../lib/search/request');
-const maxNumberOfResults = require('../../config/config').search.maxNumberOfResults;
-const searchServicesHistogram = require('../lib/prometheus/histograms').searchGetServices;
-const promQueryLabelName = require('../lib/constants').promQueryLabelName;
 const log = require('../lib/logger');
 const mapResults = require('../lib/mappers/mapResults');
-const queryBuilder = require('../lib/search/queryBuilder');
+const maxNumberOfResults = require('../../config/config').search.maxNumberOfResults;
+const promQueryLabelName = require('../lib/constants').promQueryLabelName;
+const queryBuilder = require('../lib/search/serviceSearchQueryBuilder');
 const queryMapper = require('../lib/utils/queryMapper');
+const searchRequest = require('../lib/search/request');
+const searchServicesHistogram = require('../lib/prometheus/histograms').searchGetServices;
 
 function handleError(error, next) {
   const errMsg = 'Error making request to Search API';
@@ -17,8 +17,7 @@ function handleError(error, next) {
   next(newError);
 }
 
-function processResults(response, searchOrigin, logResults) {
-  const results = JSON.parse(response);
+function processResults(results, searchOrigin, logResults) {
   const resultsCount = results['@odata.count'];
   logResults(resultsCount);
   return [mapResults(results, searchOrigin), resultsCount];
@@ -46,9 +45,9 @@ async function getServices(req, res, next) {
   };
 
   try {
-    const response = await searchRequest(query);
+    const results = await searchRequest(query, 'search');
     [res.locals.services, res.locals.resultsCount] = processResults(
-      response, searchOrigin, logResults
+      results, searchOrigin, logResults
     );
     next();
   } catch (error) {

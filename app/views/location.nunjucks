@@ -10,11 +10,11 @@
 {% endblock %}
 
 {% block content %}
-{% if errorMessage or outsideOfEnglandPostcodeFlag %}
+{% if errorMessage or postcodeNotFound %}
 <div class="error-summary">
   <h2 class="local-header--error error-summary-heading">
-    {% if (outsideOfEnglandPostcodeFlag) %}
-      {% include 'includes/outOfEnglandMessage.nunjucks' %}
+    {% if (postcodeNotFound) %}
+      {% include 'includes/postcodeNotFoundMessage.nunjucks' %}
     {% elif errorMessage %}
       {{ errorMessage }}
     {% endif %}

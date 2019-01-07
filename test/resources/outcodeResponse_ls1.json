@@ -1,25 +1,13 @@
 {
-  "status": 200,
-  "result": {
-    "outcode": "LS1",
-    "longitude": -1.55262247079646,
-    "latitude": 53.7974737203539,
-    "northings": 433555,
-    "eastings": 429565,
-    "admin_district": [
-      "Leeds"
-    ],
-    "parish": [
-      "Leeds, unparished area"
-    ],
-    "admin_county": [],
-    "admin_ward": [
-      "Beeston & Holbeck",
-      "Little London & Woodhouse",
-      "Hunslet & Riverside"
-    ],
-    "country": [
-      "England"
-    ]
-  }
+  "@odata.context": "https://nhsuksearchstagwe.search.windows.net/indexes('opennameslookup')/$metadata#docs(*)",
+  "@odata.count": 568,
+  "value": [
+    {
+      "@search.score": 8.63578,
+      "Name": "LS1 ",
+      "Latitude": 53.7974737203539,
+      "Longitude": -1.55262247079646,
+      "Type": "PostcodeOutCode"
+    }
+  ]
 }

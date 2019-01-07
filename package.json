@@ -67,7 +67,6 @@
     "nhsuk-bunyan-logger": "^1.7.0",
     "node-sass": "^4.10.0",
     "nunjucks": "^3.1.4",
-    "postcodesio-client": "^0.3.3",
     "prom-client": "^11.2.1",
     "querystring": "^0.2.0",
     "request": "^2.86.0",

@@ -2,7 +2,7 @@ const chai = require('chai');
 const VError = require('verror').VError;
 
 const constants = require('../../../../app/lib/constants');
-const queryBuilder = require('../../../../app/lib/search/queryBuilder');
+const queryBuilder = require('../../../../app/lib/search/serviceSearchQueryBuilder');
 
 const expect = chai.expect;
 

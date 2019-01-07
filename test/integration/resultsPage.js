@@ -8,7 +8,7 @@ const getQueryType = require('../../app/lib/utils/queryMapper').getQueryType;
 const getTextOnlyFromElement = require('../lib/utils').getTextOnlyFromElement;
 const iExpect = require('../lib/expectations');
 const nockRequests = require('../lib/nockRequests');
-const queryBuilder = require('../../app/lib/search/queryBuilder');
+const queryBuilder = require('../../app/lib/search/serviceSearchQueryBuilder');
 
 const expect = chai.expect;
 
@@ -47,15 +47,14 @@ describe('Results page results', () => {
       const type = queryParams.type;
 
       before(`make request for type:${type} and origin:${origin}`, async () => {
-        const path = '/service-search/search';
         const searchOrigin = { location: { lat: 53.7974737203539, lon: -1.55262247079646 } };
         const queryType = getQueryType(type, origin);
         const query = queryBuilder(searchOrigin, queryType, 30);
         const requestBody = JSON.stringify(query);
         const responsePath = `${location}-sexpert-results.json`;
 
-        nockRequests.withResponseBody(path, requestBody, 200, responsePath);
-        nockRequests.postcodesIO(`/outcodes/${location}`, 200, 'outcodeResponse_ls1.json');
+        nockRequests.postcodeSearch(location, 200, `outcodeResponse_${location}.json`);
+        nockRequests.serviceSearch(requestBody, 200, responsePath);
 
         const res = await chai.request(app)
           .get(resultsRoute)
@@ -106,33 +105,6 @@ describe('Results page results', () => {
 
         expect(searchResults.length).to.equal(30);
       });
-    });
-  });
-
-  describe('cross border locations', () => {
-    it('should display results when a location crosses 2 countries, one of which is England', async () => {
-      const type = constants.serviceTypes.kit;
-      const origin = constants.serviceChoices.over25;
-      const latLon = { location: { lat: 55.3977217554393, lon: -2.77657929395506 } };
-      const path = '/service-search/search';
-      const queryType = getQueryType(type, origin);
-      const query = queryBuilder(latLon, queryType, 30);
-      const requestBody = JSON.stringify(query);
-      const responsePath = `type-${type}-origin-${origin}-results.json`;
-
-      const crossBorderOutcode = 'TD9';
-      nockRequests.postcodesIO(`/outcodes/${crossBorderOutcode}`, 200, 'outcodeResponseCrossBorder_TD9.json');
-      nockRequests.withResponseBody(path, requestBody, 200, responsePath);
-
-      const res = await chai.request(app)
-        .get(resultsRoute)
-        .query({ location: crossBorderOutcode, origin, type });
-
-      const $ = cheerio.load(res.text);
-
-      const searchResults = $('.results__item--nearby');
-
-      expect(searchResults.length).to.equal(30);
     });
   });
 });
