@@ -3,8 +3,9 @@ const chaiHttp = require('chai-http');
 const cheerio = require('cheerio');
 
 const constants = require('../../app/lib/constants');
-const server = require('../../server');
 const iExpect = require('../lib/expectations');
+const mandatorySelectionMessage = require('../../app/lib/displayUtils/messages').mandatorySelectionMessage;
+const server = require('../../server');
 
 const expect = chai.expect;
 
@@ -15,8 +16,7 @@ const ageRoute = `${constants.siteRoot}/age`;
 const chooseRoute = `${constants.siteRoot}/choose`;
 
 function expectAgePageAgain($) {
-  expect($('.error-summary-heading').text())
-    .to.contain('You must choose one of the options.');
+  expect($('.error-summary-heading').text()).to.contain(mandatorySelectionMessage());
   expect($('.local-header--title--question').text()).to.equal('How old are you?');
 }
 

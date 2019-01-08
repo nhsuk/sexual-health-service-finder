@@ -3,8 +3,9 @@ const chaiHttp = require('chai-http');
 const cheerio = require('cheerio');
 
 const constants = require('../../app/lib/constants');
-const server = require('../../server');
 const iExpect = require('../lib/expectations');
+const mandatorySelectionMessage = require('../../app/lib/displayUtils/messages').mandatorySelectionMessage;
+const server = require('../../server');
 
 const expect = chai.expect;
 
@@ -25,7 +26,7 @@ describe('Choose page with error', () => {
     });
 
     it('page errors should be \'You must choose one of the options.\' if errors and age is 16-24', async () => {
-      expect($('.error-summary').text()).to.contain('You must choose one of the options.');
+      expect($('.error-summary').text()).to.contain(mandatorySelectionMessage());
     });
 
     it('page title should be \'How do you want to get a test?\' if errors and age is 16-24', async () => {
@@ -49,7 +50,7 @@ describe('Choose page with error', () => {
     });
 
     it('page errors should be \'You must choose one of the options.\' if errors and age is over 25', async () => {
-      expect($('.error-summary').text()).to.contain('You must choose one of the options.');
+      expect($('.error-summary').text()).to.contain(mandatorySelectionMessage());
     });
 
     it('page title should be \'How do you want to get a test?\' if errors and age is over 25', async () => {
