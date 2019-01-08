@@ -1,9 +1,9 @@
 function mandatorySelectionMessage() {
-  return 'You must choose one of the options.';
+  return 'Please choose one of the options.';
 }
 
 function emptyPostcodeMessage() {
-  return 'You must enter a postcode.';
+  return 'Please enter a postcode.';
 }
 
 module.exports = {
