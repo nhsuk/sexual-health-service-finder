@@ -7,6 +7,7 @@
 - Enable debugger for development
 - Calculate distance between the search origin and each result items
 - Preserve original formatting for service information and opening times
+- Be more polite with error messaging
 
 0.19.0 / 2018-11-20
 ===================
