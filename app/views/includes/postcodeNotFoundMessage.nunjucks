@@ -1,1 +1,3 @@
-This postcode is not in England. Get help to find a chlamydia test in <a href="{{ siteRoot }}/#scotland"><span class='sr-only'>find a chlamydia test in </span>Scotland</a>, <a href="{{ siteRoot }}/#wales"><span class='sr-only'>find a chlamydia test in </span>Wales</a> or <a href="{{ siteRoot }}/#northern"><span class='sr-only'>find a chlamydia test in </span>Northern Ireland</a>.
+We can't find the postcode '{{ location }}'. Please check the postcode is correct and try again.
+<br>
+Or get help to find a chlamydia test in <a href="{{ siteRoot }}/#scotland"><span class='sr-only'>find a chlamydia test in </span>Scotland</a>, <a href="{{ siteRoot }}/#wales"><span class='sr-only'>find a chlamydia test in </span>Wales</a> or <a href="{{ siteRoot }}/#northern"><span class='sr-only'>find a chlamydia test in </span>Northern Ireland</a>.

@@ -10,7 +10,9 @@ const messages = require('../../app/lib/displayUtils/messages');
 const expect = chai.expect;
 
 const results = `${constants.siteRoot}/results`;
-const notFoundPostcodeMessage = 'This postcode is not in England. Get help to find a chlamydia test in find a chlamydia test in Scotland, find a chlamydia test in Wales or find a chlamydia test in Northern Ireland.';
+function notFoundPostcodeMessage(location) {
+  return `We can't find the postcode '${location}'. Please check the postcode is correct and try again.\nOr get help to find a chlamydia test in find a chlamydia test in Scotland, find a chlamydia test in Wales or find a chlamydia test in Northern Ireland.`;
+}
 
 function expectErrorMessage(res, message) {
   const $ = cheerio.load(res.text);
@@ -48,7 +50,7 @@ describe('Results page errors', () => {
         type: constants.serviceTypes.professional,
       });
 
-    expectErrorMessage(res, notFoundPostcodeMessage);
+    expectErrorMessage(res, notFoundPostcodeMessage(location));
   });
 
   it('should return a descriptive message when no postcodes can be found', async () => {
@@ -64,6 +66,6 @@ describe('Results page errors', () => {
         type: constants.serviceTypes.professional,
       });
 
-    expectErrorMessage(res, notFoundPostcodeMessage);
+    expectErrorMessage(res, notFoundPostcodeMessage(location));
   });
 });
