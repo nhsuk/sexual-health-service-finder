@@ -10,11 +10,11 @@
 {% endblock %}
 
 {% block content %}
-{% if errorMessage or outsideOfEnglandPostcodeFlag %}
+{% if errorMessage or postcodeNotFound %}
 <div class="error-summary">
   <h2 class="local-header--error error-summary-heading">
-    {% if (outsideOfEnglandPostcodeFlag) %}
-      {% include 'includes/outOfEnglandMessage.nunjucks' %}
+    {% if (postcodeNotFound) %}
+      {% include 'includes/postcodeNotFoundMessage.nunjucks' %}
     {% elif errorMessage %}
       {{ errorMessage }}
     {% endif %}
@@ -25,7 +25,7 @@
 <form method="get" class="form" action="{{ siteRoot }}/results">
   <div class="reading-width">
     <div class="form-item-wrapper">
-      <div class="form-group {% if errorMessage %} error {% endif %}">
+      <div class="form-group {% if errorMessage or postcodeNotFound %} error {% endif %}">
         <label class="form-label-bold" for="location">Enter a postcode in England</label>
           <p class="form-group">
             <input autocomplete="off" type="text" class="form-control" name="location" id="location" value=""{% if errorMessage %} aria-describedby="error-message" aria-invalid="true"{% endif %}>

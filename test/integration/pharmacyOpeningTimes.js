@@ -7,7 +7,7 @@ const constants = require('../../app/lib/constants');
 const getQueryType = require('../../app/lib/utils/queryMapper').getQueryType;
 const iExpect = require('../lib/expectations');
 const nockRequests = require('../lib/nockRequests');
-const queryBuilder = require('../../app/lib/search/queryBuilder');
+const queryBuilder = require('../../app/lib/search/serviceSearchQueryBuilder');
 
 const expect = chai.expect;
 
@@ -53,15 +53,14 @@ describe('Pharmacy opening times', () => {
   const origin = constants.serviceChoices.over25;
 
   it('should display daily opening times for a pharmacy', async () => {
-    const path = '/service-search/search';
     const latLon = { location: { lat: 53.3695577231271, lon: -1.44810761237785 } };
     const queryType = getQueryType(type, origin);
     const query = queryBuilder(latLon, queryType, 30);
     const requestBody = JSON.stringify(query);
     const responsePath = `${location}-results.json`;
 
-    nockRequests.withResponseBody(path, requestBody, 200, responsePath);
-    nockRequests.postcodesIO(`/outcodes/${location}`, 200, `outcodeResponse_${location}.json`);
+    nockRequests.postcodeSearch(location, 200, `outcodeResponse_${location}.json`);
+    nockRequests.serviceSearch(requestBody, 200, responsePath);
 
     const res = await chai.request(app)
       .get(resultsRoute)

@@ -54,15 +54,9 @@ function emptyPostcode(req, res) {
   location(req, res);
 }
 
-function invalidPostcode(req, res, loc) {
-  log.debug({ location: loc }, 'Location failed validation');
-  res.locals.errorMessage = messages.invalidPostcodeMessage(loc);
-  location(req, res);
-}
-
-function outsideOfEngland(req, res) {
-  log.debug({ location: res.locals.location }, 'Outside of England');
-  res.locals.outsideOfEnglandPostcodeFlag = true;
+function postcodeNotFound(req, res) {
+  log.debug({ location: res.locals.location }, 'Postcode not found');
+  res.locals.postcodeNotFound = true;
   location(req, res);
 }
 
@@ -71,9 +65,8 @@ module.exports = {
   chlamydiaOnlineRedirect,
   choose,
   emptyPostcode,
-  invalidPostcode,
   location,
-  outsideOfEngland,
+  postcodeNotFound,
   recommend,
   results,
   startPage,

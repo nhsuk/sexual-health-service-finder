@@ -8,7 +8,7 @@ const getQueryType = require('../../app/lib/utils/queryMapper').getQueryType;
 const getTextOnlyFromElement = require('../lib/utils').getTextOnlyFromElement;
 const iExpect = require('../lib/expectations');
 const nockRequests = require('../lib/nockRequests');
-const queryBuilder = require('../../app/lib/search/queryBuilder');
+const queryBuilder = require('../../app/lib/search/serviceSearchQueryBuilder');
 
 const expect = chai.expect;
 
@@ -17,21 +17,20 @@ chai.use(chaiHttp);
 const resultsRoute = `${constants.siteRoot}/results/`;
 
 describe('Results page for kits in over 25 year olds', () => {
-  const location = 'ls8';
+  const location = 'ls1';
   const type = constants.serviceTypes.kit;
   const origin = constants.serviceChoices.over25;
   let $;
 
   before('make request', async () => {
-    const path = '/service-search/search';
     const latLon = { location: { lat: 53.7974737203539, lon: -1.55262247079646 } };
     const queryType = getQueryType(type, origin);
     const query = queryBuilder(latLon, queryType, 30);
     const requestBody = JSON.stringify(query);
     const responsePath = `type-${type}-origin-${origin}-results.json`;
 
-    nockRequests.withResponseBody(path, requestBody, 200, responsePath);
-    nockRequests.postcodesIO(`/outcodes/${location}`, 200, 'outcodeResponse_ls1.json');
+    nockRequests.postcodeSearch(location, 200, `outcodeResponse_${location}.json`);
+    nockRequests.serviceSearch(requestBody, 200, responsePath);
 
     const res = await chai.request(app)
       .get(resultsRoute)
