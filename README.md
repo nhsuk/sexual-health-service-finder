@@ -1,4 +1,4 @@
-# Sexual Health Service Finder
+# Sexual Health Service Finder 
 > Helping to connect people to sexual health services.
 [![Build Status](https://dev.azure.com/nhsuk/nhsuk.sexual-health-finder/_apis/build/status/nhsuk.sexual-health-finder.rancher-frontend-CI?branchName=azdevops-sexual-health-finder)](https://dev.azure.com/nhsuk/nhsuk.sexual-health-finder/_build/latest?definitionId=58?branchName=azdevops-sexual-health-finder)
 [![GitHub Release](https://img.shields.io/github/release/nhsuk/sexual-health-service-finder.svg)](https://github.com/nhsuk/sexual-health-service-finder/releases/latest/)
@@ -69,6 +69,7 @@ environment.
   * Check for messages in the logs
 
 * why does a deployment break traefik
+  One established reason is if the authentication credential meant to prevent crawling is wrong.
 
 ## Architecture Decision Records
 
