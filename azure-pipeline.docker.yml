@@ -7,7 +7,7 @@ pool:
   vmImage: 'Ubuntu 16.04'
 
 variables:
-  docker_image_name: 'nhsuk/sexual-health-service-finder'
+  DOCKER_IMAGE_NAME: 'nhsuk/nhsuk-azdo-shf'
  
 steps:
 - task: Docker@1
@@ -34,6 +34,6 @@ steps:
 
     command: 'Push an image'
 
-    imageName: '$(docker_image_name):$(Build.BuildId)'
+    imageName: '$(DOCKER_IMAGE_NAME):$(Build.BuildId)'
 
     includeSourceTags: true
