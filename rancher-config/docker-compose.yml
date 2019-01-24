@@ -3,7 +3,7 @@ version: '2'
 services:
 
   shsf-frontend:
-    image: "nhsuk/sexual-health-service-finder:${DOCKER_IMAGE_TAG}"
+    image: "nhsuk/${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG}"
     environment:
       ADOBE_TRACKING_URL: ${ADOBE_TRACKING_URL}
       GOOGLE_ANALYTICS_TRACKING_ID: ${GOOGLE_ANALYTICS_TRACKING_ID}
