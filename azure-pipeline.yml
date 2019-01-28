@@ -1,39 +1,64 @@
-# Docker image
-# Build a Docker image to deploy, run, or push to a container registry.
-# Add steps that use Docker Compose, tag images, push to a registry, run an image, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/languages/docker
+trigger:
+  batch: true
+  branches:
+    include: azdevops-sexual-health-finder
+
+pr:
+  branches:
+    include: azdevops-sexual-health-finder
 
 pool:
   vmImage: 'Ubuntu 16.04'
 
 variables:
   DOCKER_IMAGE_NAME: 'nhsuk/nhsuk-azdo-shf'
- 
-steps:
-- task: Docker@1
-  displayName: 'Build an image'
-  inputs:
-    containerregistrytype: 'Container Registry'
+  DEVELOPMENT_BRANCH: 'azdevops-sexual-health-finder'
 
-    dockerRegistryEndpoint: 'sexual-health'
+jobs:
+- job: Push Docker Images
+  steps:
+  - task: Docker@1
+    displayName: login
+    inputs:
+      containerregistrytype: 'Container Registry'
+      dockerRegistryEndpoint: 'sexual-health'
+      command: login
+  - bash: |
+      TAGS=()
+      
+      PRID=`echo $BUILD_SOURCEBRANCH | sed -E -n -e's:refs/pull/([0-9]+)/merge:\1:p'`
+      
+      if [ -n "$PRID" ]; then
+        TAGS+=("pr-$PRID")
+      fi
+      
+      if [ "$BUILD_SOURCEBRANCH" = "refs/heads/$DEVELOPMENT_BRANCH" ]; then
+        TAGS+=("master" "latest")
+      fi
+      
+      if [ -z "$TAGS" ]; then
+        echo "Incorrect branch, non-PR: $BUILD_SOURCEBRANCH"
+        exit 1
+      else
+        TAGS_ARGS=`for tag in ${TAGS[@]}; do echo "-t $DOCKER_IMAGE_NAME:$tag"; done | paste -sd' ' -`
+        echo Running docker build . $TAGS_ARGS
+        docker build . $TAGS_ARGS
+        echo Pushing all images
+        for tag in ${TAGS[@]}; do
+          echo Pushing $tag
+          docker push $DOCKER_IMAGE_NAME:$tag
+        done
+      fi
+    displayName: 'Push docker image with correct tags'
 
-    dockerFile: Dockerfile
-
-    imageName: '$(docker_image_name)'
-
-    includeSourceTags: true
-
-    includeLatestTag: true
-
-- task: Docker@2
-  displayName: 'Push an image'
-  inputs:
-    containerregistrytype: 'Container Registry'
-
-    dockerRegistryEndpoint: 'sexual-health'
-
-    command: 'Push an image'
-
-    imageName: '$(DOCKER_IMAGE_NAME):$(Build.BuildId)'
-
-    includeSourceTags: true
+- job: Save rancher-config folder
+  steps:
+  - task: CopyFiles@2
+    displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)/rancher-config'
+    inputs:
+      sourceFolder: 'rancher-config'
+      targetFolder: '$(Build.ArtifactStagingDirectory)/rancher-config'
+      cleanTargetFolder: true
+      overWrite: true
+  - task: PublishBuildArtifacts@1
+    displayName: 'Publish Artifact: drop'
