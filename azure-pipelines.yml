@@ -1,14 +1,13 @@
 trigger:
   batch: true
   branches:
-    include: azdevops-sexual-health-finder
+    include:
+    - azdevops-sexual-health-finder
 
 pr:
   branches:
-    include: azdevops-sexual-health-finder
-
-pool:
-  vmImage: 'Ubuntu 16.04'
+    include:
+    - azdevops-sexual-health-finder
 
 variables:
   DOCKER_IMAGE_NAME: 'nhsuk/nhsuk-azdo-shf'
@@ -16,6 +15,8 @@ variables:
 
 jobs:
 - job: Push Docker Images
+  pool:
+    vmImage: 'Ubuntu 16.04'
   steps:
   - task: Docker@1
     displayName: login
@@ -52,6 +53,8 @@ jobs:
     displayName: 'Push docker image with correct tags'
 
 - job: Save rancher-config folder
+  pool:
+    vmImage: 'Ubuntu 16.04'
   steps:
   - task: CopyFiles@2
     displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)/rancher-config'
