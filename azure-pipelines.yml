@@ -14,7 +14,8 @@ variables:
   DEVELOPMENT_BRANCH: 'azdevops-sexual-health-finder'
 
 jobs:
-- job: Push Docker Images
+- job: docker
+  displayName: Push Docker Images
   pool:
     vmImage: 'Ubuntu 16.04'
   steps:
@@ -52,7 +53,8 @@ jobs:
       fi
     displayName: 'Push docker image with correct tags'
 
-- job: Save rancher-config folder
+- job: rancher
+  displayName: Save rancher-config folder
   pool:
     vmImage: 'Ubuntu 16.04'
   steps:
