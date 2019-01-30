@@ -1,4 +1,4 @@
-0.20.0 / TBC
+0.20.0 / 2019-02-01
 ===================
 - Update npm dependencies
 - Upgrade to `node:10.15.0-alpine` for latest security and bug patches
