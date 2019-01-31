@@ -3,6 +3,7 @@ trigger:
   branches:
     include:
     - azdevops-sexual-health-finder
+    - refs/tags/*
 
 pr:
   branches:
