@@ -32,10 +32,24 @@ jobs:
       
       if [ -n "$PRID" ]; then
         TAGS+=("pr-$PRID")
+        TYPE=PR
+        NAME="PR-$PRID - $BUILD_BUILDNUMBER"
       fi
       
       if [ "$BUILD_SOURCEBRANCH" = "refs/heads/$DEVELOPMENT_BRANCH" ]; then
         TAGS+=("master" "latest")
+        TYPE=master
+        NAME="master - $BUILD_BUILDNUMBER"
+      fi
+      
+      GIT_TAGS=$(git tag --points-at HEAD)
+      for tag in $GIT_TAGS; do
+        TAGS+=($tag)
+      done
+
+      if [ -n "$GIT_TAGS" ]; then
+        echo "##vso[build.addbuildtag]release-candidate"
+        NAME="$GIT_TAGS - $BUILD_BUILDNUMBER"
       fi
       
       if [ -z "$TAGS" ]; then
@@ -50,6 +64,14 @@ jobs:
           echo Pushing $tag
           docker push $DOCKER_IMAGE_NAME:$tag
         done
+      fi
+      
+      if [ -n "$TYPE" ]; then
+        echo "##vso[build.addbuildtag]$TYPE"
+      fi
+      
+      if [ -n "$NAME" ]; then
+        echo "##vso[build.updatebuildnumber]$NAME"
       fi
     displayName: 'Push docker image with correct tags'
 
