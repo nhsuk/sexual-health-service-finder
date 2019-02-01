@@ -27,52 +27,52 @@ jobs:
       dockerRegistryEndpoint: 'sexual-health'
       command: login
   - bash: |
-      TAGS=()
+      DOCKER_TAGS=()
       
       PRID=`echo $BUILD_SOURCEBRANCH | sed -E -n -e's:refs/pull/([0-9]+)/merge:\1:p'`
       
       if [ -n "$PRID" ]; then
-        TAGS+=("pr-$PRID")
-        TYPE=PR
-        NAME="PR-$PRID - $BUILD_BUILDNUMBER"
+        DOCKER_TAGS+=("pr-$PRID")
+        RELEASE_STAGE=PR
+        PARTIAL_BUILD_NAME="PR-$PRID"
       fi
       
       if [ "$BUILD_SOURCEBRANCH" = "refs/heads/$DEVELOPMENT_BRANCH" ]; then
-        TAGS+=("master" "latest")
-        TYPE=master
-        NAME="master - $BUILD_BUILDNUMBER"
+        DOCKER_TAGS+=("master" "latest")
+        RELEASE_STAGE=master
+        PARTIAL_BUILD_NAME="master"
       fi
       
       GIT_TAGS=$(git tag --points-at HEAD)
       for tag in $GIT_TAGS; do
-        TAGS+=($tag)
+        DOCKER_TAGS+=($tag)
       done
 
       if [ -n "$GIT_TAGS" ]; then
         echo "##vso[build.addbuildtag]release-candidate"
-        NAME="$GIT_TAGS - $BUILD_BUILDNUMBER"
+        PARTIAL_BUILD_NAME="$GIT_TAGS"
       fi
       
-      if [ -z "$TAGS" ]; then
+      if [ -z "$DOCKER_TAGS" ]; then
         echo "Incorrect branch, non-PR: $BUILD_SOURCEBRANCH"
         exit 1
       else
-        TAGS_ARGS=`for tag in ${TAGS[@]}; do echo "-t $DOCKER_IMAGE_NAME:$tag"; done | paste -sd' ' -`
+        TAGS_ARGS=`for tag in ${DOCKER_TAGS[@]}; do echo "-t $DOCKER_IMAGE_NAME:$tag"; done | paste -sd' ' -`
         echo Running docker build . $TAGS_ARGS
         docker build . $TAGS_ARGS
         echo Pushing all images
-        for tag in ${TAGS[@]}; do
+        for tag in ${DOCKER_TAGS[@]}; do
           echo Pushing $tag
           docker push $DOCKER_IMAGE_NAME:$tag
         done
       fi
       
-      if [ -n "$TYPE" ]; then
-        echo "##vso[build.addbuildtag]$TYPE"
+      if [ -n "$RELEASE_STAGE" ]; then
+        echo "##vso[build.addbuildtag]$RELEASE_STAGE"
       fi
       
-      if [ -n "$NAME" ]; then
-        echo "##vso[build.updatebuildnumber]$NAME"
+      if [ -n "$PARTIAL_BUILD_NAME" ]; then
+        echo "##vso[build.updatebuildnumber]$PARTIAL_BUILD_NAME - $BUILD_BUILDNUMBER"
       fi
     displayName: 'Push docker image with correct tags'
 
