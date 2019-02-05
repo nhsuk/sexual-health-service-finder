@@ -38,12 +38,8 @@ services:
     volumes:
       - sh-test-ci-node_modules:/code/node_modules
     environment:
-      SEARCH_API_KEY: ${SEARCH_API_KEY}
+      SEARCH_API_KEY: fake-search-api-key
       COVERALLS_REPO_TOKEN: ${COVERALLS_REPO_TOKEN}
-      TRAVIS: ${TRAVIS}
-      TRAVIS_BRANCH: ${TRAVIS_BRANCH}
-      TRAVIS_COMMIT: ${TRAVIS_COMMIT}
-      TRAVIS_JOB_ID: ${TRAVIS_JOB_ID}
 
 volumes:
   sh-test-node_modules:
