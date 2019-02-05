@@ -13,12 +13,12 @@ pr:
 variables:
   DOCKER_IMAGE_NAME: 'nhsuk/nhsuk-azdo-shf'
   DEVELOPMENT_BRANCH: 'azdevops-sexual-health-finder'
+  COVERALLS_REPO_TOKEN: $(SECRET_COVERALLS_REPO_TOKEN)
   CI_NAME: 'Azure DevOps'
   CI_BUILD_NUMBER: $(Build.BuildNumber)
   CI_BUILD_URL: 'https://$(System.TeamFoundationCollectionUri)/$(System.TeamProject)/_build/results?buildId=$(Build.BuildId)'
   CI_BRANCH: $(Build.SourceBranchName)
   CI_PULL_REQUEST: $(System.PullRequest.PullRequestId)
-  COVERALLS_REPO_TOKEN: $(SECRET_COVERALLS_REPO_TOKEN)
 
 jobs:
 - job: docker
@@ -33,7 +33,7 @@ jobs:
       dockerRegistryEndpoint: 'sexual-health'
       command: login
   - bash: |
-      docker-compose -p test-ci -f docker-compose-tests.yml run test-ci
+      docker-compose -p test-ci -f docker-compose-tests.yml -e CI_NAME -e CI_BUILD_NUMBER -e CI_BUILD_URL -e CI_BRANCH -e CI_PULL_REQUEST run test-ci
     displayName: Run tests
   - bash: |
       DOCKER_TAGS=()
