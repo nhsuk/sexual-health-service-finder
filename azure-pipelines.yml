@@ -33,7 +33,7 @@ jobs:
       dockerRegistryEndpoint: 'sexual-health'
       command: login
   - bash: |
-      docker-compose -p test-ci -f docker-compose-tests.yml -e CI_NAME -e CI_BUILD_NUMBER -e CI_BUILD_URL -e CI_BRANCH -e CI_PULL_REQUEST run test-ci
+      docker-compose -p test-ci -f docker-compose-tests.yml run test-ci
     displayName: Run tests
   - bash: |
       DOCKER_TAGS=()
