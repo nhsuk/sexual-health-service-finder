@@ -49,9 +49,8 @@ jobs:
       fi
 
       (mkdir run-coveralls && cd run-coveralls && npm init -f && npm install coveralls)
-      JSON_POST=$(cat lcov.info | ./run-coveralls/node_modules/coveralls/bin/coveralls.js -s | jq ".git.branch = '$BRANCH'")
-      echo 'going to post to https://coveralls.io/api/v1/jobs'
-      echo $JSON_POST
+      cat lcov.info | ./run-coveralls/node_modules/coveralls/bin/coveralls.js -s | jq ".git.branch = "'"'"$BRANCH"'"' > json_post.txt
+      curl -X POST --form json_file=@json_post.txt https://coveralls.io/api/v1/jobs
     displayName: Run tests
   - bash: |
       DOCKER_TAGS=()
