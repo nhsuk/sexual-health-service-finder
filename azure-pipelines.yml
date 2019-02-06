@@ -39,10 +39,19 @@ jobs:
       PRID=`echo $BUILD_SOURCEBRANCH | sed -E -n -e's:refs/pull/([0-9]+)/merge:\1:p'`
       if [ -n "$PRID" ]; then
         export CI_PULL_REQUEST=$PRID
+        export BRANCH=${SYSTEM_PULLREQUEST_TARGETBRANCH#refs/heads}
+      else
+        export BRANCH=${BUILD_SOURCEBRANCH#refs/heads/}
+      fi
+      GIT_TAG=$(git tag --points-at HEAD | head -1)
+      if [ -n "$GIT_TAG" ]; then
+        export BRANCH=$GIT_TAG
       fi
 
       (mkdir run-coveralls && cd run-coveralls && npm init -f && npm install coveralls)
-      cat lcov.info | ./run-coveralls/node_modules/coveralls/bin/coveralls.js
+      JSON_POST=$(cat lcov.info | ./run-coveralls/node_modules/coveralls/bin/coveralls.js -s | jq ".git.branch = '$BRANCH'")
+      echo 'going to post to https://coveralls.io/api/v1/jobs'
+      echo $JSON_POST
     displayName: Run tests
   - bash: |
       DOCKER_TAGS=()
