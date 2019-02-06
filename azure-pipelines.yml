@@ -29,7 +29,7 @@ jobs:
       command: login
   - bash: |
       docker-compose -p test-ci -f docker-compose-tests.yml run test-ci
-      docker cp $(docker container inspect testci_test-ci_run_1 -f '{{.ID}}'):/code/coverage/lcov.info .
+      docker cp $(docker container inspect test-ci_test-ci_run_1 -f '{{.ID}}'):/code/coverage/lcov.info .
       sed -i -e 's:/code/:./:' lcov.info
 
       export COVERALLS_REPO_TOKEN
