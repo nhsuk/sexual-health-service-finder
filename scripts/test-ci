@@ -4,3 +4,5 @@
 docker-compose -p test-ci -f docker-compose-tests.yml down -v
 docker-compose -p test-ci -f docker-compose-tests.yml build test-ci
 docker-compose -p test-ci -f docker-compose-tests.yml run test-ci
+docker cp $(docker container inspect testci_test-ci_run_1 -f '{{.ID}}'):/code/coverage/lcov.info .
+sed -i -e 's:/code/:./:' lcov.info
