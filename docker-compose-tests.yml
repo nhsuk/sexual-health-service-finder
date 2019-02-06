@@ -33,18 +33,12 @@ services:
     extends:
       file: docker-compose.yml
       service: base-app
-    command: yarn run test-ci
+    command: yarn run ci-hook
     user: root
     volumes:
       - sh-test-ci-node_modules:/code/node_modules
     environment:
       - SEARCH_API_KEY=fake-search-api-key
-      - COVERALLS_REPO_TOKEN
-      - CI_NAME
-      - CI_BUILD_NUMBER
-      - CI_BUILD_URL
-      - CI_BRANCH
-      - CI_PULL_REQUEST
 
 volumes:
   sh-test-node_modules:
