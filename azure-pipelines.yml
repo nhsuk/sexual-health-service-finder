@@ -28,24 +28,50 @@ jobs:
       dockerRegistryEndpoint: 'sexual-health'
       command: login
   - bash: |
+      BRANCH=`echo $BUILD_SOURCEBRANCH | sed -E -n -e's:^refs/heads/(.+)$:\1:p'`
+      PRID=`echo $BUILD_SOURCEBRANCH | sed -E -n -e's:^refs/pull/([0-9]+)/merge$:\1:p'`
+      TAG=`echo $BUILD_SOURCEBRANCH | sed -E -n -e's:^refs/tags/(.+)$:\1:p'`
+
+      if [ -n "$BRANCH" ]; then
+        echo "##vso[task.setvariable variable=CUSTOM_BRANCH]$BRANCH"
+        PARTIAL_BUILD_NAME="$BRANCH"
+      fi
+
+      if [ -n "$PRID" ]; then
+        echo "##vso[task.setvariable variable=CUSTOM_PRID]$PRID"
+        PARTIAL_BUILD_NAME="PR-$PRID"
+      fi
+
+      if [ -n "$TAG" ]; then
+        echo "##vso[task.setvariable variable=CUSTOM_TAG]$TAG"
+        PARTIAL_BUILD_NAME="$TAG"
+      fi
+
+      if [ -n "$PARTIAL_BUILD_NAME" ]; then
+        BUILD_NAME="$PARTIAL_BUILD_NAME - $BUILD_BUILDNUMBER"
+        echo "##vso[task.setvariable variable=CUSTOM_BUILD_NAME]$BUILD_NAME"
+        echo "##vso[build.updatebuildnumber]$BUILD_NAME"
+      fi
+    displayName: Set variables for future tasks
+  - bash: |
       docker-compose -p test-ci -f docker-compose-tests.yml run test-ci
       docker cp $(docker container inspect test-ci_test-ci_run_1 -f '{{.ID}}'):/code/coverage/lcov.info .
       sed -i -e 's:/code/:./:' lcov.info
 
       export COVERALLS_REPO_TOKEN=$(COVERALLS_REPO_TOKEN)
       export COVERALLS_SERVICE_NAME='azure-devops'
-      export COVERALLS_SERVICE_NUMBER=$BUILD_BUILDNUMBER
+      export COVERALLS_SERVICE_NUMBER=$CUSTOM_BUILD_NAME
       export COVERALLS_SERVICE_JOB_ID=$BUILD_BUILDID
-      PRID=`echo $BUILD_SOURCEBRANCH | sed -E -n -e's:refs/pull/([0-9]+)/merge:\1:p'`
-      if [ -n "$PRID" ]; then
-        export CI_PULL_REQUEST=$PRID
+      if [ -n "$CUSTOM_PRID" ]; then
+        export CI_PULL_REQUEST=$CUSTOM_PRID
         export BRANCH=${SYSTEM_PULLREQUEST_TARGETBRANCH#refs/heads}
+      elif [ -n "$CUSTOM_BRANCH" ]; then
+        export BRANCH=$CUSTOM_BRANCH
+      elif [ -n "$CUSTOM_TAG" ]; then
+        export BRANCH=$CUSTOM_TAG
       else
-        export BRANCH=${BUILD_SOURCEBRANCH#refs/heads/}
-      fi
-      GIT_TAG=$(git tag --points-at HEAD | head -1)
-      if [ -n "$GIT_TAG" ]; then
-        export BRANCH=$GIT_TAG
+        echo 'could not determine branch' >&2
+        exit 1
       fi
 
       (mkdir run-coveralls && cd run-coveralls && npm init -f && npm install coveralls)
@@ -55,50 +81,31 @@ jobs:
   - bash: |
       DOCKER_TAGS=()
       
-      PRID=`echo $BUILD_SOURCEBRANCH | sed -E -n -e's:refs/pull/([0-9]+)/merge:\1:p'`
-      
-      if [ -n "$PRID" ]; then
-        DOCKER_TAGS+=("pr-$PRID")
-        RELEASE_STAGE=PR
-        PARTIAL_BUILD_NAME="PR-$PRID"
-      fi
-      
-      if [ "$BUILD_SOURCEBRANCH" = "refs/heads/$DEVELOPMENT_BRANCH" ]; then
+      if [ "$CUSTOM_BRANCH" = "$DEVELOPMENT_BRANCH" ]; then
         DOCKER_TAGS+=("master" "latest")
         RELEASE_STAGE=master
-        PARTIAL_BUILD_NAME="master"
-      fi
-      
-      GIT_TAGS=$(git tag --points-at HEAD)
-      for tag in $GIT_TAGS; do
-        DOCKER_TAGS+=($tag)
-      done
-
-      if [ -n "$GIT_TAGS" ]; then
+      elif [ -n "$CUSTOM_PRID" ]; then
+        DOCKER_TAGS+=("pr-$CUSTOM_PRID")
+        RELEASE_STAGE=PR
+      elif [ -n "$CUSTOM_TAG" ]; then
+        DOCKER_TAGS+=($CUSTOM_TAG)
         echo "##vso[build.addbuildtag]release-candidate"
-        PARTIAL_BUILD_NAME="$GIT_TAGS"
+      else
+        echo "Incorrect branch, non-PR: $BUILD_SOURCEBRANCH" >&2
+        exit 1
       fi
       
-      if [ -z "$DOCKER_TAGS" ]; then
-        echo "Incorrect branch, non-PR: $BUILD_SOURCEBRANCH"
-        exit 1
-      else
-        TAGS_ARGS=`for tag in ${DOCKER_TAGS[@]}; do echo "-t $DOCKER_IMAGE_NAME:$tag"; done | paste -sd' ' -`
-        echo Running docker build . $TAGS_ARGS
-        docker build . $TAGS_ARGS
-        echo Pushing all images
-        for tag in ${DOCKER_TAGS[@]}; do
-          echo Pushing $tag
-          docker push $DOCKER_IMAGE_NAME:$tag
-        done
-      fi
+      TAGS_ARGS=`for tag in ${DOCKER_TAGS[@]}; do echo "-t $DOCKER_IMAGE_NAME:$tag"; done | paste -sd' ' -`
+      echo Running docker build . $TAGS_ARGS
+      docker build . $TAGS_ARGS
+      echo Pushing all images
+      for tag in ${DOCKER_TAGS[@]}; do
+        echo Pushing $tag
+        docker push $DOCKER_IMAGE_NAME:$tag
+      done
       
       if [ -n "$RELEASE_STAGE" ]; then
         echo "##vso[build.addbuildtag]$RELEASE_STAGE"
-      fi
-      
-      if [ -n "$PARTIAL_BUILD_NAME" ]; then
-        echo "##vso[build.updatebuildnumber]$PARTIAL_BUILD_NAME - $BUILD_BUILDNUMBER"
       fi
     displayName: 'Push docker image with correct tags'
 
