@@ -49,7 +49,6 @@ jobs:
 
       if [ -n "$PARTIAL_BUILD_NAME" ]; then
         BUILD_NAME="$PARTIAL_BUILD_NAME - $BUILD_BUILDNUMBER"
-        echo "##vso[task.setvariable variable=CUSTOM_BUILD_NAME]$BUILD_NAME"
         echo "##vso[build.updatebuildnumber]$BUILD_NAME"
       fi
     displayName: Set variables for future tasks
@@ -60,7 +59,7 @@ jobs:
 
       export COVERALLS_REPO_TOKEN=$(COVERALLS_REPO_TOKEN)
       export COVERALLS_SERVICE_NAME='azure-devops'
-      export COVERALLS_SERVICE_NUMBER=$CUSTOM_BUILD_NAME
+      export COVERALLS_SERVICE_NUMBER=$BUILD_BUILDNUMBER
       export COVERALLS_SERVICE_JOB_ID=$BUILD_BUILDID
       if [ -n "$CUSTOM_PRID" ]; then
         export CI_PULL_REQUEST=$CUSTOM_PRID
