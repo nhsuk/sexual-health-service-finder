@@ -1,4 +1,4 @@
-name: $(Date:yyyyMMdd)
+name: $(BuildID)
 
 trigger:
   batch: true
