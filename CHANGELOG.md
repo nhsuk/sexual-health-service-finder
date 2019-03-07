@@ -1,3 +1,8 @@
+0.21.0 / TBD
+===================
+- Update npm dependencies
+- Upgrade to `node:10.15.2-alpine`
+
 0.20.0 / 2019-02-01
 ===================
 - Update npm dependencies
