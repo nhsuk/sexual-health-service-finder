@@ -2,6 +2,7 @@
 ===================
 - Update npm dependencies
 - Upgrade to `node:10.15.3-alpine`
+- Remove simple cookie banner
 
 0.20.0 / 2019-02-01
 ===================
