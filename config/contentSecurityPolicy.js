@@ -16,6 +16,7 @@ module.exports = {
       '*.nhs.uk',
     ],
     frameSrc: [
+      '*.demdex.net',
       '*.hotjar.com',
     ],
     imgSrc: [
