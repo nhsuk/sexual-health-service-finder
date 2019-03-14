@@ -12,7 +12,6 @@ services:
       SEARCH_API_HOST: ${SEARCH_API_HOST}
       SEARCH_API_KEY: ${SEARCH_API_KEY}
       SEARCH_API_VERSION: ${SEARCH_API_VERSION}
-      WEBTRENDS_ANALYTICS_TRACKING_ID: ${WEBTRENDS_ANALYTICS_TRACKING_ID}
     labels:
       io.rancher.container.pull_image: always
       prometheus.monitoring: true
