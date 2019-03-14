@@ -1,6 +1,5 @@
 const chai = require('chai');
 const chaiHttp = require('chai-http');
-const cheerio = require('cheerio');
 
 const iExpect = require('../lib/expectations');
 const constants = require('../../app/lib/constants');
@@ -27,14 +26,5 @@ describe('An unknown page', () => {
       expect(err).to.have.status(404);
       expect(err.response).to.be.html;
     }
-  });
-});
-
-describe('meta tags', () => {
-  it('should instruct Webtrends to anonymise IP Addresses', async () => {
-    const res = await chai.request(server).get('/');
-    const $ = cheerio.load(res.text);
-
-    expect($('meta[name="DCS.dcsipa"]').prop('content')).to.equal('1');
   });
 });

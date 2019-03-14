@@ -1,7 +1,9 @@
 0.21.0 / TBD
 ===================
 - Update npm dependencies
-- Upgrade to `node:10.15.2-alpine`
+- Upgrade to `node:10.15.3-alpine`
+- Remove simple cookie banner
+- Remove Webtrends (no longer used)
 
 0.20.0 / 2019-02-01
 ===================

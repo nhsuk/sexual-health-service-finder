@@ -60,7 +60,6 @@ environment.
 | `SEARCH_API_HOST`                  | Host name for the [NHS Developer API](https://developer.api.nhs.uk/)                                                                                       | api.nhs.uk                | Yes        |
 | `SEARCH_API_KEY`                   | `subscription-key` for the [NHS Developer API](https://developer.api.nhs.uk/)                                                                              |                           | Yes        |
 | `SEARCH_API_VERSION`               | Version of the [NHS Developer API](https://developer.api.nhs.uk/)                                                                                          | 1                         | Yes        |
-| `WEBTRENDS_ANALYTICS_TRACKING_ID`  | [Webtrends](https://www.webtrends.com/) tracking id                                                                                                        |                           | No         |
 
 ## FAQ
 
