@@ -14,6 +14,9 @@ module.exports = {
     port: process.env.PORT || 3000,
     root: rootPath,
   },
+  cookiebot: {
+    scriptUrl: process.env.COOKIEBOT_SCRIPT_URL || '//assets.nhs.uk/scripts/cookie-consent.js',
+  },
   search: {
     apiKey: process.env.SEARCH_API_KEY,
     host: process.env.SEARCH_API_HOST || 'api.nhs.uk',
