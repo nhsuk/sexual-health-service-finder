@@ -1,4 +1,4 @@
-0.21.0 / TBD
+0.21.0 / 2019-03-20
 ===================
 - Update npm dependencies
 - Upgrade to `node:10.15.3-alpine`
