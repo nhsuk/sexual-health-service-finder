@@ -5,7 +5,6 @@ const rootPath = path.normalize(`${__dirname}/..`);
 module.exports = {
   analytics: {
     adobeTrackingUrl: process.env.ADOBE_TRACKING_URL,
-    googleAnalyticsId: process.env.GOOGLE_ANALYTICS_TRACKING_ID,
     hotjarId: process.env.HOTJAR_ANALYTICS_TRACKING_ID,
   },
   app: {
@@ -13,6 +12,9 @@ module.exports = {
     name: 'sexual-health-service-finder',
     port: process.env.PORT || 3000,
     root: rootPath,
+  },
+  cookiebot: {
+    scriptUrl: process.env.COOKIEBOT_SCRIPT_URL || '//assets.nhs.uk/scripts/cookie-consent.js',
   },
   search: {
     apiKey: process.env.SEARCH_API_KEY,
