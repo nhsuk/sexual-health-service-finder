@@ -54,9 +54,9 @@
   },
   "homepage": "https://github.com/nhsuk/sexual-health-service-finder#readme",
   "dependencies": {
+    "@babel/preset-env": "^7.4.5",
     "after-brunch": "^0.0.5",
     "babel-brunch": "^7.0.0",
-    "babel-preset-env": "^1.7.0",
     "body-parser": "^1.19.0",
     "brunch": "^2.10.16",
     "compression": "^1.7.4",
@@ -75,7 +75,7 @@
     "querystring": "^0.2.0",
     "request-promise-native": "^1.0.5",
     "require-environment-variables": "^1.2.0",
-    "sass-brunch": "^2.10.7",
+    "sass-brunch": "https://github.com/brunch/sass-brunch#2537b74a156d8d02544c82fea073f2add78527ec",
     "uglify-es": "^3.1.8",
     "verror": "^1.10.0"
   },
