@@ -42,7 +42,7 @@ module.exports = {
   },
   plugins: {
     babel: {
-      presets: ['env'],
+      presets: ['@babel/preset-env'],
     },
     sass: {
       options: {
