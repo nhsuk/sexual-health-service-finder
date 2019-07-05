@@ -25,7 +25,9 @@
     "test-unit": "NODE_ENV=test mocha --recursive test/unit",
     "test-unit-watch": "NODE_ENV=test mocha --recursive test/unit --reporter min --watch",
     "test-integration-watch": "NODE_ENV=test mocha --recursive test/integration --reporter min --watch",
-    "test-watch": "yarn test -- --reporter min --watch"
+    "test-watch": "yarn test -- --reporter min --watch",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "husky": {
     "hooks": {
@@ -79,7 +81,8 @@
     "require-environment-variables": "^1.2.0",
     "sass-brunch": "https://github.com/brunch/sass-brunch#2537b74a156d8d02544c82fea073f2add78527ec",
     "uglify-es": "^3.1.8",
-    "verror": "^1.10.0"
+    "verror": "^1.10.0",
+    "snyk": "^1.192.0"
   },
   "devDependencies": {
     "chai": "^4.1.2",
@@ -100,5 +103,6 @@
     "mocha": "^6.1.4",
     "nock": "^10.0.6",
     "nodemon": "^1.19.0"
-  }
+  },
+  "snyk": true
 }
