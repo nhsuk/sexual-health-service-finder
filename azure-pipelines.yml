@@ -82,7 +82,7 @@ jobs:
     displayName: Run tests
   - bash: |
       DOCKER_TAGS=()
-      
+
       if [ "$CUSTOM_BRANCH" = "$DEVELOPMENT_BRANCH" ]; then
         DOCKER_TAGS+=("master" "latest")
         RELEASE_STAGE=master
@@ -96,7 +96,7 @@ jobs:
         echo "Incorrect branch, non-PR: $BUILD_SOURCEBRANCH" >&2
         exit 1
       fi
-      
+
       TAGS_ARGS=`for tag in ${DOCKER_TAGS[@]}; do echo "-t $DOCKER_IMAGE_NAME:$tag"; done | paste -sd' ' -`
       echo Running docker build . $TAGS_ARGS
       docker build . $TAGS_ARGS
@@ -105,7 +105,7 @@ jobs:
         echo Pushing $tag
         docker push $DOCKER_IMAGE_NAME:$tag
       done
-      
+
       if [ -n "$RELEASE_STAGE" ]; then
         echo "##vso[build.addbuildtag]$RELEASE_STAGE"
       fi
