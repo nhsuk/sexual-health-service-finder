@@ -16,17 +16,17 @@ services:
       io.rancher.container.pull_image: always
       prometheus.monitoring: true
       prometheus.port: 3000
-      traefik.backend: ${RANCHER_STACK_NAME}
+      traefik.backend: ${PROJECT_NAME}
       traefik.enable: true
       traefik.frontend.auth.basic: ${BASIC_AUTH}
-      traefik.frontend.rule: "Host: ${RANCHER_STACK_NAME}.dev.beta.nhschoices.net"
+      traefik.frontend.rule: "Host: ${PROJECT_NAME}.${TRAEFIK_DOMAIN}"
       traefik.port: 3000
     logging:
       driver: splunk
       options:
         splunk-format: json
         splunk-insecureskipverify: "true"
-        splunk-source: sexual-health-service-finder
+        splunk-source: ${PROJECT_NAME}
         splunk-sourcetype: docker
         splunk-token: ${SPLUNK_HEC_TOKEN}
         splunk-url: ${SPLUNK_HEC_URL}

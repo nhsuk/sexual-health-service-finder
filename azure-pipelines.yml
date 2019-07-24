@@ -1,20 +1,27 @@
 name: $(BuildID)
 
 trigger:
-  batch: true
+  batch: false
   branches:
+    # will need to be updated to include all branches
     include:
-    - azdevops-sexual-health-finder
-    - refs/tags/*
+    - feature/switch-to-azdo
+  tags:
+    include:
+    - '*'
 
 pr:
+  autoCancel: true
   branches:
     include:
-    - azdevops-sexual-health-finder
+    - '*'
 
 variables:
-  DOCKER_IMAGE_NAME: 'nhsuk/nhsuk-azdo-shf'
+  # need to change and test this
+  DOCKER_IMAGE_NAME: 'nhsuk/sexual-health-service-finder'
+  # should be able to remove this
   DEVELOPMENT_BRANCH: 'azdevops-sexual-health-finder'
+  # where is this coming from?
   COVERALLS_REPO_TOKEN: $(SECRET_COVERALLS_REPO_TOKEN)
 
 jobs:
