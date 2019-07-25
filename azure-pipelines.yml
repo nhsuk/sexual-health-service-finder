@@ -37,9 +37,16 @@ jobs:
       dockerRegistryEndpoint: 'sexual-health'
       command: login
   - bash: |
-      BRANCH=`echo $BUILD_SOURCEBRANCH | sed -E -n -e's:^refs/heads/(.+)$:\1:p'`
-      PRID=`echo $BUILD_SOURCEBRANCH | sed -E -n -e's:^refs/pull/([0-9]+)/merge$:\1:p'`
-      TAG=`echo $BUILD_SOURCEBRANCH | sed -E -n -e's:^refs/tags/(.+)$:\1:p'`
+      CLEANED_SOURCEBRANCH=`echo $BUILD_SOURCEBRANCH | sed -e's:/:-:g'`
+      BRANCH=`echo $CLEANED_SOURCEBRANCH | sed -E -n -e's:^refs-heads-(.+)$:\1:p'`
+      PRID=`echo $CLEANED_SOURCEBRANCH | sed -E -n -e's:^refs-pull-([0-9]+)-merge$:\1:p'`
+      TAG=`echo $CLEANED_SOURCEBRANCH | sed -E -n -e's:^refs-tags-(.+)$:\1:p'`
+
+      echo '**********************'
+      echo $BRANCH
+      echo $PRID
+      echo $TAG
+      echo '**********************'
 
       if [ -n "$BRANCH" ]; then
         echo "##vso[task.setvariable variable=CUSTOM_BRANCH]$BRANCH"
