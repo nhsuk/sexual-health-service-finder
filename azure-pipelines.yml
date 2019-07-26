@@ -107,8 +107,9 @@ jobs:
         DOCKER_TAGS+=($CUSTOM_TAG)
         echo "##vso[build.addbuildtag]release-candidate"
       else
-        echo "Incorrect branch, non-PR: $BUILD_SOURCEBRANCH" >&2
-        exit 1
+        echo "Build for '$BUILD_SOURCEBRANCH' will not be pushed to docker hub"
+        echo "Only builds of master, tags and PRs are pushed to docker hub."
+        exit 0
       fi
 
       TAGS_ARGS=`for tag in ${DOCKER_TAGS[@]}; do echo "-t $DOCKER_IMAGE_NAME:$tag"; done | paste -sd' ' -`
