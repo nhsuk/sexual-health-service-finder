@@ -31,7 +31,7 @@ jobs:
     vmImage: 'Ubuntu 16.04'
   steps:
   - task: Docker@1
-    displayName: login
+    displayName: Login to docker hub
     inputs:
       containerregistrytype: 'Container Registry'
       dockerRegistryEndpoint: 'sexual-health'
@@ -124,7 +124,7 @@ jobs:
       if [ -n "$RELEASE_STAGE" ]; then
         echo "##vso[build.addbuildtag]$RELEASE_STAGE"
       fi
-    displayName: 'Push docker image with correct tags'
+    displayName: 'Push image to docker hub'
 
 - job: rancher
   displayName: Save rancher-config folder
