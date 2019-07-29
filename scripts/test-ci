@@ -4,3 +4,13 @@
 docker-compose -p test-ci -f docker-compose-tests.yml down -v
 docker-compose -p test-ci -f docker-compose-tests.yml build test-ci
 docker-compose -p test-ci -f docker-compose-tests.yml run test-ci
+# Copy coverage from the image to the host
+docker cp "$(docker ps -af 'name=test-ci' --format '{{.ID}}'):/code/coverage/" .
+# Rewrite report to account for the code not being contained in 'code' dir outside of container
+sed -i -e 's:/code/:./:' ./coverage/lcov.info
+# Install coveralls into the CI container to perform upload
+mkdir run-coveralls && cd run-coveralls && npm init -f && npm install coveralls && cd ..
+cat ./coverage/lcov.info | ./run-coveralls/node_modules/coveralls/bin/coveralls.js
+
+# Clean up
+rm -rf run-coveralls

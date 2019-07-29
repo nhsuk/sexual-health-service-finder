@@ -38,15 +38,7 @@ services:
     volumes:
       - sh-test-ci-node_modules:/code/node_modules
     environment:
-      - BUILD_BUILDID=$BUILD_BUILDID
-      - BUILD_SOURCEBRANCHNAME=$BUILD_SOURCEBRANCHNAME
-      - BUILD_SOURCEVERSION=$BUILD_SOURCEVERSION
-      - COVERALLS_GIT_BRANCH=$BUILD_SOURCEBRANCH
-      - COVERALLS_REPO_TOKEN=$COVERALLS_REPO_TOKEN
-      - COVERALLS_SERVICE_NAME='Azure DevOps'
       - SEARCH_API_KEY=fake-search-api-key
-      - SYSTEM_PULLREQUEST_PULLREQUESTNUMBER=$SYSTEM_PULLREQUEST_PULLREQUESTNUMBER
-      - TF_BUILD=$TF_BUILD
 
 volumes:
   sh-test-node_modules:

@@ -57,7 +57,9 @@ jobs:
       fi
     displayName: Set variables for future tasks
   - bash: |
-      COVERALLS_REPO_TOKEN=$(PIPELINE_COVERALLS_REPO_TOKEN) ./scripts/test-ci
+      export COVERALLS_SERVICE_NAME='Azure Devops'
+      export COVERALLS_REPO_TOKEN=$(PIPELINE_COVERALLS_REPO_TOKEN)
+      ./scripts/test-ci
 
       if [ -n "$CUSTOM_PRID" ]; then
         export CI_PULL_REQUEST=$CUSTOM_PRID
