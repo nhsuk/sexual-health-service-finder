@@ -3,9 +3,8 @@ name: $(BuildID)
 trigger:
   batch: false
   branches:
-    # will need to be updated to include all branches
     include:
-    - feature/switch-to-azdo
+    - '*'
   tags:
     include:
     - '*'
@@ -17,12 +16,7 @@ pr:
     - '*'
 
 variables:
-  # need to change and test this
   DOCKER_IMAGE_NAME: 'nhsuk/sexual-health-service-finder'
-  # should be able to remove this
-  DEVELOPMENT_BRANCH: 'azdevops-sexual-health-finder'
-  # where is this coming from?
-  COVERALLS_REPO_TOKEN: $(SECRET_COVERALLS_REPO_TOKEN)
 
 jobs:
 - job: docker
@@ -41,12 +35,6 @@ jobs:
       BRANCH=`echo $CLEANED_SOURCEBRANCH | sed -E -n -e's:^refs-heads-(.+)$:\1:p'`
       PRID=`echo $CLEANED_SOURCEBRANCH | sed -E -n -e's:^refs-pull-([0-9]+)-merge$:\1:p'`
       TAG=`echo $CLEANED_SOURCEBRANCH | sed -E -n -e's:^refs-tags-(.+)$:\1:p'`
-
-      echo '**********************'
-      echo $BRANCH
-      echo $PRID
-      echo $TAG
-      echo '**********************'
 
       if [ -n "$BRANCH" ]; then
         echo "##vso[task.setvariable variable=CUSTOM_BRANCH]$BRANCH"
@@ -73,7 +61,6 @@ jobs:
       docker cp $(docker container inspect test-ci_test-ci_run_1 -f '{{.ID}}'):/code/coverage/lcov.info .
       sed -i -e 's:/code/:./:' lcov.info
 
-      export COVERALLS_REPO_TOKEN=$(COVERALLS_REPO_TOKEN)
       export COVERALLS_SERVICE_NAME='azure-devops'
       export COVERALLS_SERVICE_NUMBER=$BUILD_BUILDNUMBER
       export COVERALLS_SERVICE_JOB_ID=$BUILD_BUILDID
@@ -89,6 +76,7 @@ jobs:
         exit 1
       fi
 
+      # The tests run inside the container. This is where the coverage report should be uploaded from and not this context
       (mkdir run-coveralls && cd run-coveralls && npm init -f && npm install coveralls)
       cat lcov.info | ./run-coveralls/node_modules/coveralls/bin/coveralls.js -s | jq ".git.branch = "'"'"$BRANCH"'"'" | .service_number = "'"'"$COVERALLS_SERVICE_NUMBER"'"' > json_post.txt
       RESPONSE=$(curl -S -X POST --form json_file=@json_post.txt https://coveralls.io/api/v1/jobs)
@@ -97,7 +85,7 @@ jobs:
   - bash: |
       DOCKER_TAGS=()
 
-      if [ "$CUSTOM_BRANCH" = "$DEVELOPMENT_BRANCH" ]; then
+      if [ "$CUSTOM_BRANCH" = "master" ]; then
         DOCKER_TAGS+=("master" "latest")
         RELEASE_STAGE=master
       elif [ -n "$CUSTOM_PRID" ]; then
