@@ -57,13 +57,8 @@ jobs:
       fi
     displayName: Set variables for future tasks
   - bash: |
-      docker-compose -p test-ci -f docker-compose-tests.yml run test-ci
-      docker cp $(docker container inspect test-ci_test-ci_run_1 -f '{{.ID}}'):/code/coverage/lcov.info .
-      sed -i -e 's:/code/:./:' lcov.info
+      COVERALLS_REPO_TOKEN=$(PIPELINE_COVERALLS_REPO_TOKEN) ./scripts/test-ci
 
-      export COVERALLS_SERVICE_NAME='azure-devops'
-      export COVERALLS_SERVICE_NUMBER=$BUILD_BUILDNUMBER
-      export COVERALLS_SERVICE_JOB_ID=$BUILD_BUILDID
       if [ -n "$CUSTOM_PRID" ]; then
         export CI_PULL_REQUEST=$CUSTOM_PRID
         export BRANCH=${SYSTEM_PULLREQUEST_TARGETBRANCH#refs/heads}
@@ -75,12 +70,6 @@ jobs:
         echo 'could not determine branch' >&2
         exit 1
       fi
-
-      # The tests run inside the container. This is where the coverage report should be uploaded from and not this context
-      (mkdir run-coveralls && cd run-coveralls && npm init -f && npm install coveralls)
-      cat lcov.info | ./run-coveralls/node_modules/coveralls/bin/coveralls.js -s | jq ".git.branch = "'"'"$BRANCH"'"'" | .service_number = "'"'"$COVERALLS_SERVICE_NUMBER"'"' > json_post.txt
-      RESPONSE=$(curl -S -X POST --form json_file=@json_post.txt https://coveralls.io/api/v1/jobs)
-      echo $RESPONSE
     displayName: Run tests
   - bash: |
       DOCKER_TAGS=()
