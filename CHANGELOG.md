@@ -6,6 +6,7 @@
 - Use Azure DevOps pipelines rather than Travis and TeamCity
 - Use nyc in place of istanbul for code coverage
 - Improve guidance in `CONTRIBUTING`
+- Extract inline script to external scripts
 
 0.21.0 / 2019-03-20
 ===================

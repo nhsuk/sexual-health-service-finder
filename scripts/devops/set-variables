@@ -1,0 +1,26 @@
+#!/bin/bash
+
+CLEANED_SOURCEBRANCH=$(echo "$BUILD_SOURCEBRANCH" | sed -e's:["/:<>\|!?@*]:-:g')
+BRANCH=$(echo "$CLEANED_SOURCEBRANCH" | sed -E -n -e's:^refs-heads-(.+)$:\1:p')
+PRID=$(echo "$CLEANED_SOURCEBRANCH" | sed -E -n -e's:^refs-pull-([0-9]+)-merge$:\1:p')
+TAG=$(echo "$CLEANED_SOURCEBRANCH" | sed -E -n -e's:^refs-tags-(.+)$:\1:p')
+
+if [ -n "$BRANCH" ]; then
+  echo "##vso[task.setvariable variable=CUSTOM_BRANCH]$BRANCH"
+  PARTIAL_BUILD_NAME="$BRANCH"
+fi
+
+if [ -n "$PRID" ]; then
+  echo "##vso[task.setvariable variable=CUSTOM_PRID]$PRID"
+  PARTIAL_BUILD_NAME="PR-$PRID"
+fi
+
+if [ -n "$TAG" ]; then
+  echo "##vso[task.setvariable variable=CUSTOM_TAG]$TAG"
+  PARTIAL_BUILD_NAME="$TAG"
+fi
+
+if [ -n "$PARTIAL_BUILD_NAME" ]; then
+  BUILD_NAME="$PARTIAL_BUILD_NAME - $BUILD_BUILDNUMBER"
+  echo "##vso[build.updatebuildnumber]$BUILD_NAME"
+fi

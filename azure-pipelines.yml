@@ -30,48 +30,11 @@ jobs:
       containerregistrytype: 'Container Registry'
       dockerRegistryEndpoint: 'sexual-health'
       command: login
-  - bash: |
-      CLEANED_SOURCEBRANCH=`echo $BUILD_SOURCEBRANCH | sed -e's:["/:<>\|!?@*]:-:g'`
-      BRANCH=`echo $CLEANED_SOURCEBRANCH | sed -E -n -e's:^refs-heads-(.+)$:\1:p'`
-      PRID=`echo $CLEANED_SOURCEBRANCH | sed -E -n -e's:^refs-pull-([0-9]+)-merge$:\1:p'`
-      TAG=`echo $CLEANED_SOURCEBRANCH | sed -E -n -e's:^refs-tags-(.+)$:\1:p'`
 
-      if [ -n "$BRANCH" ]; then
-        echo "##vso[task.setvariable variable=CUSTOM_BRANCH]$BRANCH"
-        PARTIAL_BUILD_NAME="$BRANCH"
-      fi
-
-      if [ -n "$PRID" ]; then
-        echo "##vso[task.setvariable variable=CUSTOM_PRID]$PRID"
-        PARTIAL_BUILD_NAME="PR-$PRID"
-      fi
-
-      if [ -n "$TAG" ]; then
-        echo "##vso[task.setvariable variable=CUSTOM_TAG]$TAG"
-        PARTIAL_BUILD_NAME="$TAG"
-      fi
-
-      if [ -n "$PARTIAL_BUILD_NAME" ]; then
-        BUILD_NAME="$PARTIAL_BUILD_NAME - $BUILD_BUILDNUMBER"
-        echo "##vso[build.updatebuildnumber]$BUILD_NAME"
-      fi
+  - bash: ./scripts/devops/set-variables
     displayName: Set variables for future tasks
-  - bash: |
-      export COVERALLS_SERVICE_NAME='Azure Devops'
-      export COVERALLS_REPO_TOKEN=$(PIPELINE_COVERALLS_REPO_TOKEN)
-      ./scripts/test-ci
 
-      if [ -n "$CUSTOM_PRID" ]; then
-        export CI_PULL_REQUEST=$CUSTOM_PRID
-        export BRANCH=${SYSTEM_PULLREQUEST_TARGETBRANCH#refs/heads}
-      elif [ -n "$CUSTOM_BRANCH" ]; then
-        export BRANCH=$CUSTOM_BRANCH
-      elif [ -n "$CUSTOM_TAG" ]; then
-        export BRANCH=$CUSTOM_TAG
-      else
-        echo 'could not determine branch' >&2
-        exit 1
-      fi
+  - bash: ./scripts/devops/run-tests
     displayName: Run tests
 
   - task: PublishCodeCoverageResults@1
@@ -85,36 +48,7 @@ jobs:
       testRunner: JUnit
       testResultsFiles: '$(System.DefaultWorkingDirectory)/test-results.xml'
 
-  - bash: |
-      DOCKER_TAGS=()
-
-      if [ "$CUSTOM_BRANCH" = "master" ]; then
-        DOCKER_TAGS+=("master" "latest")
-        RELEASE_STAGE=master
-      elif [ -n "$CUSTOM_PRID" ]; then
-        DOCKER_TAGS+=("pr-$CUSTOM_PRID")
-        RELEASE_STAGE=PR
-      elif [ -n "$CUSTOM_TAG" ]; then
-        DOCKER_TAGS+=($CUSTOM_TAG)
-        echo "##vso[build.addbuildtag]release-candidate"
-      else
-        echo "Build for '$BUILD_SOURCEBRANCH' will not be pushed to docker hub"
-        echo "Only builds of master, tags and PRs are pushed to docker hub."
-        exit 0
-      fi
-
-      TAGS_ARGS=`for tag in ${DOCKER_TAGS[@]}; do echo "-t $DOCKER_IMAGE_NAME:$tag"; done | paste -sd' ' -`
-      echo Running docker build . $TAGS_ARGS
-      docker build . $TAGS_ARGS
-      echo Pushing all images
-      for tag in ${DOCKER_TAGS[@]}; do
-        echo Pushing $tag
-        docker push $DOCKER_IMAGE_NAME:$tag
-      done
-
-      if [ -n "$RELEASE_STAGE" ]; then
-        echo "##vso[build.addbuildtag]$RELEASE_STAGE"
-      fi
+  - bash: ./scripts/devops/push-image
     displayName: 'Push image to docker hub'
 
 - job: rancher
