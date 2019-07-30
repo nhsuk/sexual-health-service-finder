@@ -3,7 +3,7 @@ version: '2'
 services:
 
   shsf-frontend:
-    image: "nhsuk/sexual-health-service-finder:${DOCKER_IMAGE_TAG}"
+    image: "${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG}"
     environment:
       ADOBE_TRACKING_URL: ${ADOBE_TRACKING_URL}
       COOKIEBOT_SCRIPT_URL: ${COOKIEBOT_SCRIPT_URL}
@@ -16,17 +16,17 @@ services:
       io.rancher.container.pull_image: always
       prometheus.monitoring: true
       prometheus.port: 3000
-      traefik.backend: ${RANCHER_STACK_NAME}-sexual-health-service-finder
+      traefik.backend: ${PROJECT_NAME}
       traefik.enable: true
-      traefik.frontend.auth.basic: ${BASIC_AUTH}
-      traefik.frontend.rule: $TRAEFIK_RULE
+      traefik.frontend.auth.basic: ${BASIC_AUTH_DEVOPS}
+      traefik.frontend.rule: "Host: ${PROJECT_NAME}.${TRAEFIK_DOMAIN}"
       traefik.port: 3000
     logging:
       driver: splunk
       options:
         splunk-format: json
         splunk-insecureskipverify: "true"
-        splunk-source: sexual-health-service-finder
+        splunk-source: ${PROJECT_NAME}
         splunk-sourcetype: docker
         splunk-token: ${SPLUNK_HEC_TOKEN}
         splunk-url: ${SPLUNK_HEC_URL}
