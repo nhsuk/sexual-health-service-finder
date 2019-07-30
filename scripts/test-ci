@@ -5,10 +5,16 @@ PROJECT_NAME=test-ci
 docker-compose -p $PROJECT_NAME -f docker-compose-tests.yml down -v
 docker-compose -p $PROJECT_NAME -f docker-compose-tests.yml build $PROJECT_NAME
 docker-compose -p $PROJECT_NAME -f docker-compose-tests.yml run $PROJECT_NAME
-# Copy coverage from the image to the host
-docker cp "$(docker ps -af 'name=$PROJECT_NAME' --format '{{.ID}}'):/code/coverage/" .
-# Rewrite report to account for the code not being contained in 'code' dir outside of container
+
+# Find the latest created container.
+CONTAINER_ID=$(docker ps -alf name=$PROJECT_NAME --format '{{.ID}}')
+# Copy test-results.xml from image to host
+docker cp "$CONTAINER_ID:/code/test-results.xml" .
+# Copy coverage dir from the image to host.
+docker cp "$CONTAINER_ID:/code/coverage/" .
+# Rewrite report to account for it no longer being contained in 'code' dir
 sed -i -e 's:/code/:./:' ./coverage/lcov.info
+
 # Install coveralls into the CI container to perform upload
 mkdir run-coveralls && cd run-coveralls && npm init -f && npm install coveralls && cd ..
 ./run-coveralls/node_modules/coveralls/bin/coveralls.js < ./coverage/lcov.info

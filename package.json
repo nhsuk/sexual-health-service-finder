@@ -5,27 +5,19 @@
   "main": "app.js",
   "scripts": {
     "brunch-build": "yarn brunch build",
-    "ci-hook": "yarn lint && yarn coverage-generate && yarn coverage-check",
-    "coverage-check": "istanbul check-coverage --config .istanbul.yml",
-    "coverage-check-unit": "yarn coverage-generate-unit && istanbul check-coverage --config .istanbul.unit.yml",
-    "coverage-generate": "yarn istanbul -- cover _mocha -- --exit --recursive",
-    "coverage-generate-unit": "yarn istanbul cover -- _mocha -- --exit --recursive test/unit",
-    "coverage-generate-full": "yarn istanbul -- cover --include-all-sources _mocha -- --exit --recursive",
-    "coverage-generate-no-metrics": "yarn istanbul -- cover _mocha -- --exit \"./test/**/!(metrics).js\"",
     "coverage-upload-coveralls": "cat ./coverage/lcov.info | coveralls",
-    "git-hook": "yarn lint && yarn coverage-generate-unit && yarn coverage-check-unit",
-    "istanbul": "NODE_ENV=test istanbul",
+    "git-hook": "yarn lint && yarn test-unit",
     "lint": "yarn lint-backend && yarn lint-frontend",
     "lint-backend": "eslint --ext .js,.json .",
     "lint-frontend": "eslint ./app/public/js",
     "lint-watch": "esw --watch .",
     "start-watch": "yarn brunch watch & nodemon --inspect=0.0.0.0 app.js | ./node_modules/bunyan/bin/bunyan",
-    "test": "NODE_ENV=test mocha --exit --recursive test",
-    "test-ci": "yarn ci-hook",
-    "test-unit": "NODE_ENV=test mocha --recursive test/unit",
-    "test-unit-watch": "NODE_ENV=test mocha --recursive test/unit --reporter min --watch",
-    "test-integration-watch": "NODE_ENV=test mocha --recursive test/integration --reporter min --watch",
-    "test-watch": "yarn test -- --reporter min --watch"
+    "test": "nyc mocha --exit --recursive test",
+    "test-ci": "yarn lint && nyc --reporter=lcov --reporter=cobertura --reporter=html mocha --exit --recursive test --reporter mocha-junit-reporter",
+    "test-unit": "nyc mocha --exit --recursive test/unit",
+    "test-unit-watch": "nyc mocha --recursive test/unit --reporter min --watch",
+    "test-integration-watch": "nyc mocha --recursive test/integration --reporter min --watch",
+    "test-watch": "yarn test --reporter min --watch"
   },
   "husky": {
     "hooks": {
@@ -96,9 +88,10 @@
     "eslint-plugin-mocha": "^6.0.0",
     "eslint-watch": "^6.0.0",
     "husky": "^3.0.0",
-    "istanbul": "^1.1.0-alpha.1",
     "mocha": "^6.1.4",
+    "mocha-junit-reporter": "^1.23.1",
     "nock": "^10.0.6",
-    "nodemon": "^1.19.0"
+    "nodemon": "^1.19.0",
+    "nyc": "^14.1.1"
   }
 }
