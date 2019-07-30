@@ -2,8 +2,8 @@
 ===================
 - Remove the specific version of python from the Dockerfile
 - Update npm dependencies
-- Use the LTS version of node in travis CI
 - Upgrade container to run latest LTS version of node
+- Use Azure DevOps pipelines rather than Travis and TeamCity
 
 0.21.0 / 2019-03-20
 ===================
