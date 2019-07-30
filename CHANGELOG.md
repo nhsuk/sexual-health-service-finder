@@ -4,6 +4,7 @@
 - Update npm dependencies
 - Upgrade container to run latest LTS version of node
 - Use Azure DevOps pipelines rather than Travis and TeamCity
+- Use nyc in place of istanbul for code coverage
 
 0.21.0 / 2019-03-20
 ===================

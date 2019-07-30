@@ -13,7 +13,7 @@
     "lint-watch": "esw --watch .",
     "start-watch": "yarn brunch watch & nodemon --inspect=0.0.0.0 app.js | ./node_modules/bunyan/bin/bunyan",
     "test": "nyc mocha --exit --recursive test",
-    "test-ci": "NODE_ENV=test yarn lint && nyc --reporter=lcov --reporter=cobertura --reporter=html mocha --exit --recursive test --reporter mocha-junit-reporter",
+    "test-ci": "yarn lint && nyc --reporter=lcov --reporter=cobertura --reporter=html mocha --exit --recursive test --reporter mocha-junit-reporter",
     "test-unit": "nyc mocha --exit --recursive test/unit",
     "test-unit-watch": "nyc mocha --recursive test/unit --reporter min --watch",
     "test-integration-watch": "nyc mocha --recursive test/integration --reporter min --watch",
