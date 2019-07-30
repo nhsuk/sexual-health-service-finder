@@ -73,6 +73,19 @@ jobs:
         exit 1
       fi
     displayName: Run tests
+
+  - task: PublishCodeCoverageResults@1
+    inputs:
+      codeCoverageTool: Cobertura
+      summaryFileLocation: '$(System.DefaultWorkingDirectory)/coverage/cobertura-coverage.xml'
+      reportDirectory: '$(System.DefaultWorkingDirectory)/coverage'
+
+  - task: PublishTestResults@2
+    condition: succeededOrFailed()
+    inputs:
+      testRunner: JUnit
+      testResultsFiles: '$(System.DefaultWorkingDirectory)/test-results.xml'
+
   - bash: |
       DOCKER_TAGS=()
 
@@ -117,5 +130,6 @@ jobs:
       targetFolder: '$(Build.ArtifactStagingDirectory)/rancher-config'
       cleanTargetFolder: true
       overWrite: true
+
   - task: PublishBuildArtifacts@1
     displayName: 'Publish Artifact: drop'
