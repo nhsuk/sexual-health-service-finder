@@ -6,15 +6,12 @@ We welcome patches to NHS products, as long as you follow these guidelines:
 
 - Pull requests must contain a succinct, clear summary of what the user need is
   driving this feature change
-- Follow our [Git styleguide](https://github.com/nhsuk/styleguides/blob/master/git.md)
 - Make a feature branch, ideally in the format `feature/summary-of-change` e.g.
   `feature/add-login`
-- Ensure your branch contains logical atomic commits before sending a pull
-  request - follow our
-  [Git styleguide](https://github.com/nhsuk/styleguides/blob/master/git.md)
-- Pull requests are automatically tested, where applicable using
-  [Travis CI](https://travis-ci.org/), which will report back on whether the tests
-  still pass on your branch
+- Follow our [Git styleguide](https://github.com/nhsuk/styleguides/blob/master/git.md)
+- Ensure your branch contains logical, atomic commits
+- Pull requests are automatically tested and need to pass in order for the PR
+  to be eligible to merge
 - You *may* rebase your branch after feedback if it's to include relevant
   updates from the master branch. We prefer a rebase here to a merge commit as
   we prefer a clean and straight history on master with discrete merge commits
@@ -28,11 +25,12 @@ We welcome patches to NHS products, as long as you follow these guidelines:
 
 ## Code
 
-- Must be readable with meaningful naming, e.g. no shorthand single character
+Must:
+- be readable with meaningful naming, e.g. no shorthand single character
   variable names
-- Follow our [styleguides](https://github.com/nhsuk/styleguides)
-- Must pass linting with the ruleset from `.eslint.json` (`yarn run lint`).
-  Lint will run on all commits, rebases and as part of CI
+- follow our [styleguides](https://github.com/nhsuk/styleguides)
+- pass linting with the ruleset from `.eslint.json` (`yarn lint`). Lint will
+  run on all commits, rebases and as part of CI
 
 ## Testing
 
@@ -45,39 +43,12 @@ on master only. Please don't submit your own proposed version numbers.
 
 ## Browser support
 
-Your code should be tested in the browsers listed below.
+Please see
+[nhsuk-frontend browser-support](https://github.com/nhsuk/nhsuk-frontend/blob/master/docs/contributing/browser-support.md#browser-support)
+for the level of required browser support.
 
-The lists are based on usage statistics for the NHS website and
-represent approximately 95% of the most popular browsers.
+# Assistive technology support
 
-Each browser is assigned a 'level of support' that your service should meet.
-'Compliant' means your service must look as good as it does in other modern
-browsers.
-
-If a browser is assigned a 'functional' level of support, it means your service
-might not look perfect but must still be usable.
-
-'Latest version' refers to the latest stable version and the version immediately
-before that.
-
-### Desktop
-
-| Operating system | Browser                          | Support   |
-| ---------------- | -------                          | -------   |
-| Windows          | Internet Explorer 8+             | Compliant |
-|                  | Edge (latest version)            | Compliant |
-|                  | Google Chrome (latest version)   | Compliant |
-|                  | Mozilla Firefox (latest version) | Compliant |
-| Mac OS X         | Safari 8+                        | Compliant |
-|                  | Google Chrome (latest version)   | Compliant |
-|                  | Mozilla Firefox (latest version) | Compliant |
-
-### Small screen devices
-
-| Operating system | Version | Browser           | Support   |
-| ---------------- | ------- | -------           | -------   |
-| iOS              | 7+      | Mobile Safari     | Compliant |
-|                  |         | Google Chrome     | Compliant |
-| Android          | 4.x     | Google Chrome     | Compliant |
-|                  |         | Android Browser   | Compliant |
-| Windows Phone    | 8.1     | Internet Explorer | Compliant |
+Please see
+[nhsuk-frontend assistive-technology-support](https://github.com/nhsuk/nhsuk-frontend/blob/master/docs/contributing/browser-support.md#assistive-technology-support)
+for the level of required assistive technology support.
