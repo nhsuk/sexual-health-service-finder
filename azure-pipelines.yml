@@ -41,7 +41,7 @@ jobs:
 
 - job: docker
   dependsOn: tests
-  condition: and(succeeded(), ne(variables['Build.SourceBranch'], 'refs/pull/*/head'))
+  condition: and(succeeded(), or(startsWith(variables['Build.SourceBranch'], 'refs/head/master'), startsWith(variables['Build.SourceBranch'], 'refs/pull/'), startsWith(variables['Build.SourceBranch'], 'refs/tags/')))
   displayName: 'Push Docker images'
   pool:
     vmImage: 'Ubuntu 16.04'
