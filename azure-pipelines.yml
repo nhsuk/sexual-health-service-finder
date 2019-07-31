@@ -31,7 +31,12 @@ jobs:
       dockerRegistryEndpoint: 'sexual-health'
       command: login
 
-  - bash: ./scripts/devops/set-variables
+  - bash: |
+      # Set env vars used by Coveralls
+      export COVERALLS_SERVICE_NAME='Azure Devops'
+      export COVERALLS_REPO_TOKEN=$(PIPELINE_COVERALLS_REPO_TOKEN)
+      echo "COVERALLS_REPO_TOKEN: $COVERALLS_REPO_TOKEN"
+      ./scripts/devops/set-variables
     displayName: Set variables for future tasks
 
   - bash: ./scripts/devops/test-ci

@@ -4,12 +4,10 @@ DOCKER_TAGS=()
 
 if [ "$CUSTOM_BRANCH" = "master" ]; then
   DOCKER_TAGS+=("master" "latest")
-  RELEASE_STAGE=master
 elif [ -n "$CUSTOM_PRID" ]; then
   DOCKER_TAGS+=("pr-$CUSTOM_PRID")
-  RELEASE_STAGE=PR
 elif [ -n "$CUSTOM_TAG" ]; then
-  DOCKER_TAGS+=($CUSTOM_TAG)
+  DOCKER_TAGS+=("$CUSTOM_TAG")
   echo "##vso[build.addbuildtag]release-candidate"
 else
   echo "Build for '$BUILD_SOURCEBRANCH' will not be pushed to docker hub"
@@ -17,15 +15,12 @@ else
   exit 0
 fi
 
-TAGS_ARGS=$(for tag in ${DOCKER_TAGS[@]}; do echo "-t $DOCKER_IMAGE_NAME:$tag"; done | paste -sd' ' -)
-echo Running docker build . "$TAGS_ARGS"
-docker build . "$TAGS_ARGS"
-echo Pushing all images
+TAGS_ARGS=$(for tag in "${DOCKER_TAGS[@]}"; do echo "-t $DOCKER_IMAGE_NAME:$tag"; done | paste -sd' ' -)
+echo "Running docker build $TAGS_ARGS ."
+# shellcheck disable=SC2086
+docker build $TAGS_ARGS .
+
 for tag in "${DOCKER_TAGS[@]}"; do
-  echo Pushing "$tag"
+  echo "Pushing image ${DOCKER_IMAGE_NAME}:$tag to Docker Hub"
   docker push "$DOCKER_IMAGE_NAME":"$tag"
 done
-
-if [ -n "$RELEASE_STAGE" ]; then
-  echo "##vso[build.addbuildtag]$RELEASE_STAGE"
-fi
