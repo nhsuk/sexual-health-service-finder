@@ -1,0 +1,26 @@
+#!/bin/bash
+
+DOCKER_TAGS=()
+
+if [ "$CUSTOM_BRANCH" = "master" ]; then
+  DOCKER_TAGS+=("master" "latest")
+elif [ -n "$CUSTOM_PRID" ]; then
+  DOCKER_TAGS+=("pr-$CUSTOM_PRID")
+elif [ -n "$CUSTOM_TAG" ]; then
+  DOCKER_TAGS+=("$CUSTOM_TAG")
+  echo "##vso[build.addbuildtag]release-candidate"
+else
+  echo "Build for '$BUILD_SOURCEBRANCH' will not be pushed to docker hub"
+  echo "Only builds of master, tags and PRs are pushed to docker hub."
+  exit 0
+fi
+
+TAGS_ARGS=$(for tag in "${DOCKER_TAGS[@]}"; do echo "-t $DOCKER_IMAGE_NAME:$tag"; done | paste -sd' ' -)
+echo "Running docker build $TAGS_ARGS ."
+# shellcheck disable=SC2086
+docker build $TAGS_ARGS .
+
+for tag in "${DOCKER_TAGS[@]}"; do
+  echo "Pushing image ${DOCKER_IMAGE_NAME}:$tag to Docker Hub"
+  docker push "$DOCKER_IMAGE_NAME":"$tag"
+done

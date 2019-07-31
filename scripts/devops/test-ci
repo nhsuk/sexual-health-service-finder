@@ -15,7 +15,14 @@ docker cp "$CONTAINER_ID:/code/coverage/" .
 # Rewrite report to account for it no longer being contained in 'code' dir
 sed -i -e 's:/code/:./:' ./coverage/lcov.info
 
-# Install coveralls into the CI container to perform upload
+# Check if the token exists as the error message doesn't aid diagnosis and is a
+# little cryptic e.g. "Couldn't find a repository matching this job."
+if [ -z "$COVERALLS_REPO_TOKEN" ]; then
+  echo "No value set for COVERALLS_REPO_TOKEN. No coverage will be uploaded."
+  exit 1
+fi
+
+# Install coveralls so the coverage can be uploaded
 mkdir run-coveralls && cd run-coveralls && npm init -f && npm install coveralls && cd ..
 ./run-coveralls/node_modules/coveralls/bin/coveralls.js < ./coverage/lcov.info
 
