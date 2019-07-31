@@ -24,3 +24,21 @@ if [ -n "$PARTIAL_BUILD_NAME" ]; then
   BUILD_NAME="$PARTIAL_BUILD_NAME - $BUILD_BUILDNUMBER"
   echo "##vso[build.updatebuildnumber]$BUILD_NAME"
 fi
+
+# Set env vars used by Coveralls
+export COVERALLS_SERVICE_NAME='Azure Devops'
+COVERALLS_REPO_TOKEN=$(PIPELINE_COVERALLS_REPO_TOKEN)
+echo "COVERALLS_REPO_TOKEN: $COVERALLS_REPO_TOKEN"
+export COVERALLS_REPO_TOKEN
+
+if [ -n "$CUSTOM_PRID" ]; then
+  export CI_PULL_REQUEST=$CUSTOM_PRID
+  export BRANCH=${SYSTEM_PULLREQUEST_TARGETBRANCH#refs/heads}
+elif [ -n "$CUSTOM_BRANCH" ]; then
+  export BRANCH=$CUSTOM_BRANCH
+elif [ -n "$CUSTOM_TAG" ]; then
+  export BRANCH=$CUSTOM_TAG
+else
+  echo 'Could not determine branch. Exiting...' >&2
+  exit 1
+fi

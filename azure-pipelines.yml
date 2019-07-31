@@ -34,7 +34,7 @@ jobs:
   - bash: ./scripts/devops/set-variables
     displayName: Set variables for future tasks
 
-  - bash: ./scripts/devops/run-tests
+  - bash: ./scripts/devops/test-ci
     displayName: Run tests
 
   - task: PublishCodeCoverageResults@1
