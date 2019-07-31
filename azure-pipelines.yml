@@ -15,34 +15,20 @@ pr:
     include:
     - '*'
 
-variables:
-  DOCKER_IMAGE_NAME: 'nhsuk/sexual-health-service-finder'
-
 jobs:
-- job: docker
-  displayName: Push Docker Images
+- job: tests
+  displayName: 'Run tests'
   pool:
     vmImage: 'Ubuntu 16.04'
   steps:
-  - task: Docker@1
-    displayName: Login to docker hub
-    inputs:
-      containerregistrytype: 'Container Registry'
-      dockerRegistryEndpoint: 'sexual-health'
-      command: login
-
   - bash: |
-      # Set env vars used by Coveralls
       export COVERALLS_SERVICE_NAME='Azure Devops'
       export COVERALLS_REPO_TOKEN=$(PIPELINE_COVERALLS_REPO_TOKEN)
-      echo "COVERALLS_REPO_TOKEN: $COVERALLS_REPO_TOKEN"
-      ./scripts/devops/set-variables
-    displayName: Set variables for future tasks
-
-  - bash: ./scripts/devops/test-ci
-    displayName: Run tests
+      ./scripts/devops/test-ci
+    displayName: 'Run tests, copy test artifacts to host and upload code coverage'
 
   - task: PublishCodeCoverageResults@1
+    condition: succeededOrFailed()
     inputs:
       codeCoverageTool: Cobertura
       summaryFileLocation: '$(System.DefaultWorkingDirectory)/coverage/cobertura-coverage.xml'
@@ -53,11 +39,31 @@ jobs:
       testRunner: JUnit
       testResultsFiles: '$(System.DefaultWorkingDirectory)/test-results.xml'
 
+- job: docker
+  dependsOn: tests
+  condition: and(succeeded(), ne(variables['Build.SourceBranch'], 'refs/pull/*/head'))
+  displayName: 'Push Docker images'
+  pool:
+    vmImage: 'Ubuntu 16.04'
+  variables:
+    DOCKER_IMAGE_NAME: 'nhsuk/sexual-health-service-finder'
+  steps:
+  - task: Docker@1
+    displayName: 'Login to docker hub'
+    inputs:
+      containerregistrytype: 'Container Registry'
+      dockerRegistryEndpoint: 'sexual-health'
+      command: login
+
+  - bash: ./scripts/devops/set-variables
+    displayName: 'Set variables for future tasks'
+
   - bash: ./scripts/devops/push-image
     displayName: 'Push image to docker hub'
 
 - job: rancher
-  displayName: Save rancher-config folder
+  dependsOn: tests
+  displayName: 'Save rancher-config folder'
   pool:
     vmImage: 'Ubuntu 16.04'
   steps:
