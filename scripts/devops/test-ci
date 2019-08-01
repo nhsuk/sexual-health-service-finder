@@ -12,8 +12,10 @@ CONTAINER_ID=$(docker ps -alf name=$PROJECT_NAME --format '{{.ID}}')
 docker cp "$CONTAINER_ID:/code/test-results.xml" .
 # Copy coverage dir from the image to host.
 docker cp "$CONTAINER_ID:/code/coverage/" .
-# Rewrite report to account for it no longer being contained in 'code' dir
+# Rewrite reports to account for them no longer being located in the 'code' dir
+# as they were when the tests ran in the container
 sed -i -e 's:/code/:./:' ./coverage/lcov.info
+sed -i '' -e 's:/code:./:' -e 's:"code\.:":' ./coverage/cobertura-coverage.xml
 
 # Check if the token exists as the error message doesn't aid diagnosis and is a
 # little cryptic e.g. "Couldn't find a repository matching this job."
