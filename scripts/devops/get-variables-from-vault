@@ -1,0 +1,76 @@
+#!/bin/bash
+
+get_vault_data() {
+  VAULT_PATH="$1"
+
+  VAULT_DATA_URL="https://${VAULT_SERVER}${VAULT_PATH}"
+  HTTP_STATUS=$(curl -s -o /dev/null -w "%{http_code}" -H "X-Vault-Token: $VAULT_TOKEN" -X GET "$VAULT_DATA_URL")
+  echo "Retrieving variables from path: '$VAULT_DATA_URL'. Got status: '$HTTP_STATUS'."
+  if [ "$HTTP_STATUS" = "200" ]; then
+    DATA=$(curl -s -H "X-Vault-Token: $VAULT_TOKEN" -X GET "$VAULT_DATA_URL")
+  fi
+  # Set variables for Azure Pipelines
+  echo "$DATA" | jq -r '.data | to_entries[] | [ .key, .value|tostring ] | ("##vso[task.setvariable variable="+.[0]+"]"+.[1])'
+  # Add variables to answers.txt file, later it will be sourced
+  echo "$DATA" | jq -r '.data | to_entries[] | [ .key, .value|tostring ] | (.[0]+"=\""+.[1]+"\"")' >> answers.txt
+}
+
+if [ -n "$VAULT_SERVER" ]; then
+  echo "VAULT_SERVER: $VAULT_SERVER"
+else
+  echo "VAULT_SERVER not set, skipping vault config"
+  SKIP="1"
+fi
+
+if [ -n "$VAULT_TOKEN" ]; then
+  echo "VAULT_TOKEN: $VAULT_TOKEN"
+else
+  echo "VAULT_TOKEN not set, skipping vault config"
+  SKIP="1"
+fi
+
+# Check RELEASE_ENVIRONMENTNAME exists
+# Within Vault this is the name of the environment e.g. dev, production, staging, etc.
+# The name of stage to which deployment is currently in progress
+if [ -n "$RELEASE_ENVIRONMENTNAME" ]; then
+  echo "RELEASE_ENVIRONMENTNAME: $RELEASE_ENVIRONMENTNAME"
+else
+  echo "RELEASE_ENVIRONMENTNAME not set, skipping environment config"
+  SKIP="1"
+fi
+
+# Check PROJECT_NAME exists
+# Within Vault this is the name of the secret (or application)
+if [ -n "$PROJECT_NAME" ]; then
+  echo "PROJECT_NAME: $PROJECT_NAME"
+else
+  echo "PROJECT_NAME not set, skipping environment config"
+  SKIP="1"
+fi
+
+if [ "$SKIP" != "1" ]; then
+  # Get default variables
+  VAULT_PATH="/v1/secret/defaults"
+  get_vault_data "$VAULT_PATH"
+
+  # Get default environment variables
+  VAULT_PATH="/v1/secret/$RELEASE_ENVIRONMENTNAME/defaults"
+  get_vault_data "$VAULT_PATH"
+
+  # Get application variables
+  VAULT_PATH="/v1/secret/defaults/$PROJECT_NAME/env-vars"
+  get_vault_data "$VAULT_PATH"
+
+  # Get environment specific application variables
+  VAULT_PATH="/v1/secret/${RELEASE_ENVIRONMENTNAME}/$PROJECT_NAME/env-vars"
+  get_vault_data "$VAULT_PATH"
+
+  # Export all env vars
+  set -o allexport
+  # shellcheck disable=SC1091
+  source answers.txt
+  set +o allexport
+else
+  echo "Unable to get the secrets from Vault. Exiting..." >&2
+  exit 1
+fi

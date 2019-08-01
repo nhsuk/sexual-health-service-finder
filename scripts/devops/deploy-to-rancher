@@ -1,0 +1,21 @@
+#!/bin/bash
+
+DESCRIPTION="github/$GITHUB_REPO_NAME"
+PRID=${SYSTEM_PULLREQUEST_PULLREQUESTNUMBER:-$(echo "$BUILD_SOURCEBRANCH" | sed -E -n -e's:^refs/pull/([0-9]+)/merge$:\1:p')}
+echo "PRID: $PRID"
+
+if [ -n "$PRID" ]; then
+  DESCRIPTION="(PR-$PRID) $DESCRIPTION"
+  PROJECT_NAME=${PROJECT_NAME}-pr-${PRID}
+  export DOCKER_IMAGE_TAG="pr-$PRID"
+else
+  echo "Non-PR: $BUILD_SOURCEBRANCH. Exiting..." >&2
+  exit 1
+fi
+
+./scripts/devops/install-rancher
+
+echo "Deploying to Rancher at: $PROJECT_NAME"
+# Run from the config dir
+cd "./rancher-config" || exit
+../rancher --debug --url "$RANCHER_URL" --wait up --force-upgrade --pull -d --upgrade --confirm-upgrade --stack "$PROJECT_NAME" --description "$DESCRIPTION"

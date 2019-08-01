@@ -1,0 +1,6 @@
+#!/bin/bash
+# Run the variables script in the same shell so env vars will be made available
+# to subsequent shells
+# shellcheck source=get-variables-from-vault
+. ./scripts/devops/get-variables-from-vault
+./scripts/devops/deploy-to-rancher

@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Setup variables
+./scripts/devops/set-variables
+
+# Setup tags for image
 DOCKER_TAGS=()
 
 if [ "$CUSTOM_BRANCH" = "master" ]; then
@@ -15,6 +19,7 @@ else
   exit 0
 fi
 
+# Tag and build image
 TAGS_ARGS=$(for tag in "${DOCKER_TAGS[@]}"; do echo "-t $DOCKER_IMAGE_NAME:$tag"; done | paste -sd' ' -)
 echo "Running docker build $TAGS_ARGS ."
 # shellcheck disable=SC2086
