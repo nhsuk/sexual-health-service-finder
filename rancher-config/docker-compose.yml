@@ -18,7 +18,7 @@ services:
       prometheus.port: 3000
       traefik.backend: ${PROJECT_NAME}
       traefik.enable: true
-      traefik.frontend.auth.basic: ${BASIC_AUTH_DEVOPS}
+      traefik.frontend.auth.basic: ${BASIC_AUTH}
       traefik.frontend.rule: "Host: ${PROJECT_NAME}.${TRAEFIK_DOMAIN}"
       traefik.port: 3000
     logging:

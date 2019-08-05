@@ -65,9 +65,8 @@ stages:
 
   - stage: deployReviewEnvironment
     dependsOn: build
-    # Create review environment for every PR
     condition: and(succeeded(), startsWith(variables['Build.SourceBranch'], 'refs/pull/'))
-    displayName: 'Deploy Review Environment'
+    displayName: 'Deploy to Review Environment'
     jobs:
       - job: DeployReviewEnvironment
         pool:
@@ -78,14 +77,14 @@ stages:
           - bash: ./scripts/devops/deploy-environment
             env:
               VAULT_TOKEN: $(VAULT_TOKEN)
-            displayName: 'Deploy Review Environment'
+            displayName: 'Deploy Environment'
 
-  - stage: deployDevEnvironment
+  - stage: deployIntEnvironment
     dependsOn: build
-    condition: and(succeeded(), startsWith(variables['Build.SourceBranch'], 'refs/heads/master'))
-    displayName: 'Deploy Dev Environment'
+    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+    displayName: 'Deploy to Int Environment'
     jobs:
-      - job: DeployDevEnvironment
+      - job: DeployIntEnvironment
         pool:
           vmImage: 'Ubuntu 16.04'
         variables:
@@ -94,12 +93,12 @@ stages:
           - bash: ./scripts/devops/deploy-environment
             env:
               VAULT_TOKEN: $(VAULT_TOKEN)
-            displayName: 'Deploy Dev Environment'
+            displayName: 'Deploy Environment'
 
   - stage: deployStagingEnvironment
-    dependsOn: deployDevEnvironment
-    condition: and(succeeded(), startsWith(variables['Build.SourceBranch'], 'refs/tags/*'))
-    displayName: 'Deploy Staging Environment'
+    dependsOn: build
+    condition: and(succeeded(), startsWith(variables['Build.SourceBranch'], 'refs/tags/'))
+    displayName: 'Deploy to Staging Environment'
     jobs:
       - job: DeployStagingEnvironment
         pool:
@@ -110,4 +109,4 @@ stages:
           - bash: ./scripts/devops/deploy-environment
             env:
               VAULT_TOKEN: $(VAULT_TOKEN)
-            displayName: 'Deploy Staging Environment'
+            displayName: 'Deploy Environment'
