@@ -7,6 +7,7 @@
 - Use nyc in place of istanbul for code coverage
 - Improve guidance in `CONTRIBUTING`
 - Extract inline script to external scripts
+- Deploy review, integration and staging environments via pipelines YAML
 
 0.21.0 / 2019-03-20
 ===================
