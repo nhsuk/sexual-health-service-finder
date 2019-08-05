@@ -28,8 +28,7 @@ if [ -n "$TAG" ]; then
 fi
 
 if [ -n "$PARTIAL_BUILD_NAME" ]; then
-  BUILD_NAME="$PARTIAL_BUILD_NAME - $BUILD_BUILDNUMBER"
-  export BUILD_NAME
+  export BUILD_NAME="$PARTIAL_BUILD_NAME - $BUILD_BUILDNUMBER"
   echo "##vso[build.updatebuildnumber]$BUILD_NAME"
 fi
 

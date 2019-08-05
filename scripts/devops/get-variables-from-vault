@@ -64,12 +64,6 @@ if [ "$SKIP" != "1" ]; then
   # Get environment specific application variables
   VAULT_PATH="/v1/secret/${RELEASE_ENVIRONMENTNAME}/$PROJECT_NAME/env-vars"
   get_vault_data "$VAULT_PATH"
-
-  # Export all env vars
-  set -o allexport
-  # shellcheck disable=SC1091
-  source answers.txt
-  set +o allexport
 else
   echo "Unable to get the secrets from Vault. Exiting..." >&2
   exit 1

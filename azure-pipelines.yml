@@ -17,6 +17,9 @@ pr:
 
 variables:
   DOCKER_IMAGE_NAME: 'nhsuk/sexual-health-service-finder'
+  GITHUB_REPO_NAME: 'nhsuk/$(PROJECT_NAME)'
+  PROJECT_NAME: 'sexual-health-service-finder'
+  VAULT_SERVER: 'vault.nhswebsite.nhs.uk'
 
 stages:
   - stage: build
@@ -33,13 +36,11 @@ stages:
         env:
           COVERALLS_REPO_TOKEN: $(COVERALLS_REPO_TOKEN)
         displayName: 'Run tests, copy test artifacts to host and upload code coverage'
-
       - task: PublishCodeCoverageResults@1
         condition: succeededOrFailed()
         inputs:
           codeCoverageTool: Cobertura
           summaryFileLocation: '$(System.DefaultWorkingDirectory)/coverage/cobertura-coverage.xml'
-
       - task: PublishTestResults@2
         condition: succeededOrFailed()
         inputs:
@@ -59,19 +60,16 @@ stages:
           containerregistrytype: 'Container Registry'
           dockerRegistryEndpoint: 'sexual-health'
           command: login
-
       - bash: ./scripts/devops/push-image
         displayName: 'Push image to Docker Hub'
 
-  - stage: release
+  - stage: deployReviewEnvironment
+    dependsOn: build
+    # Create review environment for every PR
+    condition: and(succeeded(), startsWith(variables['Build.SourceBranch'], 'refs/pull/'))
     displayName: 'Deploy Review Environment'
-    variables:
-      GITHUB_REPO_NAME: 'nhsuk/$(PROJECT_NAME)'
-      PROJECT_NAME: 'sexual-health-service-finder'
-      VAULT_SERVER: 'vault.nhswebsite.nhs.uk'
     jobs:
       - job: DeployReviewEnvironment
-        condition: and(succeeded(), startsWith(variables['Build.SourceBranch'], 'refs/pull/'))
         pool:
           vmImage: 'Ubuntu 16.04'
         variables:
@@ -80,4 +78,36 @@ stages:
           - bash: ./scripts/devops/deploy-environment
             env:
               VAULT_TOKEN: $(VAULT_TOKEN)
-            displayName: 'Setup variables'
+            displayName: 'Deploy Review Environment'
+
+  - stage: deployDevEnvironment
+    dependsOn: build
+    condition: and(succeeded(), startsWith(variables['Build.SourceBranch'], 'refs/heads/master'))
+    displayName: 'Deploy Dev Environment'
+    jobs:
+      - job: DeployDevEnvironment
+        pool:
+          vmImage: 'Ubuntu 16.04'
+        variables:
+          RELEASE_ENVIRONMENTNAME: 'dev'
+        steps:
+          - bash: ./scripts/devops/deploy-environment
+            env:
+              VAULT_TOKEN: $(VAULT_TOKEN)
+            displayName: 'Deploy Dev Environment'
+
+  - stage: deployStagingEnvironment
+    dependsOn: deployDevEnvironment
+    condition: and(succeeded(), startsWith(variables['Build.SourceBranch'], 'refs/tags/*'))
+    displayName: 'Deploy Staging Environment'
+    jobs:
+      - job: DeployStagingEnvironment
+        pool:
+          vmImage: 'Ubuntu 16.04'
+        variables:
+          RELEASE_ENVIRONMENTNAME: 'staging'
+        steps:
+          - bash: ./scripts/devops/deploy-environment
+            env:
+              VAULT_TOKEN: $(VAULT_TOKEN)
+            displayName: 'Deploy Staging Environment'

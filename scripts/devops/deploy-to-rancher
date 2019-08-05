@@ -1,15 +1,26 @@
 #!/bin/bash
 
 DESCRIPTION="github/$GITHUB_REPO_NAME"
-PRID=${SYSTEM_PULLREQUEST_PULLREQUESTNUMBER:-$(echo "$BUILD_SOURCEBRANCH" | sed -E -n -e's:^refs/pull/([0-9]+)/merge$:\1:p')}
+
+CLEANED_SOURCEBRANCH=$(echo "$BUILD_SOURCEBRANCH" | sed -e's:["/:<>\|!?@*]:-:g')
+echo "CLEANED_SOURCEBRANCH: $CLEANED_SOURCEBRANCH"
+BRANCH=$(echo "$CLEANED_SOURCEBRANCH" | sed -E -n -e's:^refs-heads-(.+)$:\1:p')
+echo "BRANCH: $BRANCH"
+PRID=${SYSTEM_PULLREQUEST_PULLREQUESTNUMBER:-$(echo "$CLEANED_SOURCEBRANCH" | sed -E -n -e's:^refs-pull-([0-9]+)-merge$:\1:p')}
 echo "PRID: $PRID"
+TAG=$(echo "$CLEANED_SOURCEBRANCH" | sed -E -n -e's:^refs-tags-(.+)$:\1:p')
+echo "TAG: $TAG"
 
 if [ -n "$PRID" ]; then
   DESCRIPTION="(PR-$PRID) $DESCRIPTION"
   PROJECT_NAME=${PROJECT_NAME}-pr-${PRID}
   export DOCKER_IMAGE_TAG="pr-$PRID"
+elif [ -n "$TAG" ]; then
+  export DOCKER_IMAGE_TAG="$TAG"
+elif [ "$BUILD_SOURCEBRANCH" = "master" ]; then
+  export DOCKER_IMAGE_TAG="master"
 else
-  echo "Non-PR: $BUILD_SOURCEBRANCH. Exiting..." >&2
+  echo "'$BUILD_SOURCEBRANCH' is not a PR, tag or master branch. It will not be deployed. Exiting..." >&2
   exit 1
 fi
 

@@ -2,5 +2,10 @@
 # Run the variables script in the same shell so env vars will be made available
 # to subsequent shells
 # shellcheck source=get-variables-from-vault
-. ./scripts/devops/get-variables-from-vault
+./scripts/devops/get-variables-from-vault
+# Export all env vars
+set -o allexport
+# shellcheck disable=SC1091
+source answers.txt
+set +o allexport
 ./scripts/devops/deploy-to-rancher
