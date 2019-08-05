@@ -16,7 +16,7 @@ pr:
     - '*'
 
 variables:
-  DOCKER_IMAGE_NAME: 'nhsuk/sexual-health-service-finder'
+  DOCKER_IMAGE_NAME: 'nhsuk/$(PROJECT_NAME)'
   GITHUB_REPO_NAME: 'nhsuk/$(PROJECT_NAME)'
   PROJECT_NAME: 'sexual-health-service-finder'
   VAULT_SERVER: 'vault.nhswebsite.nhs.uk'
