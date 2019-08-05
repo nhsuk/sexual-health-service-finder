@@ -13,7 +13,6 @@ elif [ -n "$PRID" ]; then
   DOCKER_TAGS+=("pr-$PRID")
 elif [ -n "$TAG" ]; then
   DOCKER_TAGS+=("$TAG")
-  echo "##vso[build.addbuildtag]release-candidate"
 else
   echo "Build for '$BUILD_SOURCEBRANCH' will not be pushed to docker hub"
   echo "Only builds of master, tags and PRs are pushed to docker hub."
