@@ -1,45 +1,17 @@
 #!/bin/bash
 
+export BRANCH PRID TAG
 CLEANED_SOURCEBRANCH=$(echo "$BUILD_SOURCEBRANCH" | sed -e's:["/:<>\|!?@*]:-:g')
 echo "CLEANED_SOURCEBRANCH: $CLEANED_SOURCEBRANCH"
+
 BRANCH=$(echo "$CLEANED_SOURCEBRANCH" | sed -E -n -e's:^refs-heads-(.+)$:\1:p')
 echo "BRANCH: $BRANCH"
+echo "##vso[task.setvariable variable=BRANCH]$BRANCH"
+
 PRID=$(echo "$CLEANED_SOURCEBRANCH" | sed -E -n -e's:^refs-pull-([0-9]+)-merge$:\1:p')
 echo "PRID: $PRID"
+echo "##vso[task.setvariable variable=PRID]$PRID"
+
 TAG=$(echo "$CLEANED_SOURCEBRANCH" | sed -E -n -e's:^refs-tags-(.+)$:\1:p')
 echo "TAG: $TAG"
-
-if [ -n "$BRANCH" ]; then
-  export CUSTOM_BRANCH=$BRANCH
-  echo "##vso[task.setvariable variable=CUSTOM_BRANCH]$BRANCH"
-  PARTIAL_BUILD_NAME="$BRANCH"
-fi
-
-if [ -n "$PRID" ]; then
-  export CUSTOM_PRID=$PRID
-  echo "##vso[task.setvariable variable=CUSTOM_PRID]$PRID"
-  PARTIAL_BUILD_NAME="PR-$PRID"
-fi
-
-if [ -n "$TAG" ]; then
-  export CUSTOM_TAG=$TAG
-  echo "##vso[task.setvariable variable=CUSTOM_TAG]$TAG"
-  PARTIAL_BUILD_NAME="$TAG"
-fi
-
-if [ -n "$PARTIAL_BUILD_NAME" ]; then
-  export BUILD_NAME="$PARTIAL_BUILD_NAME - $BUILD_BUILDNUMBER"
-  echo "##vso[build.updatebuildnumber]$BUILD_NAME"
-fi
-
-if [ -n "$CUSTOM_PRID" ]; then
-  export CI_PULL_REQUEST=$CUSTOM_PRID
-  export BRANCH=${SYSTEM_PULLREQUEST_TARGETBRANCH#refs/heads}
-elif [ -n "$CUSTOM_BRANCH" ]; then
-  export BRANCH=$CUSTOM_BRANCH
-elif [ -n "$CUSTOM_TAG" ]; then
-  export BRANCH=$CUSTOM_TAG
-else
-  echo 'Could not determine branch. Exiting...' >&2
-  exit 1
-fi
+echo "##vso[task.setvariable variable=TAG]$TAG"

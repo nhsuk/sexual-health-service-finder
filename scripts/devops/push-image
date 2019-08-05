@@ -6,12 +6,12 @@
 # Setup tags for image
 DOCKER_TAGS=()
 
-if [ "$CUSTOM_BRANCH" = "master" ]; then
+if [ "$BRANCH" = "master" ]; then
   DOCKER_TAGS+=("master" "latest")
-elif [ -n "$CUSTOM_PRID" ]; then
-  DOCKER_TAGS+=("pr-$CUSTOM_PRID")
-elif [ -n "$CUSTOM_TAG" ]; then
-  DOCKER_TAGS+=("$CUSTOM_TAG")
+elif [ -n "$PRID" ]; then
+  DOCKER_TAGS+=("pr-$PRID")
+elif [ -n "$TAG" ]; then
+  DOCKER_TAGS+=("$TAG")
   echo "##vso[build.addbuildtag]release-candidate"
 else
   echo "Build for '$BUILD_SOURCEBRANCH' will not be pushed to docker hub"
