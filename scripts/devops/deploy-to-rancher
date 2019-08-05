@@ -1,0 +1,26 @@
+#!/bin/bash
+
+DESCRIPTION="github/$GITHUB_REPO_NAME"
+
+# shellcheck source=set-branch-variables
+. ./scripts/devops/set-branch-variables
+
+if [ -n "$PRID" ]; then
+  DESCRIPTION="(PR-$PRID) $DESCRIPTION"
+  PROJECT_NAME=${PROJECT_NAME}-pr-${PRID}
+  export DOCKER_IMAGE_TAG="pr-$PRID"
+elif [ -n "$TAG" ]; then
+  export DOCKER_IMAGE_TAG="$TAG"
+elif [ "$BRANCH" = "master" ]; then
+  export DOCKER_IMAGE_TAG="master"
+else
+  echo "'$BUILD_SOURCEBRANCH' is not a PR, tag or master branch. It will not be deployed. Exiting..." >&2
+  exit 1
+fi
+
+./scripts/devops/install-rancher
+
+echo "Deploying to Rancher at: $PROJECT_NAME"
+# Run from the config dir
+cd "./rancher-config" || exit
+../rancher --debug --url "$RANCHER_URL" --wait up --force-upgrade --pull -d --upgrade --confirm-upgrade --stack "$PROJECT_NAME" --description "$DESCRIPTION"

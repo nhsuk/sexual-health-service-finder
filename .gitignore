@@ -79,3 +79,9 @@ app/views/includes/header-items.nunjucks
 
 # JMeter reports
 *.jtl
+
+# Secrets
+answers.txt
+
+# Rancher
+rancher
