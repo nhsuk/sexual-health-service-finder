@@ -1,6 +1,6 @@
 #!/bin/bash
 
-./scripts/devops/get-variables-from-vault
+./scripts/devops/get-vault-variables
 # Export all env vars
 set -o allexport
 # shellcheck disable=SC1091

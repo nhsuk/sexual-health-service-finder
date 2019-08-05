@@ -32,7 +32,7 @@ stages:
         COVERALLS_SERVICE_NAME: 'Azure Devops'
       steps:
       - bash: |
-          ./scripts/devops/test-ci
+          ./scripts/devops/run-ci-tests
         env:
           COVERALLS_REPO_TOKEN: $(COVERALLS_REPO_TOKEN)
         displayName: 'Run tests, copy test artifacts to host and upload code coverage'

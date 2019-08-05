@@ -2,8 +2,8 @@
 
 DESCRIPTION="github/$GITHUB_REPO_NAME"
 
-# shellcheck source=set-variables
-. ./scripts/devops/set-variables
+# shellcheck source=set-branch-variables
+. ./scripts/devops/set-branch-variables
 
 if [ -n "$PRID" ]; then
   DESCRIPTION="(PR-$PRID) $DESCRIPTION"

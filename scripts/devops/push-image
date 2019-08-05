@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Setup variables
-./scripts/devops/set-variables
+./scripts/devops/set-branch-variables
 
 # Setup tags for image
 DOCKER_TAGS=()
