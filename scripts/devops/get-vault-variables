@@ -1,5 +1,17 @@
 #!/bin/bash
 
+# Reset/empty answers.txt
+echo "" > answers.txt
+RANCHER_STACK_NAME=$PROJECT_NAME
+if [ -n "$PRID" ]; then
+  RANCHER_STACK_NAME="$RANCHER_STACK_NAME-pr-$PRID"
+fi
+# Set some defaults
+{
+  echo "RANCHER_STACK_NAME=$RANCHER_STACK_NAME"
+  echo "TRAEFIK_DOMAIN=nhswebsite-integration.nhs.uk"
+} >> answers.txt
+
 get_vault_data() {
   VAULT_PATH="$1"
 

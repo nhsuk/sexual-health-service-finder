@@ -5,30 +5,30 @@ services:
   shsf-frontend:
     image: "${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG}"
     environment:
-      ADOBE_TRACKING_URL: ${ADOBE_TRACKING_URL}
-      COOKIEBOT_SCRIPT_URL: ${COOKIEBOT_SCRIPT_URL}
-      HOTJAR_ANALYTICS_TRACKING_ID: ${HOTJAR_ANALYTICS_TRACKING_ID}
+      ADOBE_TRACKING_URL: $ADOBE_TRACKING_URL
+      COOKIEBOT_SCRIPT_URL: $COOKIEBOT_SCRIPT_URL
+      HOTJAR_ANALYTICS_TRACKING_ID: $HOTJAR_ANALYTICS_TRACKING_ID
       NODE_ENV: production
-      SEARCH_API_HOST: ${SEARCH_API_HOST}
-      SEARCH_API_KEY: ${SEARCH_API_KEY}
-      SEARCH_API_VERSION: ${SEARCH_API_VERSION}
+      SEARCH_API_HOST: $SEARCH_API_HOST
+      SEARCH_API_KEY: $SEARCH_API_KEY
+      SEARCH_API_VERSION: $SEARCH_API_VERSION
     labels:
       io.rancher.container.pull_image: always
       prometheus.monitoring: true
       prometheus.port: 3000
-      traefik.backend: ${PROJECT_NAME}
+      traefik.backend: $PROJECT_NAME
       traefik.enable: true
-      traefik.frontend.auth.basic: ${BASIC_AUTH}
-      traefik.frontend.rule: "Host: ${PROJECT_NAME}.${TRAEFIK_DOMAIN}"
+      traefik.frontend.auth.basic: $BASIC_AUTH
+      traefik.frontend.rule: $TRAEFIK_RULE
       traefik.port: 3000
     logging:
       driver: splunk
       options:
         splunk-format: json
         splunk-insecureskipverify: "true"
-        splunk-source: ${PROJECT_NAME}
+        splunk-source: $PROJECT_NAME
         splunk-sourcetype: docker
-        splunk-token: ${SPLUNK_HEC_TOKEN}
-        splunk-url: ${SPLUNK_HEC_URL}
+        splunk-token: $SPLUNK_HEC_TOKEN
+        splunk-url: $SPLUNK_HEC_URL
         splunk-verify-connection: "false"
         tag: "{{`{{.ImageName}} {{.Name}} {{.FullID}}`}}"
