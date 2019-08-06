@@ -1,0 +1,13 @@
+#!/bin/bash
+
+pushd ./test/performance/ || exit 1
+JMETER_PATH=../../jmeter/bin/jmeter
+
+# Run test
+$JMETER_PATH -n -t ./chlamydia-finder.jmx -Jhostname="nhswebsite-staging.nhs.uk" -Jusers=10 -Jrampup=60 -Jduration=30 -Jthroughput=30 -Jpostcodes=outcodes.csv -l chlamydia-finder.jtl
+
+# Generate report dashboard
+mkdir ./dashboards
+$JMETER_PATH -g chlamydia-finder.jtl -o ./dashboards
+
+popd || exit 1

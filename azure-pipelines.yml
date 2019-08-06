@@ -79,6 +79,8 @@ stages:
             env:
               VAULT_TOKEN: $(VAULT_TOKEN)
             displayName: 'Deploy Environment'
+          - bash: ./scripts/devops/run-performance-tests
+            displayName: 'Run Performance Tests'
 
   - stage: deployIntEnvironment
     displayName: 'Deploy to Int Environment'
@@ -113,3 +115,5 @@ stages:
             env:
               VAULT_TOKEN: $(VAULT_TOKEN)
             displayName: 'Deploy Environment'
+          - bash: ./scripts/devops/run-performance-tests
+            displayName: 'Run Performance Tests'
