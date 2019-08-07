@@ -1,9 +1,9 @@
 #!/bin/bash
 
-# shellcheck source=set-branch-variables
-. ./scripts/devops/set-branch-variables
+# Reset/empty answers.txt
+echo "" > answers.txt
 
-# shellcheck source=get-vault-variables
+./scripts/devops/set-branch-variables
 ./scripts/devops/get-vault-variables
 
 # Export all env vars

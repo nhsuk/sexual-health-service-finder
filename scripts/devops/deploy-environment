@@ -1,4 +1,5 @@
 #!/bin/bash
 
-./scripts/devops/load-env-vars
+# shellcheck source=load-env-vars
+. ./scripts/devops/load-env-vars
 ./scripts/devops/deploy-to-rancher
