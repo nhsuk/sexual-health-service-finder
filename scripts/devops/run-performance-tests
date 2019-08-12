@@ -1,5 +1,7 @@
 #!/bin/bash
 
+./scripts/devops/install-jmeter
+
 pushd ./test/performance/ || exit 1
 JMETER_PATH=../../jmeter/bin/jmeter
 TEST_NAME=chlamydia-finder
