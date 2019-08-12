@@ -2,12 +2,14 @@
 
 pushd ./test/performance/ || exit 1
 JMETER_PATH=../../jmeter/bin/jmeter
+TEST_NAME=chlamydia-finder
 
-# Run test
-$JMETER_PATH -n -t ./chlamydia-finder.jmx -Jhostname="nhswebsite-staging.nhs.uk" -Jusers=10 -Jrampup=60 -Jduration=30 -Jthroughput=30 -Jpostcodes=outcodes.csv -l chlamydia-finder.jtl
-
-# Generate report dashboard
+# Remove pre-existing artifacts
+rm ./$TEST_NAME.jtl
+rm -rf ./dashboards
 mkdir ./dashboards
-$JMETER_PATH -g chlamydia-finder.jtl -o ./dashboards
+
+# Run test and generate dashboard
+$JMETER_PATH -n -t ./$TEST_NAME.jmx -Jhostname="nhswebsite-staging.nhs.uk" -Jusers=10 -Jrampup=60 -Jduration=30 -Jthroughput=30 -Jpostcodes=outcodes.csv -l $TEST_NAME.jtl -e -o ./dashboards
 
 popd || exit 1
