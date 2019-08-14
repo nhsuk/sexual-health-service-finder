@@ -3,15 +3,13 @@
 ./scripts/devops/install-jmeter
 
 pushd ./test/performance/ || exit 1
-JMETER_PATH=../../jmeter/bin/jmeter
+JMETER_BIN_DIR=../../jmeter/bin/
 TEST_NAME=chlamydia-finder
 
-# Remove pre-existing artifacts
-rm ./$TEST_NAME.jtl
-rm -rf ./dashboards
-mkdir ./dashboards
+# Use user.properties
+cp ./user.properties ${JMETER_BIN_DIR}user.properties
 
 # Run test and generate dashboard
-$JMETER_PATH -n -t ./$TEST_NAME.jmx -Jhostname="nhswebsite-staging.nhs.uk" -Jusers=10 -Jrampup=60 -Jduration=30 -Jthroughput=30 -Jpostcodes=outcodes.csv -l $TEST_NAME.jtl -e -o ./dashboards
+${JMETER_BIN_DIR}jmeter -n -t ./$TEST_NAME.jmx -Jhostname="nhswebsite-staging.nhs.uk" -Jusers=10 -Jrampup=60 -Jduration=30 -Jthroughput=30 -Jpostcodes=outcodes.csv -l $TEST_NAME.jtl -e -o ./dashboards -f
 
 popd || exit 1
