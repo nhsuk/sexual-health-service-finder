@@ -81,6 +81,11 @@ stages:
             displayName: 'Deploy Environment'
           - bash: ./scripts/devops/run-performance-tests
             displayName: 'Run Performance Tests'
+          - bash: ./scripts/devops/check-performance-test-results.js
+            displayName: 'Check Performance Test Results'
+          - publish: ./test/performance/dashboards
+            artifact: 'Performance Test Dashboard'
+            displayName: 'Publish Performance Test Results'
 
   - stage: deployIntEnvironment
     displayName: 'Deploy to Int Environment'
@@ -117,3 +122,8 @@ stages:
             displayName: 'Deploy Environment'
           - bash: ./scripts/devops/run-performance-tests
             displayName: 'Run Performance Tests'
+          - bash: ./scripts/devops/check-performance-test-results.js
+            displayName: 'Check Performance Test Results'
+          - publish: ./test/performance/dashboards
+            artifact: 'Performance Test Dashboard'
+            displayName: 'Publish Performance Test Results'
