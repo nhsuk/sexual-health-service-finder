@@ -15,7 +15,15 @@ TAG=$(echo "$CLEANED_SOURCEBRANCH" | sed -E -n -e's:^refs-tags-(.+)$:\1:p')
 echo "TAG: $TAG"
 echo "##vso[task.setvariable variable=TAG]$TAG"
 
+RANCHER_STACK_NAME=$PROJECT_NAME
+if [ -n "$PRID" ]; then
+  RANCHER_STACK_NAME="$RANCHER_STACK_NAME-pr-$PRID"
+fi
+
+# Set some defaults
 {
+  echo "RANCHER_STACK_NAME=$RANCHER_STACK_NAME"
+  echo "TRAEFIK_DOMAIN=nhswebsite-integration.nhs.uk"
   echo "BRANCH=$BRANCH"
   echo "PRID=$PRID"
   echo "TAG=$TAG"
