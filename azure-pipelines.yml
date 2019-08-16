@@ -20,6 +20,13 @@ variables:
   GITHUB_REPO_NAME: 'nhsuk/$(PROJECT_NAME)'
   PROJECT_NAME: 'sexual-health-service-finder'
   VAULT_SERVER: 'vault.nhswebsite.nhs.uk'
+  PERF_TEST_DURATION: 600
+  PERF_TEST_RAMPUP: 60
+  PERF_TEST_THROUGHPUT: 30
+  PERF_TEST_USER_COUNT: 10
+  PERF_TEST_AVG_RESPONSE_THRESHOLD: 600
+  PERF_TEST_PCT_CHECK: 90
+  PERF_TEST_PCT_THRESHOLD: 1000
 
 stages:
   - stage: build
@@ -64,11 +71,12 @@ stages:
         displayName: 'Push image to Docker Hub'
 
   - stage: deployReviewEnvironment
-    dependsOn: build
-    condition: and(succeeded(), startsWith(variables['Build.SourceBranch'], 'refs/pull/'))
     displayName: 'Deploy to Review Environment'
+    condition: and(succeeded(), startsWith(variables['Build.SourceBranch'], 'refs/pull/'))
+    dependsOn: build
     jobs:
       - job: DeployReviewEnvironment
+        displayName: 'Deploy to Review Environment'
         pool:
           vmImage: 'Ubuntu 16.04'
         variables:
@@ -80,11 +88,12 @@ stages:
             displayName: 'Deploy Environment'
 
   - stage: deployIntEnvironment
+    displayName: 'Deploy to Int Environment'
     dependsOn: build
     condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
-    displayName: 'Deploy to Int Environment'
     jobs:
       - job: DeployIntEnvironment
+        displayName: 'Deploy to Int Environment'
         pool:
           vmImage: 'Ubuntu 16.04'
         variables:
@@ -96,17 +105,26 @@ stages:
             displayName: 'Deploy Environment'
 
   - stage: deployStagingEnvironment
+    displayName: 'Deploy to Staging Environment'
     dependsOn: build
     condition: and(succeeded(), startsWith(variables['Build.SourceBranch'], 'refs/tags/'))
-    displayName: 'Deploy to Staging Environment'
     jobs:
       - job: DeployStagingEnvironment
+        displayName: 'Deploy to Staging Environment'
         pool:
           vmImage: 'Ubuntu 16.04'
         variables:
           RELEASE_ENVIRONMENTNAME: 'staging'
+          PERF_TEST_HOSTNAME: nhswebsite-staging.nhs.uk
         steps:
           - bash: ./scripts/devops/deploy-environment
             env:
               VAULT_TOKEN: $(VAULT_TOKEN)
             displayName: 'Deploy Environment'
+          - bash: ./scripts/devops/run-performance-tests
+            displayName: 'Run Performance Tests'
+          - bash: ./scripts/devops/check-performance-test-results
+            displayName: 'Check Performance Test Results'
+          - publish: ./test/performance/dashboards
+            artifact: 'Performance Test Dashboard'
+            displayName: 'Publish Performance Test Results'

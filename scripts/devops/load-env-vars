@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# Reset/empty answers.txt
+echo "" > answers.txt
+
+./scripts/devops/set-branch-variables
+./scripts/devops/get-vault-variables
+
+# Export all env vars
+set -o allexport
+# shellcheck disable=SC1091
+source answers.txt
+set +o allexport

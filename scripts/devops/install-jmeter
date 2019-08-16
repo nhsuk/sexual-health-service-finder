@@ -1,0 +1,12 @@
+#!/bin/bash
+
+echo "Is JMeter already installed?"
+if [ -d "./jmeter" ] ; then
+  echo "True. JMeter is already installed"
+else
+  : "${JMETER_VERSION:=5.1.1}"
+
+  echo "False. JMeter version ($JMETER_VERSION) will be installed"
+  curl -L http://mirror.ox.ac.uk/sites/rsync.apache.org//jmeter/binaries/apache-jmeter-$JMETER_VERSION.tgz | tar xzf -
+  mv apache-jmeter-$JMETER_VERSION/ ./jmeter
+fi

@@ -1,0 +1,23 @@
+#!/bin/bash
+
+./scripts/devops/install-jmeter
+
+JMETER_BIN_DIR=../../jmeter/bin/
+TEST_NAME=chlamydia-finder
+: "${PERF_TEST_DATAFILE:=outcodes.csv}"
+: "${PERF_TEST_DURATION:=30}"
+: "${PERF_TEST_HOSTNAME:=nhswebsite-staging.nhs.uk}"
+: "${PERF_TEST_RAMPUP:=60}"
+: "${PERF_TEST_THROUGHPUT:=30}"
+: "${PERF_TEST_USER_COUNT:=10}"
+
+pushd ./test/performance/ || exit 1
+# Use user.properties
+cp ./user.properties ${JMETER_BIN_DIR}user.properties
+
+echo "Running..."
+echo "${JMETER_BIN_DIR}jmeter -n -t ./$TEST_NAME.jmx -Jhostname=$PERF_TEST_HOSTNAME -Jusers=$PERF_TEST_USER_COUNT -Jrampup=$PERF_TEST_RAMPUP -Jduration=$PERF_TEST_DURATION -Jthroughput=$PERF_TEST_THROUGHPUT -Jpostcodes=$PERF_TEST_DATAFILE -l $TEST_NAME.jtl -e -o ./dashboards -f"
+# Run test and generate dashboard
+${JMETER_BIN_DIR}jmeter -n -t ./$TEST_NAME.jmx -Jhostname=$PERF_TEST_HOSTNAME -Jusers=$PERF_TEST_USER_COUNT -Jrampup=$PERF_TEST_RAMPUP -Jduration=$PERF_TEST_DURATION -Jthroughput=$PERF_TEST_THROUGHPUT -Jpostcodes=$PERF_TEST_DATAFILE -l $TEST_NAME.jtl -e -o ./dashboards -f
+
+popd || exit 1

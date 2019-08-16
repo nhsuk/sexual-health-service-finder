@@ -1,7 +1,5 @@
 #!/bin/bash
 
-# Reset/empty answers.txt
-echo "" > answers.txt
 RANCHER_STACK_NAME=$PROJECT_NAME
 if [ -n "$PRID" ]; then
   RANCHER_STACK_NAME="$RANCHER_STACK_NAME-pr-$PRID"
