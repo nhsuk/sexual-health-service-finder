@@ -51,21 +51,21 @@ function calculatePctValue(times, percentile) {
 
     const pctValue90 = calculatePctValue(times, percentile90);
     if (pctValue90 > pctThreshold90) {
-      const msg = `${percentile90}th percentile time of responses (${pctValue90}) exceeded threshold (${pctThreshold90}).`;
+      const msg = `The ${percentile90}th percentile time (${pctValue90}ms) of responses exceeded threshold (${pctThreshold90}ms).`;
       console.error(msg);
       throw new Error(msg);
     } else {
-      console.log(`${percentile90}th percentile time of responses (${pctValue90}) was within threshold (${pctThreshold90}).`);
+      console.log(`The ${percentile90}th percentile time (${pctValue90}ms) of responses was within threshold (${pctThreshold90}ms).`);
     }
 
     const totalTime = times.reduce((acc, cur) => acc + cur, 0);
     const averageTime = parseInt(totalTime / times.length, 10);
     if (averageTime > averageThreshold) {
-      const msg = `Average duration of responses (${averageTime}) exceeded threshold (${averageThreshold}).`;
+      const msg = `The average duration (${averageTime}ms) of responses exceeded threshold (${averageThreshold}ms).`;
       console.error(msg);
       throw new Error(msg);
     } else {
-      console.log(`Average duration of responses (${averageTime}) was within threshold (${averageThreshold}).`);
+      console.log(`The average duration (${averageTime}ms) of responses was within threshold (${averageThreshold}ms).`);
     }
 
     if (responseCodes.some(item => item > 499)) {
