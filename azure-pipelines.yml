@@ -21,10 +21,12 @@ variables:
   PROJECT_NAME: 'sexual-health-service-finder'
   VAULT_SERVER: 'vault.nhswebsite.nhs.uk'
   PERF_TEST_DURATION: 600
-  PERF_TEST_HOSTNAME: nhswebsite-staging.nhs.uk
   PERF_TEST_RAMPUP: 60
   PERF_TEST_THROUGHPUT: 30
   PERF_TEST_USER_COUNT: 10
+  PERF_TEST_AVG_RESPONSE_THRESHOLD: 600
+  PERF_TEST_PCT_CHECK: 90
+  PERF_TEST_PCT_THRESHOLD: 1000
 
 stages:
   - stage: build
@@ -113,6 +115,7 @@ stages:
           vmImage: 'Ubuntu 16.04'
         variables:
           RELEASE_ENVIRONMENTNAME: 'staging'
+          PERF_TEST_HOSTNAME: nhswebsite-staging.nhs.uk
         steps:
           - bash: ./scripts/devops/deploy-environment
             env:
@@ -120,7 +123,7 @@ stages:
             displayName: 'Deploy Environment'
           - bash: ./scripts/devops/run-performance-tests
             displayName: 'Run Performance Tests'
-          - bash: ./scripts/devops/check-performance-test-results.js
+          - bash: ./scripts/devops/check-performance-test-results
             displayName: 'Check Performance Test Results'
           - publish: ./test/performance/dashboards
             artifact: 'Performance Test Dashboard'

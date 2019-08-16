@@ -18,9 +18,9 @@ function calculatePctValue(times, percentile) {
 
 (async function processResults() {
   try {
-    const averageThreshold = 600; // TODO: Use env var
-    const pctThreshold90 = 1000; // TODO: Use env var
-    const percentile90 = 90;
+    const averageThreshold = process.env.PERF_TEST_AVG_RESPONSE_THRESHOLD;
+    const pctThreshold = process.env.PERF_TEST_PCT_THRESHOLD;
+    const pctToCheck = process.env.PERF_TEST_PCT_CHECK;
     const responseCodes = [];
     const times = [];
     let header = true;
@@ -49,13 +49,13 @@ function calculatePctValue(times, percentile) {
 
     await once(rl, 'close');
 
-    const pctValue90 = calculatePctValue(times, percentile90);
-    if (pctValue90 > pctThreshold90) {
-      const msg = `The ${percentile90}th percentile time (${pctValue90}ms) of responses exceeded threshold (${pctThreshold90}ms).`;
+    const pctValue = calculatePctValue(times, pctToCheck);
+    if (pctValue > pctThreshold) {
+      const msg = `The ${pctToCheck}th percentile time (${pctValue}ms) of responses exceeded threshold (${pctThreshold}ms).`;
       console.error(msg);
       throw new Error(msg);
     } else {
-      console.log(`The ${percentile90}th percentile time (${pctValue90}ms) of responses was within threshold (${pctThreshold90}ms).`);
+      console.log(`The ${pctToCheck}th percentile time (${pctValue}ms) of responses was within threshold (${pctThreshold}ms).`);
     }
 
     const totalTime = times.reduce((acc, cur) => acc + cur, 0);
