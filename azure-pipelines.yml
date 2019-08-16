@@ -20,6 +20,11 @@ variables:
   GITHUB_REPO_NAME: 'nhsuk/$(PROJECT_NAME)'
   PROJECT_NAME: 'sexual-health-service-finder'
   VAULT_SERVER: 'vault.nhswebsite.nhs.uk'
+  PERF_TEST_DURATION: 600
+  PERF_TEST_HOSTNAME: nhswebsite-staging.nhs.uk
+  PERF_TEST_RAMPUP: 60
+  PERF_TEST_THROUGHPUT: 30
+  PERF_TEST_USER_COUNT: 10
 
 stages:
   - stage: build
@@ -79,13 +84,6 @@ stages:
             env:
               VAULT_TOKEN: $(VAULT_TOKEN)
             displayName: 'Deploy Environment'
-          - bash: ./scripts/devops/run-performance-tests
-            displayName: 'Run Performance Tests'
-          - bash: ./scripts/devops/check-performance-test-results.js
-            displayName: 'Check Performance Test Results'
-          - publish: ./test/performance/dashboards
-            artifact: 'Performance Test Dashboard'
-            displayName: 'Publish Performance Test Results'
 
   - stage: deployIntEnvironment
     displayName: 'Deploy to Int Environment'
