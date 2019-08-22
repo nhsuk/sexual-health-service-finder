@@ -1,6 +1,6 @@
 {
   "name": "sexual-health-service-finder",
-  "version": "0.22.0",
+  "version": "0.23.0",
   "description": "Helping to connect people to sexual health services.",
   "main": "app.js",
   "scripts": {
