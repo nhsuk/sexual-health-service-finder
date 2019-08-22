@@ -72,7 +72,6 @@ stages:
 
     - job: PublishRancherConfig
       dependsOn: RunTests
-      condition: and(succeeded(), startsWith(variables['Build.SourceBranch'], 'refs/tags/'))
       displayName: 'Publish Rancher config for use in deployment to Production'
       pool:
         vmImage: 'Ubuntu 16.04'
@@ -82,8 +81,7 @@ stages:
 
     - job: PublishScripts
       dependsOn: RunTests
-      condition: and(succeeded(), startsWith(variables['Build.SourceBranch'], 'refs/tags/'))
-      displayName: 'Publish scripts so they can be used in deployment to Production'
+      displayName: 'Publish DevOps scripts'
       pool:
         vmImage: 'Ubuntu 16.04'
       steps:
