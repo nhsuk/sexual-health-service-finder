@@ -78,7 +78,17 @@ stages:
         vmImage: 'Ubuntu 16.04'
       steps:
       - publish: $(System.DefaultWorkingDirectory)/rancher-config/
-        artifact: RancherConfig
+        artifact: rancher-config
+
+    - job: PublishScripts
+      dependsOn: RunTests
+      condition: and(succeeded(), startsWith(variables['Build.SourceBranch'], 'refs/tags/'))
+      displayName: 'Publish scripts so they can be used in deployment to Production'
+      pool:
+        vmImage: 'Ubuntu 16.04'
+      steps:
+      - publish: $(System.DefaultWorkingDirectory)/scripts/devops/
+        artifact: scripts
 
   - stage: deployReviewEnvironment
     displayName: 'Deploy to Review Environment'
