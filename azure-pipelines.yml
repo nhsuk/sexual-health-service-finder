@@ -70,6 +70,16 @@ stages:
       - bash: ./scripts/devops/push-image
         displayName: 'Push image to Docker Hub'
 
+    - job: PublishRancherConfig
+      dependsOn: RunTests
+      condition: and(succeeded(), startsWith(variables['Build.SourceBranch'], 'refs/tags/'))
+      displayName: 'Publish Rancher config for use in deployment to Production'
+      pool:
+        vmImage: 'Ubuntu 16.04'
+      steps:
+      - publish: $(System.DefaultWorkingDirectory)/rancher-config/
+        artifact: RancherConfig
+
   - stage: deployReviewEnvironment
     displayName: 'Deploy to Review Environment'
     condition: and(succeeded(), startsWith(variables['Build.SourceBranch'], 'refs/pull/'))

@@ -1,5 +1,9 @@
-0.22.0 / TBC
+0.23.0 / TBC
 ===================
+- Enable deployment to Production via DevOps
+
+0.22.0 / N/A
+============
 - Remove the specific version of python from the Dockerfile
 - Update npm dependencies
 - Upgrade container to run latest LTS version of node
