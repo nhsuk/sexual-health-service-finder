@@ -58,7 +58,7 @@
     "express-prom-bundle": "^5.1.5",
     "fingerprint-brunch": "^2.0.6",
     "google-libphonenumber": "^3.2.2",
-    "helmet": "^3.19.0",
+    "helmet": "^3.21.1",
     "map-replace": "^1.0.2",
     "moment": "^2.22.0",
     "nhsuk-bunyan-logger": "^1.7.0",
