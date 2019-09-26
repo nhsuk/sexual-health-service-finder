@@ -1,3 +1,8 @@
+0.24.0 / 2019-09-26
+===================
+- Add footer link to beta cookie policy page 
+- Change chlamydia content link from beta to nhs.uk
+
 0.23.0 / TBC
 ===================
 - Enable deployment to Production via DevOps
