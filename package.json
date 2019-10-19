@@ -57,7 +57,7 @@
     "express": "^4.17.0",
     "express-prom-bundle": "^5.1.5",
     "fingerprint-brunch": "^2.0.6",
-    "google-libphonenumber": "^3.2.2",
+    "google-libphonenumber": "^3.2.6",
     "helmet": "^3.19.0",
     "map-replace": "^1.0.2",
     "moment": "^2.22.0",
