@@ -6,14 +6,19 @@
 
 {% block content %}
   <h1 class="local-header--title--question local-header--title__step">We recommend:</h1>
-  <p><span class="recommend__tick"></span>getting tested by a sexual health professional</p>
-  <p><span class="recommend__cross"></span>not getting a chlamydia home test kit</p>
-
+  <ul>
+    <li>getting tested by a sexual health professional</li>
+    <li>not getting a chlamydia home test kit</li>
+  </ul>
   {% if under16 %}
     {% include "includes/recommend-under16.nunjucks" %}
   {% else %}
     {% include "includes/recommend-symptoms.nunjucks" %}
   {% endif %}
 
-  <p><a href="{{ siteRoot }}/location?type={{ type }}" class="button" role="button">Continue</a></p>
-{% endblock %}
+  {{ button({
+    "href": siteRoot + "/location?type=" + type,
+    "text": "Continue"
+  }) }}
+
+ {% endblock %}

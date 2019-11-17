@@ -15,19 +15,15 @@
     {% include resultsOnwardsJourneyPartial %}
   {% endif %}
 
-  <h2 data-results="{{services.length}}" data-term="{{location}}" class="local-header--title--question">Results</h2>
-
-  <div class="grid-row">
-    <ol class="results">
-      {% for service in services %}
-        <li class="results__item results__item--nearby" data-index="{{loop.index}}">
-          <div class="results__details results__details--nearby">
-            {% include "includes/result-item.nunjucks" %}
-          </div>
-          <!--[if IE]><div style="clear: both;" class="clear-both"></div><![endif]-->
-        </li>
-      {% endfor %}
-    </ol>
-  </div>
+  <ol class="nhsuk-list results">
+    {% for service in services %}
+      <li class="results__item results__item--nearby" data-index="{{loop.index}}">
+        <hr />
+        <div class="results__details results__details--nearby">
+          {% include "includes/result-item.nunjucks" %}
+        </div>
+      </li>
+    {% endfor %}
+  </ol>
 </div>
 {% endblock %}

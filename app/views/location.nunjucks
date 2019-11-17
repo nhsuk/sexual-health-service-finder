@@ -8,38 +8,34 @@
 
 <h1 class="local-header--title--question local-header--title__step">{{ locationHeading }}</h1>
 
-{% if errorMessage or postcodeNotFound %}
-<div class="error-summary">
-  <h2 class="local-header--error error-summary-heading">
-    {% if (postcodeNotFound) %}
-      {% include 'includes/postcodeNotFoundMessage.nunjucks' %}
-    {% elif errorMessage %}
-      {{ errorMessage }}
-    {% endif %}
-  </h2>
-</div>
-{% endif %}
-
 <form method="get" class="form" action="{{ siteRoot }}/results">
-  <div class="reading-width">
-    <div class="form-item-wrapper">
-      <div class="form-group {% if errorMessage or postcodeNotFound %} error {% endif %}">
-        <label class="form-label-bold" for="location">Enter a postcode in England</label>
-          <p class="form-group">
-            <input autocomplete="off" type="text" class="form-control" name="location" id="location" value=""{% if errorMessage %} aria-describedby="error-message" aria-invalid="true"{% endif %}>
-          </p>
-        </div>
-      </div>
-      <input type="hidden" name="type" value={{type}} />
-      {% if origin %}
-      <input type="hidden" name="origin" value={{origin}} />
+
+  <input type="hidden" name="type" value={{type}} />
+  {% if origin %}
+  <input type="hidden" name="origin" value={{origin}} />
+  {% endif %}
+
+  <div class="nhsuk-form-group {% if errorMessage or postcodeNotFound %}nhsuk-form-group--error{% endif %}">
+    <label class="nhsuk-label" for="location">
+      Enter a postcode in England
+    </label>
+
+    {% if errorMessage or postcodeNotFound %}
+    <span class="nhsuk-error-message" id="example-error-error">
+      {% if (postcodeNotFound) %}
+        {% include 'includes/postcodeNotFoundMessage.nunjucks' %}
+      {% elif errorMessage %}
+        {{ errorMessage }}
       {% endif %}
-    </div>
-    <div class="form-item-wrapper">
-      <p class="form-group">
-        <input type="submit" class="button" value="Continue">
-      </p>
-    </div>
+    </span>
+    {% endif %}
+
+    <input class="nhsuk-input nhsuk-input--width-20" id="location" name="location" type="text">
   </div>
+
+  {{ button({
+    "text": "Continue"
+  })}}
+
 </form>
 {% endblock %}

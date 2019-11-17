@@ -26,10 +26,6 @@ describe('Recommend page', () => {
       $ = cheerio.load(res.text);
     });
 
-    it('step count should be \'Step 3 of 4\'', () => {
-      expect($('.local-header--step').text()).to.equal('Step 3 of 4');
-    });
-
     it('page title should be \'We recommend that you\' if symptoms question is answered yes', () => {
       expect($('.local-header--title--question').text()).to.equal('We recommend:');
     });

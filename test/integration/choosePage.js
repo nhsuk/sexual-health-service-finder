@@ -24,16 +24,12 @@ describe('Choose page', () => {
       $ = cheerio.load(res.text);
     });
 
-    it('step count should be \'Step 3 of 4\'', async () => {
-      expect($('.local-header--step').text()).to.equal('Step 3 of 4');
-    });
-
     it('should not be indexed', async () => {
       expect($('meta[name=robots]').attr('content')).to.equal('noindex');
     });
 
     it('page title should be \'How do you want to get a test?\' if age question is answered 16-24', async () => {
-      expect($('.local-header--title--question').text()).to.equal('How do you want to get a test?');
+      expect($('.local-header--title--question').text()).to.contain('How do you want to get a test?');
     });
 
     it('page options should be related to being under 25 (free), if age question is answered 16-24', async () => {
@@ -50,10 +46,6 @@ describe('Choose page', () => {
         .query({ age: constants.age.over25 });
       iExpect.htmlWith200Status(res);
       $ = cheerio.load(res.text);
-    });
-
-    it('step count should be \'Step 3 of 4\'', async () => {
-      expect($('.local-header--step').text()).to.equal('Step 3 of 4');
     });
 
     it('page title should be \'How do you want to get a test?\' if age question is answered 25 or older', async () => {

@@ -5,46 +5,53 @@
 {% endblock %}
 
 {% block content %}
-  <h1 class="local-header--title--question local-header--title__step">Do you have any of these symptoms?</h1>
-  <ul>
-    <li>pain when peeing</li>
-    <li>discharge from your bottom</li>
-    <li>vaginal discharge that's not usual for you</li>
-    <li>bleeding between periods</li>
-    <li>bleeding during or after sex</li>
-    <li>pelvic pain (in your lower tummy) - you may have this during sex</li>
-    <li>discharge from your penis</li>
-    <li>pain in your testicles</li>
-  </ul>
-
-  {% if errorMessage %}
-  <div class="error-summary">
-    <h2 class="local-header--error error-summary-heading">
-      {{ errorMessage }}
-    </h2>
-  </div>
-  {% endif %}
 
   <form method="get" class="form" action="{{ siteRoot }}/recommend">
-    <div class="reading-width">
-      <div class="form-group {% if errorMessage %} error {% endif %}">
-        <fieldset id="symptoms">
-          <div class="multiple-choice">
-            <label class="sr-only" for="yes">Yes - I have one or more of these symptoms</label>
-            <input id="yes" name="symptoms" type="radio" value="yes" {% if errorMessage %} aria-describedby="error-message" aria-invalid="true"{% endif %}>
-            <label class="multiple-choice--radio" aria-hidden="true" for="yes"><strong>Yes</strong> - I have one or more of these symptoms</label>
-          </div>
-          <div class="multiple-choice">
-            <label class="sr-only" for="no">No - I don't have any of these symptoms</label>
-            <input id="no" name="symptoms" type="radio" value="no" {% if errorMessage %} aria-describedby="error-message" aria-invalid="true"{% endif %}>
-            <label class="multiple-choice--radio" aria-hidden="true" for="no"><strong>No</strong> - I don't have any of these symptoms</label>
-          </div>
-        </fieldset>
-      </div>
+    <div class="nhsuk-form-group {% if errorMessage %}nhsuk-form-group--error{% endif %}">
 
-      <p>
-      <input type="submit" class="button" value="Continue">
-      </p>
+      <fieldset class="nhsuk-fieldset"{% if errorMessage %} aria-describedby="example-error-hint example-error-error"{% endif %}>
+        <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+          <h1 class="nhsuk-fieldset__heading local-header--title--question local-header--title__step">
+            Do you have any of these symptoms?
+          </h1>
+        </legend>
+
+        <span class="nhsuk-hint">
+          <ul>
+            <li>pain when peeing</li>
+            <li>discharge from your bottom</li>
+            <li>vaginal discharge that's not usual for you</li>
+            <li>bleeding between periods</li>
+            <li>bleeding during or after sex</li>
+            <li>pelvic pain (in your lower tummy) - you may have this during sex</li>
+            <li>discharge from your penis</li>
+            <li>pain in your testicles</li>
+          </ul>
+        </span>
+
+        <span class="nhsuk-error-message" id="example-error-error">
+          <span class="nhsuk-u-visually-hidden">Error:</span> {{ errorMessage }}
+        </span>
+
+        <div class="nhsuk-radios">
+          <div class="nhsuk-radios__item">
+            <input class="nhsuk-radios__input" id="symptoms-1" name="symptoms" type="radio" value="yes">
+            <label class="nhsuk-label nhsuk-radios__label" for="symptoms-1">
+              Yes - I have one or more of these symptoms
+            </label>
+          </div>
+          <div class="nhsuk-radios__item">
+            <input class="nhsuk-radios__input" id="symptoms-2" name="symptoms" type="radio" value="no">
+            <label class="nhsuk-label nhsuk-radios__label" for="symptoms-2">
+              No - I don't have any of these symptoms
+            </label>
+          </div>
+        </div>
+
+      </fieldset>
     </div>
+    {{ button({
+      "text": "Continue"
+    }) }}
   </form>
 {% endblock %}

@@ -15,7 +15,7 @@ const symptomsRoute = `${constants.siteRoot}/symptoms`;
 const recommendRoute = `${constants.siteRoot}/recommend`;
 
 function expectSymptomsPageAgain($) {
-  expect($('.error-summary-heading').text()).to.contain(mandatorySelectionMessage());
+  expect($('.nhsuk-error-message').text()).to.contain(mandatorySelectionMessage());
   expect($('.local-header--title--question').text()).to.equal('Do you have any of these symptoms?');
 }
 
@@ -26,10 +26,6 @@ describe('Symptoms page', () => {
     before('make request', async () => {
       const res = await chai.request(server).get(symptomsRoute);
       $ = cheerio.load(res.text);
-    });
-
-    it('step count should be \'Step 1 of 4\'', async () => {
-      expect($('.local-header--step').text()).to.equal('Step 1 of 4');
     });
 
     it('page title should be \'Do you have any of the following symptoms?\'', async () => {

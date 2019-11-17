@@ -6,41 +6,43 @@
 
 {% block content %}
 
-  <h1 class="local-header--title--question local-header--title__step">How old are you?</h1>
-  
-  {% if errorMessage %}
-    <div class="error-summary">
-      <h2 class="local-header--error error-summary-heading">
-        {{ errorMessage }}
-      </h2>
-    </div>
-  {% endif %}
-
   <form method="get" class="form" action="{{ siteRoot }}/choose">
-    <div class="reading-width">
-      <div class="form-group {% if errorMessage %} error {% endif %}">
-        <fieldset id="age">
-          <div class="multiple-choice">
-            <label class="sr-only" for="1">15 or younger</label>
-            <input id="1" name="age" type="radio" value="1" {% if errorMessage %} aria-describedby="error-message" aria-invalid="true"{% endif %}>
-            <label class="multiple-choice--radio" aria-hidden="true" for="1">15 or younger</label>
-          </div>
-          <div class="multiple-choice">
-            <label class="sr-only" for="2">16 to 24</label>
-            <input id="2" name="age" type="radio" value="2" {% if errorMessage %} aria-describedby="error-message" aria-invalid="true"{% endif %}>
-            <label class="multiple-choice--radio" aria-hidden="true" for="2">16 to 24</label>
-          </div>
-          <div class="multiple-choice">
-            <label class="sr-only" for="3">25 or older</label>
-            <input id="3" name="age" type="radio" value="3" {% if errorMessage %} aria-describedby="error-message" aria-invalid="true"{% endif %}>
-            <label class="multiple-choice--radio" aria-hidden="true" for="3">25 or older</label>
-          </div>
-        </fieldset>
-      </div>
+    <div class="nhsuk-form-group {% if errorMessage %}nhsuk-form-group--error{% endif %}">
+      <fieldset class="nhsuk-fieldset"{% if errorMessage %} aria-describedby="example-error-hint example-error-error"{% endif %}>
+        <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+          <h1 class="nhsuk-fieldset__heading local-header--title--question local-header--title__step">
+            How old are you?
+          </h1>
+        </legend>
 
-      <p>
-      <input type="submit" class="button" value="Continue">
-      </p>
+        <span class="nhsuk-error-message" id="example-error-error">
+          <span class="nhsuk-u-visually-hidden">Error:</span> {{ errorMessage }}
+        </span>
+
+        <div class="nhsuk-radios">
+          <div class="nhsuk-radios__item">
+            <input class="nhsuk-radios__input" id="age-1" name="age" type="radio" value="1">
+            <label class="nhsuk-label nhsuk-radios__label" for="age-1">
+              15 or younger
+            </label>
+          </div>
+          <div class="nhsuk-radios__item">
+            <input class="nhsuk-radios__input" id="age-2" name="age" type="radio" value="2">
+            <label class="nhsuk-label nhsuk-radios__label" for="age-2">
+              16 to 24
+            </label>
+          </div>
+          <div class="nhsuk-radios__item">
+            <input class="nhsuk-radios__input" id="age-3" name="age" type="radio" value="3">
+            <label class="nhsuk-label nhsuk-radios__label" for="age-3">
+              25 or older
+            </label>
+          </div>
+        </div>
+      </div>
     </div>
+    {{ button({
+      "text": "Continue"
+    }) }}
   </form>
 {% endblock %}

@@ -1,36 +1,36 @@
-<fieldset id="choose" class="mutliple-choice-choose">
-  <div class="multiple-choice multiple-choice--description">
-    <label class="sr-only" for="1">Collect a free test kit near you</label>
-    <input id="1" name="type" type="radio" value="kit" {% if errorMessage %} aria-describedby="error-message" aria-invalid="true"{% endif %}>
-    <label class="multiple-choice--radio" aria-hidden="true" for="1">
-      <span class="multiple--choice-option">Collect a free test kit near you</span>
-    </label>
-    <div class="details details__small details--choice multiple-choice--option-description" role="group">
-      <a href="javascript:void(0)" class="summary--toggle about_free_test_kits_tracking" aria-expanded="false"><span class="caret"></span>About free test kits</a>
-
-      <div class="details__content" id="details-content-1" aria-hidden="true">
-        <div class="reading-width">
+<div class="nhsuk-radios">
+  <div class="nhsuk-radios__item">
+    <input class="nhsuk-radios__input" id="free-1" name="type" type="radio" value="kit">
+    <label class="nhsuk-label nhsuk-radios__label" for="free-1">
+      Collect a free test kit near you
+      <details class="nhsuk-details">
+        <summary class="nhsuk-details__summary">
+          <span class="nhsuk-details__summary-text">
+            About free test kits
+          </span>
+        </summary>
+        <div class="nhsuk-details__text">
           <p>You pick up a kit from somewhere nearby. You'll need to take samples from areas that might be infected. You may have to:</p>
-          <ul>
-            <li>wipe a cotton bud inside your vagina, anus or mouth</li>
-            <li>pee into a container</li>
-          </ul>
-          <p>You send your samples by Freepost to be tested. You get your results by phone or text message within 2 weeks. Your results are private. You might have to pay a prescription charge if you need treatment.</p>
+            <ul>
+              <li>wipe a cotton bud inside your vagina, anus or mouth</li>
+              <li>pee into a container</li>
+            </ul>
+            <p>You send your samples by Freepost to be tested. You get your results by phone or text message within 2 weeks. Your results are private. You might have to pay a prescription charge if you need treatment.</p>
         </div>
-      </div>
-    </div>
-  </div>
-  <div class="multiple-choice multiple-choice--description">
-    <label class="sr-only" for="2">Order a free test kit online</label>
-    <input id="2" name="type" type="radio" value="online" {% if errorMessage %} aria-describedby="error-message" aria-invalid="true"{% endif %}>
-    <label class="multiple-choice--radio" aria-hidden="true" for="2">
-      <span class="multiple--choice-option">Order a free test kit online</span>
+      </details>
     </label>
-    <div class="details details__small details--choice multiple-choice--option-description" role="group">
-      <a href="javascript:void(0)" class="summary--toggle about_free_test_kits_online_tracking" aria-expanded="false"><span class="caret"></span>About free test kits online</a>
-
-      <div class="details__content" id="details-content-1" aria-hidden="true">
-        <div class="reading-width">
+  </div>
+  <div class="nhsuk-radios__item">
+    <input class="nhsuk-radios__input" id="free-2" name="type" type="radio" value="online">
+    <label class="nhsuk-label nhsuk-radios__label" for="free-2">
+      Order a free test kit online
+      <details class="nhsuk-details">
+        <summary class="nhsuk-details__summary">
+          <span class="nhsuk-details__summary-text">
+            About free test kits online
+          </span>
+        </summary>
+        <div class="nhsuk-details__text">
           <p>A kit will be sent to you in a plain envelope. You'll need to take samples from the areas that might be infected. You may have to:</p>
           <ul>
             <li>wipe a cotton bud inside your vagina, anus or mouth</li>
@@ -38,15 +38,14 @@
           </ul>
           <p>You'll send your samples by Freepost to be tested. You'll get your results by phone or text message within 2 weeks. Your results are private. You might have to pay a prescription charge if you need treatment.</p>
         </div>
-      </div>
-    </div>
-  </div>
-  <div class="multiple-choice multiple-choice--description">
-    <label class="sr-only" for="3">See a sexual health professional near you</label>
-    <input id="3" name="type" type="radio" value="professional" {% if errorMessage %} aria-describedby="error-message" aria-invalid="true"{% endif %}>
-    <label class="multiple-choice--radio" aria-hidden="true" for="3">
-      <span class="multiple--choice-option">See a sexual health professional near you</span>
+      </details>
     </label>
-    {% include "includes/about-sexperts.nunjucks" %}
   </div>
-</fieldset>
+  <div class="nhsuk-radios__item">
+    <input class="nhsuk-radios__input" id="free-3" name="type" type="radio" value="professional">
+    <label class="nhsuk-label nhsuk-radios__label" for="free-3">
+      See a sexual health professional near you
+      {% include "includes/about-sexperts.nunjucks" %}
+    </label>
+  </div>
+</div>

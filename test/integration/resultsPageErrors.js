@@ -16,7 +16,7 @@ function notFoundPostcodeMessage(location) {
 
 function expectErrorMessage(res, message) {
   const $ = cheerio.load(res.text);
-  const error = getTextOnlyFromElement($('.error-summary-heading'));
+  const error = getTextOnlyFromElement($('.nhsuk-error-message'));
 
   expect(error).to.equal(message);
 }

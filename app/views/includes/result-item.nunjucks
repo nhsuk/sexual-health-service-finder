@@ -1,12 +1,12 @@
 {% if service.distanceMessage %}
-  <p class="results__address results__address-distance">
-    <span class="sr-only">{{ service.name }} is </span>{{ service.distanceMessage }}
+  <p class="nhsuk-body-s nhsuk-u-margin-bottom-0 results__address results__address-distance">
+    <span class="nhsuk-u-visually-hidden">{{ service.name }} is </span>{{ service.distanceMessage }}
   </p>
 {% endif %}
 
-<h3 class="results__name">
+<h2 class="results__name">
   {{ service.name }}
-</h3>
+</h2>
 
 {% if service.address %}
   <p class="results__address results__address-lines">
@@ -17,49 +17,52 @@
 {% if service.contacts %}
   <p class="results__address results__telephone">
     {% if service.contacts.telephoneNumber %}
-      <a href="tel:{{ service.contacts.telephoneNumber }}" class="results__telephone--mobile" class="telephone_tracking"> {{ service.contacts.telephoneNumber }} </a>
-      <span class="results__telephone--desktop"> {{ service.contacts.telephoneNumber }} </span>
+      <a href="tel:{{ service.contacts.telephoneNumber }}" class="results__telephone--mobile" class="telephone_tracking">
+        {{ service.contacts.telephoneNumber }}
+      </a>
     {% endif %}
   </p>
 {% endif %}
 
 {% if service.address %}
   <p class="results__item__link">
-    <a class="maplink" href="{{service.mapUrl}}" class="maps_tracking">See map and directions<span class="sr-only"> for {{ service.name }} at {{ service.address }}</span></a>
+    <a class="maplink" href="{{service.mapUrl}}" class="maps_tracking">See map and directions<span class="nhsuk-u-visually-hidden"> for {{ service.name }} at {{ service.address }}</span></a>
   </p>
 {% endif %}
 
 {% if service.openingTimes %}
-  <div class="details details__small details__results results__item__opening-times" role="group">
-    <a href="javascript:void(0)" class="summary--toggle opening_times_tracking" aria-expanded="false"><span class="caret"></span>See opening times</a>
-
-    <div class="details__content" id="details-content-0" aria-hidden="true">
-      <div class="reading-width">
-        {% if service.openingTimes.description %}
-          <p class="results__openingTimes">
-            {# Replace '\n' with '<br />' to maintain original formatting #}
-            {{ service.openingTimes.description | escape | nl2br }}
-          </p>
-        {% endif %}
-        {% if service.openingTimes.formatted %}
-          {% include "includes/opening-times.nunjucks" %}
-        {% endif %}
-      </div>
+  <details class="nhsuk-details">
+    <summary class="nhsuk-details__summary">
+      <span class="nhsuk-details__summary-text">
+        See opening times
+      </span>
+    </summary>
+    <div class="nhsuk-details__text">
+      {% if service.openingTimes.description %}
+        <p class="results__openingTimes">
+          {# Replace '\n' with '<br />' to maintain original formatting #}
+          {{ service.openingTimes.description | escape | nl2br }}
+        </p>
+      {% endif %}
+      {% if service.openingTimes.formatted %}
+        {% include "includes/opening-times.nunjucks" %}
+      {% endif %}
     </div>
-  </div>
+  </details>
 {% endif %}
 
 {% if service.serviceDetails %}
-  <div class="details details__small details__results results__item__service-details" role="group">
-    <a href="javascript:void(0)" class="summary--toggle service_information_tracking" aria-expanded="false"><span class="caret"></span>See service information</a>
-
-    <div class="details__content" id="details-content-0">
-      <div class="reading-width">
-        <p class="results__serviceDetails">
-          {# Replace '\n' with '<br />' to maintain original formatting #}
-          {{ service.serviceDetails | escape | nl2br }}
-        </p>
-      </div>
+  <details class="nhsuk-details">
+    <summary class="nhsuk-details__summary">
+      <span class="nhsuk-details__summary-text">
+        See service information
+      </span>
+    </summary>
+    <div class="nhsuk-details__text">
+      <p class="results__serviceDetails">
+        {# Replace '\n' with '<br />' to maintain original formatting #}
+        {{ service.serviceDetails | escape | nl2br }}
+      </p>
     </div>
-  </div>
+  </details>
 {% endif %}

@@ -16,22 +16,11 @@ const ageRoute = `${constants.siteRoot}/age`;
 const chooseRoute = `${constants.siteRoot}/choose`;
 
 function expectAgePageAgain($) {
-  expect($('.error-summary-heading').text()).to.contain(mandatorySelectionMessage());
-  expect($('.local-header--title--question').text()).to.equal('How old are you?');
+  expect($('.nhsuk-error-message').text()).to.contain(mandatorySelectionMessage());
+  expect($('.local-header--title--question').text()).to.contains('How old are you?');
 }
 
 describe('Age page', () => {
-  it('step count should be \'Step 3 of 4\'', async () => {
-    const res = await chai.request(server)
-      .get(recommendRoute)
-      .query({ symptoms: 'no' });
-
-    iExpect.htmlWith200Status(res);
-    const $ = cheerio.load(res.text);
-
-    expect($('.local-header--step').text()).to.equal('Step 2 of 4');
-  });
-
   it('page title should be \'How old are you?\' if symptoms question is answered no', async () => {
     const res = await chai.request(server)
       .get(recommendRoute)
@@ -39,7 +28,7 @@ describe('Age page', () => {
 
     iExpect.htmlWith200Status(res);
     const $ = cheerio.load(res.text);
-    expect($('.local-header--title--question').text()).to.equal('How old are you?');
+    expect($('.local-header--title--question').text()).to.contains('How old are you?');
   });
 
   it('should not be indexed', async () => {
@@ -70,14 +59,6 @@ describe('Age page', () => {
 
       iExpect.htmlWith200Status(res);
       $ = cheerio.load(res.text);
-    });
-
-    it('the breadcrumb should have a link back to the Choices \'Services near you\'', () => {
-      expect($($('.nhsuk-c-breadcrumb__item a')[1]).attr('href')).to.equal('https://www.nhs.uk/service-search');
-    });
-
-    it('the page should have a link back to the Choices service search', () => {
-      expect($('.back-to-choices').attr('href')).to.equal('https://www.nhs.uk/service-search');
     });
   });
 });
