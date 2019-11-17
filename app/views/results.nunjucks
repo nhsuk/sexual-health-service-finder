@@ -4,11 +4,8 @@
   <meta name='robots' content='noindex'>
 {% endblock %}
 
-{% block header %}
-<h1 class="local-header--title--question">{{ resultsHeading }}</h1>
-{% endblock %}
-
 {% block content %}
+<h1 class="local-header--title--question">{{ resultsHeading }}</h1>
 <div class="results">
   {% if resultsExplanation %}
     <p class='explanation'>{{ resultsExplanation }}</p>

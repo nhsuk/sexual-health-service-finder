@@ -4,18 +4,16 @@
   <meta name='robots' content='noindex'>
 {% endblock %}
 
-{% block header %}
-  <p class="local-header--step">Step 2 of 4</p>
-  <h1 class="local-header--title--question local-header--title__step">How old are you?</h1>
-{% endblock %}
-
 {% block content %}
+
+  <h1 class="local-header--title--question local-header--title__step">How old are you?</h1>
+  
   {% if errorMessage %}
-  <div class="error-summary">
-    <h2 class="local-header--error error-summary-heading">
-      {{ errorMessage }}
-    </h2>
-  </div>
+    <div class="error-summary">
+      <h2 class="local-header--error error-summary-heading">
+        {{ errorMessage }}
+      </h2>
+    </div>
   {% endif %}
 
   <form method="get" class="form" action="{{ siteRoot }}/choose">

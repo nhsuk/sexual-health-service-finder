@@ -4,11 +4,7 @@
 
 {% block pageTitle %}{{ message }}{% endblock %}
 
-{% block header %}
-  <h1 class="local-header--title--question">{{ message }}</h1>
-{% endblock %}
 {% block content %}
-  <div class="reading-width">
-    <p>Please try again later.</p>
-  <div>
+<h1 class="local-header--title--question">{{ message }}</h1>
+<p>Please try again later.</p>
 {% endblock %}

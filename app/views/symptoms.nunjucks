@@ -4,12 +4,8 @@
   <meta name='robots' content='noindex'>
 {% endblock %}
 
-{% block header %}
-  <p class="local-header--step">Step 1 of 4</p>
-  <h1 class="local-header--title--question local-header--title__step">Do you have any of these symptoms?</h1>
-{% endblock %}
-
 {% block content %}
+  <h1 class="local-header--title--question local-header--title__step">Do you have any of these symptoms?</h1>
   <ul>
     <li>pain when peeing</li>
     <li>discharge from your bottom</li>

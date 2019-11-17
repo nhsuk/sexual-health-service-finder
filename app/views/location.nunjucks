@@ -4,12 +4,10 @@
   <meta name='robots' content='noindex'>
 {% endblock %}
 
-{% block header %}
-  <p class="local-header--step">Step 4 of 4</p>
-  <h1 class="local-header--title--question local-header--title__step">{{ locationHeading }}</h1>
-{% endblock %}
-
 {% block content %}
+
+<h1 class="local-header--title--question local-header--title__step">{{ locationHeading }}</h1>
+
 {% if errorMessage or postcodeNotFound %}
 <div class="error-summary">
   <h2 class="local-header--error error-summary-heading">
