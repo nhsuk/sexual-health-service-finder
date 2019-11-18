@@ -35,20 +35,12 @@ describe('Recommend page', () => {
     });
 
     it('page content should be related to having symptoms, if symptoms question is answered yes', () => {
-      expect($($('.nhsuk-o-grid p')[3]).text()).to.equal('This is because you have symptoms.');
+      expect($($('main p')[0]).text()).to.equal('This is because you have symptoms.');
     });
 
     it('the page should have a link to the Location search page with the right params for symptoms', async () => {
-      expect($('.button').attr('href'))
+      expect($('.nhsuk-button').attr('href'))
         .to.equal(`${locationSearchRoute}?type=${constants.serviceTypes.professional}`);
-    });
-
-    it('the breadcrumb should have a link back to the Choices \'Services near you\'', async () => {
-      expect($($('.nhsuk-c-breadcrumb__item a')[1]).attr('href')).to.equal('https://www.nhs.uk/service-search');
-    });
-
-    it('the page should have a link back to the Choices service search', async () => {
-      expect($('.back-to-choices').attr('href')).to.equal('https://www.nhs.uk/service-search');
     });
   });
 
@@ -69,11 +61,11 @@ describe('Recommend page', () => {
     });
 
     it('page content should be related to being under 16, if age question is answered 15 or younger', () => {
-      expect($('.nhsuk-o-grid p').eq(3).text()).to.equal('We\'re not able to offer test kits if you\'re under 16. You\'ll need to see a health professional to get tested.');
+      expect($($('main p')[0]).text()).to.equal('We\'re not able to offer test kits if you\'re under 16. You\'ll need to see a health professional to get tested.');
     });
 
     it('the page should have a link to the Location search page with the right params for age 15 or younger', () => {
-      expect($('.button').attr('href'))
+      expect($('.nhsuk-button').attr('href'))
         .to.equal(`${locationSearchRoute}?type=${constants.serviceTypes.professional}`);
     });
   });

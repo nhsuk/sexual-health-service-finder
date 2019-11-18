@@ -30,19 +30,7 @@ describe('Start page', () => {
   it('should link to the \'Symptoms\' page', async () => {
     const symptomsPage = `${constants.siteRoot}/symptoms`;
 
-    expect($('.start-button').attr('href'))
+    expect($('.nhsuk-button').attr('href'))
       .to.equal(symptomsPage);
-  });
-
-  describe('return to Choices services', () => {
-    it('the breadcrumb should have a link back to the Choices \'Services near you\'', async () => {
-      expect($($('.nhsuk-c-breadcrumb__item a')[1]).attr('href'))
-        .to.equal('https://www.nhs.uk/service-search');
-    });
-
-    it('the page should have a link back to the Choices service search', async () => {
-      expect($('.back-to-choices').attr('href'))
-        .to.equal('https://www.nhs.uk/service-search');
-    });
   });
 });

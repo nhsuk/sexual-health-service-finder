@@ -78,11 +78,11 @@ describe('Results page results', () => {
         const searchResultsAddress = $('.results__address.results__address-lines');
         const searchResultsPhone = $('.results__address.results__telephone a');
         const searchResultsMapLink = $('.results__item__link a');
-        const searchResultsOpeningTimes = $('.results__item__opening-times a');
-        const searchResultsService = $('.results__item__service-details a');
+        const searchResultsOpeningTimes = $('.nhsuk-details__summary-text');
+        const searchResultsService = $('.results__item__service-details');
 
-        expect(searchResultsOpeningTimes.text()).to.equal('See opening times'.repeat(30));
-        expect(searchResultsService.text()).to.equal('See service information'.repeat(30));
+        expect(searchResultsOpeningTimes.text()).to.contain('See opening times');
+        expect(searchResultsService.text()).to.contain('See service information');
 
         searchResultsMapLink.toArray().forEach((result, index) => {
           const name = getTextOnlyFromElement($('.results__name').eq(index));

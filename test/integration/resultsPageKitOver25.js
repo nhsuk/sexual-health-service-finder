@@ -42,7 +42,7 @@ describe('Results page for kits in over 25 year olds', () => {
 
   describe('layout', () => {
     it('should contain a header and other info related to the search', () => {
-      const resultsHeader = getTextOnlyFromElement($('.nhsuk-page-heading'));
+      const resultsHeader = getTextOnlyFromElement($('h1'));
       const resultsSubHeader = getTextOnlyFromElement($('.results p.explanation'));
       const resultsOnwards = getTextOnlyFromElement($('.results p.links'));
 
@@ -59,8 +59,8 @@ describe('Results page for kits in over 25 year olds', () => {
       const address = getTextOnlyFromElement($('.results__address.results__address-lines').first());
       const telephone = getTextOnlyFromElement($('.results__address.results__telephone a').first());
       const mapLink = getTextOnlyFromElement($('.results__item__link a').first());
-      const openingTimes = getTextOnlyFromElement($('.results__item__opening-times a').first());
-      const serviceInfo = getTextOnlyFromElement($('.results__item__service-details a').first());
+      const openingTimes = getTextOnlyFromElement($('.results__item__opening-times span').first());
+      const serviceInfo = getTextOnlyFromElement($('.results__item__service-details span').first());
 
       expect(openingTimes).to.equal('See opening times');
       expect(serviceInfo).to.equal('');

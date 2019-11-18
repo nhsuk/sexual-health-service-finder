@@ -42,7 +42,7 @@ describe('Results page for sexual health professionals for 16 to 24', () => {
 
   describe('layout', () => {
     it('should contain a header and other info related to the search', () => {
-      const resultsHeader = getTextOnlyFromElement($('.nhsuk-page-heading'));
+      const resultsHeader = getTextOnlyFromElement($('h1'));
       const resultsSubHeader = getTextOnlyFromElement($('.results p.explanation'));
       const resultsOnwards1 = getTextOnlyFromElement($('.results li.link1'));
       const resultsOnwards2 = getTextOnlyFromElement($('.results li.link2'));

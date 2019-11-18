@@ -31,7 +31,7 @@
 {% endif %}
 
 {% if service.openingTimes %}
-  <details class="nhsuk-details">
+  <details class="nhsuk-details. results__item__opening-times">
     <summary class="nhsuk-details__summary">
       <span class="nhsuk-details__summary-text">
         See opening times
@@ -52,7 +52,7 @@
 {% endif %}
 
 {% if service.serviceDetails %}
-  <details class="nhsuk-details">
+  <details class="nhsuk-details results__item__service-details">
     <summary class="nhsuk-details__summary">
       <span class="nhsuk-details__summary-text">
         See service information

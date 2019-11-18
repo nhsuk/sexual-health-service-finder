@@ -56,7 +56,7 @@ describe('Results page for sexual health professionals (symptoms and under16)', 
 
   describe('layout', () => {
     it('should contain a header and other info related to the search', () => {
-      const resultsHeader = getTextOnlyFromElement($('.nhsuk-page-heading'));
+      const resultsHeader = getTextOnlyFromElement($('h1'));
       const resultsSubHeader = getTextOnlyFromElement($('.results p.explanation'));
       const resultsOnwards = getTextOnlyFromElement($('.results p.links'));
       const resultsOnwards1 = getTextOnlyFromElement($('.results p.link1'));

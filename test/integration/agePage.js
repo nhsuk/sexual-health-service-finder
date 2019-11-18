@@ -12,7 +12,6 @@ const expect = chai.expect;
 chai.use(chaiHttp);
 
 const recommendRoute = `${constants.siteRoot}/recommend`;
-const ageRoute = `${constants.siteRoot}/age`;
 const chooseRoute = `${constants.siteRoot}/choose`;
 
 function expectAgePageAgain($) {
@@ -49,16 +48,5 @@ describe('Age page', () => {
     iExpect.htmlWith200Status(res);
     const $ = cheerio.load(res.text);
     expectAgePageAgain($);
-  });
-
-  describe('return to Choices services', () => {
-    let $;
-
-    before('make request', async () => {
-      const res = await chai.request(server).get(ageRoute);
-
-      iExpect.htmlWith200Status(res);
-      $ = cheerio.load(res.text);
-    });
   });
 });
