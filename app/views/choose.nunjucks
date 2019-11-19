@@ -6,6 +6,11 @@
 
 {% block content %}
 
+{{ backLink({
+  "href": "javascript:history.go(-1)",
+  "text": "Go back"
+})}}
+
 <form method="get" class="form" action="{{ siteRoot }}/location">
   <input type="hidden" name="origin" value="{{ origin }}" />
   

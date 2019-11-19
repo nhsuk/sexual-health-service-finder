@@ -1,6 +1,19 @@
 {% set analyticsPageTitle = 'Start' %}
 {% extends 'layout.nunjucks' %}
 
+{% block breadcrumbs %}
+{{ breadcrumb({
+  items: [
+    {
+      href: "/",
+      text: "Home"
+    }
+  ],
+  href: "https://www.nhs.uk/service-search",
+  text: "Services near you"
+})}}
+{% endblock %}
+
 {% block content %}
 {% if errorMessage %}
 <div class="error-summary">

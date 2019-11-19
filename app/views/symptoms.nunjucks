@@ -6,6 +6,11 @@
 
 {% block content %}
 
+  {{ backLink({
+    "href": siteRoot,
+    "text": "Go back"
+  }) }}
+
   <form method="get" class="form" action="{{ siteRoot }}/recommend">
     <div class="nhsuk-form-group {% if errorMessage %}nhsuk-form-group--error{% endif %}">
 

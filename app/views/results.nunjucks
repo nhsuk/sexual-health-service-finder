@@ -5,7 +5,14 @@
 {% endblock %}
 
 {% block content %}
+
+{{ backLink({
+  "href": "javascript:history.go(-1)",
+  "text": "Go back"
+})}}
+
 <h1 class="local-header--title--question">{{ resultsHeading }}</h1>
+
 <div class="results">
   {% if resultsExplanation %}
     <p class='explanation'>{{ resultsExplanation }}</p>

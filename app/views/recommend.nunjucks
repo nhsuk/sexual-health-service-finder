@@ -5,6 +5,10 @@
 {% endblock %}
 
 {% block content %}
+  {{ backLink({
+    "href": siteRoot + "/symptoms",
+    "text": "Go back"
+  }) }}
   <h1 class="local-header--title--question local-header--title__step">We recommend:</h1>
   <ul>
     <li>getting tested by a sexual health professional</li>

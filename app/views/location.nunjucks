@@ -6,6 +6,11 @@
 
 {% block content %}
 
+{{ backLink({
+  "href": "javascript:history.go(-1)",
+  "text": "Go back"
+})}}
+
 <h1 class="local-header--title--question local-header--title__step">{{ locationHeading }}</h1>
 
 <form method="get" class="form" action="{{ siteRoot }}/results">

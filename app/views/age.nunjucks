@@ -5,7 +5,10 @@
 {% endblock %}
 
 {% block content %}
-
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back"
+  })}}
   <form method="get" class="form" action="{{ siteRoot }}/choose">
     <div class="nhsuk-form-group {% if errorMessage %}nhsuk-form-group--error{% endif %}">
       <fieldset class="nhsuk-fieldset"{% if errorMessage %} aria-describedby="example-error-hint example-error-error"{% endif %}>
