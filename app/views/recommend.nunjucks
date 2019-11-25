@@ -4,11 +4,24 @@
   <meta name='robots' content='noindex'>
 {% endblock %}
 
+{% block breadcrumbs %}
+  {{ breadcrumb({
+    items: [
+      {
+        href: "/",
+        text: "Home"
+      },
+      {
+        href: "https://www.nhs.uk/service-search",
+        text: "Services near you"
+      }
+    ],
+    href: siteRoot,
+    text: "Find a chlamydia test"
+  })}}
+{% endblock %}
+
 {% block content %}
-  {{ backLink({
-    "href": siteRoot + "/symptoms",
-    "text": "Go back"
-  }) }}
   <h1 class="local-header--title--question local-header--title__step">We recommend:</h1>
   <ul>
     <li>getting tested by a sexual health professional</li>
@@ -23,6 +36,11 @@
   {{ button({
     "href": siteRoot + "/location?type=" + type,
     "text": "Continue"
+  }) }}
+
+  {{ backLink({
+    "href": siteRoot + "/symptoms",
+    "text": "Go back"
   }) }}
 
  {% endblock %}

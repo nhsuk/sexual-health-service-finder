@@ -4,11 +4,25 @@
   <meta name='robots' content='noindex'>
 {% endblock %}
 
-{% block content %}
-  {{ backLink({
-    "href": "javascript:history.go(-1)",
-    "text": "Go back"
+{% block breadcrumbs %}
+  {{ breadcrumb({
+    items: [
+      {
+        href: "/",
+        text: "Home"
+      },
+      {
+        href: "https://www.nhs.uk/service-search",
+        text: "Services near you"
+      }
+    ],
+    href: siteRoot,
+    text: "Find a chlamydia test"
   })}}
+{% endblock %}
+
+{% block content %}
+
   <form method="get" class="form" action="{{ siteRoot }}/choose">
     <div class="nhsuk-form-group {% if errorMessage %}nhsuk-form-group--error{% endif %}">
       <fieldset class="nhsuk-fieldset"{% if errorMessage %} aria-describedby="example-error-hint example-error-error"{% endif %}>
@@ -48,4 +62,8 @@
       "text": "Continue"
     }) }}
   </form>
+   {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back"
+  })}}
 {% endblock %}
