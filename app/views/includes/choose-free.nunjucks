@@ -3,7 +3,7 @@
     <input class="nhsuk-radios__input" id="free-1" name="type" type="radio" value="kit">
     <label class="nhsuk-label nhsuk-radios__label" for="free-1">
       Collect a free test kit near you
-      <details class="nhsuk-details">
+      <details class="nhsuk-details nhsuk-u-margin-top-2">
         <summary class="nhsuk-details__summary">
           <span class="nhsuk-details__summary-text">
             About free test kits
@@ -24,7 +24,7 @@
     <input class="nhsuk-radios__input" id="free-2" name="type" type="radio" value="online">
     <label class="nhsuk-label nhsuk-radios__label" for="free-2">
       Order a free test kit online
-      <details class="nhsuk-details">
+      <details class="nhsuk-details nhsuk-u-margin-top-2">
         <summary class="nhsuk-details__summary">
           <span class="nhsuk-details__summary-text">
             About free test kits online
@@ -45,7 +45,9 @@
     <input class="nhsuk-radios__input" id="free-3" name="type" type="radio" value="professional">
     <label class="nhsuk-label nhsuk-radios__label" for="free-3">
       See a sexual health professional near you
-      {% include "includes/about-sexperts.nunjucks" %}
+      <div class="nhsuk-u-margin-top-2"> 
+        {% include "includes/about-sexperts.nunjucks" %}
+      </div>
     </label>
   </div>
 </div>

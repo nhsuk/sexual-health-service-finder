@@ -3,14 +3,16 @@
     <input class="nhsuk-radios__input" id="paid-1" name="type" type="radio" value="professional">
     <label class="nhsuk-label nhsuk-radios__label" for="paid-1">
       See a sexual health professional near you
-      {% include "includes/about-sexperts.nunjucks" %}
+      <div class="nhsuk-u-margin-top-2"> 
+        {% include "includes/about-sexperts.nunjucks" %}
+      </div>
     </label>
   </div>
   <div class="nhsuk-radios__item">
     <input class="nhsuk-radios__input" id="paid-2" name="type" type="radio" value="kit">
     <label class="nhsuk-label nhsuk-radios__label" for="paid-2">
-      Buy a test kit near you</label>
-      <details class="nhsuk-details">
+      Buy a test kit near you
+      <details class="nhsuk-details nhsuk-u-margin-top-2">
         <summary class="nhsuk-details__summary">
           <span class="nhsuk-details__summary-text">
             About test kits

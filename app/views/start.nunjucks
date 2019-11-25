@@ -40,7 +40,7 @@
     "href": siteRoot + "/symptoms"
   }) }}
   <p>Your answers may be used to help improve the NHS website. <a href="https://www.nhs.uk/our-policies/privacy-policy/" class="nhsuk_privacy_policy_tracking">Read the NHS privacy policy</a>.</p>
-  <p>If you would prefer to speak to someone, call the sexual health helpline for advice on <a href="tel:03001237123" class="england_helpline_tracking">0300 123 7123</a>. Open Monday to Friday, 9am to 8pm.</p>
+  <p>If you would prefer to speak to someone, call the sexual health helpline for advice on <a href="03001237123" class="england_helpline_tracking">0300 123 7123</a>. Open Monday to Friday, 9am to 8pm.</p>
   <p><a href="https://www.gov.uk/call-charges" class="details__call-charges">Find out about call charges on GOV.UK</a></p>
 </div>
 
@@ -54,7 +54,7 @@
     <p>To find a chlamydia test in Scotland:</p>
     <ul>
       <li>use the <a href="http://www.sexualhealthscotland.co.uk/get-help/sexual-health-service-finder" class="scotland_finder_tracking">Sexual Health Scotland website</a></li>
-      <li>call Sexual Health Scotland on <a href="tel:0800224488" class="scotland_helpline_tracking">0800 22 44 88</a> (open Monday to Friday, 8am to 10pm; Saturday and Sunday, 9am to 5pm)</li>
+      <li>call Sexual Health Scotland on <a href="0800224488" class="scotland_helpline_tracking">0800 22 44 88</a> (open Monday to Friday, 8am to 10pm; Saturday and Sunday, 9am to 5pm)</li>
     </ul>
     <p><a href="https://www.gov.uk/call-charges" class="details__call-charges">Find out about call charges on GOV.UK</a></p>
   </div>
@@ -70,7 +70,7 @@
     <p>To find a chlamydia test in Wales:</p>
     <ul>
       <li>use the <a href="https://www.nhsdirect.wales.nhs.uk/LocalServices/?s=SexualHealth" class="wales_nhsdirect_tracking">NHS Direct Wales website</a></li>
-      <li>call NHS Direct Wales on <a href="tel:08454647" class="wales_nhsdirect_helpline_tracking">0845 46 47</a> (open 24 hours a day, every day)</li>
+      <li>call NHS Direct Wales on <a href="08454647" class="wales_nhsdirect_helpline_tracking">0845 46 47</a> (open 24 hours a day, every day)</li>
     </ul>
     <p><a href="https://www.gov.uk/call-charges" class="details__call-charges">Find out about call charges on GOV.UK</a></p>
   </div>
@@ -86,7 +86,7 @@
     <p>To find a chlamydia test in Northern Ireland:</p>
     <ul>
       <li>use the <a href="https://sexualhealthni.info/chlamydia" class="northern_ireland_website_tracking">Sexual Health NI website</a></li>
-      <li>call the Family Planning Association sexual health helpline on <a href="tel:03451228687" class="northern_ireland_helpline_tracking">0345 122 8687</a> (open Monday to Friday, 9am to 5pm; closed on bank holidays)</li>
+      <li>call the Family Planning Association sexual health helpline on <a href="03451228687" class="northern_ireland_helpline_tracking">0345 122 8687</a> (open Monday to Friday, 9am to 5pm; closed on bank holidays)</li>
       </li>
     </ul>
     <p><a href="https://www.gov.uk/call-charges" class="details__call-charges">Find out about call charges on GOV.UK</a></p>

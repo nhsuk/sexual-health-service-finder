@@ -66,7 +66,7 @@ describe('Results page for sexual health professionals for over 25', () => {
       const searchResultsDistance = getTextOnlyFromElement($('.results__address.results__address-distance').first());
       const searchResultsName = getTextOnlyFromElement($('.results__name').first());
       const searchResultsAddress = getTextOnlyFromElement($('.results__address.results__address-lines').first());
-      const searchResultsPhone = getTextOnlyFromElement($('.results__address.results__telephone a').first());
+      const searchResultsPhone = getTextOnlyFromElement($('.results__telephone').first());
 
       expect(searchResultsDistance).to.equal(`${searchResultsName} is 0.5 miles away`);
       expect(searchResultsName).to.equal('Leeds Sexual Health @ The Merrion Centre');

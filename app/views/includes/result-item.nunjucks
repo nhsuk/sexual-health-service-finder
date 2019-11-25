@@ -1,28 +1,25 @@
 {% if service.distanceMessage %}
-  <p class="nhsuk-body-s nhsuk-u-margin-bottom-0 results__address results__address-distance">
+  <p class="nhsuk-body-s nhsuk-u-margin-bottom-3 results__address results__address-distance">
     <span class="nhsuk-u-visually-hidden">{{ service.name }} is </span>{{ service.distanceMessage }}
   </p>
 {% endif %}
 
-<h2 class="results__name">
+<h2 class="results__name nhsuk-u-padding-top-0">
   {{ service.name }}
 </h2>
 
-{% if service.address %}
-  <p class="results__address results__address-lines">
-    {{ service.address }}
-  </p>
-{% endif %}
-
-{% if service.contacts %}
-  <p class="results__address results__telephone">
-    {% if service.contacts.telephoneNumber %}
-      <a href="tel:{{ service.contacts.telephoneNumber }}" class="results__telephone--mobile" class="telephone_tracking">
-        {{ service.contacts.telephoneNumber }}
-      </a>
-    {% endif %}
-  </p>
-{% endif %}
+<p>
+  {% if service.address %}
+    <span class="results__address results__address-lines">
+      {{ service.address }}
+    </span><br>
+  {% endif %}
+  {% if service.contacts.telephoneNumber %}
+    <span class="results__telephone" class="telephone_tracking">
+      {{ service.contacts.telephoneNumber }}
+    </span>
+  {% endif %}
+</p>
 
 {% if service.address %}
   <p class="results__item__link">
@@ -31,7 +28,7 @@
 {% endif %}
 
 {% if service.openingTimes %}
-  <details class="nhsuk-details. results__item__opening-times">
+  <details class="nhsuk-details. results__item__opening-times nhsuk-u-margin-bottom-2">
     <summary class="nhsuk-details__summary">
       <span class="nhsuk-details__summary-text">
         See opening times
