@@ -8,7 +8,7 @@
   {{ service.name }}
 </h2>
 
-<p>
+<p class="nhsuk-list nhsuk-u-margin-bottom-2">
   {% if service.address %}
     <span class="results__address results__address-lines">
       {{ service.address }}
@@ -23,15 +23,15 @@
 
 {% if service.address %}
   <p class="results__item__link">
-    <a class="maplink" href="{{service.mapUrl}}" class="maps_tracking">See map and directions<span class="nhsuk-u-visually-hidden"> for {{ service.name }} at {{ service.address }}</span></a>
+    <a class="maplink" href="{{service.mapUrl}}" class="maps_tracking">Map and directions<span class="nhsuk-u-visually-hidden"> for {{ service.name }} at {{ service.address }}</span></a>
   </p>
 {% endif %}
 
 {% if service.openingTimes %}
-  <details class="nhsuk-details. results__item__opening-times nhsuk-u-margin-bottom-2">
+  <details class="nhsuk-details results__item__opening-times">
     <summary class="nhsuk-details__summary">
       <span class="nhsuk-details__summary-text">
-        See opening times
+        Opening times
       </span>
     </summary>
     <div class="nhsuk-details__text">
@@ -52,7 +52,7 @@
   <details class="nhsuk-details results__item__service-details">
     <summary class="nhsuk-details__summary">
       <span class="nhsuk-details__summary-text">
-        See service information
+        Service information
       </span>
     </summary>
     <div class="nhsuk-details__text">

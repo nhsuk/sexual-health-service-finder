@@ -64,12 +64,12 @@ describe('Results page for kits for 16 to 24 year olds', () => {
       const openingTimes = getTextOnlyFromElement($('.results__item__opening-times span').first());
       const serviceInfo = getTextOnlyFromElement($('.results__item__service-details span').first());
 
-      expect(openingTimes).to.equal('See opening times');
-      expect(serviceInfo).to.equal('See service information');
+      expect(openingTimes).to.equal('Opening times');
+      expect(serviceInfo).to.equal('Service information');
       expect(phone).to.equal('0113 244 4209');
       expect(name).to.equal('MESMAC - Leeds');
       expect(address).to.equal('22/23 Blayds Yard, Leeds, West Yorkshire, LS1 4AD');
-      expect(mapLink).to.equal(`See map and directions for ${name} at ${address}`);
+      expect(mapLink).to.equal(`Map and directions for ${name} at ${address}`);
       expect(distance).to.equal(`${name} is 0.4 miles away`);
     });
   });

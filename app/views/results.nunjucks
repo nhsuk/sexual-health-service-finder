@@ -23,22 +23,24 @@
 
 {% block content %}
 
-<h1 class="local-header--title--question">{{ resultsHeading }}</h1>
-
 <div class="results">
-  {% if resultsExplanation %}
-    <p class='explanation'>{{ resultsExplanation }}</p>
-  {% endif %}
 
-  {% if resultsOnwardsJourneyPartial %}
-    {% include resultsOnwardsJourneyPartial %}
-  {% endif %}
+  <div class="nhsuk-u-reading-width"> 
+    <h1 class="local-header--title--question nhsuk-u-reading-width">{{ resultsHeading }}</h1>
+
+    {% if resultsExplanation %}
+      <p class='explanation'>{{ resultsExplanation }}</p>
+    {% endif %}
+
+    {% if resultsOnwardsJourneyPartial %}
+        {% include resultsOnwardsJourneyPartial %}
+    {% endif %}
+  </div>
 
   <ol class="nhsuk-list results">
     {% for service in services %}
-      <li class="results__item results__item--nearby" data-index="{{loop.index}}">
-        <hr />
-        <div class="results__details results__details--nearby">
+      <li class="results__item results__item--nearby results__item nhsuk-u-padding-bottom-5 nhsuk-u-padding-top-5" data-index="{{loop.index}}">
+        <div class="results__details results__details--nearby nhsuk-u-reading-width">
           {% include "includes/result-item.nunjucks" %}
         </div>
       </li>

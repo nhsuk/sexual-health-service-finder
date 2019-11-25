@@ -81,14 +81,14 @@ describe('Results page results', () => {
         const searchResultsOpeningTimes = $('.nhsuk-details__summary-text');
         const searchResultsService = $('.results__item__service-details');
 
-        expect(searchResultsOpeningTimes.text()).to.contain('See opening times');
-        expect(searchResultsService.text()).to.contain('See service information');
+        expect(searchResultsOpeningTimes.text()).to.contain('Opening times');
+        expect(searchResultsService.text()).to.contain('Service information');
 
         searchResultsMapLink.toArray().forEach((result, index) => {
           const name = getTextOnlyFromElement($('.results__name').eq(index));
           const address = getTextOnlyFromElement($('.results__address.results__address-lines').eq(index));
           const mapLinkText = $(result).text().replace('\n', '');
-          expect(mapLinkText).to.equal(`See map and directions for ${name} at ${address}`);
+          expect(mapLinkText).to.equal(`Map and directions for ${name} at ${address}`);
         });
 
         expect(searchResultsDistance).to.have.lengthOf(30);

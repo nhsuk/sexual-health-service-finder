@@ -62,11 +62,11 @@ describe('Results page for kits in over 25 year olds', () => {
       const openingTimes = getTextOnlyFromElement($('.results__item__opening-times span').first());
       const serviceInfo = getTextOnlyFromElement($('.results__item__service-details span').first());
 
-      expect(openingTimes).to.equal('See opening times');
+      expect(openingTimes).to.equal('Opening times');
       expect(serviceInfo).to.equal('');
       expect(name).to.equal('Ma Manning (Pharmacy) Ltd');
       expect(address).to.equal('97 Lidgett Lane, Leeds, Leeds, West Yorkshire, LS8 1QR');
-      expect(mapLink).to.equal(`See map and directions for ${name} at ${address}`);
+      expect(mapLink).to.equal(`Map and directions for ${name} at ${address}`);
       expect(distance).to.equal(`${name} is 3 miles away`);
       expect(telephone).to.equal('0113 266 1786');
     });

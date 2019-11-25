@@ -12,3 +12,22 @@
 .nhsuk-list .nhsuk-icon {
 	margin-bottom: -10px;
 }
+
+.nhsuk-list.results {
+	padding-top: 24px;
+	border-bottom: 1px solid #d8dde0;
+
+	.results__item {
+		font-size: 16px;
+		border-top: 1px solid #d8dde0;
+		margin-bottom: 0;
+	}
+
+	.nhsuk-details {
+		margin-bottom: 8px;
+
+		&:last-child {
+			margin-bottom: 0;
+		}		
+	}
+}
