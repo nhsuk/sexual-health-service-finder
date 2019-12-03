@@ -48,18 +48,18 @@ application will fail to start and an appropriate message will be displayed.
 Environment variables are used to set application level settings for each
 environment.
 
-| Variable                       | Description                                                                                        | Default                                   | Required |
-| :----------------------------- | :------------------------------------------------------------------------------------------------- | :---------------------------------------- | :------- |
-| `ADOBE_TRACKING_URL`           | [Adobe Analytics](https://www.adobe.com/analytics/adobe-analytics.html) Dynamic Tag Management URL |                                           | No       |
-| `BASIC_AUTH`                   | An MD5 encrypted [htpasswd](https://httpd.apache.org/docs/2.4/misc/password_encryptions.html)      | test:test                                 | No       |
-| `COOKIEBOT_SCRIPT_URL`         | The URL for the in-house implementation of Cookiebot                                               | //assets.nhs.uk/scripts/cookie-consent.js | No       |
-| `HOTJAR_ANALYTICS_TRACKING_ID` | [Hotjar](https://www.hotjar.com/) tracking id                                                      |                                           | No       |
-| `LOG_LEVEL`                    | Numeric [log level](https://github.com/trentm/node-bunyan#levels)                                  | Depends on `NODE_ENV`                     | No       |
-| `NODE_ENV`                     | Node environment                                                                                   | development                               | Yes      |
-| `PORT`                         | Server port                                                                                        | 3000                                      | Yes      |
-| `SEARCH_API_HOST`              | Host name for the [NHS Developer API](https://developer.api.nhs.uk/)                               | api.nhs.uk                                | Yes      |
-| `SEARCH_API_KEY`               | `subscription-key` for the [NHS Developer API](https://developer.api.nhs.uk/)                      |                                           | Yes      |
-| `SEARCH_API_VERSION`           | Version of the [NHS Developer API](https://developer.api.nhs.uk/)                                  | 1                                         | Yes      |
+| Variable                       | Description                                                                                        | Default                                             | Required |
+| :----------------------------- | :------------------------------------------------------------------------------------------------- | :----------------------------------------           | :------- |
+| `ADOBE_TRACKING_URL`           | [Adobe Analytics](https://www.adobe.com/analytics/adobe-analytics.html) Dynamic Tag Management URL |                                                     | No       |
+| `BASIC_AUTH`                   | An MD5 encrypted [htpasswd](https://httpd.apache.org/docs/2.4/misc/password_encryptions.html)      | See value set in Vault for `BASIC_AUTH` in defaults | No       |
+| `COOKIEBOT_SCRIPT_URL`         | The URL for the in-house implementation of Cookiebot                                               | //assets.nhs.uk/scripts/cookie-consent.js           | No       |
+| `HOTJAR_ANALYTICS_TRACKING_ID` | [Hotjar](https://www.hotjar.com/) tracking id                                                      |                                                     | No       |
+| `LOG_LEVEL`                    | Numeric [log level](https://github.com/trentm/node-bunyan#levels)                                  | Depends on `NODE_ENV`                               | No       |
+| `NODE_ENV`                     | Node environment                                                                                   | development                                         | Yes      |
+| `PORT`                         | Server port                                                                                        | 3000                                                | Yes      |
+| `SEARCH_API_HOST`              | Host name for the [NHS Developer API](https://developer.api.nhs.uk/)                               | api.nhs.uk                                          | Yes      |
+| `SEARCH_API_KEY`               | `subscription-key` for the [NHS Developer API](https://developer.api.nhs.uk/)                      |                                                     | Yes      |
+| `SEARCH_API_VERSION`           | Version of the [NHS Developer API](https://developer.api.nhs.uk/)                                  | 1                                                   | Yes      |
 
 ## FAQ
 
