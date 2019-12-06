@@ -1,3 +1,8 @@
+0.25.0 / TBC
+===================
+- Update npm dependencies
+- Update basic auth creds
+
 0.24.0 / 2019-09-26
 ===================
 - Add footer link to beta cookie policy page 
