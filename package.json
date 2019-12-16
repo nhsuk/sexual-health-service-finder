@@ -51,7 +51,7 @@
     "after-brunch": "^0.0.5",
     "babel-brunch": "^7.0.0",
     "body-parser": "^1.19.0",
-    "brunch": "^2.10.16",
+    "brunch": "^3.0.0",
     "compression": "^1.7.4",
     "cookie-parser": "^1.4.3",
     "express": "^4.17.0",
