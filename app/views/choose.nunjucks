@@ -4,32 +4,57 @@
   <meta name='robots' content='noindex'>
 {% endblock %}
 
-{% block header %}
-  <p class="local-header--step">Step 3 of 4</p>
-  <h1 class="local-header--title--question local-header--title__step">How do you want to get a test?</h1>
+{% block breadcrumbs %}
+  {{ breadcrumb({
+    items: [
+      {
+        href: "/",
+        text: "Home"
+      },
+      {
+        href: "https://www.nhs.uk/service-search",
+        text: "Services near you"
+      }
+    ],
+    href: siteRoot,
+    text: "Find a chlamydia test"
+  })}}
 {% endblock %}
-{% block content %}
-  {% if errorMessage %}
-  <div class="error-summary">
-    <h2 class="local-header--error error-summary-heading">
-      {{ errorMessage }}
-    </h2>
-  </div>
-  {% endif %}
 
-  <form method="get" class="form" action="{{ siteRoot }}/location">
-    <div class="reading-width">
-      <div class="form-group {% if errorMessage %} error {% endif %}">
-        <input type="hidden" name="origin" value="{{ origin }}" />
-        {% if under25 %}
-          {% include "includes/choose-free.nunjucks" %}
-        {% else %}
-          {% include "includes/choose-paid.nunjucks" %}
-        {% endif %}
-      </div>
-      <p>
-      <input type="submit" class="button" value="Continue">
-      </p>
-    </div>
-  </form>
+{% block content %}
+
+<form method="get" class="form" action="{{ siteRoot }}/location">
+  <input type="hidden" name="origin" value="{{ origin }}" />
+  
+  <div class="nhsuk-form-group {% if errorMessage %}nhsuk-form-group--error{% endif %}">
+
+    <fieldset class="nhsuk-fieldset"{% if errorMessage %} aria-describedby="example-error-hint example-error-error"{% endif %}>
+      <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+        <h1 class="nhsuk-fieldset__heading local-header--title--question local-header--title__step">
+          How do you want to get a test?
+        </h1>
+      </legend>
+
+      <span class="nhsuk-error-message" id="example-error-error">
+        <span class="nhsuk-u-visually-hidden">Error:</span> {{ errorMessage }}
+      </span>
+      
+      {% if under25 %}
+        {% include "includes/choose-free.nunjucks" %}
+      {% else %}
+        {% include "includes/choose-paid.nunjucks" %}
+      {% endif %}
+    </fieldset>
+  </div>
+  
+  {{ button({
+    "text": "Continue"
+  })}}
+
+  {{ backLink({
+    "href": "javascript:history.go(-1)",
+    "text": "Go back"
+  })}}
+
+</form>
 {% endblock %}

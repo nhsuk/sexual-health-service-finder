@@ -9,7 +9,7 @@ const expect = chai.expect;
 
 chai.use(chaiHttp);
 
-async function assertMapping(args, expectedMessage1, errorMessage) {
+async function assertMapping(args, expectedMessage1) {
   const res = await chai.request(server)
     .get(`${constants.siteRoot}/location`)
     .query(args);
@@ -18,11 +18,6 @@ async function assertMapping(args, expectedMessage1, errorMessage) {
 
   expect($('head title').text()).to.equal('Find a chlamydia test - NHS');
   expect($('.local-header--title--question').text()).to.equal(expectedMessage1);
-  if (errorMessage) {
-    expect($('.local-header--step').text()).to.equal('');
-  } else {
-    expect($('.local-header--step').text()).to.equal('Step 4 of 4');
-  }
 }
 
 describe('Location page', () => {

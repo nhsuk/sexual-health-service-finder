@@ -4,33 +4,52 @@
   <meta name='robots' content='noindex'>
 {% endblock %}
 
-{% block header %}
-<h1 class="local-header--title--question">{{ resultsHeading }}</h1>
+{% block breadcrumbs %}
+  {{ breadcrumb({
+    items: [
+      {
+        href: "/",
+        text: "Home"
+      },
+      {
+        href: "https://www.nhs.uk/service-search",
+        text: "Services near you"
+      }
+    ],
+    href: siteRoot,
+    text: "Find a chlamydia test"
+  })}}
 {% endblock %}
 
 {% block content %}
+
 <div class="results">
-  {% if resultsExplanation %}
-    <p class='explanation'>{{ resultsExplanation }}</p>
-  {% endif %}
 
-  {% if resultsOnwardsJourneyPartial %}
-    {% include resultsOnwardsJourneyPartial %}
-  {% endif %}
+  <div class="nhsuk-u-reading-width"> 
+    <h1 class="local-header--title--question nhsuk-u-reading-width">{{ resultsHeading }}</h1>
 
-  <h2 data-results="{{services.length}}" data-term="{{location}}" class="local-header--title--question">Results</h2>
+    {% if resultsExplanation %}
+      <p class='explanation'>{{ resultsExplanation }}</p>
+    {% endif %}
 
-  <div class="grid-row">
-    <ol class="results">
-      {% for service in services %}
-        <li class="results__item results__item--nearby" data-index="{{loop.index}}">
-          <div class="results__details results__details--nearby">
-            {% include "includes/result-item.nunjucks" %}
-          </div>
-          <!--[if IE]><div style="clear: both;" class="clear-both"></div><![endif]-->
-        </li>
-      {% endfor %}
-    </ol>
+    {% if resultsOnwardsJourneyPartial %}
+        {% include resultsOnwardsJourneyPartial %}
+    {% endif %}
   </div>
+
+  <ol class="nhsuk-list results">
+    {% for service in services %}
+      <li class="results__item results__item--nearby results__item nhsuk-u-padding-bottom-5 nhsuk-u-padding-top-5" data-index="{{loop.index}}">
+        <div class="results__details results__details--nearby nhsuk-u-reading-width">
+          {% include "includes/result-item.nunjucks" %}
+        </div>
+      </li>
+    {% endfor %}
+  </ol>
 </div>
+
+{{ backLink({
+  "href": "javascript:history.go(-1)",
+  "text": "Go back"
+})}}
 {% endblock %}

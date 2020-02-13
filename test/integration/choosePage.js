@@ -24,20 +24,16 @@ describe('Choose page', () => {
       $ = cheerio.load(res.text);
     });
 
-    it('step count should be \'Step 3 of 4\'', async () => {
-      expect($('.local-header--step').text()).to.equal('Step 3 of 4');
-    });
-
     it('should not be indexed', async () => {
       expect($('meta[name=robots]').attr('content')).to.equal('noindex');
     });
 
     it('page title should be \'How do you want to get a test?\' if age question is answered 16-24', async () => {
-      expect($('.local-header--title--question').text()).to.equal('How do you want to get a test?');
+      expect($('.local-header--title--question').text()).to.contain('How do you want to get a test?');
     });
 
     it('page options should be related to being under 25 (free), if age question is answered 16-24', async () => {
-      expect($('.multiple-choice .multiple--choice-option').eq(0).text()).to.equal('Collect a free test kit near you');
+      expect($('.nhsuk-label').eq(0).text()).to.contain('Collect a free test kit near you');
     });
   });
 
@@ -52,34 +48,12 @@ describe('Choose page', () => {
       $ = cheerio.load(res.text);
     });
 
-    it('step count should be \'Step 3 of 4\'', async () => {
-      expect($('.local-header--step').text()).to.equal('Step 3 of 4');
-    });
-
     it('page title should be \'How do you want to get a test?\' if age question is answered 25 or older', async () => {
-      expect($('.local-header--title--question').text()).to.equal('How do you want to get a test?');
+      expect($('.local-header--title--question').text()).to.contain('How do you want to get a test?');
     });
 
     it('page options should be related to being over 25 (paid), if age question is answered 25 or older', async () => {
-      expect($('.multiple-choice .multiple--choice-option').eq(0).text()).to.equal('See a sexual health professional near you');
-    });
-  });
-
-  describe('return to Choices services', () => {
-    let $;
-    before('run request', async () => {
-      const res = await chai.request(server).get(chooseRoute);
-      $ = cheerio.load(res.text);
-    });
-
-    it('the breadcrumb should have a link back to the Choices \'Services near you\'', async () => {
-      expect($($('.nhsuk-c-breadcrumb__item a')[1]).attr('href'))
-        .to.equal('https://www.nhs.uk/service-search');
-    });
-
-    it('the page should have a link back to the Choices service search', async () => {
-      expect($('.back-to-choices').attr('href'))
-        .to.equal('https://www.nhs.uk/service-search');
+      expect($('.nhsuk-label').eq(0).text()).to.contain('See a sexual health professional near you');
     });
   });
 });

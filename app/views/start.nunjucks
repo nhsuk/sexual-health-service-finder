@@ -1,8 +1,17 @@
 {% set analyticsPageTitle = 'Start' %}
 {% extends 'layout.nunjucks' %}
 
-{% block header %}
-<h1 class="local-header--title--question">Find a chlamydia test</h1>
+{% block breadcrumbs %}
+{{ breadcrumb({
+  items: [
+    {
+      href: "/",
+      text: "Home"
+    }
+  ],
+  href: "https://www.nhs.uk/service-search",
+  text: "Services near you"
+})}}
 {% endblock %}
 
 {% block content %}
@@ -14,91 +23,74 @@
 </div>
 {% endif %}
 
-<div class="reading-width">
-  <p class="nhsuk-page-intro">
-    <div>The only way to know if you have <a href="https://beta.nhs.uk/conditions/chlamydia/about/">chlamydia</a> is to get tested.</div>
+<h1 class="local-header--title--question">Find a chlamydia test</h1>
+<p>The only way to know if you have <a href="https://beta.nhs.uk/conditions/chlamydia/about/">chlamydia</a> is to get tested.</p>
+<p>This service can help you:</p>
+<ul>
+  <li>find places near you to get tested by a sexual health professional</li>
+  <li>get a chlamydia home test kit (you may have to pay for this)</li>
+</ul>
+<p>You may also be able to get a test from your GP.</p>
 
-    <p>This service can help you:</p>
-
-    <ul>
-      <li>find places near you to get tested by a sexual health professional</li>
-      <li>get a chlamydia home test kit (you may have to pay for this)</li>
-    </ul>
-
-    <p>You may also be able to get a test from your GP.</p>
-  </p>
-
-  <div class="details--country" id="england">
-    <div class="details__header">
-        <h2>England</h2>
-    </div>
-
-    <div class="details__content">
-      <div class="reading-width">
-        <p>If you're in England, we can help you find a chlamydia test. We'll ask you a few questions, and use your answers to show you where to get a test. It will take about 5 minutes.</p>
-
-        <p>
-        <a href="{{ siteRoot }}/symptoms" class="button start-button start_button_tracking" role="button">Start now</a>
-        </p>
-
-        <p>Your answers may be used to help improve the NHS website. <a href="https://www.nhs.uk/our-policies/privacy-policy/" class="nhsuk_privacy_policy_tracking">Read the NHS privacy policy</a>.</p>
-
-        <p>If you would prefer to speak to someone, call the sexual health helpline for advice on <a href="tel:03001237123" class="england_helpline_tracking">0300 123 7123</a>. Open Monday to Friday, 9am to 8pm.</p>
-
-        <p><a href="https://www.gov.uk/call-charges" class="details__call-charges">Find out about call charges on GOV.UK</a></p>
-      </div>
-    </div>
-  </div>
-
-  <div class="details details--country" id="scotland" role="group">
-    <a href="javascript:void(0)" class="summary--toggle scotland_information_tracking" aria-expanded="false"><span class="caret"></span>Scotland</a>
-
-    <div class="details__content" id="details-content-1">
-      <div class="reading-width">
-        <p>To find a chlamydia test in Scotland:</p>
-
-        <ul>
-          <li>use the <a href="http://www.sexualhealthscotland.co.uk/get-help/sexual-health-service-finder" class="scotland_finder_tracking">Sexual Health Scotland website</a></li>
-          <li>call Sexual Health Scotland on <a href="tel:0800224488" class="scotland_helpline_tracking">0800 22 44 88</a> (open Monday to Friday, 8am to 10pm; Saturday and Sunday, 9am to 5pm)</li>
-        </ul>
-        <p><a href="https://www.gov.uk/call-charges" class="details__call-charges">Find out about call charges on GOV.UK</a></p>
-      </div>
-    </div>
-  </div>
-
-  <div class="details details--country" id="wales" role="group">
-    <a href="javascript:void(0)" class="summary--toggle wales_information_tracking" aria-expanded="false"><span class="caret"></span>Wales</a>
-
-    <div class="details__content" id="details-content-2">
-      <div class="reading-width">
-        <p>To find a chlamydia test in Wales:</p>
-
-        <ul>
-          <li>use the <a href="https://www.nhsdirect.wales.nhs.uk/LocalServices/?s=SexualHealth" class="wales_nhsdirect_tracking">NHS Direct Wales website</a></li>
-          <li>call NHS Direct Wales on <a href="tel:08454647" class="wales_nhsdirect_helpline_tracking">0845 46 47</a> (open 24 hours a day, every day)</li>
-        </ul>
-        <p><a href="https://www.gov.uk/call-charges" class="details__call-charges">Find out about call charges on GOV.UK</a></p>
-      </div>
-    </div>
-  </div>
-
-  <div class="details details--country" id="northern" role="group">
-    <a href="javascript:void(0)" class="summary--toggle northern_ireland_information_tracking" aria-expanded="false"><span class="caret"></span>Northern Ireland</a>
-
-    <div class="details__content" id="details-content-3">
-      <div class="reading-width">
-        <p>To find a chlamydia test in Northern Ireland:</p>
-
-        <ul>
-          <li>use the <a href="https://sexualhealthni.info/chlamydia" class="northern_ireland_website_tracking">Sexual Health NI website</a></li>
-          <li>call the Family Planning Association sexual health helpline on <a href="tel:03451228687" class="northern_ireland_helpline_tracking">0345 122 8687</a> (open Monday to Friday, 9am to 5pm; closed on bank holidays)</li>
-          </li>
-        </ul>
-        <p><a href="https://www.gov.uk/call-charges" class="details__call-charges">Find out about call charges on GOV.UK</a></p>
-      </div>
-    </div>
-  </div>
-
+<div class="nhsuk-panel">
+  <h2>England</h2>
+  <p>If you're in England, we can help you find a chlamydia test. We'll ask you a few questions, and use your answers to show you where to get a test. It will take about 5 minutes.</p>
+  {{ button({
+    "text": "Start now",
+    "href": siteRoot + "/symptoms"
+  }) }}
+  <p>Your answers may be used to help improve the NHS website. <a href="https://www.nhs.uk/our-policies/privacy-policy/" class="nhsuk_privacy_policy_tracking">Read the NHS privacy policy</a>.</p>
+  <p>If you would prefer to speak to someone, call the sexual health helpline for advice on <a href="03001237123" class="england_helpline_tracking">0300 123 7123</a>. Open Monday to Friday, 9am to 8pm.</p>
+  <p><a href="https://www.gov.uk/call-charges" class="details__call-charges">Find out about call charges on GOV.UK</a></p>
 </div>
+
+<details class="nhsuk-details nhsuk-expander">
+  <summary class="nhsuk-details__summary">
+    <span class="nhsuk-details__summary-text">
+      Scotland
+    </span>
+  </summary>
+  <div class="nhsuk-details__text">
+    <p>To find a chlamydia test in Scotland:</p>
+    <ul>
+      <li>use the <a href="http://www.sexualhealthscotland.co.uk/get-help/sexual-health-service-finder" class="scotland_finder_tracking">Sexual Health Scotland website</a></li>
+      <li>call Sexual Health Scotland on <a href="0800224488" class="scotland_helpline_tracking">0800 22 44 88</a> (open Monday to Friday, 8am to 10pm; Saturday and Sunday, 9am to 5pm)</li>
+    </ul>
+    <p><a href="https://www.gov.uk/call-charges" class="details__call-charges">Find out about call charges on GOV.UK</a></p>
+  </div>
+</details>
+
+<details class="nhsuk-details nhsuk-expander">
+  <summary class="nhsuk-details__summary">
+    <span class="nhsuk-details__summary-text">
+      Wales
+    </span>
+  </summary>
+  <div class="nhsuk-details__text">
+    <p>To find a chlamydia test in Wales:</p>
+    <ul>
+      <li>use the <a href="https://www.nhsdirect.wales.nhs.uk/LocalServices/?s=SexualHealth" class="wales_nhsdirect_tracking">NHS Direct Wales website</a></li>
+      <li>call NHS Direct Wales on <a href="08454647" class="wales_nhsdirect_helpline_tracking">0845 46 47</a> (open 24 hours a day, every day)</li>
+    </ul>
+    <p><a href="https://www.gov.uk/call-charges" class="details__call-charges">Find out about call charges on GOV.UK</a></p>
+  </div>
+</details>
+
+<details class="nhsuk-details nhsuk-expander">
+  <summary class="nhsuk-details__summary">
+    <span class="nhsuk-details__summary-text">
+      Northern Ireland
+    </span>
+  </summary>
+  <div class="nhsuk-details__text">
+    <p>To find a chlamydia test in Northern Ireland:</p>
+    <ul>
+      <li>use the <a href="https://sexualhealthni.info/chlamydia" class="northern_ireland_website_tracking">Sexual Health NI website</a></li>
+      <li>call the Family Planning Association sexual health helpline on <a href="03451228687" class="northern_ireland_helpline_tracking">0345 122 8687</a> (open Monday to Friday, 9am to 5pm; closed on bank holidays)</li>
+      </li>
+    </ul>
+    <p><a href="https://www.gov.uk/call-charges" class="details__call-charges">Find out about call charges on GOV.UK</a></p>
+  </div>
+</details>
 
 {% endblock %}

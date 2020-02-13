@@ -42,7 +42,7 @@ describe('Results page for kits for 16 to 24 year olds', () => {
 
   describe('layout', () => {
     it('should contain a header and other info related to the search', () => {
-      const resultsHeader = getTextOnlyFromElement($('.nhsuk-page-heading'));
+      const resultsHeader = getTextOnlyFromElement($('h1'));
       const resultsSubHeader = $('.results p.explanation').text();
       const resultsOnwards1 = $('.results li.link1').text();
       const resultsOnwards2 = $('.results li.link2').text();
@@ -59,17 +59,17 @@ describe('Results page for kits for 16 to 24 year olds', () => {
       const distance = getTextOnlyFromElement($('.results__address.results__address-distance').first());
       const name = getTextOnlyFromElement($('.results__name').first());
       const address = getTextOnlyFromElement($('.results__address.results__address-lines').first());
-      const phone = getTextOnlyFromElement($('.results__address.results__telephone a').first());
+      const phone = getTextOnlyFromElement($('.results__telephone').first());
       const mapLink = getTextOnlyFromElement($('.results__item__link a').first());
-      const openingTimes = getTextOnlyFromElement($('.results__item__opening-times a').first());
-      const serviceInfo = getTextOnlyFromElement($('.results__item__service-details a').first());
+      const openingTimes = getTextOnlyFromElement($('.results__item__opening-times span').first());
+      const serviceInfo = getTextOnlyFromElement($('.results__item__service-details span').first());
 
-      expect(openingTimes).to.equal('See opening times');
-      expect(serviceInfo).to.equal('See service information');
+      expect(openingTimes).to.equal('Opening times');
+      expect(serviceInfo).to.equal('Service information');
       expect(phone).to.equal('0113 244 4209');
       expect(name).to.equal('MESMAC - Leeds');
       expect(address).to.equal('22/23 Blayds Yard, Leeds, West Yorkshire, LS1 4AD');
-      expect(mapLink).to.equal(`See map and directions for ${name} at ${address}`);
+      expect(mapLink).to.equal(`Map and directions for ${name} at ${address}`);
       expect(distance).to.equal(`${name} is 0.4 miles away`);
     });
   });

@@ -26,15 +26,15 @@ describe('Choose page with error', () => {
     });
 
     it('page errors should be \'You must choose one of the options.\' if errors and age is 16-24', async () => {
-      expect($('.error-summary').text()).to.contain(mandatorySelectionMessage());
+      expect($('.nhsuk-error-message').text()).to.contain(mandatorySelectionMessage());
     });
 
     it('page title should be \'How do you want to get a test?\' if errors and age is 16-24', async () => {
-      expect($('.local-header--title--question').text()).to.equal('How do you want to get a test?');
+      expect($('.local-header--title--question').text()).to.contain('How do you want to get a test?');
     });
 
     it('page options should be related to being under 25 (free), if errors and age is 16-24', async () => {
-      expect($('.multiple-choice .multiple--choice-option').first().text()).to.equal('Collect a free test kit near you');
+      expect($('.nhsuk-label').first().text()).to.contain('Collect a free test kit near you');
     });
   });
 
@@ -50,15 +50,15 @@ describe('Choose page with error', () => {
     });
 
     it('page errors should be \'You must choose one of the options.\' if errors and age is over 25', async () => {
-      expect($('.error-summary').text()).to.contain(mandatorySelectionMessage());
+      expect($('.nhsuk-error-message').text()).to.contain(mandatorySelectionMessage());
     });
 
     it('page title should be \'How do you want to get a test?\' if errors and age is over 25', async () => {
-      expect($('.local-header--title--question').text()).to.equal('How do you want to get a test?');
+      expect($('.local-header--title--question').text()).to.contain('How do you want to get a test?');
     });
 
     it('page options should be related to being over 25 (paid), if errors and age is over 25', async () => {
-      expect($('.multiple-choice .multiple--choice-option').first().text()).to.equal('See a sexual health professional near you');
+      expect($('.nhsuk-label').first().text()).to.contain('See a sexual health professional near you');
     });
   });
 });

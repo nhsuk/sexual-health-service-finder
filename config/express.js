@@ -40,6 +40,9 @@ module.exports = (app, config) => {
 
   app.use(constants.siteRoot, express.static(`${config.app.root}/public`));
 
+  // Add static to access NHS frontend library dist folder
+  app.use(constants.siteRoot, express.static('node_modules/nhsuk-frontend/dist'));
+
   // metrics needs to be registered before routes wishing to have metrics generated
   // see https://github.com/jochen-schweizer/express-prom-bundle#sample-uusage
   app.use(promBundle);

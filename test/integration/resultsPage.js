@@ -76,19 +76,19 @@ describe('Results page results', () => {
         const searchResultsDistance = $('.results__address.results__address-distance');
         const searchResultsName = $('.results__name');
         const searchResultsAddress = $('.results__address.results__address-lines');
-        const searchResultsPhone = $('.results__address.results__telephone a');
+        const searchResultsPhone = $('.results__telephone');
         const searchResultsMapLink = $('.results__item__link a');
-        const searchResultsOpeningTimes = $('.results__item__opening-times a');
-        const searchResultsService = $('.results__item__service-details a');
+        const searchResultsOpeningTimes = $('.nhsuk-details__summary-text');
+        const searchResultsService = $('.results__item__service-details');
 
-        expect(searchResultsOpeningTimes.text()).to.equal('See opening times'.repeat(30));
-        expect(searchResultsService.text()).to.equal('See service information'.repeat(30));
+        expect(searchResultsOpeningTimes.text()).to.contain('Opening times');
+        expect(searchResultsService.text()).to.contain('Service information');
 
         searchResultsMapLink.toArray().forEach((result, index) => {
           const name = getTextOnlyFromElement($('.results__name').eq(index));
           const address = getTextOnlyFromElement($('.results__address.results__address-lines').eq(index));
           const mapLinkText = $(result).text().replace('\n', '');
-          expect(mapLinkText).to.equal(`See map and directions for ${name} at ${address}`);
+          expect(mapLinkText).to.equal(`Map and directions for ${name} at ${address}`);
         });
 
         expect(searchResultsDistance).to.have.lengthOf(30);
